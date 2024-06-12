@@ -15,3 +15,8 @@ export type IDoctorRegister = {
   specialization: string;
   experienceYears: string;
 };
+
+export type ILoginData = {
+  emailOrPhone: string;
+  password: string;
+};

@@ -142,7 +142,7 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     />
                   </div>
                 </div>
-                <Button variant="filled" fullWidth text="Continue" />
+                <Button variant="filled" fullWidth text="Continue" disabled={loading} loading={loading} />
               </div>
             </form>
           </div>
