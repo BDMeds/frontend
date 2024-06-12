@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "../public/globals.css";
 import { dmSans } from "@/lib/utils/fonts";
+import Providers from "@/lib/providers";
 
 export const metadata: Metadata = {
   title: {
     default: "BDMeds",
-    template: `$s | BDMeds`,
+    template: `%s | BDMeds`,
   },
   description: "BDMeds is a healthcare application that manages ...",
 };
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>{children}</body>
+      <body className={dmSans.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

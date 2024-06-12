@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ecf0f1;
+  --background: #f8f8f8;
   --foreground: #171d1c;
 }
 
@@ -13,6 +13,10 @@
     --foreground: #ecf0f1;
   }
 } */
+
+* {
+  outline: none;
+}
 
 html {
   scroll-behavior: smooth;

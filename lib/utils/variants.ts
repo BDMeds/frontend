@@ -1,16 +1,9 @@
 import { Variants } from "framer-motion";
 
 export const parentVariant: Variants = {
-  // initial: { opacity: 0 },
   animate: { transition: { staggerChildren: 0.08 } },
   exit: { opacity: 0 },
 };
-
-// export const parentInViewVariant: Variants = {
-//   initial: { opacity: 0 },
-//   whileInView: { opacity: 1, transition: { staggerChildren: 0.2 } },
-//   exit: { opacity: 0 },
-// };
 
 export const opacityVariant: Variants = {
   initial: { opacity: 0 },
