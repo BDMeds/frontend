@@ -11,4 +11,7 @@ export type IDoctorRegister = {
   lastName: string;
   email: string;
   phoneNumber: string;
+  password: string;
+  specialization: string;
+  experienceYears: string;
 };

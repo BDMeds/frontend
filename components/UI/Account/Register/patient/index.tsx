@@ -50,7 +50,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
 
         <div className="px-10 space-y-8">
           <div className="max-w-md">
-            <h2 className="text-3xl font-bold">Create a patient account</h2>
+            <h2 className="text-3xl font-bold">Create a Patient Account</h2>
             <p className="text-gray-500">
               By clicking <span className="font-semibold">continue</span>, you agree to our{" "}
               <span className="text-primary border-b">Terms</span> and <span className="text-primary">Conditions</span>
@@ -89,6 +89,15 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     />
                   </div>
                   <div className="space-y-1">
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <input
+                      type="text"
+                      {...register("phoneNumber", { required: true })}
+                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      placeholder="+234..."
+                    />
+                  </div>
+                  <div className="space-y-1 col-span-2">
                     <p>Gender</p>
                     <div className="grid grid-cols-2 gap-3">
                       {genders.map((gen, id) => (
@@ -96,7 +105,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                           key={id}
                           onClick={() => setGender(gen.name)}
                           className={`p-2 rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                            gen.name === gender ? "bg-primary text-white" : "bg-white"
+                            gen.name === gender ? "bg-primary text-white" : "bg-white border border-gray-200"
                           }`}
                         >
                           {gen.icon}
