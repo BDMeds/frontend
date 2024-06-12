@@ -2,11 +2,13 @@
 
 import Button from "@/components/Common/Button";
 import { dataMutate } from "@/lib/services/dummy";
-import { toastSuccess } from "@/lib/utils/toast";
+import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { ILoginData } from "@/lib/utils/types";
 import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { GiMedicines } from "react-icons/gi";
 
@@ -15,17 +17,31 @@ const Login = () => {
 
   const router = useRouter();
 
-  const { mutate, isPending: loading } = useMutation({
+  const [loading, setLoading] = useState(false);
+
+  const { mutate, isPending } = useMutation({
     mutationFn: dataMutate,
     onSuccess: () => (toastSuccess("login successful"), router.replace("/dashboard")),
   });
 
   const submit: SubmitHandler<ILoginData> = async (data) => {
-    if (data.emailOrPhone.includes("@")) {
-      mutate({ email: data.emailOrPhone, password: data.password });
-    }
+    // if (data.emailOrPhone.includes("@")) {
+    //   mutate({ email: data.emailOrPhone, password: data.password });
+    // }
 
-    mutate({ phone: data.emailOrPhone, password: data.password });
+    // mutate({ phone: data.emailOrPhone, password: data.password });
+    try {
+      setLoading(true);
+      const res = await signIn("credentials", { email: data.emailOrPhone, password: data.password, redirect: false });
+      if (res?.ok) {
+        toastSuccess("login successful");
+        router.replace("/dashboard");
+      } else {
+        toastError("Login failed.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -1,7 +1,6 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { publicApi } from "./axios-instance";
-import { ApiResponse, IAuthUserData, Tokens } from "../types";
 
 const authOptions: AuthOptions = {
   providers: [
@@ -14,6 +13,10 @@ const authOptions: AuthOptions = {
       authorize: async (credentials, _req) => {
         if (!credentials || !credentials.email || !credentials.password) return null;
         const { email, password } = credentials;
+
+        // if (email.emailOrPhone.includes("@")) {
+
+        // }
 
         return { id: crypto.randomUUID() };
       },
