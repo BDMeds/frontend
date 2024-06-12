@@ -3,12 +3,15 @@
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster as SonnerToaster } from "sonner";
+import AuthProvider from "./auth-provider";
+import { SessionProvider } from "next-auth/react";
 
 const queryClient = new QueryClient();
 
 const Providers = ({ children }: { children: ReactNode }) => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
       <SonnerToaster
         toastOptions={{
           style: {
@@ -19,8 +22,9 @@ const Providers = ({ children }: { children: ReactNode }) => {
           },
         }}
       />
-      {children}
+      <AuthProvider>{children}</AuthProvider>
     </QueryClientProvider>
+    </SessionProvider>
   );
 };
 

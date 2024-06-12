@@ -6,11 +6,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { GiMedicines } from "react-icons/gi";
 import NavChild from "./nav-child";
+import { useSession } from "next-auth/react";
+import Button from "@/components/Common/Button";
 
 const Navbar = () => {
   const ref = useRef<HTMLElement>(null);
   const [passed, setPassed] = useState(false);
   const pathname = usePathname();
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     let prev = window.scrollY;
@@ -67,10 +71,19 @@ const Navbar = () => {
         </ul>
 
         <div>
-          <Link href="/account/login" className="mr-4">
-            Sign In
-          </Link>
-          <Link href="/account/register">Register</Link>
+          {session ? (
+            <>
+              <Button text="Dashboard" variant="filled" />
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link href="/account/login" className="mr-4">
+                Sign In
+              </Link>
+              <Link href="/account/register">Register</Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
