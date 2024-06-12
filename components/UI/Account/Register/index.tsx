@@ -7,7 +7,7 @@ import { opacityVariant } from "@/lib/utils/variants";
 import PatientRegister from "./patient";
 import DoctorRegister from "./doctor";
 
-type Tag = "patient" | "doctor";
+export type Tag = "patient" | "doctor";
 
 const choices: { name: string; tag: Tag; icon: JSX.Element }[] = [
   { name: "Patient", tag: "patient", icon: <FaUser /> },
@@ -17,12 +17,14 @@ const choices: { name: string; tag: Tag; icon: JSX.Element }[] = [
 const Register = () => {
   const [mainTag, setTag] = useState<Tag | null>(null);
 
+  const updateTag = (tag: Tag | null) => setTag(tag);
+
   const renderContent = () => {
     switch (mainTag) {
       case "doctor":
-        return <DoctorRegister key="doctor" />;
+        return <DoctorRegister key="doctor" updateTag={updateTag} />;
       case "patient":
-        return <PatientRegister key={"patient"} />;
+        return <PatientRegister key={"patient"} updateTag={updateTag} />;
       default:
         return (
           <motion.div {...opacityVariant} key={"quest"} className="min-w-full min-h-screen grid place-content-center">
