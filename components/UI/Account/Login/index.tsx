@@ -2,16 +2,23 @@
 
 import Button from "@/components/Common/Button";
 import { dataMutate } from "@/lib/services/dummy";
+import { toastSuccess } from "@/lib/utils/toast";
 import { ILoginData } from "@/lib/utils/types";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { GiMedicines } from "react-icons/gi";
 
 const Login = () => {
   const { handleSubmit, register } = useForm<ILoginData>();
 
-  const { mutate, isPending: loading } = useMutation({ mutationFn: dataMutate });
+  const router = useRouter();
+
+  const { mutate, isPending: loading } = useMutation({
+    mutationFn: dataMutate,
+    onSuccess: () => (toastSuccess("login successful"), router.replace("/dashboard")),
+  });
 
   const submit: SubmitHandler<ILoginData> = async (data) => {
     if (data.emailOrPhone.includes("@")) {

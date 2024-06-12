@@ -10,6 +10,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { dataMutate } from "@/lib/services/dummy";
 import { MdFemale, MdMale } from "react-icons/md";
+import { toastSuccess } from "@/lib/utils/toast";
+import { useRouter } from "next/navigation";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;
@@ -24,7 +26,12 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
   const { register, handleSubmit, reset } = useForm<IDoctorRegister>();
   const [gender, setGender] = useState("Male");
 
-  const { mutate, isPending: loading } = useMutation({ mutationFn: dataMutate });
+  const router = useRouter();
+
+  const { mutate, isPending: loading } = useMutation({
+    mutationFn: dataMutate,
+    onSuccess: () => (toastSuccess("Account created successfully."), router.replace("/dashboard")),
+  });
 
   const submit: SubmitHandler<IDoctorRegister> = async (data) => mutate({ ...data, gender: gender.toLowerCase() });
 
