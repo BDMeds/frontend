@@ -34,8 +34,8 @@ const Login = () => {
       setLoading(true);
       const res = await signIn("credentials", { email: data.emailOrPhone, password: data.password, redirect: false });
       if (res?.ok) {
-        toastSuccess("login successful");
-        router.replace("/dashboard");
+        toastSuccess("Login successful.");
+        window.location.href = "/dashboard";
       } else {
         toastError("Login failed.");
       }

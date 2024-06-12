@@ -6,6 +6,9 @@ import { CiSettings } from "react-icons/ci";
 import { MdOutlineReport } from "react-icons/md";
 import { FaShoppingBasket } from "react-icons/fa";
 
+import { FaUserDoctor } from "react-icons/fa6";
+import { AiOutlineMedicineBox, AiFillMedicineBox } from "react-icons/ai";
+
 type Link = {
   text: string;
   path: string;
@@ -29,16 +32,22 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/dashboard",
       },
       {
-        iconOutlined: <MdOutlineCurrencyExchange />,
-        iconFilled: <MdOutlineCurrencyExchange />,
-        text: "Trade",
-        path: "/trade",
+        iconOutlined: <FaUserDoctor />,
+        iconFilled: <FaUserDoctor />,
+        text: "Appointments",
+        path: "/appointments",
       },
       {
-        iconOutlined: <MdOutlineAnalytics />,
-        iconFilled: <MdAnalytics />,
-        text: "Orders",
-        path: "/orders",
+        iconOutlined: <AiOutlineMedicineBox />,
+        iconFilled: <AiFillMedicineBox />,
+        text: "Consultations",
+        path: "/consultations",
+      },
+      {
+        iconOutlined: <MdOutlineCurrencyExchange />,
+        iconFilled: <MdOutlineCurrencyExchange />,
+        text: "Bills",
+        path: "/bills",
       },
       {
         iconOutlined: <HiOutlineUserCircle />,

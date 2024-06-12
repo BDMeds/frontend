@@ -72,9 +72,11 @@ const Navbar = () => {
 
         <div>
           {session ? (
-            <>
-              <Button text="Dashboard" variant="filled" />
-            </>
+            <div>
+              <Link href={"/dashboard"}>
+                <Button text="Dashboard" variant="filled" />
+              </Link>
+            </div>
           ) : (
             <>
               {" "}

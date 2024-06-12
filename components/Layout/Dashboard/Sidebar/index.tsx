@@ -34,8 +34,8 @@ const Sidebar = () => {
       ) : (
         <>
           <div>
-            <div>
-              <Link href={"/"} className="text-2xl font-bold">
+            <div className="pl-6 pt-6">
+              <Link href={"/"} className="text-xl font-bold">
                 <div className="flex items-center gap-2">
                   <GiMedicines />
                   <span>BDMeds</span>
