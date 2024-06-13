@@ -1,14 +1,13 @@
 import { GiMedicines } from "react-icons/gi";
-import { RiExchange2Fill } from "react-icons/ri";
 
 const SidebarSkeleton = () => {
   return (
     <>
       <div>
-        <div className="flex items-center gap-2 py-4 px-8">
+        <div className="pl-6 py-4 border-b">
           <div className="flex items-center gap-2">
-            <GiMedicines />
-            <span>BDMeds</span>
+            <GiMedicines className="text-primary" />
+            <span className="font-bold">BDMeds</span>
           </div>
         </div>
 

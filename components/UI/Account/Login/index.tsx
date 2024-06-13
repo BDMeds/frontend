@@ -7,6 +7,7 @@ import { ILoginData } from "@/lib/utils/types";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -80,6 +81,13 @@ const Login = () => {
               </div>
 
               <Button variant="filled" fullWidth text="Login" disabled={loading} loading={loading} />
+
+              <p>
+                Don&apos;t have an account?{" "}
+                <Link href={"/account/register"} className="text-primary border-b border-primary">
+                  Register
+                </Link>
+              </p>
             </div>
           </form>
         </div>

@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster as SonnerToaster } from "sonner";
 import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
@@ -12,18 +13,19 @@ const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
-      <SonnerToaster
-        toastOptions={{
-          style: {
-            backgroundColor: "#131921",
-            color: "white",
-            fontSize: "14px",
-            borderColor: "#181f29",
-          },
-        }}
-      />
-      <AuthProvider>{children}</AuthProvider>
-    </QueryClientProvider>
+        <SonnerToaster
+          toastOptions={{
+            style: {
+              backgroundColor: "#131921",
+              color: "white",
+              fontSize: "14px",
+              borderColor: "#181f29",
+            },
+          }}
+        />
+        <AuthProvider>{children}</AuthProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
     </SessionProvider>
   );
 };

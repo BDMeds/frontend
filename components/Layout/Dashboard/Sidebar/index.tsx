@@ -34,11 +34,11 @@ const Sidebar = () => {
       ) : (
         <>
           <div>
-            <div className="pl-6 pt-6">
-              <Link href={"/"} className="text-xl font-bold">
+            <div className="pl-6 py-4 border-b">
+              <Link href={"/dashboard"} className="text-xl font-bold">
                 <div className="flex items-center gap-2">
-                  <GiMedicines />
-                  <span>BDMeds</span>
+                  <GiMedicines className="text-primary" />
+                  <span className="font-bold">BDMeds</span>
                 </div>
               </Link>
             </div>
@@ -51,13 +51,13 @@ const Sidebar = () => {
                       <li key={linkIndex}>
                         <Link
                           href={link.path}
-                          className={`flex items-center px-7 py-3 rounded-lg transition-colors gap-4 ${
-                            pathname === link.path + "/"
-                              ? "bg-primary-base text-black"
+                          className={`flex items-center px-5 py-3 rounded-lg transition-colors gap-4 ${
+                            pathname === link.path
+                              ? "bg-primary text-white"
                               : "dark:text-white hover:bg-zinc-300 hover:text-black "
                           }`}
                         >
-                          <span>{pathname === `${link.path}/` ? link.iconFilled : link.iconOutlined}</span>
+                          <span>{pathname === link.path ? link.iconFilled : link.iconOutlined}</span>
                           <span>{link.text}</span>
                         </Link>
                       </li>
@@ -78,10 +78,10 @@ const Sidebar = () => {
                         <Link
                           href={link.path}
                           className={`flex items-center px-7 py-3 rounded-lg transition-colors gap-4 ${
-                            pathname === link.path + "/" ? "text-primary" : "dark:text-white hover:text-primary"
+                            pathname === link.path ? "text-primary" : "dark:text-white hover:text-primary"
                           }`}
                         >
-                          <span>{pathname === `${link.path}/` ? link.iconFilled : link.iconOutlined}</span>
+                          <span>{pathname === link.path ? link.iconFilled : link.iconOutlined}</span>
                           <span>{link.text}</span>
                         </Link>
                       </li>

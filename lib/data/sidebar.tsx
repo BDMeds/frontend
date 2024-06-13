@@ -1,13 +1,12 @@
 import { MdDashboard, MdOutlineDashboard, MdOutlineAnalytics, MdAnalytics, MdCreate, MdReport } from "react-icons/md";
-import { HiOutlineUserCircle } from "react-icons/hi";
-import { HiMiniUserCircle } from "react-icons/hi2";
 import { MdOutlineCurrencyExchange } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { MdOutlineReport } from "react-icons/md";
 import { FaShoppingBasket } from "react-icons/fa";
-
 import { FaUserDoctor } from "react-icons/fa6";
 import { AiOutlineMedicineBox, AiFillMedicineBox } from "react-icons/ai";
+import { TbMedicineSyrup } from "react-icons/tb";
+import { GiDoctorFace } from "react-icons/gi";
 
 type Link = {
   text: string;
@@ -32,6 +31,12 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/dashboard",
       },
       {
+        iconOutlined: <MdOutlineAnalytics />,
+        iconFilled: <MdAnalytics />,
+        text: "Analytics",
+        path: "/analytics",
+      },
+      {
         iconOutlined: <FaUserDoctor />,
         iconFilled: <FaUserDoctor />,
         text: "Appointments",
@@ -44,17 +49,24 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/consultations",
       },
       {
+        iconOutlined: <GiDoctorFace />,
+        iconFilled: <GiDoctorFace />,
+        text: "Doctors",
+        path: "/doctors",
+      },
+      {
+        iconOutlined: <TbMedicineSyrup />,
+        iconFilled: <TbMedicineSyrup />,
+        text: "Pharmacy",
+        path: "/pharmacy",
+      },
+      {
         iconOutlined: <MdOutlineCurrencyExchange />,
         iconFilled: <MdOutlineCurrencyExchange />,
         text: "Bills",
         path: "/bills",
       },
-      {
-        iconOutlined: <HiOutlineUserCircle />,
-        iconFilled: <HiMiniUserCircle />,
-        text: "Analytics",
-        path: "/analytics",
-      },
+
       {
         iconOutlined: <MdOutlineReport />,
         iconFilled: <MdReport />,
