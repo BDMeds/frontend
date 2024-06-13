@@ -33,7 +33,13 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b2b2b2;
+  border-radius: 4px;
 }
 
 @layer utilities {
@@ -48,8 +54,6 @@ body {
 
 .show-scroll::-webkit-scrollbar {
   display: block;
-  width: 4px;
-  height: 4px;
 }
 
 .animate-skeleton {
@@ -58,7 +62,7 @@ body {
   animation: 1.5s shine linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -72,4 +76,4 @@ body {
   .animate-skeleton {
     background: linear-gradient(110deg, #383f49 10%, #9d9d9d 16%, #383f49 33%);
   }
-}
+} */

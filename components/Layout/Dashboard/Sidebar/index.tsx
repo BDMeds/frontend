@@ -15,9 +15,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const [links, setLinks] = useState(sidebarLinks);
 
-  const { data } = useSession();
-
-  const { sidebarOpen } = useGlobalStore();
+  const { sidebarOpen, openSidebar, closeSidebar } = useGlobalStore();
 
   const { data: user, isPending: loading } = useQuery({
     queryFn: () => ({ role: "user" }),
@@ -32,7 +30,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`fixed top-0 z-[100] min-h-screen overflow-x-hidden duration-300 w-0 dark:bg-[#131921] bg-white overflow-y-auto show-scroll flex flex-col gap-20 justify-between ${
+      className={`fixed top-0 z-[100] min-h-screen overflow-x-hidden duration-300 w-0 dark:bg-[#131921] bg-white overflow-y-auto show-scroll flex flex-col gap-10 justify-between ${
         sidebarOpen ? "xl:w-[280px] md:w-[260px]" : "w-[60px]"
       }`}
     >
@@ -41,7 +39,7 @@ const Sidebar = () => {
       ) : (
         <>
           <div>
-            <div className="pl-6 py-4 border-b">
+            <div className={`pl-6 border-b ${sidebarOpen ? "py-3" : "py-4"}`}>
               <Link href={"/dashboard"} className="text-xl font-bold">
                 <div className="flex items-center gap-2">
                   <GiMedicines className="text-primary" />
@@ -58,6 +56,8 @@ const Sidebar = () => {
                       <li key={linkIndex}>
                         <Link
                           href={link.path}
+                          // onMouseOver={!sidebarOpen ? openSidebar : undefined}
+                          // onMouseLeave={!sidebarOpen ? closeSidebar : undefined}
                           className={`flex items-center rounded-full transition-colors duration-300 gap-4 ${
                             pathname === link.path
                               ? "bg-primary text-white"
@@ -100,7 +100,7 @@ const Sidebar = () => {
             </div>
 
             <div
-              className={`hover:text-primary duration-300 grid md:flex place-content-center items-center gap-4s cursor-pointer ${
+              className={`hover:text-primary duration-300 grid md:flex items-center gap-4 cursor-pointer ${
                 sidebarOpen ? "px-7 py-3" : "grid place-content-center mx-auto py-2"
               }`}
               onClick={() => signOut()}

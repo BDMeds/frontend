@@ -16,10 +16,10 @@ const Providers = ({ children }: { children: ReactNode }) => {
         <SonnerToaster
           toastOptions={{
             style: {
-              backgroundColor: "#131921",
-              color: "white",
+              backgroundColor: "#fff",
+              color: "black",
               fontSize: "14px",
-              borderColor: "#181f29",
+              borderColor: "#686868",
             },
           }}
         />
