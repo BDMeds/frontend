@@ -20,3 +20,5 @@ export type ILoginData = {
   emailOrPhone: string;
   password: string;
 };
+
+export type Currency = "USD" | "NGN";
