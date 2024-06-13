@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster as SonnerToaster } from "sonner";
 import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
+import { ModalProvider } from "./modal-provider";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,9 @@ const Providers = ({ children }: { children: ReactNode }) => {
             },
           }}
         />
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <ModalProvider>{children}</ModalProvider>
+        </AuthProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </SessionProvider>
