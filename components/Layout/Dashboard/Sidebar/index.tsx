@@ -51,7 +51,7 @@ const Sidebar = () => {
                       <li key={linkIndex}>
                         <Link
                           href={link.path}
-                          className={`flex items-center px-5 py-3 rounded-lg transition-colors gap-4 ${
+                          className={`flex items-center px-5 py-3 rounded-full transition-colors gap-4 ${
                             pathname === link.path
                               ? "bg-primary text-white"
                               : "dark:text-white hover:bg-zinc-300 hover:text-black "
@@ -77,7 +77,7 @@ const Sidebar = () => {
                       <li key={linkIndex}>
                         <Link
                           href={link.path}
-                          className={`flex items-center px-7 py-3 rounded-lg transition-colors gap-4 ${
+                          className={`flex items-center px-7 py-3 rounded-full transition-colors gap-4 ${
                             pathname === link.path ? "text-primary" : "dark:text-white hover:text-primary"
                           }`}
                         >
