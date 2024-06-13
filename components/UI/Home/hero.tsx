@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Common/Button";
 import Image from "next/image";
+import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";
 
 const Hero = () => {
@@ -25,7 +26,12 @@ const Hero = () => {
                   tempora.
                 </p>
               </div>
-              <Button text="Get Started" icon={<LuChevronRight />} variant="filled" />
+              <div>
+                <Link href={"/account/register"}>
+                  {" "}
+                  <Button text="Get Started" icon={<LuChevronRight />} variant="filled" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
