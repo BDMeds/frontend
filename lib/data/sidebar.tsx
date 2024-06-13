@@ -27,7 +27,7 @@ export const sidebarLinks: SidebarLink[] = [
       {
         iconOutlined: <MdOutlineDashboard />,
         iconFilled: <MdDashboard />,
-        text: "Overview",
+        text: "Dashboard",
         path: "/dashboard",
       },
       {
