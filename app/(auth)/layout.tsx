@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     noarchive: true,
   },
   title: {
-    default: "Admin dashboard",
+    default: "Admin Dashboard",
     template: `%s | DisuEx`,
   },
 };
