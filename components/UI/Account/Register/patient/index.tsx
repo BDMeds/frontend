@@ -12,7 +12,7 @@ import { Tag } from "..";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useOnboardStore } from "@/lib/store/global.store";
-import { userRegister } from "@/lib/services/user.service";
+import { userRegister } from "@/lib/services/auth.service";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;

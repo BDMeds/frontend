@@ -95,12 +95,20 @@ const Login = () => {
 
               <Button variant="filled" fullWidth text="Login" disabled={loading} loading={loading} />
 
-              <p>
-                Don&apos;t have an account?{" "}
-                <Link href={"/account/register"} className="text-primary border-b border-primary">
-                  Register
-                </Link>
-              </p>
+              <div className="text-sm">
+                <p>
+                  Don&apos;t have an account?{" "}
+                  <Link href={"/account/register"} className="text-primary border-b border-primary">
+                    Register
+                  </Link>
+                </p>
+                <p>
+                  Forgot password? Click{" "}
+                  <Link href={"/account/forgot-password"} className="text-primary border-b border-primary">
+                    Here
+                  </Link>
+                </p>
+              </div>
             </div>
           </form>
         </div>
