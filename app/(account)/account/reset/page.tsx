@@ -10,8 +10,7 @@ import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Inputs = {
-  prevPassword: string;
-  newPassword: string;
+  password: string;
 };
 
 const Page = () => {
@@ -28,8 +27,8 @@ const Page = () => {
 
   const { isPending: loading, mutate } = useMutation({ mutationFn: resetPassword });
 
-  const submit: SubmitHandler<Inputs> = (data) =>
-    mutate({ token: `${token}`, ...data }, { onSuccess: () => (reset(), router.push("/account/login")) });
+  const submit: SubmitHandler<Inputs> = ({ password }) =>
+    mutate({ token: `${token}`, password }, { onSuccess: () => (reset(), router.push("/account/login")) });
 
   useEffect(() => {
     if (token) return;
@@ -55,47 +54,25 @@ const Page = () => {
           <form onSubmit={handleSubmit(submit)} noValidate>
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="font-semibold uppercase">Old Password</label>
+                <label className="font-semibold uppercase">New Password</label>
                 <div>
                   <input
                     type="password"
                     className={`w-full p-3 bg-transparent border ${
-                      !errors.prevPassword ? "focus:border-primary/80" : "border-red-500"
+                      !errors.password ? "focus:border-primary/80" : "border-red-500"
                     } duration-200`}
                     placeholder="***************"
-                    {...register("prevPassword", {
+                    {...register("password", {
                       required: {
                         value: true,
                         message: "Previous password is required",
                       },
                     })}
                   />
-                  {errors.prevPassword && <p className="text-sm text-red-500">{errors.prevPassword.message}</p>}
+                  {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
                 </div>
               </div>
-              <div className="space-y-2">
-                <label className="font-semibold dark:text-secondary-200 uppercase">Password</label>
-                <div>
-                  <input
-                    type="password"
-                    className={`w-full p-3 bg-transparent border ${
-                      !errors.newPassword ? "focus:border-primary/80" : "border-red-500"
-                    } duration-200`}
-                    placeholder="***************"
-                    {...register("newPassword", {
-                      required: {
-                        value: true,
-                        message: "New password is required",
-                      },
-                      minLength: {
-                        value: 8,
-                        message: "Must be greater than 7 characters",
-                      },
-                    })}
-                  />
-                  {errors.newPassword && <p className="text-sm text-red-500">{errors.newPassword.message}</p>}
-                </div>
-              </div>
+
               <Button
                 text="Reset Password"
                 fullWidth

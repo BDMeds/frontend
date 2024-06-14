@@ -20,7 +20,6 @@ export const userRegister = async ({
   }
 };
 
-
 export const verify = async (token: string) => {
   try {
     const { data } = await publicApi.post("/auth/verify", { token });
@@ -43,7 +42,7 @@ export const forgotPassword = async (email: string) => {
   }
 };
 
-export const resetPassword = async (body: { token: string; prevPassword: string; newPassword: string }) => {
+export const resetPassword = async (body: { token: string; password: string }) => {
   try {
     const { data } = await publicApi.patch("/auth/reset-password", body);
     toastSuccess("Password changed successfully.");
