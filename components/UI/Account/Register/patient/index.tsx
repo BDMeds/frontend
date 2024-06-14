@@ -1,5 +1,4 @@
 import Button from "@/components/Common/Button";
-import { dataMutate } from "@/lib/services/dummy";
 import { IPatientRegister } from "@/lib/utils/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation } from "@tanstack/react-query";

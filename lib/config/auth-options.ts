@@ -14,9 +14,11 @@ const authOptions: AuthOptions = {
         if (!credentials || !credentials.email || !credentials.password) return null;
         const { email, password } = credentials;
 
-        // if (email.emailOrPhone.includes("@")) {
-
-        // }
+        const { data } = await publicApi.post("", {
+          password,
+          email: email.includes("@") ? email : "",
+          phoneNumber: !email.includes("@") ? email : "",
+        });
 
         return { id: crypto.randomUUID() };
       },
