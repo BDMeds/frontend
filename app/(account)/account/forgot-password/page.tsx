@@ -4,6 +4,7 @@ import Button from "@/components/Common/Button";
 import Loader from "@/components/Common/Loaders";
 import { forgotPassword } from "@/lib/services/auth.service";
 import { useMutation } from "@tanstack/react-query";
+import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const ForgotPasswordModal = () => {
@@ -42,6 +43,10 @@ const ForgotPasswordModal = () => {
             </div>
 
             <Button text="Send Reset Link" fullWidth variant="filled" loading={loading} disabled={loading} />
+
+            <p className="text-primary text-center">
+              <Link href="/account/login">Back to Login</Link>
+            </p>
           </div>
         </form>
       </div>
