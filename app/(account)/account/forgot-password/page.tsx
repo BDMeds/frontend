@@ -28,14 +28,14 @@ const ForgotPasswordModal = () => {
 
         <form onSubmit={handleSubmit(submit)} noValidate>
           <div className="space-y-3">
-            <p className={`font-bold text-primary-base uppercase text-xl`}>Forgot Password</p>
+            <p className={`font-bold text-primary uppercase text-xl`}>Forgot Password</p>
 
             <div className="space-y-1">
               <label>Email</label>
               <input
                 type="text"
                 className={`w-full p-3 bg-transparent border ${
-                  !errors.email ? "border-black/30 rounded focus:border-primary-base/80" : "border-red-500"
+                  !errors.email ? "border-black/30 rounded focus:border-primary/80" : "border-red-500"
                 } duration-200`}
                 placeholder="Enter you email"
                 {...register("email", { required: true })}
