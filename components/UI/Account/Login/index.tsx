@@ -95,7 +95,7 @@ const Login = () => {
 
               <Button variant="filled" fullWidth text="Login" disabled={loading} loading={loading} />
 
-              <div className="text-sm">
+              <div className="text-sm text-center text-gray-500">
                 <p>
                   Don&apos;t have an account?{" "}
                   <Link href={"/account/register"} className="text-primary border-b border-primary">

@@ -20,7 +20,7 @@ const EmailConfirm = () => {
           <Image src={"/svgs/email-confirm.svg"} alt="confirm email illustration" width={300} height={300} />
         </div>
 
-        <p>A verification link has been sent to you email.</p>
+        <p className="text-center">A verification link has been sent to you email.</p>
       </div>
     </main>
   );
