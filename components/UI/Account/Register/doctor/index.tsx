@@ -10,8 +10,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { dataMutate } from "@/lib/services/dummy";
 import { MdFemale, MdMale } from "react-icons/md";
-import { toastSuccess } from "@/lib/utils/toast";
 import { useRouter } from "next/navigation";
+import { useOnboardStore } from "@/lib/store/global.store";
+import { userRegister } from "@/lib/services/user.service";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;
@@ -28,12 +29,18 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
 
   const router = useRouter();
 
+  const { hasRegisteredOn } = useOnboardStore();
+
   const { mutate, isPending: loading } = useMutation({
-    mutationFn: dataMutate,
-    onSuccess: () => (toastSuccess("Account created successfully."), router.replace("/dashboard")),
+    mutationFn: userRegister,
+    onSuccess: () => {
+      hasRegisteredOn();
+      router.replace("/account/confirm-email");
+    },
   });
 
-  const submit: SubmitHandler<IDoctorRegister> = async (data) => mutate({ ...data, gender: gender.toLowerCase() });
+  const submit: SubmitHandler<IDoctorRegister> = async (data) =>
+    mutate({ data: { ...data, gender: gender.toLowerCase() }, type: "doctor" });
 
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">

@@ -12,6 +12,16 @@ type GlobalStoreActions = {
 
 type GlobalStore = GlobalStoreState & GlobalStoreActions;
 
+type OnboardStoreState = {
+  hasRegistered: boolean;
+};
+
+type OnboardStoreActions = {
+  hasRegisteredOn: () => void;
+};
+
+type OnboardStore = OnboardStoreState & OnboardStoreActions;
+
 export const useGlobalStore = create<GlobalStore>((set) => ({
   sidebarOpen: true,
 
@@ -20,4 +30,9 @@ export const useGlobalStore = create<GlobalStore>((set) => ({
   closeSidebar: () => set((state) => ({ ...state, sidebarOpen: false })),
 
   openSidebar: () => set((state) => ({ ...state, sidebarOpen: true })),
+}));
+
+export const useOnboardStore = create<OnboardStore>((set) => ({
+  hasRegistered: false,
+  hasRegisteredOn: () => set((state) => ({ ...state, hasRegistered: true })),
 }));

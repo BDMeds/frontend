@@ -11,7 +11,8 @@ import { MdMale, MdFemale } from "react-icons/md";
 import { Tag } from "..";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { toastSuccess } from "@/lib/utils/toast";
+import { useOnboardStore } from "@/lib/store/global.store";
+import { userRegister } from "@/lib/services/user.service";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;
@@ -28,12 +29,18 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
 
   const router = useRouter();
 
+  const { hasRegisteredOn } = useOnboardStore();
+
   const { mutate, isPending: loading } = useMutation({
-    mutationFn: dataMutate,
-    onSuccess: () => (toastSuccess("Account created successfully."), router.replace("/dashboard")),
+    mutationFn: userRegister,
+    onSuccess: () => {
+      hasRegisteredOn();
+      router.replace("/account/confirm-email");
+    },
   });
 
-  const submit: SubmitHandler<IPatientRegister> = async (data) => mutate({ ...data, gender: gender.toLowerCase() });
+  const submit: SubmitHandler<IPatientRegister> = async (data) =>
+    mutate({ data: { ...data, gender: gender.toLowerCase() }, type: "patient" });
 
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">

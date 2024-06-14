@@ -3,6 +3,7 @@ export type IPatientRegister = {
   lastName: string;
   email: string;
   phoneNumber: string;
+  gender: string;
   password: string;
 };
 
@@ -13,6 +14,7 @@ export type IDoctorRegister = {
   phoneNumber: string;
   password: string;
   specialization: string;
+  gender: string;
   experienceYears: string;
 };
 
