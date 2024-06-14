@@ -14,7 +14,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { GiMedicines } from "react-icons/gi";
 
 const Login = () => {
-  const { handleSubmit, register } = useForm<ILoginData>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<ILoginData>();
 
   const router = useRouter();
 
@@ -47,25 +51,32 @@ const Login = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center">
-      <div className="grid md:grid-cols-2 gap-10 w-full container items-center">
-        <div className="hidden place-content-center sm:grid">
-          <Image src={"/login.svg"} alt="login" width={400} height={400} />
+      <div className="container items-center grid place-content-center space-y-4">
+        <div className="grid place-content-center">
+          <Link href={"/"} className="text-2xl font-bold">
+            <div className="flex items-center gap-2">
+              <GiMedicines />
+              <span>BDMeds</span>
+            </div>
+          </Link>
         </div>
 
-        <div className="space-y-6 sm:px-20 px-5">
+        <div className="space-y-6 p-5 min-w-96 max-w-xl bg-white rounded-xl border mx-auto">
           <div className="flex items-center gap-2 text-3xl">
             {/* <GiMedicines /> */}
             <span className="font-bold">Login</span>
           </div>
 
-          <form onSubmit={handleSubmit(submit)} className="sm:min-w-[30rem] mx-auto">
+          <form onSubmit={handleSubmit(submit)} className="mx-auto">
             <div className="space-y-4">
               <div className="space-y-1">
                 <label htmlFor="email">Email or Phone</label>
                 <input
                   type="email"
                   {...register("emailOrPhone", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                  className={`w-full bg-transparent p-2 border rounded-lg bg-white ${
+                    errors.emailOrPhone ? "border-red-500/50" : ""
+                  }`}
                   placeholder="Phone or email"
                 />
               </div>
@@ -75,7 +86,9 @@ const Login = () => {
                 <input
                   type="password"
                   {...register("password", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                  className={`w-full bg-transparent p-2 border rounded-lg bg-white ${
+                    errors.password ? "border-red-500/50" : ""
+                  }`}
                   placeholder="***************"
                 />
               </div>
