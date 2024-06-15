@@ -6,10 +6,8 @@ import { ApiResponse, ITokens, IUser } from "../utils/types";
 const refreshToken = async (tokens: ITokens) => {
   try {
     const { data } = await publicApi.post<ApiResponse<ITokens>>("/auth/session/refresh", {
-      headers: { Authorization: `Bearer ${tokens.refreshToken} ` },
+      refreshToken: tokens.refreshToken,
     });
-
-    console.log({ refresh: data.data });
 
     return data.data;
   } catch (err: any) {
@@ -42,8 +40,6 @@ const authOptions: AuthOptions = {
 
           const id = user._id;
 
-          console.log({ id, ...user, meta });
-
           return { id, ...user, meta };
         } catch (err) {
           console.log({ err });
@@ -65,9 +61,9 @@ const authOptions: AuthOptions = {
 
       await refreshToken(session.user.meta);
       if (now > session.user.meta.lifeSpan) {
-        // const tokens = await refreshToken(session.user.tokens);
-        // if (!tokens) throw new Error("Unauthorized, Token Expired");
-        // session.user.tokens = tokens;
+        const tokens = await refreshToken(session.user.tokens);
+        if (!tokens) throw new Error("Unauthorized, Token Expired");
+        session.user.meta = tokens;
       }
 
       return session;
