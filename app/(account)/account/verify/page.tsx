@@ -39,12 +39,12 @@ const Page = () => {
   }, [token]);
 
   if (!token) {
-    toastError("Verification error: invalid verification URL", { id: "invalid" });
+    toastError("Invalid URL", { id: "invalid" });
     return router.replace("/account/register");
   }
 
   return (
-    <div>
+    <div className="min-h-screen w-full grid place-content-center text-center">
       {loading ? (
         <div className="min-h-[20rem] grid place-content-center text-center space-y-3">
           <RiLoader4Fill size={50} className="mx-auto animate-spin" />
