@@ -11,6 +11,7 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useMutation } from "@tanstack/react-query";
 import { uploadProfilePicture } from "@/lib/services/user.service";
 import { FaRegImage } from "react-icons/fa";
+import { queryClient } from "@/lib/providers";
 
 const ProfileImageModal = () => {
   const { hideModal } = useModal();
@@ -27,7 +28,24 @@ const ProfileImageModal = () => {
 
   const { mutate, isPending: loading } = useMutation({ mutationFn: uploadProfilePicture });
 
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const getBase64 = (file: File) => {
+    return new Promise((resolve) => {
+      let baseURL = "";
+      let reader = new FileReader();
+
+      // Convert the file to base64 text
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        // @ts-ignore
+        baseURL = reader.result;
+        console.log({ baseURL });
+        resolve(baseURL);
+      };
+    });
+  };
+
+  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       toastError("No image selected", { id: "no-image" });
       return;
@@ -39,12 +57,7 @@ const ProfileImageModal = () => {
       return;
     }
 
-    const reader = new FileReader();
-
-    reader.onload = function () {
-      const base64String = (reader.result as string)?.replace("data:", "").replace(/^.+,/, "");
-      setB64(base64String);
-    };
+    setB64((await getBase64(file)) as string);
 
     // if image size is greater than 500kb return
     if (file.size > (1024 * 1024) / 2) {
@@ -66,7 +79,10 @@ const ProfileImageModal = () => {
     }
   };
 
-  const upload = () => mutate(b64);
+  const upload = () =>
+    mutate(b64, {
+      onSuccess: () => (queryClient.invalidateQueries({ predicate: (q) => q.queryKey.includes("user") }), hideModal()),
+    });
 
   return (
     <Modal onClose={hideModal} className="p-20 bg-white rounded-xl shadow-2xl space-y-4">

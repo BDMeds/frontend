@@ -5,7 +5,7 @@ import { ApiResponse, IUser } from "../utils/types";
 
 export const uploadProfilePicture = async (picture: string) => {
   try {
-    const { data } = await authApi.put<ApiResponse>("/user/profile", { picture });
+    const { data } = await authApi.put<ApiResponse>("/user/profile-picture", { picture });
     toastSuccess("Profile picture updated.");
     return data;
   } catch (err) {

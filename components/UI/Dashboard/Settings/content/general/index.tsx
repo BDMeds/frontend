@@ -6,6 +6,9 @@ import { CiTrash } from "react-icons/ci";
 import { HiOutlineUpload } from "react-icons/hi";
 import ProfileImageModal from "./profile-image-modal";
 import useUserInfo from "@/lib/hooks/useUserInfo";
+import { AiOutlineLogout } from "react-icons/ai";
+import Button from "@/components/Common/Button";
+import { signOut } from "next-auth/react";
 
 const defImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1H81w4SmKH5DZmIbxU7EB0aMSkNQDoPQA1mRQxf2Y0wMF1NSa7vghbwwKASi1q4NPmNw&usqp=CAU";
@@ -52,6 +55,47 @@ const General = () => {
             </div>
           </>
         )}
+      </div>
+
+      <div className="py-3 px-5 flex items-center justify-between">
+        <div className="">
+          <p className="font-bold text-lg">Name</p>
+          <p className="text-gray-500">
+            {user?.firstName} {user?.lastName}
+          </p>
+        </div>
+
+        <Button text="Edit" />
+      </div>
+
+      <div className="py-3 px-5 flex items-center justify-between">
+        <div className="">
+          <p className="font-bold text-lg">Contacts</p>
+          <div className="text-gray-500">
+            <p className="">Phone: {user?.phoneNumber}</p>
+            <p className="">
+              Email: {user?.email} {!user?.emailVerified && "(not verified)"}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button text="Edit" />
+          {!user?.emailVerified && <Button text="Verify" variant="filled" />}
+        </div>
+      </div>
+
+      <div className="py-3 px-5 flex items-center justify-between">
+        <div className="">
+          <p className="font-bold text-lg">Language</p>
+          <p className="text-gray-500">English</p>
+        </div>
+
+        <Button text="Edit" />
+      </div>
+
+      <div className="py-3 px-5 flex items-center justify-between">
+        <Button text="Sign out" icon={<AiOutlineLogout />} variant="destructive" onClick={() => signOut()} />
       </div>
     </motion.div>
   );

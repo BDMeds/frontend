@@ -9,7 +9,7 @@ const useUserInfo = () => {
     queryFn: () => getUser(),
     queryKey: ["user", session?.user._id],
     enabled: session?.user ? true : false,
-    staleTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 3600,
   });
 
   return { user, loading };

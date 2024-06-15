@@ -8,7 +8,7 @@ import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const Providers = ({ children }: { children: ReactNode }) => {
   return (
