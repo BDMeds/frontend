@@ -7,6 +7,7 @@ import { Toaster as SonnerToaster } from "sonner";
 import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
+import Cursor from "@/components/Common/Cursor";
 
 export const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
+        {/* <Cursor /> */}
         <SonnerToaster
           toastOptions={{
             style: {
