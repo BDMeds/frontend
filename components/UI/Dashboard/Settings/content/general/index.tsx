@@ -9,6 +9,8 @@ import useUserInfo from "@/lib/hooks/useUserInfo";
 import { AiOutlineLogout } from "react-icons/ai";
 import Button from "@/components/Common/Button";
 import { signOut } from "next-auth/react";
+import { useMutation } from "@tanstack/react-query";
+import { requestVerification } from "@/lib/services/auth.service";
 
 const defImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1H81w4SmKH5DZmIbxU7EB0aMSkNQDoPQA1mRQxf2Y0wMF1NSa7vghbwwKASi1q4NPmNw&usqp=CAU";
@@ -17,6 +19,8 @@ const General = () => {
   const { showModal } = useModal();
 
   const { user, loading } = useUserInfo();
+
+  const { mutate, isPending: verifyLoading } = useMutation({ mutationFn: requestVerification });
 
   return (
     <motion.div {...opacityVariant} className="divide-y">
@@ -81,7 +85,9 @@ const General = () => {
 
         <div className="flex items-center gap-2">
           <Button text="Edit" />
-          {!user?.emailVerified && <Button text="Verify" variant="filled" />}
+          {!user?.emailVerified && (
+            <Button text="Verify" variant="filled" onClick={() => mutate(`${user?.email}`)} loading={verifyLoading} />
+          )}
         </div>
       </div>
 

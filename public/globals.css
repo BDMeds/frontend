@@ -47,10 +47,10 @@ body {
     text-wrap: balance;
   }
 }
-
+/* 
 * {
   cursor: none;
-}
+} */
 
 .hide-scroll::-webkit-scrollbar {
   display: none;

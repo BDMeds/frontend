@@ -51,3 +51,13 @@ export const resetPassword = async (body: { token: string; password: string }) =
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const requestVerification = async (email: string) => {
+  try {
+    const { data } = await publicApi.post("/auth/verify-email/request", { email });
+    toastSuccess("Verification link sent.");
+    return data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
