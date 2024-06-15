@@ -1,7 +1,7 @@
-import Construction from "@/components/Common/Pages/construction";
+import Settings from "@/components/UI/Dashboard/Settings";
 
 const Page = () => {
-  return <Construction />;
+  return <Settings />;
 };
 
 export default Page;

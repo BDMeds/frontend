@@ -54,7 +54,7 @@ const ProfileDrop = () => {
             <ul className="grid grid-cols-2 border-t">
               <li
                 className="py-2 cursor-pointer duration-300 hover:bg-gray-100 flex items-center gap-1 justify-center text-gray-500 text-center border-r"
-                onClick={() => (router.push("/settings?tab=profile"), toggleDropdown())}
+                onClick={() => (router.push("/settings?tab=account"), toggleDropdown())}
               >
                 <span>Profile</span>
                 <CgProfile />

@@ -117,7 +117,7 @@ export const bottomSidebarLinks: SidebarLink[] = [
         iconOutlined: <CiSettings />,
         iconFilled: <CiSettings />,
         text: "Settings",
-        path: "/settings",
+        path: "/settings?tab=general",
       },
     ],
   },
