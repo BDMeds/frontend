@@ -89,3 +89,7 @@ body {
   position: relative;
   z-index: 2;
 }
+
+.soft-shadow {
+  box-shadow: 4px 4px 10px gray;
+}

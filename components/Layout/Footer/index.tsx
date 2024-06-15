@@ -45,12 +45,12 @@ const Footer = () => {
       <div className="-z-[100]"></div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319" className="-z-[100]">
         <path
-          fill="#000"
+          fill="#5e2bff"
           fillOpacity="1"
           d="M0,288L80,277.3C160,267,320,245,480,250.7C640,256,800,288,960,277.3C1120,267,1280,213,1360,186.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         ></path>
       </svg>
-      <footer className="py-10 bg-[#000] text-white">
+      <footer className="py-10 bg-primary text-white">
         <div className="container space-y-10">
           <div className="flex md:flex-row flex-col gap-8 md:gap-0 justify-between">
             <div className="space-y-8">
