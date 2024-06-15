@@ -24,21 +24,13 @@ const Modal: FC<ModalProps> = ({ children, isOpen = true, onClose, isAutomatic =
       }
     };
 
-    const handleEscapeKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
     if (isOpen) {
       window.addEventListener("click", handleOutsideClick);
-      window.addEventListener("keyup", handleEscapeKey);
       document.body.style.overflowY = "hidden";
     }
 
     return () => {
       window.removeEventListener("click", handleOutsideClick);
-      window.removeEventListener("keyup", handleEscapeKey);
       document.body.style.overflowY = "auto";
     };
   }, []);

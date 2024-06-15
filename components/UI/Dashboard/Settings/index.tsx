@@ -1,8 +1,13 @@
 "use client";
 
 import { settingSideData, Tab } from "@/lib/data/settings";
+import { AnimatePresence } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import General from "./content/general";
+import Doctors from "./content/doctors";
+import Notifications from "./content/notifications";
+import Payments from "./content/payments";
 
 const Settings = () => {
   const searchParams = useSearchParams();
@@ -21,15 +26,21 @@ const Settings = () => {
   const renderSettings = () => {
     switch (tab) {
       case "general":
-        return <></>;
+        return <General key="general" />;
+      case "doctors":
+        return <Doctors key="doctors" />;
+      case "notifications":
+        return <Notifications key="notifications" />;
+      case "payments":
+        return <Payments key="payments" />;
       default:
-        return <></>;
+        return null;
     }
   };
 
   return (
     <div className="flex gap-7">
-      <div className="bg-white border rounded-lg divide-y min-w-[20rem] overflow-hidden">
+      <div className="bg-white border rounded-lg divide-y min-w-[20rem] overflow-hidden self-start sticky top-0">
         {settingSideData.map(({ icon, name, tab: sTab }, id) => (
           <div
             key={id}
@@ -44,7 +55,11 @@ const Settings = () => {
         ))}
       </div>
 
-      <div className="flex-grow bg-white border rounded-lg">{tab}</div>
+      <div className="flex-grow bg-white border rounded-lg overflow-hidden">
+        <AnimatePresence mode="wait" initial={false}>
+          {renderSettings()}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

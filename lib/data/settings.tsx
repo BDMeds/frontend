@@ -1,7 +1,8 @@
-import { CgBell, CgUser } from "react-icons/cg";
+import { CgBell } from "react-icons/cg";
 import { CiSettings, CiWallet } from "react-icons/ci";
+import { FaUserDoctor } from "react-icons/fa6";
 
-export type Tab = "general" | "account" | "doctor" | "payments" | "notifications";
+export type Tab = "general" | "profile" | "doctors" | "payments" | "notifications";
 
 type Side = {
   name: string;
@@ -15,11 +16,11 @@ export const settingSideData: Side[] = [
     tab: "general",
     icon: <CiSettings />,
   },
-  {
-    name: "Account",
-    tab: "account",
-    icon: <CgUser />,
-  },
+  // {
+  //   name: "Account",
+  //   tab: "profile",
+  //   icon: <CgUser />,
+  // },
   {
     name: "Notifications",
     tab: "notifications",
@@ -31,8 +32,8 @@ export const settingSideData: Side[] = [
     icon: <CiWallet />,
   },
   {
-    name: "Doctor",
-    tab: "doctor",
-    icon: <CiSettings />,
+    name: "Doctors",
+    tab: "doctors",
+    icon: <FaUserDoctor />,
   },
 ];

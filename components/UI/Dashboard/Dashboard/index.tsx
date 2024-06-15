@@ -1,9 +1,13 @@
+"use client";
 import { cards } from "@/lib/data/dashboard";
 import OverviewCard from "./card";
 import BarChart from "./Charts/bar-chart";
 import Appointments from "./Sections/appointments";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 
 const Dashboard = () => {
+  const {} = useUserInfo();
+
   return (
     <div className="space-y-10">
       <div className="grid grid-cols-4 gap-6">

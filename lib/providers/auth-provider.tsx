@@ -3,6 +3,7 @@
 import SessionCheckLoader from "@/components/Common/Loaders/session-check";
 import { useSession } from "next-auth/react";
 import React, { useEffect } from "react";
+import useUserInfo from "../hooks/useUserInfo";
 
 type Props = React.PropsWithChildren;
 
