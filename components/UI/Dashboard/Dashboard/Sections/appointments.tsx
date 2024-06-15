@@ -21,7 +21,7 @@ const Appointments = () => {
             <div className="flex gap-2 items-center">
               <div className="size-12 rounded-full relative overflow-hidden">
                 <Image
-                  src={faker.image.avatar()}
+                  src={`/images/doctors/doc${id + 1}.jpg`}
                   alt="doc"
                   width={100}
                   height={100}

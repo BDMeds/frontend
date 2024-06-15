@@ -63,7 +63,7 @@ export const sidebarLinks: SidebarLink[] = [
       {
         iconOutlined: <MdOutlineCurrencyExchange />,
         iconFilled: <MdOutlineCurrencyExchange />,
-        text: "Bills",
+        text: "Billing Records",
         path: "/bills",
       },
 

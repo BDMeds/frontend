@@ -1,7 +1,12 @@
-import Construction from "@/components/Common/Pages/construction";
+import Bills from "@/components/UI/Dashboard/Bills";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Billing Records",
+};
 
 const Page = () => {
-  return <Construction />;
+  return <Bills />;
 };
 
 export default Page;

@@ -53,4 +53,13 @@ export type ITokens = {
   lifeSpan: number;
 };
 
+export type IPayment = {
+  appointment: string;
+  amount: number;
+  paymentMethod: string;
+  paymentStatus: "pending" | "completed" | "cancelled";
+  transactionDate: string;
+  doctor: string;
+} & IDef;
+
 export type Currency = "USD" | "NGN";

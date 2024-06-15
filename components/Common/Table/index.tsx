@@ -9,7 +9,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { TiCancelOutline } from "react-icons/ti";
+import { ImSad } from "react-icons/im";
 import { motion } from "framer-motion";
 import { opacityVariant, parentVariant } from "@/lib/utils/variants";
 import Loader from "../Loaders";
@@ -40,17 +40,12 @@ export default function TableComponent<TData, TValue>({ data, columns, isLoading
     getPaginationRowModel: getPaginationRowModel(),
     debugTable: true,
     enableGlobalFilter: true,
-    // defaultColumn: {
-    //   minSize: 0,
-    //   size: Number.MAX_SAFE_INTEGER,
-    //   maxSize: Number.MAX_SAFE_INTEGER,
-    // },
   });
 
   return (
     <div className="w-full pb-2 overflow-x-auto show_scroll">
       <table className="w-full">
-        <thead className={`w-full bg-gray-300 backdrop-blur-md rounded flex font-light`}>
+        <thead className={`w-full bg-white border rounded-xl flex font-light`}>
           {table.getHeaderGroups()?.map((headerGroup) => (
             <tr className="flex w-full " key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -113,11 +108,11 @@ export default function TableComponent<TData, TValue>({ data, columns, isLoading
                 </motion.div>
               ) : (
                 <div className={"text-center py-10 flex items-center justify-center"}>
-                  <div className={"space-y-4 dark:text-zinc-400"}>
+                  <div className={"space-y-4 text-gray-500"}>
                     <div className={"grid place-content-center"}>
-                      <TiCancelOutline size={50} />
+                      <ImSad size={50} />
                     </div>
-                    <p>No orders found.</p>
+                    <p className="text-gray-500">No data.</p>
                   </div>
                 </div>
               )}
