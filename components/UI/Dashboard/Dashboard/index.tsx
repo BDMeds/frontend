@@ -1,6 +1,7 @@
 import { cards } from "@/lib/data/dashboard";
 import OverviewCard from "./card";
 import BarChart from "./Charts/bar-chart";
+import Appointments from "./Sections/appointments";
 
 const Dashboard = () => {
   return (
@@ -13,17 +14,19 @@ const Dashboard = () => {
 
       <div className="grid-cols-3 grid gap-5">
         <div className="col-span-2 border space-y-4 rounded-lg bg-white px-4 py-6">
-          <p className="text-xl font-semibold text-gray-600 px-4">Consultations</p>
+          <p className="text-lg font-semibold text-gray-600 px-4">Consultations</p>
           <BarChart />
         </div>
-        <div className="border min-h-[20rem] rounded-lg bg-white"></div>
+        <div className="border min-h-[20rem] rounded-lg bg-white">
+          <Appointments />
+        </div>
       </div>
 
-      <div className="grid-cols-3 grid gap-5">
+      {/* <div className="grid-cols-3 grid gap-5">
         {Array.from({ length: 3 }).map((_, id) => (
           <div className="border min-h-[20rem] rounded-lg bg-white" key={id}></div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -26,7 +26,6 @@ const Page = () => {
       try {
         const { data } = await publicApi.post("/auth/verify-email", { token, email });
         toastSuccess("Verification successful");
-        return data;
       } catch (err) {
         setError(true);
         handleAxiosErrorWithToast(err);

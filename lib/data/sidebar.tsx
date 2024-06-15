@@ -31,10 +31,10 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/dashboard",
       },
       {
-        iconOutlined: <MdOutlineAnalytics />,
-        iconFilled: <MdAnalytics />,
-        text: "Analytics",
-        path: "/analytics",
+        iconOutlined: <GiDoctorFace />,
+        iconFilled: <GiDoctorFace />,
+        text: "Doctors",
+        path: "/doctors",
       },
       {
         iconOutlined: <FaUserDoctor />,
@@ -49,10 +49,10 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/consultations",
       },
       {
-        iconOutlined: <GiDoctorFace />,
-        iconFilled: <GiDoctorFace />,
-        text: "Doctors",
-        path: "/doctors",
+        iconOutlined: <MdOutlineAnalytics />,
+        iconFilled: <MdAnalytics />,
+        text: "Analytics",
+        path: "/analytics",
       },
       {
         iconOutlined: <TbMedicineSyrup />,
