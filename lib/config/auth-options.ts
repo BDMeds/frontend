@@ -41,6 +41,8 @@ const authOptions: AuthOptions = {
           const id = user._id;
 
           return { id, ...user, meta };
+
+          // return { id: crypto.randomUUID() }
         } catch (err) {
           console.log({ err });
           return null;
@@ -61,7 +63,7 @@ const authOptions: AuthOptions = {
 
       await refreshToken(session.user.meta);
       if (now > session.user.meta.lifeSpan) {
-        const tokens = await refreshToken(session.user.tokens);
+        const tokens = await refreshToken(session.user.meta);
         if (!tokens) throw new Error("Unauthorized, Token Expired");
         session.user.meta = tokens;
       }

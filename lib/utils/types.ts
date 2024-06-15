@@ -50,7 +50,7 @@ export type IUser = {
 export type ITokens = {
   accessToken: string;
   refreshToken: string;
-  lifeSpan: string;
+  lifeSpan: number;
 };
 
 export type Currency = "USD" | "NGN";

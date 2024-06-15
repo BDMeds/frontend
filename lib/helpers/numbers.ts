@@ -28,3 +28,19 @@ export function formatSmallNumber(num: number, decimalPlaces: number) {
   let result = (coefficient * Math.pow(10, exponent)).toFixed(decimalPlaces);
   return result;
 }
+
+export function abbreviateBigNumbers(value: number) {
+  if (value >= 1.0e9) {
+    // Billions
+    return (value / 1.0e9).toFixed(1) + "B";
+  } else if (value >= 1.0e6) {
+    // Millions
+    return (value / 1.0e6).toFixed(1) + "M";
+  } else if (value >= 1.0e3) {
+    // Thousands
+    return (value / 1.0e3).toFixed(1) + "k";
+  } else {
+    // Less than a thousand
+    return value.toString();
+  }
+}

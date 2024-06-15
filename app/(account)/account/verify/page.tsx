@@ -24,7 +24,7 @@ const Page = () => {
 
     const verify = async () => {
       try {
-        const { data } = await publicApi.post("/auth/verify", { token, email });
+        const { data } = await publicApi.post("/auth/verify-email", { token, email });
         toastSuccess("Verification successful");
         return data;
       } catch (err) {
@@ -44,7 +44,7 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen w-full grid place-content-center text-center">
+    <div className="min-h-screen w-full grid place-content-center text-center ">
       {loading ? (
         <div className="min-h-[20rem] grid place-content-center text-center space-y-3">
           <RiLoader4Fill size={50} className="mx-auto animate-spin" />
