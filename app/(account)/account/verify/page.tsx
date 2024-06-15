@@ -11,7 +11,10 @@ import { MdErrorOutline } from "react-icons/md";
 import { RiLoader4Fill } from "react-icons/ri";
 
 const Page = () => {
-  const token = useSearchParams().get("t");
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+  const email = searchParams.get("email");
+
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -21,7 +24,7 @@ const Page = () => {
 
     const verify = async () => {
       try {
-        const { data } = await publicApi.post("/auth/verify", { token });
+        const { data } = await publicApi.post("/auth/verify", { token, email });
         toastSuccess("Verification successful");
         return data;
       } catch (err) {
