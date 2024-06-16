@@ -26,7 +26,7 @@ const DoctorInfo = () => {
         <div>
           {/* <p className="font-bold">Info:</p> */}
           <div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4">
               <div className="py-2">
                 <p className="font-bold">Name</p>
                 <p className="text-gray-500">

@@ -14,7 +14,7 @@ const DNavbar = () => {
         <div className="size-8 grid place-content-center cursor-pointer duration-200 hover:bg-primary hover:text-white rounded-full border">
           <RxHamburgerMenu onClick={toggleSidebar} />
         </div>
-        <div className="min-w-[18rem] px-3 flex items-center justify-between border rounded-full">
+        <div className="min-w-[18rem] px-3 sm:flex hidden items-center justify-between border rounded-full">
           <input type="text" className="flex-grow text-sm py-2 bg-transparent" placeholder="Type to search" />
           <CiSearch />
         </div>

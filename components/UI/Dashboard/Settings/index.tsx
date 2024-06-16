@@ -48,8 +48,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex lg:gap-7 gap-5">
-      <div className="bg-white border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sticky top-16">
+    <div className="sm:flex grid lg:gap-7 gap-5">
+      <div className="bg-white border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sm:sticky top-16">
         {loading ? (
           <div className="divide-y">
             {Array.from({ length: 4 }).map((_, id) => (

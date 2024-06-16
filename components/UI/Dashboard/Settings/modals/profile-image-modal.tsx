@@ -12,6 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { uploadProfilePicture } from "@/lib/services/user.service";
 import { FaRegImage } from "react-icons/fa";
 import { queryClient } from "@/lib/providers";
+import { getBase64 } from "@/lib/helpers/fns";
 
 const ProfileImageModal = () => {
   const { hideModal } = useModal();
@@ -27,23 +28,6 @@ const ProfileImageModal = () => {
   };
 
   const { mutate, isPending: loading } = useMutation({ mutationFn: uploadProfilePicture });
-
-  const getBase64 = (file: File) => {
-    return new Promise((resolve) => {
-      let baseURL = "";
-      let reader = new FileReader();
-
-      // Convert the file to base64 text
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        // @ts-ignore
-        baseURL = reader.result;
-        console.log({ baseURL });
-        resolve(baseURL);
-      };
-    });
-  };
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {

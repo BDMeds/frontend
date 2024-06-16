@@ -6,10 +6,11 @@ import { KycID } from "@/lib/utils/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IoShieldCheckmark } from "react-icons/io5";
 import Button from "@/components/Common/Button";
-import { toastSuccess } from "@/lib/utils/toast";
+import { toastError, toastSuccess } from "@/lib/utils/toast";
+import { getBase64 } from "@/lib/helpers/fns";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -17,12 +18,50 @@ const Kyc = () => {
   const { data: kycIDs, isPending: kycIdLoading } = useQuery({ queryKey: ["kyc-id"], queryFn: getKycId });
 
   const [kycId, setKycId] = useState<KycID | undefined>();
+
   const [idDoc, setIdDoc] = useState("");
   const [professionalCert, setProfessionalCert] = useState("");
+
+  const [idDocFile, setIdDocFile] = useState<File | undefined>();
+  const [idProCert, setProCert] = useState<File | undefined>();
 
   const onKycIdChange = (value: KycID) => setKycId(value);
 
   const { mutate, isPending: uploading } = useMutation({ mutationFn: uploadKyc });
+
+  const idDocRef = useRef<HTMLInputElement>(null);
+  const certRef = useRef<HTMLInputElement>(null);
+
+  const pickIdDoc = () => {
+    if (!idDocRef.current) return;
+    idDocRef.current.click();
+  };
+
+  const pickCert = () => {
+    if (!certRef.current) return;
+    certRef.current.click();
+  };
+
+  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>, type: "id-doc" | "cert") => {
+    if (!e.target.files) {
+      toastError("No file selected", { id: "no-file" });
+      return;
+    }
+
+    const file = e.target.files?.[0];
+    if (!file) {
+      toastError("No file selected", { id: "no-file" });
+      return;
+    }
+
+    if (type === "cert") {
+      setProfessionalCert((await getBase64(file)) as string);
+      setProCert(file);
+    } else {
+      setIdDoc((await getBase64(file)) as string);
+      setIdDocFile(file);
+    }
+  };
 
   const submit = () => {
     if (!kycId || !idDoc || !professionalCert) {
@@ -70,20 +109,42 @@ const Kyc = () => {
                   />
 
                   <div className="space-y-1">
-                    <p className="font-semibold">Document</p>
-                    <div className="flex py-2 px-4 border rounded-lg items-center gap-2 justify-between duration-300 hover:bg-gray-100">
-                      <span>Select Document</span>
+                    <p className="font-semibold">ID Document</p>
+                    <div
+                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer gap-2 justify-between duration-300 hover:bg-gray-100"
+                      onClick={pickIdDoc}
+                    >
+                      <span>{!idDocFile ? "Select Document" : idDocFile.name}</span>
                       <IoCloudUploadOutline />
                     </div>
                   </div>
 
                   <div className="space-y-1">
                     <label className="font-semibold">Professional Certificate</label>
-                    <div className="flex py-2 px-4 border rounded-lg items-center gap-2 justify-between duration-300 hover:bg-gray-100">
-                      <span>Upload Certificate</span>
+                    <div
+                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer gap-2 justify-between duration-300 hover:bg-gray-100"
+                      onClick={pickCert}
+                    >
+                      <span>{!idProCert ? "Upload Certificate" : idProCert.name}</span>
                       <IoCloudUploadOutline />
                     </div>
                   </div>
+
+                  <input
+                    type="file"
+                    accept="image/png,image/jpg"
+                    className="hidden"
+                    ref={idDocRef}
+                    onChange={(e) => onFileChange(e, "id-doc")}
+                  />
+
+                  <input
+                    type="file"
+                    accept="image/png,image/jpg"
+                    className="hidden"
+                    ref={certRef}
+                    onChange={(e) => onFileChange(e, "cert")}
+                  />
 
                   <div></div>
 
