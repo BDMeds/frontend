@@ -1,6 +1,5 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
@@ -49,7 +48,7 @@ const Cursor = () => {
 
   return (
     <div
-      className="size-6 z-[2000] custom-cursor rounded-full duration-100 fixed top-0 left-0 sm:flex items-center justify-center invisible opacity-0 pointer-events-none hidden"
+      className="size-6 z-[4000] custom-cursor rounded-full duration-100 fixed top-0 left-0 sm:flex items-center justify-center invisible opacity-0 pointer-events-none hidden"
       ref={ref}
     >
       <div className="size-1 bg-black rounded-full pointer-events-none"></div>

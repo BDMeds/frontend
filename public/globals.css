@@ -47,10 +47,11 @@ body {
     text-wrap: balance;
   }
 }
-/* 
+
 * {
-  cursor: none;
-} */
+  /* cursor: none; */
+  /* pointer-events: none; */
+}
 
 .hide-scroll::-webkit-scrollbar {
   display: none;
@@ -74,13 +75,13 @@ body {
 
 .custom-cursor {
   pointer-events: none;
-  /* mix-blend-mode: difference; */
+  mix-blend-mode: difference;
   background-color: #fff;
   transition: transform 350ms ease;
 }
 
 .custom-cursor--link {
-  transform: translate(-50%, -50%) scale(1.8);
+  transform: translate(-50%, -50%) scale(2);
 }
 
 .blend {

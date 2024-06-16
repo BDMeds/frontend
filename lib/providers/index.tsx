@@ -15,7 +15,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
-        {/* <Cursor /> */}
+        <Cursor />
         <SonnerToaster
           toastOptions={{
             style: {

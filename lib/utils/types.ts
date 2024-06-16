@@ -61,6 +61,26 @@ export type IUser = {
   meta: ITokens;
 } & IDef;
 
+export type IPatient = {
+  _id: string;
+  user: IUser;
+  favouriteDoctors: IDoctor[];
+} & IDef;
+
+export type IDoctor = {
+  yearsOfExperience: number;
+  speciality: string;
+  qualifications: [];
+  kycVerified: boolean;
+  bio: string;
+  availableDays: AvailableDay[];
+  kycDetails: null;
+  _id: string;
+  user: IUser;
+  address?: Address;
+  socials?: Socials;
+} & IDef;
+
 export type Socials = {
   facebook: string;
   whatsapp: string;
@@ -78,20 +98,6 @@ export type Address = {
   state: string;
   city: string;
   country: string;
-};
-
-export type IDoctor = {
-  yearsOfExperience: number;
-  speciality: string;
-  qualifications: [];
-  kycVerified: boolean;
-  bio: string;
-  availableDays: AvailableDay[];
-  kycDetails: null;
-  _id: string;
-  user: IUser;
-  address?: Address;
-  socials?: Socials;
 };
 
 export type ITokens = {

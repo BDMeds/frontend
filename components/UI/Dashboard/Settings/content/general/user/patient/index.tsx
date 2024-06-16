@@ -10,10 +10,12 @@ import Button from "@/components/Common/Button";
 import { signOut } from "next-auth/react";
 import { useMutation } from "@tanstack/react-query";
 import { requestVerification } from "@/lib/services/auth.service";
-import ProfileImageModal from "../../../modals/profile-image-modal";
+import ProfileImageModal from "../../../../modals/profile-image-modal";
 import { toastSuccess } from "@/lib/utils/toast";
 import { defaultImageUrl } from "@/lib/data/dashboard";
-import DeleteProfilePictureModal from "../../../modals/delete-profile-picture-modal";
+import DeleteProfilePictureModal from "../../../../modals/delete-profile-picture-modal";
+import { FaRegEdit } from "react-icons/fa";
+import UserEditModal from "../../../../modals/user-edit-modal";
 
 const PatientGeneral = () => {
   const { showModal } = useModal();
@@ -103,6 +105,7 @@ const PatientGeneral = () => {
       </div>
 
       <div className="py-3 px-5 flex items-center justify-between">
+        <Button text="Edit Info" icon={<FaRegEdit />} onClick={() => showModal(<UserEditModal />)} />
         <Button text="Sign out" icon={<AiOutlineLogout />} variant="destructive" onClick={() => signOut()} />
       </div>
     </motion.div>

@@ -65,7 +65,7 @@ const Sidebar = () => {
                           href={link.path}
                           // onMouseOver={!sidebarOpen ? openSidebar : undefined}
                           // onMouseLeave={!sidebarOpen ? closeSidebar : undefined}
-                          className={`flex items-center rounded-full transition-colors duration-300 gap-4 ${
+                          className={`flex items-center rounded-full transition-colors duration-300 gap-4 m-over ${
                             pathname === link.path
                               ? "bg-primary text-white"
                               : "dark:text-white hover:bg-zinc-300 hover:text-black "
@@ -91,7 +91,7 @@ const Sidebar = () => {
                       <li key={linkIndex}>
                         <Link
                           href={link.path}
-                          className={`flex items-center rounded-full transition-colors duration-300 gap-4 mx-auto ${
+                          className={`flex items-center rounded-full transition-colors duration-300 gap-4 m-over mx-auto ${
                             link.path.startsWith(pathname) ? "text-primary" : "dark:text-white hover:text-primary"
                           } ${sidebarOpen ? "px-7 py-3" : "grid place-content-center size-8"}`}
                         >
