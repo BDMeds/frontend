@@ -2,11 +2,11 @@ import { MdDashboard, MdOutlineDashboard, MdOutlineAnalytics, MdAnalytics, MdCre
 import { MdOutlineCurrencyExchange } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { MdOutlineReport } from "react-icons/md";
-import { FaShoppingBasket } from "react-icons/fa";
 import { FaUserDoctor } from "react-icons/fa6";
 import { AiOutlineMedicineBox, AiFillMedicineBox } from "react-icons/ai";
 import { TbMedicineSyrup } from "react-icons/tb";
 import { GiDoctorFace } from "react-icons/gi";
+import { LuUsers } from "react-icons/lu";
 
 type Link = {
   text: string;
@@ -20,16 +20,44 @@ type SidebarLink = {
   links: Link[];
 };
 
-export const sidebarLinks: SidebarLink[] = [
+const baseLinks: Link[] = [
+  {
+    iconOutlined: <MdOutlineDashboard />,
+    iconFilled: <MdDashboard />,
+    text: "Dashboard",
+    path: "/dashboard",
+  },
+  {
+    iconOutlined: <FaUserDoctor />,
+    iconFilled: <FaUserDoctor />,
+    text: "Appointments",
+    path: "/appointments",
+  },
+  {
+    iconOutlined: <AiOutlineMedicineBox />,
+    iconFilled: <AiFillMedicineBox />,
+    text: "Consultations",
+    path: "/consultations",
+  },
+  {
+    iconOutlined: <MdOutlineAnalytics />,
+    iconFilled: <MdAnalytics />,
+    text: "Analytics",
+    path: "/analytics",
+  },
+  {
+    iconOutlined: <TbMedicineSyrup />,
+    iconFilled: <TbMedicineSyrup />,
+    text: "Pharmacy",
+    path: "/pharmacy",
+  },
+];
+
+export const patientLinks: SidebarLink[] = [
   {
     heading: "Main",
     links: [
-      {
-        iconOutlined: <MdOutlineDashboard />,
-        iconFilled: <MdDashboard />,
-        text: "Dashboard",
-        path: "/dashboard",
-      },
+      ...baseLinks,
       {
         iconOutlined: <GiDoctorFace />,
         iconFilled: <GiDoctorFace />,
@@ -37,36 +65,11 @@ export const sidebarLinks: SidebarLink[] = [
         path: "/doctors",
       },
       {
-        iconOutlined: <FaUserDoctor />,
-        iconFilled: <FaUserDoctor />,
-        text: "Appointments",
-        path: "/appointments",
-      },
-      {
-        iconOutlined: <AiOutlineMedicineBox />,
-        iconFilled: <AiFillMedicineBox />,
-        text: "Consultations",
-        path: "/consultations",
-      },
-      {
-        iconOutlined: <MdOutlineAnalytics />,
-        iconFilled: <MdAnalytics />,
-        text: "Analytics",
-        path: "/analytics",
-      },
-      {
-        iconOutlined: <TbMedicineSyrup />,
-        iconFilled: <TbMedicineSyrup />,
-        text: "Pharmacy",
-        path: "/pharmacy",
-      },
-      {
         iconOutlined: <MdOutlineCurrencyExchange />,
         iconFilled: <MdOutlineCurrencyExchange />,
         text: "Billing Records",
         path: "/bills",
       },
-
       {
         iconOutlined: <MdOutlineReport />,
         iconFilled: <MdReport />,
@@ -77,33 +80,28 @@ export const sidebarLinks: SidebarLink[] = [
   },
 ];
 
-export const adminSidebarLinks: SidebarLink[] = [
+export const doctorLinks: SidebarLink[] = [
   {
     heading: "Main",
     links: [
+      ...baseLinks,
       {
-        iconOutlined: <MdOutlineDashboard />,
-        iconFilled: <MdDashboard />,
-        text: "Overview",
-        path: "/a/dashboard",
+        iconOutlined: <LuUsers />,
+        iconFilled: <LuUsers />,
+        text: "Patients",
+        path: "/patients",
       },
       {
-        iconOutlined: <FaShoppingBasket />,
-        iconFilled: <FaShoppingBasket />,
-        text: "Orders",
-        path: "/a/orders",
-      },
-      {
-        iconOutlined: <MdCreate />,
-        iconFilled: <MdCreate />,
-        text: "Manage",
-        path: "/a/create",
+        iconOutlined: <MdOutlineCurrencyExchange />,
+        iconFilled: <MdOutlineCurrencyExchange />,
+        text: "Billings",
+        path: "/bills",
       },
       {
         iconOutlined: <MdOutlineReport />,
         iconFilled: <MdReport />,
-        text: "Reports",
-        path: "/a/reports",
+        text: "Report an issue",
+        path: "/report",
       },
     ],
   },

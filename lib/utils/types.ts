@@ -20,7 +20,7 @@ export type IDoctorRegister = {
   email: string;
   phoneNumber: string;
   password: string;
-  specialization: string;
+  speciality: string;
   gender: string;
   yearsOfExperience: number;
 };

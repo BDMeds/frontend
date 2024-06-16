@@ -1,30 +1,29 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiLogOut } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import { adminSidebarLinks, bottomSidebarLinks, sidebarLinks } from "@/lib/data/sidebar";
+import { doctorLinks, bottomSidebarLinks, patientLinks } from "@/lib/data/sidebar";
 import SidebarSkeleton from "./skeleton";
 import { GiMedicines } from "react-icons/gi";
 import { useGlobalStore } from "@/lib/store/global.store";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [links, setLinks] = useState(sidebarLinks);
+  const [links, setLinks] = useState(patientLinks);
 
-  const { sidebarOpen, openSidebar, closeSidebar } = useGlobalStore();
+  const { sidebarOpen } = useGlobalStore();
 
-  const { data: user, isPending: loading } = useQuery({
-    queryFn: () => ({ role: "user" }),
-    queryKey: ["user"],
-  });
+  const { user, loading } = useUserInfo();
 
   useEffect(() => {
-    if (user && user.role !== "user") {
-      setLinks(adminSidebarLinks);
+    if (user && user.role === "patient") {
+      setLinks(patientLinks);
+    } else {
+      setLinks(doctorLinks);
     }
   }, [user, loading]);
 

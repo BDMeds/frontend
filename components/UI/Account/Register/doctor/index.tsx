@@ -56,7 +56,15 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
       return;
     }
 
-    mutate({ data: { ...data, gender: gender.toLowerCase(), specialization }, type: "doctor" });
+    mutate({
+      data: {
+        ...data,
+        gender: gender.toLowerCase(),
+        speciality: specialization,
+        yearsOfExperience: Number(data.yearsOfExperience),
+      },
+      type: "doctor",
+    });
   };
 
   return (

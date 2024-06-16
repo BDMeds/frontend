@@ -22,3 +22,24 @@ export const getUser = async () => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const getDoctor = async () => {
+  try {
+    const { data } = await authApi.get<
+      ApiResponse<
+        { user: IUser } & {
+          yearsOfExperience: number;
+          speciality: string;
+          qualifications: [];
+          kycVerified: boolean;
+          availableDays: [];
+          kycDetails: null;
+          _id: string;
+        }
+      >
+    >("/doctor/user");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
