@@ -9,6 +9,7 @@ import Doctors from "./content/doctors";
 import Notifications from "./content/notifications";
 import Payments from "./content/payments";
 import useUserInfo from "@/lib/hooks/useUserInfo";
+import Reviews from "./content/reviews";
 
 const Settings = () => {
   const searchParams = useSearchParams();
@@ -36,6 +37,8 @@ const Settings = () => {
         return <Notifications key="notifications" />;
       case "payments":
         return <Payments key="payments" />;
+      case "reviews":
+        return <Reviews key="reviews" />;
       default:
         return null;
     }

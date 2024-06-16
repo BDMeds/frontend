@@ -24,11 +24,9 @@ Welcome to BDMeds, a telemedicine platform designed to connect patients with hea
 
 - Frontend: Next.js
 - Backend: NestJS
-- Database: PostgreSQL
-- ORM: TypeORM
 - Authentication: JWT (JSON Web Tokens)
 - Video Call Integration: WebRTC
-- Hosting: Vercel (Frontend), Heroku (Backend)
+- Hosting: PipeOps
 
 ## Installation
 
@@ -36,7 +34,6 @@ Welcome to BDMeds, a telemedicine platform designed to connect patients with hea
 
 - Node.js (v14 or above)
 - npm or yarn
-- PostgreSQL
 
 ### Clone the Repository
 
