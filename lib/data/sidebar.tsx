@@ -107,6 +107,32 @@ export const doctorLinks: SidebarLink[] = [
   },
 ];
 
+export const adminLinks: SidebarLink[] = [
+  {
+    heading: "Main",
+    links: [
+      {
+        iconOutlined: <MdOutlineDashboard />,
+        iconFilled: <MdDashboard />,
+        text: "Dashboard",
+        path: "/s/dashboard",
+      },
+      {
+        iconOutlined: <MdOutlineAnalytics />,
+        iconFilled: <MdAnalytics />,
+        text: "Analytics",
+        path: "/s/analytics",
+      },
+      {
+        iconOutlined: <MdOutlineReport />,
+        iconFilled: <MdReport />,
+        text: "Reports",
+        path: "/s/reports",
+      },
+    ],
+  },
+];
+
 export const bottomSidebarLinks: SidebarLink[] = [
   {
     heading: "others",

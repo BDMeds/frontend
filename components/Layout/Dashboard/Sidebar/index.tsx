@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiLogOut } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import { doctorLinks, bottomSidebarLinks, patientLinks } from "@/lib/data/sidebar";
+import { doctorLinks, bottomSidebarLinks, patientLinks, adminLinks } from "@/lib/data/sidebar";
 import SidebarSkeleton from "./skeleton";
 import { GiMedicines } from "react-icons/gi";
 import { useGlobalStore } from "@/lib/store/global.store";
@@ -20,10 +20,18 @@ const Sidebar = () => {
   const { user, loading } = useUserInfo();
 
   useEffect(() => {
-    if (user && user.role === "patient") {
-      setLinks(patientLinks);
-    } else {
-      setLinks(doctorLinks);
+    if (!user) return;
+
+    switch (user.role) {
+      case "patient":
+        setLinks(patientLinks);
+        return;
+      case "doctor":
+        setLinks(doctorLinks);
+        return;
+      case "admin":
+        setLinks(adminLinks);
+        return;
     }
   }, [user, loading]);
 

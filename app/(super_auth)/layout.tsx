@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     noarchive: true,
   },
   title: {
-    default: "Admin Dashboard",
+    default: "Super Admin Dashboard",
     template: `%s | BDMeds`,
   },
 };

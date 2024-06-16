@@ -1,3 +1,16 @@
+export type KycID =
+  | "National Identification Card"
+  | "International Passport"
+  | "Drivers License"
+  | "Voters Card"
+  | "Tax Identification Number";
+
+export type Currency = "USD" | "NGN";
+
+export type Role = "patient" | "doctor" | "admin";
+
+export type Gender = "male" | "gender";
+
 export type ApiResponse<T = null> = {
   success: boolean;
   message: string;
@@ -42,9 +55,9 @@ export type IUser = {
   firstName: string;
   lastName: string;
   emailVerified: boolean;
-  gender: "male" | "female";
+  gender: Gender;
   profilePicture: string;
-  role: "patient" | "doctor";
+  role: Role;
   meta: ITokens;
 } & IDef;
 
@@ -62,9 +75,9 @@ export type AvailableDay = {
 };
 
 export type Address = {
-  state: "string";
-  city: "string";
-  country: "string";
+  state: string;
+  city: string;
+  country: string;
 };
 
 export type IDoctor = {
@@ -112,12 +125,3 @@ export type Kyc = {
   idType: string;
   professionalCert: string;
 };
-
-export type KycID =
-  | "National Identification Card"
-  | "International Passport"
-  | "Drivers License"
-  | "Voters Card"
-  | "Tax Identification Number";
-
-export type Currency = "USD" | "NGN";

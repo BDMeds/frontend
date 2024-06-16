@@ -111,12 +111,11 @@ const Navbar = () => {
                 <RxHamburgerMenu className="cursor-pointer text-white md:hidden" size={26} onClick={openMenu} />
               </div>
             ) : (
-              <>
-                <Link href="/account/login" className="mr-4">
-                  Sign In
-                </Link>
+              <div className="flex items-center gap-4">
+                <Link href="/account/login">Login</Link>
                 <Link href="/account/register">Register</Link>
-              </>
+                <RxHamburgerMenu className="cursor-pointer text-white md:hidden" size={26} onClick={openMenu} />
+              </div>
             )}
           </div>
         </div>
