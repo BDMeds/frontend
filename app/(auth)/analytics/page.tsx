@@ -1,7 +1,14 @@
-import Construction from "@/components/Common/Pages/construction";
+import Analytics from "@/components/UI/Dashboard/Analytics";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Analytics"
+}
+
 
 const Page = () => {
-  return <Construction />;
+  return <Analytics />;
 };
 
 export default Page;
