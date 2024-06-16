@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, IUser } from "../utils/types";
+import { ApiResponse, IDoctor, IUser } from "../utils/types";
 
 export const uploadProfilePicture = async (picture: string) => {
   try {
@@ -25,19 +25,7 @@ export const getUser = async () => {
 
 export const getDoctor = async () => {
   try {
-    const { data } = await authApi.get<
-      ApiResponse<
-        { user: IUser } & {
-          yearsOfExperience: number;
-          speciality: string;
-          qualifications: [];
-          kycVerified: boolean;
-          availableDays: [];
-          kycDetails: null;
-          _id: string;
-        }
-      >
-    >("/doctor/user");
+    const { data } = await authApi.get<ApiResponse<IDoctor>>("/doctor/user");
     return data.data;
   } catch (err) {
     handleAxiosErrorWithToast(err);

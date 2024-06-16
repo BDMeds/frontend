@@ -1,13 +1,37 @@
 import TextSkeleton from "@/components/Common/Skeleton/text";
 import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 import { opacityVariant } from "@/lib/utils/variants";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
+import DoctorInfo from "./content/info";
+import ReviewInfo from "./content/reviews";
+import SettingsDoctor from "./content/settings";
 
-// export type DoctorTab = 'overview' | 'setting'
+type Tab = "info" | "reviews" | "settings";
+
+const tabs: { name: string; tab: Tab }[] = [
+  { name: "General", tab: "info" },
+  { name: "Reviews", tab: "reviews" },
+  { name: "Settings", tab: "settings" },
+];
 
 const DoctorGeneral = () => {
   const { doctor, loading } = useDoctorInfo();
+  const [curTab, setCurTab] = useState<Tab>("info");
+
+  const renderContent = () => {
+    switch (curTab) {
+      case "info":
+        return <DoctorInfo key="doctor" />;
+      case "reviews":
+        return <ReviewInfo key="reviews" />;
+      case "settings":
+        return <SettingsDoctor key="settings" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <motion.div {...opacityVariant}>
@@ -57,9 +81,23 @@ const DoctorGeneral = () => {
             care, and some provide primary care.
           </p>
 
-          <div>
-            <p className="font-bold">Qualifications:</p>
+          <div className={`grid grid-cols-3`}>
+            {tabs.map((tab, id) => (
+              <div
+                key={id}
+                onClick={() => setCurTab(tab.tab)}
+                className={` py-2 cursor-pointer text-center ${
+                  tab.tab === curTab ? "bg-primary text-white" : "bg-gray-100"
+                }`}
+              >
+                {tab.name}
+              </div>
+            ))}
           </div>
+
+          <AnimatePresence mode="wait" initial={false}>
+            {renderContent()}
+          </AnimatePresence>
         </div>
       )}
     </motion.div>

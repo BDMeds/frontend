@@ -1,3 +1,4 @@
+import { useModal } from "@/lib/providers/modal-provider";
 import { opacityVariant } from "@/lib/utils/variants";
 import { motion } from "framer-motion";
 import { FC, useEffect, useRef } from "react";
@@ -10,16 +11,22 @@ const variant = {
 
 type ModalProps = {
   isOpen?: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   isAutomatic?: boolean;
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 const Modal: FC<ModalProps> = ({ children, isOpen = true, onClose, isAutomatic = true, ...rest }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { hideModal } = useModal();
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
+        if (!onClose) {
+          hideModal;
+          return;
+        }
+
         onClose;
       }
     };

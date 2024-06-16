@@ -48,6 +48,33 @@ export type IUser = {
   meta: ITokens;
 } & IDef;
 
+export type IDoctor = {
+  yearsOfExperience: number;
+  speciality: string;
+  qualifications: [];
+  kycVerified: boolean;
+  bio: "string";
+  address: {
+    state: "string";
+    city: "string";
+    country: "string";
+  };
+  availableDays: {
+    day: string;
+    startTime: string;
+    endTime: string;
+  }[];
+  kycDetails: null;
+  _id: string;
+  user: IUser;
+  socials?: {
+    facebook: string;
+    whatsapp: string;
+    twitter: string;
+    linkedin: string;
+  };
+};
+
 export type ITokens = {
   accessToken: string;
   refreshToken: string;
