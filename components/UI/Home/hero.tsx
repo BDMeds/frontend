@@ -8,17 +8,17 @@ const Hero = () => {
   return (
     <header className="relative">
       <div className="container min-h-[calc(100vh+140px)]">
-        <div className="absolute top-0 left-0 pt-28 sm:pt-0 w-full h-full bg-gradient-to-tr from-primary via-[#9076e6] to-[#451dc6] overflow-hidden">
-          <div className="container w-full h-full grid sm:grid-cols-2 gap-10 items-center z-10">
-            <div className="text-white space-y-8 md:-mt-24">
-              <div className="space-y-3 max-w-2xl text-center sm:text-start">
-                <h1 className="font-extrabold md:text-8xl sm:text-7xl text-6xl">Meet The Best Doctors</h1>
+        <div className="absolute top-0 left-0 pt-28 lg:pt-0 w-full h-full bg-gradient-to-tr from-primary via-[#9076e6] to-[#451dc6] overflow-hidden">
+          <div className="container w-full h-full grid lg:grid-cols-2 gap-10 items-center z-10">
+            <div className="text-white space-y-8 lg:-mt-24">
+              <div className="space-y-3 max-w-2xl text-center lg:text-start">
+                <h1 className="font-extrabold md:text-8xl lg:text-7xl text-6xl">Meet The Best Doctors</h1>
                 <p className="text-gray-200">
                   We are committed to providing you with the best medical and healthcare services to help you live
                   healthier and happier.
                 </p>
               </div>
-              <div className="w-fit mx-auto sm:mx-0">
+              <div className="w-fit mx-auto lg:mx-0">
                 <Link href={"/account/register"}>
                   <Button
                     text="Get Started"
@@ -29,7 +29,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="h-full flex items-end justify-center md:-mt-14">
+            <div className="h-full flex items-end justify-center lg:-mt-14">
               <Image src={"/images/doc_hero.png"} alt="hero" width={500} height={600} />
             </div>
           </div>

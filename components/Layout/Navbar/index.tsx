@@ -95,7 +95,9 @@ const Navbar = () => {
                   <Link href={"/dashboard"}>
                     <Button
                       text="Dashboard"
-                      className={pathname === "/" ? `text-white border-white hover:bg-white hover:text-primary` : ""}
+                      className={
+                        pathname === "/" && !passed ? `text-white border-white hover:bg-white hover:text-primary` : ""
+                      }
                     />
                   </Link>
                 </div>

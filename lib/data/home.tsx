@@ -10,6 +10,11 @@ type Service = {
   description: string;
 };
 
+type Department = {
+  name: string;
+  image: string;
+};
+
 export const services: Service[] = [
   {
     title: "Diagnostic testing",
@@ -38,5 +43,32 @@ export const services: Service[] = [
     description:
       "Connect with licensed therapists through live video sessions. Get the support you need from the comfort of your home.",
     icon: <CiVideoOn size={30} />,
+  },
+];
+
+export const departments: Department[] = [
+  {
+    name: "Cardiology",
+    image: "cardiology.png",
+  },
+  {
+    name: "Dentistry",
+    image: "dentistry.png",
+  },
+  {
+    name: "Neurology",
+    image: "neurology.png",
+  },
+  {
+    name: "Orthopedic",
+    image: "orthopedic.png",
+  },
+  {
+    name: "Optometrist",
+    image: "optometrist.png",
+  },
+  {
+    name: "Psycho Therapist",
+    image: "psychotherapist.png",
   },
 ];

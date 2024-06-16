@@ -1,5 +1,5 @@
+import Departments from "@/components/UI/Home/departments";
 import Hero from "@/components/UI/Home/hero";
-import Illustrations from "@/components/UI/Home/illustrations";
 import Partners from "@/components/UI/Home/partners";
 import Services from "@/components/UI/Home/why-us";
 
@@ -7,10 +7,10 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <main>
+      <main className="space-y-32">
         <Services />
+        <Departments />
         <Partners />
-        <Illustrations />
       </main>
     </>
   );
