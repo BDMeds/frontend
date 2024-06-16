@@ -45,7 +45,9 @@ const DoctorGeneral = () => {
       <div className="flex items-center justify-between pr-4">
         <div className="-mt-10 flex gap-4 items-center">
           <div
-            className={`size-28 border ${loading ? "animate-skeleton" : ""} relative overflow-hidden rounded-full ml-5`}
+            className={`size-28 border ${
+              loading ? "animate-skeleton" : ""
+            } backdrop-blur-xl relative overflow-hidden rounded-full ml-5`}
           >
             {doctor && (
               <Image
@@ -93,7 +95,7 @@ const DoctorGeneral = () => {
         <div className="p-5 space-y-5">
           <p className="text-gray-500 text-sm line-clamp-3">{doctor.bio ?? "No bio"}</p>
 
-          <div className={`grid grid-cols-3`}>
+          <div className={`grid grid-cols-3 divide-x`}>
             {tabs.map((tab, id) => (
               <div
                 key={id}

@@ -19,7 +19,7 @@ export const getUser = async () => {
 
     return data.data;
   } catch (err) {
-    handleAxiosErrorWithToast(err);
+    // handleAxiosErrorWithToast(err);
   }
 };
 
@@ -28,6 +28,6 @@ export const getDoctor = async () => {
     const { data } = await authApi.get<ApiResponse<IDoctor>>("/doctor/user");
     return data.data;
   } catch (err) {
-    handleAxiosErrorWithToast(err);
+    // handleAxiosErrorWithToast(err);
   }
 };

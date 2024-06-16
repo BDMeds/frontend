@@ -45,8 +45,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex gap-7">
-      <div className="bg-white border rounded-lg divide-y min-w-[20rem] overflow-hidden self-start sticky top-0">
+    <div className="flex lg:gap-7 gap-5">
+      <div className="bg-white border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sticky top-16">
         {loading ? (
           <></>
         ) : (

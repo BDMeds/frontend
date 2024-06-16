@@ -73,11 +73,11 @@ export type IDoctor = {
   qualifications: [];
   kycVerified: boolean;
   bio: string;
-  address: Address;
   availableDays: AvailableDay[];
   kycDetails: null;
   _id: string;
   user: IUser;
+  address?: Address;
   socials?: Socials;
 };
 

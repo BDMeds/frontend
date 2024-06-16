@@ -38,28 +38,40 @@ const DoctorInfo = () => {
                 <p className="font-bold">Contact</p>
                 <div className="flex items-center gap-2">
                   <div className="text-gray-500 text-sm">
-                    <p>
-                      {doctor?.user.email}{" "}
-                      {!doctor?.user.emailVerified ? (
-                        "(Not verified)"
-                      ) : (
-                        <span className="text-xs text-green-500">verified</span>
+                    <div className="flex items-center gap-1">
+                      <p>
+                        {doctor?.user.email}{" "}
+                        {!doctor?.user.emailVerified ? (
+                          "(Not verified)"
+                        ) : (
+                          <span className="text-xs text-green-500">verified</span>
+                        )}
+                      </p>
+                      {!doctor?.user.emailVerified && (
+                        <Button
+                          text="Verify"
+                          variant="filled"
+                          onClick={() =>
+                            mutate(`${doctor?.user.email}`, { onSuccess: () => toastSuccess("Verification link sent") })
+                          }
+                          size="extra-small"
+                          loading={verifyLoading}
+                        />
                       )}
-                    </p>
+                    </div>
                     <p>{doctor?.user.phoneNumber}</p>
                   </div>
-                  {!doctor?.user.emailVerified && (
-                    <Button
-                      text="Verify"
-                      variant="filled"
-                      onClick={() =>
-                        mutate(`${doctor?.user.email}`, { onSuccess: () => toastSuccess("Verification link sent") })
-                      }
-                      size="extra-small"
-                      loading={verifyLoading}
-                    />
-                  )}
                 </div>
+              </div>
+
+              <div className="py-2">
+                <p className="font-bold">Years of experience</p>
+                <p className="text-gray-500">{doctor?.yearsOfExperience}</p>
+              </div>
+
+              <div className="py-2">
+                <p className="font-bold">Speciality</p>
+                <p className="text-gray-500 capitalize">{doctor?.speciality}</p>
               </div>
             </div>
 
@@ -98,7 +110,6 @@ const DoctorInfo = () => {
                 </div>
               ) : (
                 <div>
-                  {/* <p className="text-gray-500">No socials</p> */}
                   <Button
                     text="Add Social"
                     size="extra-small"
