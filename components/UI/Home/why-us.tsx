@@ -9,7 +9,7 @@ const Services = () => {
         <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-10 gap-6 justify-center flex-wrap">
           <div className="space-y-3 p-5">
             <p className="text-lg">Services</p>
-            <p className="font-extrabold text-4xl">Provides Our Best Services</p>
+            <p className="font-extrabold text-4xl text-primary">Provides Our Best Services</p>
           </div>
           {services.map(({ description, icon, title }, id) => (
             <div

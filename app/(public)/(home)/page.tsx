@@ -1,4 +1,5 @@
 import Departments from "@/components/UI/Home/departments";
+import Faq from "@/components/UI/Home/faq";
 import Hero from "@/components/UI/Home/hero";
 import Partners from "@/components/UI/Home/partners";
 import Services from "@/components/UI/Home/why-us";
@@ -11,6 +12,7 @@ const Home = () => {
         <Services />
         <Departments />
         <Partners />
+        <Faq />
       </main>
     </>
   );
