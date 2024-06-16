@@ -10,10 +10,9 @@ import Button from "@/components/Common/Button";
 import { signOut } from "next-auth/react";
 import { useMutation } from "@tanstack/react-query";
 import { requestVerification } from "@/lib/services/auth.service";
-import ProfileImageModal from "../profile-image-modal";
-
-const defImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1H81w4SmKH5DZmIbxU7EB0aMSkNQDoPQA1mRQxf2Y0wMF1NSa7vghbwwKASi1q4NPmNw&usqp=CAU";
+import ProfileImageModal from "../../../modals/profile-image-modal";
+import { toastSuccess } from "@/lib/utils/toast";
+import { defaultImageUrl } from "@/lib/data/dashboard";
 
 const PatientGeneral = () => {
   const { showModal } = useModal();
@@ -43,7 +42,7 @@ const PatientGeneral = () => {
             <div className="flex items-center gap-3">
               <CiTrash
                 className={`text-red-500 cursor-pointer ${
-                  user?.profilePicture === defImage ? "opacity-50 cursor-not-allowed" : ""
+                  user?.profilePicture === defaultImageUrl ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 size={25}
               />
@@ -85,7 +84,12 @@ const PatientGeneral = () => {
         <div className="flex items-center gap-2">
           <Button text="Edit" />
           {!user?.emailVerified && (
-            <Button text="Verify" variant="filled" onClick={() => mutate(`${user?.email}`)} loading={verifyLoading} />
+            <Button
+              text="Verify"
+              variant="filled"
+              onClick={() => mutate(`${user?.email}`, { onSuccess: () => toastSuccess("Verification link sent") })}
+              loading={verifyLoading}
+            />
           )}
         </div>
       </div>
