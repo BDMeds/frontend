@@ -2,7 +2,7 @@
 
 import { faqs } from "@/lib/data/home";
 import { fadeToBottomVariant } from "@/lib/utils/variants";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 

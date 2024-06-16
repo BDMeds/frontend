@@ -1,3 +1,4 @@
+import Appointment from "@/components/UI/Home/appointment";
 import Departments from "@/components/UI/Home/departments";
 import Faq from "@/components/UI/Home/faq";
 import Hero from "@/components/UI/Home/hero";
@@ -11,6 +12,7 @@ const Home = () => {
       <main className="space-y-32">
         <Services />
         <Departments />
+        <Appointment />
         <Partners />
         <Faq />
       </main>

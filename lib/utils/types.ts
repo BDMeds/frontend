@@ -62,4 +62,10 @@ export type IPayment = {
   doctor: string;
 } & IDef;
 
+export type IBookAppointment = {
+  name: string;
+  phoneNumber: string;
+  reasonForVisit: string;
+};
+
 export type Currency = "USD" | "NGN";
