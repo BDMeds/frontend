@@ -13,6 +13,8 @@ import { MdFemale, MdMale } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useOnboardStore } from "@/lib/store/global.store";
 import { userRegister } from "@/lib/services/auth.service";
+import Select from "@/components/Common/Inputs/select";
+import { specializations } from "@/lib/data/account";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;
@@ -26,6 +28,9 @@ const genders: { name: string; icon: JSX.Element }[] = [
 const DoctorRegister: FC<Props> = ({ updateTag }) => {
   const { register, handleSubmit, reset } = useForm<IDoctorRegister>();
   const [gender, setGender] = useState("Male");
+  const [specialization, setSpecialization] = useState("Dentistry");
+
+  const updateSpecialization = (value: string) => setSpecialization(value);
 
   const router = useRouter();
 
@@ -40,7 +45,7 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
   });
 
   const submit: SubmitHandler<IDoctorRegister> = async (data) =>
-    mutate({ data: { ...data, gender: gender.toLowerCase() }, type: "doctor" });
+    mutate({ data: { ...data, gender: gender.toLowerCase(), specialization }, type: "doctor" });
 
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">
@@ -112,13 +117,19 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label htmlFor="specialization">Specialization</label>
-                    <input
+                    <Select
+                      label="Specialization"
+                      onValueChange={updateSpecialization}
+                      options={specializations}
+                      placeholder="Select specialization"
+                    />
+
+                    {/* <input
                       type="text"
                       {...register("specialization", { required: true })}
                       className="w-full bg-transparent p-2 border rounded-lg bg-white"
                       placeholder="e.g Dentistry"
-                    />
+                    /> */}
                   </div>
                   <div className="space-y-1">
                     <label htmlFor="specialization">Experience (Years)</label>
