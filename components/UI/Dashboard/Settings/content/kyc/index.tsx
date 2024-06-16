@@ -11,6 +11,7 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import Button from "@/components/Common/Button";
 import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { getBase64 } from "@/lib/helpers/fns";
+import { queryClient } from "@/lib/providers";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -69,11 +70,14 @@ const Kyc = () => {
       return;
     }
 
-    mutate({
-      idType: kycId,
-      idDoc,
-      professionalCert,
-    });
+    mutate(
+      {
+        idType: kycId,
+        idDoc,
+        professionalCert,
+      },
+      { onSuccess: () => queryClient.invalidateQueries({ queryKey: ["doctor", "info"] }) }
+    );
   };
 
   return (
@@ -99,7 +103,7 @@ const Kyc = () => {
         <div>
           {doctor && (
             <div className="min-h-[20rem]">
-              {!doctor.kycVerified ? (
+              {!doctor.kycDetails ? (
                 <div className="grid md:grid-cols-2 items-center gap-5">
                   <Select
                     label="Select ID Type"
@@ -111,7 +115,7 @@ const Kyc = () => {
                   <div className="space-y-1">
                     <p className="font-semibold">ID Document</p>
                     <div
-                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer gap-2 justify-between duration-300 hover:bg-gray-100"
+                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
                       onClick={pickIdDoc}
                     >
                       <span>{!idDocFile ? "Select Document" : idDocFile.name}</span>
@@ -122,7 +126,7 @@ const Kyc = () => {
                   <div className="space-y-1">
                     <label className="font-semibold">Professional Certificate</label>
                     <div
-                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer gap-2 justify-between duration-300 hover:bg-gray-100"
+                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
                       onClick={pickCert}
                     >
                       <span>{!idProCert ? "Upload Certificate" : idProCert.name}</span>
@@ -152,8 +156,12 @@ const Kyc = () => {
                 </div>
               ) : (
                 <div className="grid place-content-center space-y-4 text-center min-h-[15rem]">
-                  <IoShieldCheckmark size={45} className="text-green-500 mx-auto" />
-                  <p>You are verified!</p>
+                  <IoShieldCheckmark size={60} className={`text-green-500 mx-auto`} />
+                  <p className="max-w-sm mx-auto">
+                    {doctor.kycVerified
+                      ? "You are verified!"
+                      : "Documents is under review... We'll notify you as soon as it's approved"}
+                  </p>
                 </div>
               )}
             </div>

@@ -44,7 +44,7 @@ export const getKycId = async () => {
 export const uploadKyc = async (payload: Kyc) => {
   try {
     const { data } = await authApi.put<ApiResponse>("/doctor/kyc/update", payload);
-    toastSuccess("Kyc documents uploaded");
+    toastSuccess("Kyc documents uploaded successfully.");
     return data.data;
   } catch (err) {
     handleAxiosErrorWithToast(err);
