@@ -11,6 +11,7 @@ export type IPatientRegister = {
   phoneNumber: string;
   gender: string;
   password: string;
+  yearsOfExperience: number;
 };
 
 export type IDoctorRegister = {
@@ -21,7 +22,7 @@ export type IDoctorRegister = {
   password: string;
   specialization: string;
   gender: string;
-  experienceYears: string;
+  yearsOfExperience: number;
 };
 
 export type ILoginData = {

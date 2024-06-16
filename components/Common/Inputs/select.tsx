@@ -32,7 +32,7 @@ const Select: FC<Props> = ({ options, label, placeholder, onValueChange, loading
     <div className="space-y-1 relative">
       <p className="font-bold">{label}</p>
       <div
-        className={`dark:bg-transparent bg-white duration-200 hover:bg-gray-100 dark:hover:bg-transparent w-full p-2 border border-white/10 rounded-lg select-none flex items-center justify-between ${
+        className={`dark:bg-transparent bg-white duration-200 hover:bg-gray-100 dark:hover:bg-transparent w-full p-2 border rounded-lg select-none flex items-center justify-between ${
           loading ? "cursor-not-allowed" : "cursor-pointer"
         }`}
         onClick={loading ? () => {} : toggleDrop}

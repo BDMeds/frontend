@@ -7,14 +7,15 @@ import { FaChevronLeft } from "react-icons/fa";
 import Button from "@/components/Common/Button";
 import { IDoctorRegister } from "@/lib/utils/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { dataMutate } from "@/lib/services/dummy";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { MdFemale, MdMale } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useOnboardStore } from "@/lib/store/global.store";
 import { userRegister } from "@/lib/services/auth.service";
 import Select from "@/components/Common/Inputs/select";
-import { specializations } from "@/lib/data/account";
+// import { specializations } from "@/lib/data/account";
+import { toastError } from "@/lib/utils/toast";
+import { getSpecializations } from "@/lib/services/doctor.service";
 
 type Props = {
   updateTag: (tag: Tag | null) => void;
@@ -26,11 +27,16 @@ const genders: { name: string; icon: JSX.Element }[] = [
 ];
 
 const DoctorRegister: FC<Props> = ({ updateTag }) => {
-  const { register, handleSubmit, reset } = useForm<IDoctorRegister>();
+  const { register, handleSubmit } = useForm<IDoctorRegister>();
   const [gender, setGender] = useState("Male");
-  const [specialization, setSpecialization] = useState("Dentistry");
+  const [specialization, setSpecialization] = useState("");
 
   const updateSpecialization = (value: string) => setSpecialization(value);
+
+  const { data: specializations, isPending: specializationLoading } = useQuery({
+    queryKey: ["specializations"],
+    queryFn: getSpecializations,
+  });
 
   const router = useRouter();
 
@@ -44,8 +50,14 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
     },
   });
 
-  const submit: SubmitHandler<IDoctorRegister> = async (data) =>
+  const submit: SubmitHandler<IDoctorRegister> = async (data) => {
+    if (!specialization) {
+      toastError("Please selected a specialization");
+      return;
+    }
+
     mutate({ data: { ...data, gender: gender.toLowerCase(), specialization }, type: "doctor" });
+  };
 
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">
@@ -120,8 +132,9 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     <Select
                       label="Specialization"
                       onValueChange={updateSpecialization}
-                      options={specializations}
+                      options={specializations?.map((name) => ({ value: name, label: name })) ?? []}
                       placeholder="Select specialization"
+                      loading={specializationLoading}
                     />
 
                     {/* <input
@@ -135,7 +148,7 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     <label htmlFor="specialization">Experience (Years)</label>
                     <input
                       type="text"
-                      {...register("experienceYears", { required: true })}
+                      {...register("yearsOfExperience", { required: true })}
                       className="w-full bg-transparent p-2 border rounded-lg bg-white"
                       placeholder="e.g 5"
                     />
