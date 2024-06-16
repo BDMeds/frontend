@@ -4,6 +4,8 @@ import { opacityVariant } from "@/lib/utils/variants";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+// export type DoctorTab = 'overview' | 'setting'
+
 const DoctorGeneral = () => {
   const { doctor, loading } = useDoctorInfo();
 
@@ -45,6 +47,21 @@ const DoctorGeneral = () => {
           )}
         </div>
       </div>
+
+      {doctor && (
+        <div className="p-5 space-y-5">
+          <p className="text-gray-500 text-sm line-clamp-3">
+            A gynecologist is a surgeon who specializes in the female reproductive system, which includes the cervix,
+            fallopian tubes, ovaries, uterus, vagina and vulva. Menstrual problems, contraception, sexuality, menopause
+            and infertility issues are diagnosed and treated by a gynecologist; most gynecologists also provide prenatal
+            care, and some provide primary care.
+          </p>
+
+          <div>
+            <p className="font-bold">Qualifications:</p>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };
