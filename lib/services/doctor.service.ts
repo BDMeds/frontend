@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi, publicApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, ChangePassword, IDoctor, Socials } from "../utils/types";
+import { ApiResponse, IDoctor, Kyc, KycID, Socials } from "../utils/types";
 
 export const getSpecializations = async () => {
   try {
@@ -31,3 +31,24 @@ export const updateData = async (newData: Partial<IDoctor>) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const getKycId = async () => {
+  try {
+    const { data } = await authApi.get<ApiResponse<KycID[]>>("/doctor/kyc/id-types");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
+
+
+
+export const uploadKyc = async (payload: Kyc) => {
+  try {
+    const { data } = await authApi.post<ApiResponse>("/doctor/kyc/update", payload);
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+  
+}

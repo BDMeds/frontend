@@ -10,6 +10,7 @@ import Notifications from "./content/notifications";
 import Payments from "./content/payments";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import Reviews from "./content/reviews";
+import Kyc from "./content/kyc";
 
 const Settings = () => {
   const searchParams = useSearchParams();
@@ -39,6 +40,8 @@ const Settings = () => {
         return <Payments key="payments" />;
       case "reviews":
         return <Reviews key="reviews" />;
+      case "kyc-verification":
+        return <Kyc key="kyc" />;
       default:
         return null;
     }
@@ -48,7 +51,11 @@ const Settings = () => {
     <div className="flex lg:gap-7 gap-5">
       <div className="bg-white border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sticky top-16">
         {loading ? (
-          <></>
+          <div className="divide-y">
+            {Array.from({ length: 4 }).map((_, id) => (
+              <div key={id} className="p-4 animate-skeleton"></div>
+            ))}
+          </div>
         ) : (
           <>
             {user &&
@@ -68,7 +75,7 @@ const Settings = () => {
         )}
       </div>
 
-      <div className="flex-grow bg-white border rounded-lg overflow-hidden">
+      <div className="flex-grow bg-white border rounded-lg overflow-hidden self-start">
         <AnimatePresence mode="wait" initial={false}>
           {renderSettings()}
         </AnimatePresence>

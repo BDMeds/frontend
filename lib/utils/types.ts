@@ -107,4 +107,17 @@ export type ChangePassword = {
   newPassword: string;
 };
 
+export type Kyc = {
+  idDoc: string;
+  idType: string;
+  professionalCert: string;
+};
+
+export type KycID =
+  | "National Identification Card"
+  | "International Passport"
+  | "Drivers License"
+  | "Voters Card"
+  | "Tax Identification Number";
+
 export type Currency = "USD" | "NGN";
