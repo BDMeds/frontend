@@ -7,9 +7,13 @@ import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { motion } from "framer-motion";
 import { opacityVariant } from "@/lib/utils/variants";
+import { useModal } from "@/lib/providers/modal-provider";
+import AddSocialModal from "./modals/add-social";
 
 const DoctorInfo = () => {
-  const { doctor, loading } = useDoctorInfo();
+  const { doctor } = useDoctorInfo();
+
+  const { showModal } = useModal();
 
   return (
     <motion.div {...opacityVariant}>
@@ -56,7 +60,12 @@ const DoctorInfo = () => {
           ) : (
             <div>
               {/* <p className="text-gray-500">No socials</p> */}
-              <Button text="Add Social" size="extra-small" variant="filled" />
+              <Button
+                text="Add Social"
+                size="extra-small"
+                variant="filled"
+                onClick={() => showModal(<AddSocialModal />)}
+              />
             </div>
           )}
         </div>

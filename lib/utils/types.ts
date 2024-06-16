@@ -48,31 +48,37 @@ export type IUser = {
   meta: ITokens;
 } & IDef;
 
+export type Socials = {
+  facebook: string;
+  whatsapp: string;
+  twitter: string;
+  linkedin: string;
+};
+
+export type AvailableDay = {
+  day: string;
+  startTime: string;
+  endTime: string;
+};
+
+export type Address = {
+  state: "string";
+  city: "string";
+  country: "string";
+};
+
 export type IDoctor = {
   yearsOfExperience: number;
   speciality: string;
   qualifications: [];
   kycVerified: boolean;
-  bio: "string";
-  address: {
-    state: "string";
-    city: "string";
-    country: "string";
-  };
-  availableDays: {
-    day: string;
-    startTime: string;
-    endTime: string;
-  }[];
+  bio: string;
+  address: Address;
+  availableDays: AvailableDay[];
   kycDetails: null;
   _id: string;
   user: IUser;
-  socials?: {
-    facebook: string;
-    whatsapp: string;
-    twitter: string;
-    linkedin: string;
-  };
+  socials?: Socials;
 };
 
 export type ITokens = {
