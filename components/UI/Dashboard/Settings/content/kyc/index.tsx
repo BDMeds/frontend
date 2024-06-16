@@ -1,14 +1,15 @@
 import Select from "@/components/Common/Inputs/select";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
-import { getKycId } from "@/lib/services/doctor.service";
+import { getKycId, uploadKyc } from "@/lib/services/doctor.service";
 import { KycID } from "@/lib/utils/types";
 import { opacityVariant } from "@/lib/utils/variants";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoShieldCheckmark } from "react-icons/io5";
 import Button from "@/components/Common/Button";
+import { toastSuccess } from "@/lib/utils/toast";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -16,8 +17,25 @@ const Kyc = () => {
   const { data: kycIDs, isPending: kycIdLoading } = useQuery({ queryKey: ["kyc-id"], queryFn: getKycId });
 
   const [kycId, setKycId] = useState<KycID | undefined>();
+  const [idDoc, setIdDoc] = useState("");
+  const [professionalCert, setProfessionalCert] = useState("");
 
   const onKycIdChange = (value: KycID) => setKycId(value);
+
+  const { mutate, isPending: uploading } = useMutation({ mutationFn: uploadKyc });
+
+  const submit = () => {
+    if (!kycId || !idDoc || !professionalCert) {
+      toastSuccess("Incomplete data, please fill/select necessary fields.", { id: "invalid" });
+      return;
+    }
+
+    mutate({
+      idType: kycId,
+      idDoc,
+      professionalCert,
+    });
+  };
 
   return (
     <motion.div {...opacityVariant} className="space-y-4 p-4">
@@ -41,7 +59,7 @@ const Kyc = () => {
       ) : (
         <div>
           {doctor && (
-            <>
+            <div className="min-h-[20rem]">
               {!doctor.kycVerified ? (
                 <div className="grid md:grid-cols-2 items-center gap-5">
                   <Select
@@ -69,7 +87,7 @@ const Kyc = () => {
 
                   <div></div>
 
-                  <Button text="Continue" variant="filled" />
+                  <Button text="Continue" variant="filled" onClick={submit} loading={uploading} />
                 </div>
               ) : (
                 <div className="grid place-content-center space-y-4 text-center min-h-[15rem]">
@@ -77,7 +95,7 @@ const Kyc = () => {
                   <p>You are verified!</p>
                 </div>
               )}
-            </>
+            </div>
           )}
         </div>
       )}
