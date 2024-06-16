@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { CgProfile } from "react-icons/cg";
+import { CgHome, CgProfile } from "react-icons/cg";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 
@@ -63,16 +63,16 @@ const ProfileDrop = () => {
                 className="py-2 cursor-pointer duration-300 hover:bg-gray-100 flex items-center gap-1 justify-center text-gray-500 text-center border-r"
                 onClick={() => (router.push("/settings?tab=general"), toggleDropdown())}
               >
-                <span>Profile</span>
+                <span>Setting</span>
                 <CgProfile />
               </li>
               <div>
                 <li
                   className="py-2 cursor-pointer duration-300 hover:bg-gray-100 flex items-center gap-1 justify-center text-gray-500 text-center"
-                  onClick={() => (router.push("/settings"), toggleDropdown())}
+                  onClick={() => (router.push("/"), toggleDropdown())}
                 >
-                  <span>Settings</span>
-                  <CiSettings />
+                  <span>Home</span>
+                  <CgHome />
                 </li>
               </div>
               <li

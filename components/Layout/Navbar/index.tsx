@@ -12,6 +12,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import gsap from "gsap";
 import { LuX } from "react-icons/lu";
 import { FaFileImage } from "react-icons/fa";
+import useUserInfo from "@/lib/hooks/useUserInfo";
+import Image from "next/image";
 
 const Navbar = () => {
   const ref = useRef<HTMLElement>(null);
@@ -21,6 +23,8 @@ const Navbar = () => {
   const asideRef = useRef<HTMLElement>(null);
 
   const { data: session } = useSession();
+
+  const { user } = useUserInfo();
 
   useEffect(() => {
     let prev = window.scrollY;
@@ -91,14 +95,17 @@ const Navbar = () => {
           <div>
             {session ? (
               <div className="flex items-center gap-2">
-                <div>
+                <div className="relative size-10 rounded-full overflow-hidden ring ring-transparent duration-300 hover:ring-white/50">
                   <Link href={"/dashboard"}>
-                    <Button
-                      text="Dashboard"
-                      className={
-                        pathname === "/" && !passed ? `text-white border-white hover:bg-white hover:text-primary` : ""
-                      }
-                    />
+                    {user && (
+                      <Image
+                        src={`${user.profilePicture}`}
+                        width={100}
+                        height={100}
+                        alt="profile"
+                        className="w-full h-full object-cover absolute top-0 left-0"
+                      />
+                    )}
                   </Link>
                 </div>
                 <RxHamburgerMenu className="cursor-pointer text-white md:hidden" size={26} onClick={openMenu} />
