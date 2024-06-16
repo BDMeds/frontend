@@ -156,7 +156,7 @@ const SettingsDoctor = () => {
 
                 <textarea
                   {...register("bio", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg capitalize bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   rows={6}
                 />
               </div>

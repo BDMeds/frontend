@@ -1,7 +1,7 @@
-import Construction from "@/components/Common/Pages/construction";
+import Appointment from "@/components/UI/Dashboard/Appointments";
 
 const Page = () => {
-  return <Construction />;
+  return <Appointment />;
 };
 
 export default Page;
