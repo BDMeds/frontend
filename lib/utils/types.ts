@@ -102,4 +102,9 @@ export type IBookAppointment = {
   reasonForVisit: string;
 };
 
+export type ChangePassword = {
+  oldPassword: string;
+  newPassword: string;
+};
+
 export type Currency = "USD" | "NGN";

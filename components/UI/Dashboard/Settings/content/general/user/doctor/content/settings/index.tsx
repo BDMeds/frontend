@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import PasswordChange from "./password";
 
 const SettingsDoctor = () => {
   const { doctor, loading: doctorLoading } = useDoctorInfo();
@@ -164,7 +165,9 @@ const SettingsDoctor = () => {
           </div>
         </form>
       </div>
-      <div className="border rounded-xl p-20"></div>
+      <div className="self-start grid gap-5">
+        <PasswordChange />
+      </div>
     </motion.div>
   );
 };

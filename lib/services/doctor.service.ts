@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi, publicApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, IDoctor, Socials } from "../utils/types";
+import { ApiResponse, ChangePassword, IDoctor, Socials } from "../utils/types";
 
 export const getSpecializations = async () => {
   try {

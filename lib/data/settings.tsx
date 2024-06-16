@@ -2,9 +2,9 @@ import { CgBell } from "react-icons/cg";
 import { CiSettings, CiWallet } from "react-icons/ci";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaRegComment } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
+import { FiShield } from "react-icons/fi";
 
-export type Tab = "general" | "account" | "doctors" | "payments" | "notifications" | "reviews";
+export type Tab = "general" | "kyc-verification" | "doctors" | "payments" | "notifications" | "reviews";
 
 type Side = {
   name: string;
@@ -47,8 +47,8 @@ export const doctorsSettings: Side[] = [
     icon: <FaRegComment />,
   },
   {
-    name: "Account",
-    tab: "account",
-    icon: <IoSettingsOutline />,
+    name: "KYC Verification",
+    tab: "kyc-verification",
+    icon: <FiShield />,
   },
 ];

@@ -84,10 +84,10 @@ const Sidebar = () => {
                         <Link
                           href={link.path}
                           className={`flex items-center rounded-full transition-colors duration-300 gap-4 mx-auto ${
-                            pathname.startsWith(link.path) ? "text-primary" : "dark:text-white hover:text-primary"
+                            link.path.startsWith(pathname) ? "text-primary" : "dark:text-white hover:text-primary"
                           } ${sidebarOpen ? "px-7 py-3" : "grid place-content-center size-8"}`}
                         >
-                          <span>{pathname.startsWith(link.path) ? link.iconFilled : link.iconOutlined}</span>
+                          <span>{link.path.startsWith(pathname) ? link.iconFilled : link.iconOutlined}</span>
 
                           {sidebarOpen && <span>{link.text}</span>}
                         </Link>
