@@ -41,3 +41,13 @@ export const changePassword = async (payload: ChangePassword) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const deleteProfilePicture = async () => {
+  try {
+    const { data } = await authApi.delete<ApiResponse>("/user/profile-picture");
+    toastSuccess("Profile picture deleted");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};

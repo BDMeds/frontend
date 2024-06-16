@@ -13,6 +13,7 @@ import { requestVerification } from "@/lib/services/auth.service";
 import ProfileImageModal from "../../../modals/profile-image-modal";
 import { toastSuccess } from "@/lib/utils/toast";
 import { defaultImageUrl } from "@/lib/data/dashboard";
+import DeleteProfilePictureModal from "../../../modals/delete-profile-picture-modal";
 
 const PatientGeneral = () => {
   const { showModal } = useModal();
@@ -41,10 +42,13 @@ const PatientGeneral = () => {
 
             <div className="flex items-center gap-3">
               <CiTrash
-                className={`text-red-500 cursor-pointer ${
-                  user?.profilePicture === defaultImageUrl ? "opacity-50 cursor-not-allowed" : ""
+                className={`text-red-500 ${
+                  user?.profilePicture === defaultImageUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
                 }`}
                 size={25}
+                onClick={
+                  user?.profilePicture === defaultImageUrl ? () => {} : () => showModal(<DeleteProfilePictureModal />)
+                }
               />
 
               <div
@@ -66,8 +70,6 @@ const PatientGeneral = () => {
             {user?.firstName} {user?.lastName}
           </p>
         </div>
-
-        <Button text="Edit" />
       </div>
 
       <div className="py-3 px-5 flex items-center justify-between">
@@ -82,7 +84,6 @@ const PatientGeneral = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button text="Edit" />
           {!user?.emailVerified && (
             <Button
               text="Verify"
@@ -99,8 +100,6 @@ const PatientGeneral = () => {
           <p className="font-bold text-lg">Language</p>
           <p className="text-gray-500">English</p>
         </div>
-
-        <Button text="Edit" />
       </div>
 
       <div className="py-3 px-5 flex items-center justify-between">
