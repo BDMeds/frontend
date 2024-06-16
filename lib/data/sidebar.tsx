@@ -36,8 +36,8 @@ const baseLinks: Link[] = [
   {
     iconOutlined: <AiOutlineMedicineBox />,
     iconFilled: <AiFillMedicineBox />,
-    text: "Consultations",
-    path: "/consultations",
+    text: "Reports",
+    path: "/reports",
   },
   {
     iconOutlined: <MdOutlineAnalytics />,
@@ -74,7 +74,7 @@ export const patientLinks: SidebarLink[] = [
         iconOutlined: <MdOutlineReport />,
         iconFilled: <MdReport />,
         text: "Report an issue",
-        path: "/report",
+        path: "/report-issue",
       },
     ],
   },
