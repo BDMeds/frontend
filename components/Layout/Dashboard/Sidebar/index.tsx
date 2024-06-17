@@ -66,12 +66,12 @@ const Sidebar = () => {
                           // onMouseOver={!sidebarOpen ? openSidebar : undefined}
                           // onMouseLeave={!sidebarOpen ? closeSidebar : undefined}
                           className={`flex items-center rounded-full transition-colors duration-300 gap-4 m-over ${
-                            pathname === link.path
+                            pathname.startsWith(link.path)
                               ? "bg-primary text-white"
                               : "dark:text-white hover:bg-zinc-300 hover:text-black "
                           } ${sidebarOpen ? "px-5 py-2" : "grid place-content-center size-8"}`}
                         >
-                          <span>{pathname === link.path ? link.iconFilled : link.iconOutlined}</span>
+                          <span>{pathname.startsWith(link.path) ? link.iconFilled : link.iconOutlined}</span>
                           {sidebarOpen && <span>{link.text}</span>}
                         </Link>
                       </li>
