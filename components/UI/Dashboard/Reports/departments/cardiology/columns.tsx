@@ -1,8 +1,10 @@
+import Button from "@/components/Common/Button";
 import { defaultImageUrl } from "@/lib/data/dashboard";
 import { HeartMetrics } from "@/lib/types/reports";
 import { faker } from "@faker-js/faker";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
+import Link from "next/link";
 
 const columns: ColumnDef<HeartMetrics>[] = [
   {
@@ -40,7 +42,19 @@ const columns: ColumnDef<HeartMetrics>[] = [
     header: () => "Blood Oxygen L",
   },
   {
-    accessorKey: "heartRate",
+    accessorKey: "bloodPressureDiastolic",
+    header: () => "Blood Pressure",
+  },
+  {
+    accessorKey: "actions",
+    header: () => "Action",
+    cell: ({ row }) => {
+      return (
+        <Link href={`/reports/${row.original.patient}`}>
+          <Button text="View Report" size="extra-small" />
+        </Link>
+      );
+    },
   },
 ];
 
