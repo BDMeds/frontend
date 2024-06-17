@@ -12,6 +12,7 @@ import Button from "@/components/Common/Button";
 import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { getBase64 } from "@/lib/helpers/fns";
 import { queryClient } from "@/lib/providers";
+import { FiX } from "react-icons/fi";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -88,7 +89,9 @@ const Kyc = () => {
           {doctor?.kycVerified ? (
             <span className="text-green-500 text-sm lowercase">(verified)</span>
           ) : (
-            <span className="text-red-500 text-sm lowercase">(Not verified)</span>
+            <span className="text-red-500 text-sm lowercase">
+              {doctor?.kycDetails?.status === "failed" ? "(rejected)" : "(Not verified)"}
+            </span>
           )}
         </p>
       )}
@@ -158,12 +161,16 @@ const Kyc = () => {
                 </div>
               ) : (
                 <div className="grid place-content-center space-y-4 text-center min-h-[20rem]">
-                  <IoShieldCheckmark size={60} className={`text-green-500 mx-auto`} />
-                  <p className="max-w-sm mx-auto">
-                    {doctor.kycVerified
-                      ? "You are verified!"
-                      : "Documents is under review... We'll notify you as soon as it's approved"}
-                  </p>
+                  {doctor.kycDetails.status !== "failed" && (
+                    <>
+                      <IoShieldCheckmark size={60} className={`text-green-500 mx-auto`} />
+                      <p className="max-w-sm mx-auto">
+                        {doctor.kycVerified
+                          ? "You are verified!"
+                          : "Documents is under review... We'll notify you as soon as it's approved"}
+                      </p>
+                    </>
+                  )}
                 </div>
               )}
             </div>

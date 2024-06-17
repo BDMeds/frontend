@@ -129,13 +129,19 @@ export type ChangePassword = {
   newPassword: string;
 };
 
-export type Kyc = {
-  idDoc: string;
-  idType: string;
-  professionalCert: string;
-};
-
 export type KycStatus = "pending" | "failed" | "successful";
+
+export type Kyc = {
+  id: string;
+  idDoc: string;
+  idType: KycID;
+  createdAt: string;
+  updatedAt: string;
+  professionalCert: string;
+  idDocPublicId: string;
+  professionalCertPublicId: string;
+  status: KycStatus;
+};
 
 export type KycGet = {
   doctor: IDoctor;

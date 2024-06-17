@@ -41,7 +41,7 @@ export const getKycId = async () => {
   }
 };
 
-export const uploadKyc = async (payload: Kyc) => {
+export const uploadKyc = async (payload: Partial<Kyc>) => {
   try {
     const { data } = await authApi.put<ApiResponse>("/doctor/kyc/update", payload);
     toastSuccess("Kyc documents uploaded successfully.");
