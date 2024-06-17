@@ -5,7 +5,11 @@ import ViewKycButton from "./view-kyc-button";
 import ViewButton from "./view-btn";
 
 import { parseISO, formatDistanceToNow } from "date-fns";
-import { CgImage } from "react-icons/cg";
+
+const getTimePast = (dateString: string) => {
+  const givenDate = parseISO(dateString);
+  return formatDistanceToNow(givenDate, { addSuffix: true });
+};
 
 const columns: ColumnDef<KycGet>[] = [
   {
@@ -25,48 +29,27 @@ const columns: ColumnDef<KycGet>[] = [
               className="w-full h-full absolute top-0 left-0"
             />
           </div>
-
-          <div className="text-sm">
-            <p className="font-bold">
-              {doctor.user.firstName} {doctor.user.lastName}
-            </p>
-            <p className="text-xs text-gray-400">{doctor.speciality}</p>
-          </div>
         </div>
       );
     },
   },
   { accessorKey: "idType", header: "ID Type" },
   {
-    accessorKey: "idDoc",
-    header: "ID Document",
+    accessorKey: "name",
+    header: "Full Name",
     cell: ({ row }) => (
-      <div>
-        <ViewButton image={row.original.idDoc} />
-      </div>
-    ),
-  },
-  {
-    accessorKey: "professionalCert",
-    header: "Professional Certificate",
-    cell: ({ row }) => (
-      <div>
-        <CgImage />
-
-        {/* <ViewButton image={row.original.professionalCert} /> */}
-      </div>
+      <p>
+        {row.original.doctor.user.firstName} {row.original.doctor.user.lastName}
+      </p>
     ),
   },
   {
     accessorKey: "createdAt",
-    header: "Date",
+    header: "Time Uploaded",
     cell: ({ row }) => {
       const { createdAt: dateString } = row.original;
 
-      const givenDate = parseISO(dateString);
-      const timePast = formatDistanceToNow(givenDate, { addSuffix: true });
-
-      return <p>{timePast}</p>;
+      return <p>{getTimePast(dateString)}</p>;
     },
   },
   { accessorKey: "more", header: "", cell: ({ row }) => <ViewKycButton {...row.original} /> },
