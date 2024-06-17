@@ -1,5 +1,5 @@
 import { formatTimePast } from "@/lib/helpers/dates";
-import { IPayment } from "@/lib/utils/types";
+import { IPayment } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
 
 const columns: ColumnDef<IPayment>[] = [

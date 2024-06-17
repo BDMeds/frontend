@@ -1,7 +1,7 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { publicApi } from "./axios-instance";
-import { ApiResponse, ITokens, IUser } from "../utils/types";
+import { ApiResponse, ITokens, IUser } from "../types";
 
 const refreshToken = async (tokens: ITokens) => {
   try {

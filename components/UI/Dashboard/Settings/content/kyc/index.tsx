@@ -2,7 +2,7 @@ import Select from "@/components/Common/Inputs/select";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 import { getKycId, uploadKyc } from "@/lib/services/doctor.service";
-import { KycID } from "@/lib/utils/types";
+import { KycID } from "@/lib/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";

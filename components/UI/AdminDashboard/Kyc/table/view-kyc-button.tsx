@@ -1,7 +1,7 @@
 import Button from "@/components/Common/Button";
 import { useModal } from "@/lib/providers/modal-provider";
 import KycModal from "../modal/kyc-modal";
-import { Kyc } from "@/lib/utils/types";
+import { Kyc } from "@/lib/types";
 import { FC } from "react";
 
 type Props = Kyc;

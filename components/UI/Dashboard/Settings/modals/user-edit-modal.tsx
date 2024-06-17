@@ -4,7 +4,7 @@ import { usePatientInfo } from "@/lib/hooks/useUserInfo";
 import { queryClient } from "@/lib/providers";
 import { useModal } from "@/lib/providers/modal-provider";
 import { updatePatient } from "@/lib/services/patient.service";
-import { IPatient, IUser } from "@/lib/utils/types";
+import { IPatient, IUser } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

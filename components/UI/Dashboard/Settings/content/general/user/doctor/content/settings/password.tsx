@@ -1,6 +1,6 @@
 import Button from "@/components/Common/Button";
 import { changePassword } from "@/lib/services/user.service";
-import { ChangePassword } from "@/lib/utils/types";
+import { ChangePassword } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 

@@ -1,5 +1,5 @@
 import { defaultImageUrl } from "@/lib/data/dashboard";
-import { Kyc } from "@/lib/utils/types";
+import { Kyc } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import { faker } from "@faker-js/faker";

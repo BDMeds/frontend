@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi, publicApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, IPatient, IUser } from "../utils/types";
+import { ApiResponse, IPatient, IUser } from "../types";
 
 export const getPatient = async () => {
   try {

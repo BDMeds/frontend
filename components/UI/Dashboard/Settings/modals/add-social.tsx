@@ -3,7 +3,7 @@ import Modal from "@/components/Common/Modal";
 import { queryClient } from "@/lib/providers";
 import { useModal } from "@/lib/providers/modal-provider";
 import { addDoctorSocials } from "@/lib/services/doctor.service";
-import { Socials } from "@/lib/utils/types";
+import { Socials } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaRegSave } from "react-icons/fa";

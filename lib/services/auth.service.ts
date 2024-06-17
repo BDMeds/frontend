@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { publicApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { IDoctorRegister, IPatientRegister } from "../utils/types";
+import { IDoctorRegister, IPatientRegister } from "../types";
 
 export const userRegister = async ({
   data,

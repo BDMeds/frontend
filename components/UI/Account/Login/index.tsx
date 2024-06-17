@@ -3,7 +3,7 @@
 import Button from "@/components/Common/Button";
 import { dataMutate } from "@/lib/services/dummy";
 import { toastError, toastSuccess } from "@/lib/utils/toast";
-import { ILoginData } from "@/lib/utils/types";
+import { ILoginData } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import Image from "next/image";

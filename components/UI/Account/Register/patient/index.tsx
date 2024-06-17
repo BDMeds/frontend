@@ -1,5 +1,5 @@
 import Button from "@/components/Common/Button";
-import { IPatientRegister } from "@/lib/utils/types";
+import { IPatientRegister } from "@/lib/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";

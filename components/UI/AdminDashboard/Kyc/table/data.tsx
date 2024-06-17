@@ -1,4 +1,4 @@
-import { Kyc } from "@/lib/utils/types";
+import { Kyc } from "@/lib/types";
 
 const dummyKycData: Kyc[] = [
   {

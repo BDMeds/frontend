@@ -4,7 +4,7 @@ import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 import { queryClient } from "@/lib/providers";
 import { useModal } from "@/lib/providers/modal-provider";
 import { updateData } from "@/lib/services/doctor.service";
-import { IDoctor } from "@/lib/utils/types";
+import { IDoctor } from "@/lib/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";

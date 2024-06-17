@@ -5,7 +5,7 @@ import { Tag } from "..";
 import Image from "next/image";
 import { FaChevronLeft } from "react-icons/fa";
 import Button from "@/components/Common/Button";
-import { IDoctorRegister } from "@/lib/utils/types";
+import { IDoctorRegister } from "@/lib/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { MdFemale, MdMale } from "react-icons/md";
