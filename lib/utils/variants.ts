@@ -1,7 +1,8 @@
 import { Variants } from "framer-motion";
 
 export const parentVariant: Variants = {
-  animate: { transition: { staggerChildren: 0.08 } },
+  initial: { opacity: 0 },
+  animate: { transition: { staggerChildren: 0.02 } },
   exit: { opacity: 0 },
 };
 

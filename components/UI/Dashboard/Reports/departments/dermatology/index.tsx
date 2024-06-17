@@ -1,5 +1,5 @@
-const DeptDetail = () => {
+const DermatologyReport = () => {
   return <div></div>;
 };
 
-export default DeptDetail;
+export default DermatologyReport;

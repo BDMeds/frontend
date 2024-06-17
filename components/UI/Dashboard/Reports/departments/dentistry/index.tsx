@@ -1,5 +1,5 @@
-const DeptDetail = () => {
+const DentistReport = () => {
   return <div></div>;
 };
 
-export default DeptDetail;
+export default DentistReport;

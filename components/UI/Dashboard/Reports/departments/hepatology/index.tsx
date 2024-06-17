@@ -1,5 +1,5 @@
-const DeptDetail = () => {
+const HepatologyReport = () => {
   return <div></div>;
 };
 
-export default DeptDetail;
+export default HepatologyReport;
