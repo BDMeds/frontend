@@ -1,5 +1,7 @@
 import { signOut } from "next-auth/react";
 import React from "react";
+import { AppointmentDocument, IUser } from "../types";
+import { EventType } from "../store/event.store";
 
 export const logout = async () => {
   await signOut();
@@ -35,6 +37,28 @@ export const getBase64 = (file: File) => {
       // @ts-ignore
       baseURL = reader.result;
       resolve(baseURL);
+    };
+  });
+};
+
+export const mapAppointmentsToEvents = (
+  appointments: AppointmentDocument[],
+  user: IUser
+): EventType[] => {
+  return appointments.map((appointment) => {
+    let partnerName: string;
+    if (user.role === "patient") {
+      partnerName = `Dr. ${appointment.doctor.user.firstName}`;
+    } else {
+      partnerName = appointment.patient.user.firstName;
+    }
+
+    return {
+      id: appointment._id,
+      title: `Session with ${partnerName}`,
+      allDay: false,
+      start: appointment.startTime,
+      end: appointment.endTime,
     };
   });
 };

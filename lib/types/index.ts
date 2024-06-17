@@ -1,4 +1,8 @@
-import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
+import {
+  AppointmentModeEnum,
+  AppointmentStatusEnum,
+  DepartmentsEnum,
+} from "../enums";
 import { DiagnosisDocument } from "./reports";
 
 export type KycID =
@@ -156,8 +160,8 @@ export type Department =
   | "Dermatology (Skin)";
 
 export type Appointment = {
-  patient?: string;
-  doctor: string;
+  patient: IPatient;
+  doctor: IDoctor;
   appointmentDate: Date;
   department: Department;
   startTime: Date;
