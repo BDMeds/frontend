@@ -1,4 +1,4 @@
-import { MdDashboard, MdOutlineDashboard, MdOutlineAnalytics, MdAnalytics, MdCreate, MdReport } from "react-icons/md";
+import { MdDashboard, MdOutlineDashboard, MdOutlineAnalytics, MdAnalytics, MdReport } from "react-icons/md";
 import { MdOutlineCurrencyExchange } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { MdOutlineReport } from "react-icons/md";
@@ -8,6 +8,7 @@ import { TbMedicineSyrup } from "react-icons/tb";
 import { GiDoctorFace } from "react-icons/gi";
 import { LuUsers } from "react-icons/lu";
 import { FaShieldAlt } from "react-icons/fa";
+import { IoCart, IoCartOutline } from "react-icons/io5";
 
 type Link = {
   text: string;
@@ -123,6 +124,12 @@ export const adminLinks: SidebarLink[] = [
         iconFilled: <MdAnalytics />,
         text: "Analytics",
         path: "/s/analytics",
+      },
+      {
+        iconOutlined: <IoCartOutline />,
+        iconFilled: <IoCart />,
+        text: "Store",
+        path: "/s/store",
       },
       {
         iconOutlined: <MdOutlineReport />,
