@@ -1,7 +1,13 @@
-import Construction from "@/components/Common/Pages/construction";
+import AdminKyc from "@/components/UI/AdminDashboard/Kyc";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'KYC',
+}
 
 const Page = () => {
-  return <Construction />;
+  return <AdminKyc />;
 };
 
 export default Page;

@@ -130,4 +130,4 @@ export type Kyc = {
   idDoc: string;
   idType: string;
   professionalCert: string;
-};
+} & IDef;
