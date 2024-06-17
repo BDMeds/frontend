@@ -50,3 +50,23 @@ export const uploadKyc = async (payload: Kyc) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const rejectKyc = async (doctorId: string) => {
+  try {
+    const { data } = await authApi.post<ApiResponse>(`/doctor/${doctorId}/kyc/reject`);
+    toastSuccess("Kyc rejected successfully.");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
+
+export const approveKyc = async (doctorId: string) => {
+  try {
+    const { data } = await authApi.post<ApiResponse>(`/doctor/${doctorId}/kyc/verify`);
+    toastSuccess("Kyc approved successfully.");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
