@@ -75,6 +75,7 @@ export type IDoctor = {
   speciality: string;
   qualifications: [];
   kycVerified: boolean;
+  isAvailable: boolean;
   bio: string;
   availableDays: AvailableDay[];
   kycDetails: Kyc | null;
@@ -189,4 +190,16 @@ export type Consultation = {
   diagnosis: DiagnosisDocument;
   diagnosisRef: string; /// come back to this
   consultationNote?: string;
+};
+
+export type KycGet = {
+  doctor: IDoctor;
+  idDoc: string;
+  idDocPublicId: string;
+  idType: KycID;
+  professionalCert: string;
+  status?: "pending" | "failed" | "successful";
+  createdAt: string;
+  updatedAt: string;
+  id: string;
 };
