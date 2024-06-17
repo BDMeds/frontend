@@ -82,14 +82,16 @@ const Kyc = () => {
 
   return (
     <motion.div {...opacityVariant} className="space-y-4 p-4">
-      <p className="font-bold text-lg uppercase">
-        Kyc Verification{" "}
-        {doctor?.kycVerified ? (
-          <span className="text-green-500 text-sm lowercase">(verified)</span>
-        ) : (
-          <span className="text-red-500 text-sm lowercase">(Not verified)</span>
-        )}
-      </p>
+      {!doctor?.kycDetails && (
+        <p className="font-bold text-lg uppercase">
+          Kyc Verification{" "}
+          {doctor?.kycVerified ? (
+            <span className="text-green-500 text-sm lowercase">(verified)</span>
+          ) : (
+            <span className="text-red-500 text-sm lowercase">(Not verified)</span>
+          )}
+        </p>
+      )}
 
       {loading ? (
         <div className="space-y-4">
@@ -155,7 +157,7 @@ const Kyc = () => {
                   <Button text="Continue" variant="filled" onClick={submit} loading={uploading} />
                 </div>
               ) : (
-                <div className="grid place-content-center space-y-4 text-center min-h-[15rem]">
+                <div className="grid place-content-center space-y-4 text-center min-h-[20rem]">
                   <IoShieldCheckmark size={60} className={`text-green-500 mx-auto`} />
                   <p className="max-w-sm mx-auto">
                     {doctor.kycVerified

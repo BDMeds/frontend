@@ -74,7 +74,7 @@ export type IDoctor = {
   kycVerified: boolean;
   bio: string;
   availableDays: AvailableDay[];
-  kycDetails: null;
+  kycDetails: Kyc | null;
   _id: string;
   user: IUser;
   address?: Address;
@@ -130,4 +130,5 @@ export type Kyc = {
   idDoc: string;
   idType: string;
   professionalCert: string;
+  status?: "pending" | "failed" | "successful";
 };

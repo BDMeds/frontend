@@ -4,9 +4,14 @@ import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import NotificationDrop from "./dropdowns/notification";
 import ProfileDrop from "./dropdowns/profile";
+import { useRouter } from "next/navigation";
+import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 
 const DNavbar = () => {
   const { toggleSidebar } = useGlobalStore();
+
+  const router = useRouter();
+  const { doctor, loading } = useDoctorInfo();
 
   return (
     <nav className="bg-white w-full p-[0.5rem] border-b flex z-[1000] items-center justify-between sticky top-0 left-0">
@@ -25,6 +30,14 @@ const DNavbar = () => {
           <p className="text-xs text-gray-500">EN</p>
         </div>
         <NotificationDrop />
+        {doctor && !doctor.kycDetails && (
+          <button
+            className="text-red-500 text-xs rounded-full p-2 bg-red-200/20 cursor-pointer hover:bg-red-200/50 duration-300"
+            onClick={() => router.push("/settings?tab=kyc-verification")}
+          >
+            Not verified
+          </button>
+        )}
         <ProfileDrop />
       </div>
     </nav>

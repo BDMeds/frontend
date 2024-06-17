@@ -4,7 +4,7 @@ import DNavbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { toastError } from "@/lib/utils/toast";
+import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { useEffect } from "react";
 
 type Props = { children: Readonly<React.ReactNode> };
@@ -19,6 +19,11 @@ const DashboardWrapper = ({ children }: Props) => {
     if (status === "unauthenticated") {
       toastError("You need to login to access this page", { id: "unauthorized-login" });
       router.push("/account/login");
+    }
+
+    if (session?.user.role === "admin") {
+      toastSuccess("You're an admin");
+      router.replace("/s/dashboard");
     }
   }, [session, status]);
 
