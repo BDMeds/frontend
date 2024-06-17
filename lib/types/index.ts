@@ -144,18 +144,6 @@ export type Kyc = {
   status: KycStatus;
 };
 
-export type KycGet = {
-  doctor: IDoctor;
-  idDoc: string;
-  idType: string;
-  idDocPublicId: string;
-  professionalCert: string;
-  professionalCertPublicId: string;
-  status: KycStatus;
-  createdAt: string;
-  updatedAt: string;
-};
-
 export type Department =
   | "Cardiology (Heart)"
   | "Dentistry (Teeth and Oral Health)"
