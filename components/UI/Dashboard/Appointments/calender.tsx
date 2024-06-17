@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import events from "./events";
+import dummyEvents from "./events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { toastSuccess } from "@/lib/utils/toast";
 import format from "date-fns/format";
@@ -10,6 +10,9 @@ import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import enUS from "date-fns/locale/en-US";
+import { useModal } from "@/lib/providers/modal-provider";
+import AppointmentModal from "./modal";
+import useEventsStore from "@/lib/store/event.store";
 
 const locales = {
   "en-US": enUS,
@@ -24,10 +27,17 @@ const localizer = dateFnsLocalizer({
 });
 
 const BigCalendar = () => {
-  const [eventsData, setEventsData] = useState<any>(events);
+  const { showModal } = useModal();
+
+  const { events, setEvents } = useEventsStore();
+
+  useEffect(() => {
+    setEvents(dummyEvents);
+  }, [dummyEvents]);
 
   const handleSelect = ({ start, end }: { start: any; end: any }) => {
     toastSuccess(`Event from ${new Date(start).toLocaleString()} to ${new Date(end).toLocaleString()}`);
+    showModal(<AppointmentModal />);
   };
 
   return (
@@ -38,7 +48,7 @@ const BigCalendar = () => {
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
-        events={eventsData}
+        events={events}
         style={{ height: "100vh" }}
         // onSelectEvent={(event) => alert(event.title)}
         onSelectSlot={handleSelect}

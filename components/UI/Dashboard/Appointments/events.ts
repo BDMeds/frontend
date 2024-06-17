@@ -1,18 +1,20 @@
+import { EventType } from "@/lib/store/event.store";
+
 const now = new Date();
 
-const events = [
+const events: EventType[] = [
   {
     id: 0,
     title: "All Day Event very long title",
     allDay: true,
-    start: new Date(2015, 3, 0),
-    end: new Date(2015, 3, 1),
+    start: new Date(2024, 6, 0),
+    end: new Date(2024, 6, 1),
   },
   {
     id: 1,
     title: "Long Event",
-    start: new Date(2015, 3, 7),
-    end: new Date(2015, 3, 10),
+    start: new Date(2024, 6, 7),
+    end: new Date(2024, 6, 10),
   },
 
   {
@@ -40,21 +42,21 @@ const events = [
     title: "Conference",
     start: new Date(2015, 3, 11),
     end: new Date(2015, 3, 13),
-    desc: "Big conference for important people",
+    description: "Big conference for important people",
   },
   {
     id: 6,
     title: "Meeting",
     start: new Date(2015, 3, 12, 10, 30, 0, 0),
     end: new Date(2015, 3, 12, 12, 30, 0, 0),
-    desc: "Pre-meeting meeting, to prepare for the meeting",
+    description: "Pre-meeting meeting, to prepare for the meeting",
   },
   {
     id: 7,
     title: "Lunch",
     start: new Date(2015, 3, 12, 12, 0, 0, 0),
     end: new Date(2015, 3, 12, 13, 0, 0, 0),
-    desc: "Power lunch",
+    description: "Power lunch",
   },
   {
     id: 8,
@@ -67,7 +69,7 @@ const events = [
     title: "Happy Hour",
     start: new Date(2015, 3, 12, 17, 0, 0, 0),
     end: new Date(2015, 3, 12, 17, 30, 0, 0),
-    desc: "Most important meal of the day",
+    description: "Most important meal of the day",
   },
   {
     id: 10,
@@ -128,54 +130,6 @@ const events = [
     title: "Point in Time Event",
     start: now,
     end: now,
-  },
-  {
-    id: 16,
-    title: "Video Record",
-    start: new Date(2015, 3, 14, 15, 30, 0),
-    end: new Date(2015, 3, 14, 19, 0, 0),
-  },
-  {
-    id: 17,
-    title: "Dutch Song Producing",
-    start: new Date(2015, 3, 14, 16, 30, 0),
-    end: new Date(2015, 3, 14, 20, 0, 0),
-  },
-  {
-    id: 18,
-    title: "Itaewon Halloween Meeting",
-    start: new Date(2015, 3, 14, 16, 30, 0),
-    end: new Date(2015, 3, 14, 17, 30, 0),
-  },
-  {
-    id: 19,
-    title: "Online Coding Test",
-    start: new Date(2015, 3, 14, 17, 30, 0),
-    end: new Date(2015, 3, 14, 20, 30, 0),
-  },
-  {
-    id: 20,
-    title: "An overlapped Event",
-    start: new Date(2015, 3, 14, 17, 0, 0),
-    end: new Date(2015, 3, 14, 18, 30, 0),
-  },
-  {
-    id: 21,
-    title: "Phone Interview",
-    start: new Date(2015, 3, 14, 17, 0, 0),
-    end: new Date(2015, 3, 14, 18, 30, 0),
-  },
-  {
-    id: 22,
-    title: "Cooking Class",
-    start: new Date(2015, 3, 14, 17, 30, 0),
-    end: new Date(2015, 3, 14, 19, 0, 0),
-  },
-  {
-    id: 23,
-    title: "Go to the gym",
-    start: new Date(2015, 3, 14, 18, 30, 0),
-    end: new Date(2015, 3, 14, 20, 0, 0),
   },
 ];
 
