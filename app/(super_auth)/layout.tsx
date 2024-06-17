@@ -1,4 +1,4 @@
-import DashboardWrapper from "@/components/Layout/Dashboard";
+import AdminDashboardWrapper from "@/components/Layout/Dashboard/admin-index";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const Layout = ({ children }: { children: Readonly<React.ReactNode> }) => {
-  return <DashboardWrapper>{children}</DashboardWrapper>;
+  return <AdminDashboardWrapper>{children}</AdminDashboardWrapper>;
 };
 
 export default Layout;

@@ -7,6 +7,7 @@ import { AiOutlineMedicineBox, AiFillMedicineBox } from "react-icons/ai";
 import { TbMedicineSyrup } from "react-icons/tb";
 import { GiDoctorFace } from "react-icons/gi";
 import { LuUsers } from "react-icons/lu";
+import { FaShieldAlt } from "react-icons/fa";
 
 type Link = {
   text: string;
@@ -128,6 +129,12 @@ export const adminLinks: SidebarLink[] = [
         iconFilled: <MdReport />,
         text: "Reports",
         path: "/s/reports",
+      },
+      {
+        iconOutlined: <FaShieldAlt />,
+        iconFilled: <FaShieldAlt />,
+        text: "KYC",
+        path: "/s/kyc",
       },
     ],
   },
