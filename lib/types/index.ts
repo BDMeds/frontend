@@ -1,3 +1,5 @@
+import { AppointmentMode, AppointmentStatus, Departments } from "../enums";
+
 export type KycID =
   | "National Identification Card"
   | "International Passport"
@@ -131,4 +133,22 @@ export type Kyc = {
   idType: string;
   professionalCert: string;
   status?: "pending" | "failed" | "successful";
+};
+
+type Appointment = {
+  patient?: string; // Optional because it's not required in the schema
+  doctor: string;
+  appointmentDate: Date;
+  department: Departments;
+  startTime: Date;
+  endTime: Date;
+  status: AppointmentStatus;
+  mode: AppointmentMode;
+  // invoice later
+};
+
+export type AppointmentDocument = Appointment & {
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
