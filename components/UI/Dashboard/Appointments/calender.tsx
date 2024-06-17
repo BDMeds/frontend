@@ -31,9 +31,9 @@ const BigCalendar = () => {
 
   const { events, setEvents } = useEventsStore();
 
-  useEffect(() => {
-    setEvents(dummyEvents);
-  }, [dummyEvents]);
+  // useEffect(() => {
+  //   setEvents(dummyEvents);
+  // }, [dummyEvents]);
 
   const handleSelect = ({ start, end }: { start: any; end: any }) => {
     toastSuccess(`Event from ${new Date(start).toLocaleString()} to ${new Date(end).toLocaleString()}`);
