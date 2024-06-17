@@ -1,7 +1,5 @@
-import { IPatient } from ".";
-
 export type HeartMetrics = {
-  patient: IPatient;
+  patient: string;
   heartHealthStatus?: string;
   heartRate?: number; // in bpm
   bloodPressureSystolic?: number; // in mmHg
@@ -16,7 +14,7 @@ export type HeartMetrics = {
 };
 
 export type BrainMetrics = {
-  patient: IPatient;
+  patient: string;
   brainHealthStatus?: string;
   eegResults?: number; // in Hertz (Hz)
   cognitiveFunctionTestScore?: {
@@ -26,7 +24,7 @@ export type BrainMetrics = {
 };
 
 export type EyesMetrics = {
-  patient: IPatient;
+  patient: string;
   visionTestResult?: string; // Visual acuity (e.g., 20/20)
   ocularPressure?: number; // mmHg
   contactLensBaseCurve?: number; // Millimeters (mm)
@@ -34,14 +32,14 @@ export type EyesMetrics = {
 };
 
 export type BoneMetrics = {
-  patient: IPatient;
+  patient: string;
   boneHealthStatus?: string;
   rangeOfMotion?: number; // in degrees
   totalFractures?: number;
 };
 
 export type KidneyMetrics = {
-  patient: IPatient;
+  patient: string;
   kidneyHealthStatus?: string; // Descriptive
   creatinine?: number; // Milligrams per deciliter (mg/dL)
   BUN?: number; // Milligrams per deciliter (mg/dL)
@@ -51,7 +49,7 @@ export type KidneyMetrics = {
 };
 
 export type LiverMetrics = {
-  patient: IPatient;
+  patient: string;
   liverHealthStatus?: string;
   altLevel?: number; // Units per liter (U/L)
   astLevel?: number; // Units per liter (U/L)
@@ -60,7 +58,7 @@ export type LiverMetrics = {
 };
 
 export type TeethMetrics = {
-  patient: IPatient;
+  patient: string;
   dentalHealthStatus?: string; // Descriptive
   cavitiesCount?: number; // Count
   gumRecession?: number; // Millimeters (mm)
