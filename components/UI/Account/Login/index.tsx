@@ -70,9 +70,9 @@ const Login = () => {
           <form onSubmit={handleSubmit(submit)} className="mx-auto">
             <div className="space-y-4">
               <div className="space-y-1">
-                <label htmlFor="email">Email or Phone</label>
+                <label htmlFor="emailOrPhone">Email or Phone</label>
                 <input
-                  type="email"
+                  type="text"
                   {...register("emailOrPhone", { required: true })}
                   className={`w-full bg-transparent p-2 border rounded-lg bg-white ${
                     errors.emailOrPhone ? "border-red-500/50" : ""

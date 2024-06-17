@@ -156,14 +156,14 @@ export type Department =
   | "Dermatology (Skin)";
 
 export type Appointment = {
-  patient?: string; // Optional because it's not required in the schema
+  patient?: string;
   doctor: string;
   appointmentDate: Date;
-  department: DepartmentsEnum;
+  department: Department;
   startTime: Date;
   endTime: Date;
-  status: AppointmentStatusEnum;
-  mode: AppointmentModeEnum;
+  status: "pending" | "successful" | "cancelled";
+  mode: "online" | "physical";
   // invoice later
 };
 
