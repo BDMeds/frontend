@@ -50,3 +50,12 @@ export const uploadKyc = async (payload: Kyc) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const getUnverifiedKyc = async () => {
+  try {
+    const { data } = await publicApi.get<ApiResponse<string[]>>("/doctor/kyc/unverified");
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
