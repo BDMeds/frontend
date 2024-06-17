@@ -14,14 +14,15 @@ import { motion } from "framer-motion";
 import { opacityVariant, parentVariant } from "@/lib/utils/variants";
 import Loader from "../Loaders";
 import { CgArrowLeft, CgArrowRight } from "react-icons/cg";
+import { FcEmptyBattery } from "react-icons/fc";
 
 interface TableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  isLoading?: boolean;
+  loading?: boolean;
 }
 
-export default function TableComponent<TData, TValue>({ data, columns, isLoading }: TableProps<TData, TValue>) {
+export default function TableComponent<TData, TValue>({ data, columns, loading }: TableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
   const [filter, setFilter] = useState("");
 
@@ -66,7 +67,7 @@ export default function TableComponent<TData, TValue>({ data, columns, isLoading
           ))}
         </thead>
         <tbody className="w-full">
-          {isLoading ? (
+          {loading ? (
             <div className={"flex items-center justify-center text-center py-5"}>
               <div className={"space-y-4"}>
                 <div className={"grid place-content-center"}>
@@ -110,7 +111,7 @@ export default function TableComponent<TData, TValue>({ data, columns, isLoading
                 <div className={"text-center py-10 flex items-center justify-center"}>
                   <div className={"space-y-4 text-gray-500"}>
                     <div className={"grid place-content-center"}>
-                      <ImSad size={50} />
+                      <FcEmptyBattery size={50} />
                     </div>
                     <p className="text-gray-500">No data.</p>
                   </div>

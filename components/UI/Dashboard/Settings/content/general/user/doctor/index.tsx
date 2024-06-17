@@ -49,7 +49,7 @@ const DoctorGeneral = () => {
               loading ? "animate-skeleton" : ""
             } backdrop-blur-xl relative overflow-hidden rounded-full ml-5`}
           >
-            {doctor && (
+            {doctor?.user && (
               <Image
                 src={`${doctor?.user.profilePicture}`}
                 width={100}

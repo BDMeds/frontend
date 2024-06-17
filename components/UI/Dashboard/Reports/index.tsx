@@ -5,8 +5,8 @@ import { Department } from "@/lib/types";
 import { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { fadeToTopVariant, opacityVariant, parentVariant } from "@/lib/utils/variants";
-import CardiologyReport from "./departments/cadiology";
+import { fadeToTopVariant, opacityVariant } from "@/lib/utils/variants";
+import CardiologyReport from "./departments/cardiology";
 import { CgChevronLeft } from "react-icons/cg";
 
 const Reports = () => {

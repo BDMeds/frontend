@@ -133,7 +133,20 @@ export type Kyc = {
   idDoc: string;
   idType: string;
   professionalCert: string;
-  status?: "pending" | "failed" | "successful";
+};
+
+export type KycStatus = "pending" | "failed" | "successful";
+
+export type KycGet = {
+  doctor: IDoctor;
+  idDoc: string;
+  idType: string;
+  idDocPublicId: string;
+  professionalCert: string;
+  professionalCertPublicId: string;
+  status: KycStatus;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type Department =

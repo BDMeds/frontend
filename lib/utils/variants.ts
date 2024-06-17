@@ -1,14 +1,13 @@
 import { Variants } from "framer-motion";
 
 export const parentVariant: Variants = {
-  initial: { opacity: 0 },
-  animate: { transition: { staggerChildren: 0.02 } },
-  exit: { opacity: 0 },
+  // initial: { opacity: 0 },
+  animate: { transition: { staggerChildren: 0.1 } },
 };
 
 export const opacityVariant: Variants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.05 } },
+  animate: { opacity: 1, transition: { duration: 0.08 } },
   exit: { opacity: 0 },
 };
 
