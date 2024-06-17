@@ -1,4 +1,5 @@
-import { AppointmentMode, AppointmentStatus, Departments } from "../enums";
+import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
+import { DiagnosisDocument } from "./reports";
 
 export type KycID =
   | "National Identification Card"
@@ -135,15 +136,26 @@ export type Kyc = {
   status?: "pending" | "failed" | "successful";
 };
 
-type Appointment = {
+export type Department =
+  | "Cardiology (Heart)"
+  | "Dentistry (Teeth and Oral Health)"
+  | "Neurology (Nervous System)"
+  | "Orthopedics (Musculoskeletal System)"
+  | "Optometry (Eye and Vision Care)"
+  | "Psychotherapy (Mental Health)"
+  | "Nephrology (Kidneys)"
+  | "Hepatology (Liver)"
+  | "Dermatology (Skin)";
+
+export type Appointment = {
   patient?: string; // Optional because it's not required in the schema
   doctor: string;
   appointmentDate: Date;
-  department: Departments;
+  department: DepartmentsEnum;
   startTime: Date;
   endTime: Date;
-  status: AppointmentStatus;
-  mode: AppointmentMode;
+  status: AppointmentStatusEnum;
+  mode: AppointmentModeEnum;
   // invoice later
 };
 
@@ -151,4 +163,11 @@ export type AppointmentDocument = Appointment & {
   _id: string;
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type Consultation = {
+  appointment: AppointmentDocument;
+  diagnosis: DiagnosisDocument;
+  diagnosisRef: string; /// come back to this
+  consultationNote?: string;
 };

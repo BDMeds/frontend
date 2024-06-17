@@ -65,3 +65,21 @@ export type TeethMetrics = {
   plaqueIndex?: number; // Score
   recentProcedures?: string; // Descriptive
 };
+
+type SkinMetrics = {
+  patient: string;
+  skinHealthStatus?: string; // Descriptive
+  lesionCount?: number; // Count
+  lesionSize?: number; // Millimeters (mm)
+  biopsyResults?: string; // Descriptive
+};
+
+export type DiagnosisDocument =
+  | BoneMetrics
+  | BrainMetrics
+  | EyesMetrics
+  | HeartMetrics
+  | KidneyMetrics
+  | LiverMetrics
+  | SkinMetrics
+  | TeethMetrics;

@@ -1,7 +1,7 @@
-import Construction from "@/components/Common/Pages/construction";
+import Reports from "@/components/UI/Dashboard/Reports";
 
 const Page = () => {
-  return <Construction />;
+  return <Reports />;
 };
 
 export default Page;
