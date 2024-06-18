@@ -5,34 +5,53 @@ import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 const Hero = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      gsap
+        .timeline()
+        .from(".hero-up", { opacity: 0, y: "100%", stagger: 0.2 })
+        .from(".hero-img", { opacity: 0, y: "10%" }, 0.4);
+    },
+    { scope: ref }
+  );
+
   return (
     <header className="relative">
       <div className="container min-h-[calc(100vh+140px)]">
         <div className="absolute top-0 left-0 pt-28 lg:pt-0 w-full h-full bg-gradient-to-tr from-primary via-[#9076e6] to-[#451dc6] overflow-hidden">
-          <div className="container w-full h-full grid lg:grid-cols-2 gap-10 items-center z-10">
+          <div className="container w-full h-full grid lg:grid-cols-2 gap-10 items-center z-10" ref={ref}>
             <div className="text-white space-y-8 lg:-mt-24">
               <div className="space-y-3 max-w-2xl text-center lg:text-start">
-                <h1 className="font-extrabold md:text-8xl lg:text-7xl text-6xl">Meet The Best Doctors</h1>
-                <p className="text-gray-200">
-                  We are committed to providing you with the best medical and healthcare services to help you live
-                  healthier and happier.
-                </p>
+                <div className="overflow-hidden">
+                  <h1 className="font-extrabold md:text-8xl lg:text-7xl text-6xl hero-up">Meet The Best Doctors</h1>
+                </div>
+                <div className="overflow-hidden">
+                  <p className="text-gray-200 hero-up">
+                    We are committed to providing you with the best medical and healthcare services to help you live
+                    healthier and happier.
+                  </p>
+                </div>
               </div>
-              <div className="w-fit mx-auto lg:mx-0">
-                <Link href={"/account/register"}>
-                  <Button
-                    text="Get Started"
-                    icon={<LuChevronRight />}
-                    className="text-white border-white hover:bg-white hover:text-primary"
-                  />
-                </Link>
+              <div className="overflow-hidden">
+                <div className="w-fit mx-auto lg:mx-0 hero-up">
+                  <Link href={"/account/register"}>
+                    <Button
+                      text="Get Started"
+                      icon={<LuChevronRight />}
+                      className="text-white border-white hover:bg-white hover:text-primary"
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
 
             <div className="h-full flex items-end justify-center lg:-mt-14">
-              <Image src={"/images/doc_hero.png"} alt="hero" width={500} height={600} />
+              <Image src={"/images/doc_hero.png"} alt="hero" width={500} height={600} className="hero-img" />
             </div>
           </div>
         </div>
