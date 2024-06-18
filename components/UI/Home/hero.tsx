@@ -3,6 +3,8 @@ import Button from "@/components/Common/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
   return (
