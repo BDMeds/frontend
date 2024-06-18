@@ -1,4 +1,8 @@
-import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
+import {
+  AppointmentModeEnum,
+  AppointmentStatusEnum,
+  DepartmentsEnum,
+} from "../enums";
 import { DiagnosisDocument } from "./reports";
 
 export type KycID =
@@ -12,7 +16,7 @@ export type Currency = "USD" | "NGN";
 
 export type Role = "patient" | "doctor" | "admin";
 
-export type Gender = "male" | "gender";
+export type Gender = "male" | "female";
 
 export type ApiResponse<T = null> = {
   success: boolean;
@@ -163,6 +167,8 @@ export type Appointment = {
   startTime: Date;
   endTime: Date;
   status: "pending" | "successful" | "cancelled";
+  doctorStatus: "pending" | "successful" | "cancelled";
+  patientStatus: "pending" | "successful" | "cancelled";
   mode: "online" | "physical";
   // invoice later
 };
