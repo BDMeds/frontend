@@ -191,3 +191,10 @@ export type KycGet = {
   updatedAt: string;
   id: string;
 };
+
+export type BookAppointment = {
+  appointmentDate: string;
+  startTime: string;
+  endTime: string;
+  mode: string;
+};

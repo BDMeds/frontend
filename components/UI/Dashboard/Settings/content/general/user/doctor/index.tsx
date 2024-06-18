@@ -68,7 +68,7 @@ const DoctorGeneral = () => {
               </>
             ) : (
               <>
-                {doctor && (
+                {doctor && doctor.user && (
                   <>
                     <p className="font-bold">
                       {doctor.user.firstName} {doctor.user.lastName}
