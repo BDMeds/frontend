@@ -41,7 +41,8 @@ const AppointmentModal = () => {
   const { update: updateAppointment } = useAppointment();
 
   // specialization
-  const [department, setDepartment] = useState<Department>("Cardiology (Heart)");
+  const [department, setDepartment] =
+    useState<Department>("Cardiology (Heart)");
 
   const [search, setSearch] = useState("");
 
@@ -88,11 +89,16 @@ const AppointmentModal = () => {
     >
       <>
         <div className="flex items-center justify-between">
-          <p className="font-bold">{infoComplete ? "Select Doctor" : "New Appointment"}</p>
+          <p className="font-bold">
+            {infoComplete ? "Select Doctor" : "New Appointment"}
+          </p>
 
           <div className="flex items-center gap-2">
             {infoComplete && (
-              <button className="text-primary" onClick={() => setInfoComplete(false)}>
+              <button
+                className="text-primary"
+                onClick={() => setInfoComplete(false)}
+              >
                 Back
               </button>
             )}
@@ -104,7 +110,11 @@ const AppointmentModal = () => {
         <AnimatePresence mode="wait" initial={false}>
           {!infoComplete ? (
             <>
-              <motion.form {...opacityVariant} onSubmit={handleSubmit(submit)} className="grid gap-4">
+              <motion.form
+                {...opacityVariant}
+                onSubmit={handleSubmit(submit)}
+                className="grid gap-4"
+              >
                 <div className="space-y-1">
                   <label>Appointment Date</label>
                   <input
@@ -138,7 +148,9 @@ const AppointmentModal = () => {
                         key={id}
                         onClick={() => setMode(m as "physical" | "online")}
                         className={`p-2 text-center capitalize rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                          m === mode ? "bg-primary text-white" : "bg-white border border-gray-200"
+                          m === mode
+                            ? "bg-primary text-white"
+                            : "bg-white border border-gray-200"
                         }`}
                       >
                         <p>{m}</p>
@@ -168,7 +180,12 @@ const AppointmentModal = () => {
                   <Select
                     label="Department"
                     onValueChange={updateDepartment}
-                    options={departments?.map((dep) => ({ value: dep.dept, label: dep.dept })) ?? []}
+                    options={
+                      departments?.map((dep) => ({
+                        value: dep.dept,
+                        label: dep.dept,
+                      })) ?? []
+                    }
                     placeholder="Select specialization"
                   />
                 </div>
