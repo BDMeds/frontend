@@ -41,10 +41,7 @@ export const getBase64 = (file: File) => {
   });
 };
 
-export const mapAppointmentsToEvents = (
-  appointments: AppointmentDocument[],
-  user: IUser
-): EventType[] => {
+export const mapAppointmentsToEvents = (appointments: AppointmentDocument[], user: IUser): EventType[] => {
   return appointments.map((appointment) => {
     let partnerName: string;
     if (user?.role === "patient") {

@@ -7,6 +7,9 @@ import { useModal } from "@/lib/providers/modal-provider";
 import AppointmentModal from "./modal";
 import { GoPlus } from "react-icons/go";
 import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
+import { getAppointmentsPatient } from "@/lib/services/appointment.service";
+import { useEffect } from "react";
 
 const BigCalendar = dynamic(() => import("./calender"), {
   ssr: false,
@@ -26,6 +29,18 @@ const BigCalendar = dynamic(() => import("./calender"), {
 const Appointment = () => {
   const { showModal } = useModal();
   const { data: session } = useSession();
+
+  const { data: appointments, isPending: loading } = useQuery({
+    queryKey: ["appointments"],
+    queryFn: () => getAppointmentsPatient(`${session?.user._id}`),
+    enabled: Boolean(session?.user),
+  });
+
+  useEffect(() => {
+    if (appointments && !loading) {
+      console.log({ appointments });
+    }
+  }, [appointments, loading]);
 
   return (
     <div className="space-y-4">

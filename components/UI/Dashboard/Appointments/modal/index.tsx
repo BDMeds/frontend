@@ -47,8 +47,7 @@ const AppointmentModal = () => {
   const { update: updateAppointment, appointment } = useAppointment();
 
   // specialization
-  const [department, setDepartment] =
-    useState<Department>("Cardiology (Heart)");
+  const [department, setDepartment] = useState<Department>("Cardiology (Heart)");
 
   const [search, setSearch] = useState("");
 
@@ -115,7 +114,7 @@ const AppointmentModal = () => {
       {
         onSuccess: () => (
           queryClient.invalidateQueries({
-            predicate: (query) => query.queryKey.includes("appointment"),
+            predicate: (query) => query.queryKey.includes("appointments"),
           }),
           hideModal()
         ),
@@ -131,16 +130,11 @@ const AppointmentModal = () => {
     >
       <>
         <div className="flex items-center justify-between">
-          <p className="font-bold">
-            {infoComplete ? "Select Doctor" : "New Appointment"}
-          </p>
+          <p className="font-bold">{infoComplete ? "Select Doctor" : "New Appointment"}</p>
 
           <div className="flex items-center gap-2">
             {infoComplete && (
-              <button
-                className="text-primary"
-                onClick={() => setInfoComplete(false)}
-              >
+              <button className="text-primary" onClick={() => setInfoComplete(false)}>
                 Back
               </button>
             )}
@@ -152,11 +146,7 @@ const AppointmentModal = () => {
         <AnimatePresence mode="wait" initial={false}>
           {!infoComplete ? (
             <>
-              <motion.form
-                {...opacityVariant}
-                onSubmit={handleSubmit(submit)}
-                className="grid gap-4"
-              >
+              <motion.form {...opacityVariant} onSubmit={handleSubmit(submit)} className="grid gap-4">
                 <div className="space-y-1">
                   <label>Appointment Date</label>
                   <input
@@ -190,9 +180,7 @@ const AppointmentModal = () => {
                         key={id}
                         onClick={() => setMode(m as "physical" | "online")}
                         className={`p-2 text-center capitalize rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                          m === mode
-                            ? "bg-primary text-white"
-                            : "bg-white border border-gray-200"
+                          m === mode ? "bg-primary text-white" : "bg-white border border-gray-200"
                         }`}
                       >
                         <p>{m}</p>
@@ -245,20 +233,13 @@ const AppointmentModal = () => {
                   </div>
                 ) : (
                   <>
-                    {isFetching && (
-                      <p className="absolute bottom-1 right-1 text-sm">
-                        fetching...
-                      </p>
-                    )}
+                    {isFetching && <p className="absolute bottom-1 right-1 text-sm">fetching...</p>}
 
                     {doctors && doctors.length > 0 ? (
                       <div className="space-y-4">
                         <div className="divide-y">
                           {doctors.map((doc, id) => (
-                            <div
-                              key={id}
-                              className="py-1 flex items-center justify-between"
-                            >
+                            <div key={id} className="py-1 flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <div className="size-10 border rounded-full relative overflow-hidden">
                                   <Image
@@ -274,22 +255,17 @@ const AppointmentModal = () => {
                                     <p>
                                       {doc.user.firstName} {doc.user.lastName}
                                     </p>
-                                    {doc.kycDetails?.status ===
-                                      "successful" && (
+                                    {doc.kycDetails?.status === "successful" && (
                                       <RiVerifiedBadgeFill className="text-[#1c96e8]" />
                                     )}
                                   </div>
-                                  <p className="truncate text-gray-500 max-w-[8rem]">
-                                    {doc.bio}
-                                  </p>
+                                  <p className="truncate text-gray-500 max-w-[8rem]">{doc.bio}</p>
                                 </div>
                               </div>
 
                               <Button
                                 size="extra-small"
-                                text={`${
-                                  doc._id === doctorId ? "Selected" : "Select"
-                                } `}
+                                text={`${doc._id === doctorId ? "Selected" : "Select"} `}
                                 onClick={() => setDoctorId(doc._id)}
                               />
                             </div>

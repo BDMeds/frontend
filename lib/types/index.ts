@@ -1,8 +1,4 @@
-import {
-  AppointmentModeEnum,
-  AppointmentStatusEnum,
-  DepartmentsEnum,
-} from "../enums";
+import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
 import { DiagnosisDocument } from "./reports";
 
 export type KycID =

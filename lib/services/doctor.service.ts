@@ -37,7 +37,7 @@ export const getKycId = async () => {
     const { data } = await authApi.get<ApiResponse<KycID[]>>("/doctor/kyc/id-types");
     return data.data;
   } catch (err) {
-    handleAxiosErrorWithToast(err);
+    // handleAxiosErrorWithToast(err);
   }
 };
 
