@@ -7,6 +7,7 @@ import { useModal } from "@/lib/providers/modal-provider";
 import {
   cancelAppointment,
   getSingleAppointment,
+  updateAppointmentStatus,
 } from "@/lib/services/appointment.service";
 import { EventType } from "@/lib/store/event.store";
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
@@ -36,6 +37,14 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
     },
   });
 
+  const { mutate: updateStatus, isPending: updateStatusPending } = useMutation({
+    mutationFn: updateAppointmentStatus,
+    onSuccess() {
+      hideModal();
+      refetchAppointments();
+    },
+  });
+
   const { user } = useUserInfo();
 
   const partner = useMemo(() => {
@@ -54,7 +63,10 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
       case true:
         return (
           <div className="flex items-center justify-end">
-            {appointment?.status === "pending" && (
+            {((user?.role === "patient" &&
+              appointment?.patientStatus === "pending") ||
+              (user?.role === "doctor" &&
+                appointment?.doctorStatus === "pending")) && (
               <Select
                 label=""
                 options={[
@@ -62,7 +74,10 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                   { value: "failed", label: "Failed" },
                 ]}
                 dropUp={true}
-                onValueChange={() => {}}
+                onValueChange={(status: "successful" | "failed") => {
+                  updateStatus({ appointmentId: appointment?._id!, status });
+                }}
+                loading={updateStatusPending}
               />
             )}
             {user?.role === "doctor" ? (
@@ -86,7 +101,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
               onClick={() => cancel(appointment?._id!)}
               loading={cancelPending}
             />
-            <Button variant="filled" text="Reschedule Appointment" />
+            {/* <Button variant="filled" text="Reschedule Appointment" /> */}
           </div>
         );
     }
@@ -95,7 +110,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   return (
     <Modal
       onClose={hideModal}
-      className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[25rem] max-h-[25rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
+      className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
       {appointmentLoading ? (
         <div className="grid place-content-center w-full h-full">
@@ -125,6 +140,10 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
 
             <p className="mt-2 capitalize">
               {appointment?.department} - {appointment?.mode}
+            </p>
+
+            <p className="mt-2 capitalize font-bold">
+              {appointment?.status?.toLowerCase()}
             </p>
           </header>
 

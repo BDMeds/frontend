@@ -57,3 +57,23 @@ export const cancelAppointment = async (appointmentId: string) => {
     handleAxiosErrorWithToast(error);
   }
 };
+
+export const updateAppointmentStatus = async ({
+  appointmentId,
+  status,
+}: {
+  appointmentId: string;
+  status: "successful" | "failed";
+}) => {
+  try {
+    const { data } = await authApi.put(`/appointment/${appointmentId}/status`, {
+      status,
+    });
+
+    toastSuccess("Appointment status updated");
+
+    return data;
+  } catch (error) {
+    handleAxiosErrorWithToast(error);
+  }
+};

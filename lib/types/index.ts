@@ -167,6 +167,8 @@ export type Appointment = {
   startTime: Date;
   endTime: Date;
   status: "pending" | "successful" | "cancelled";
+  doctorStatus: "pending" | "successful" | "cancelled";
+  patientStatus: "pending" | "successful" | "cancelled";
   mode: "online" | "physical";
   // invoice later
 };
