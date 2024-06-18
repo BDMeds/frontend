@@ -25,7 +25,7 @@ const HeartModel = dynamic(() => import("@/components/Common/3D/heart"), {
 
 const ReportsDetails = () => {
   return (
-    <div className="grid grid-cols-2 gap-7 pb-8">
+    <div className="grid md:grid-cols-2 gap-7 pb-8">
       <div className="border rounded-xl bg-white relative self-start">
         <div className="absolute top-2 p-5 left-0 space-y-1">
           <p>Evaluation:</p>
@@ -35,8 +35,7 @@ const ReportsDetails = () => {
         <HeartModel />
       </div>
 
-      <div className="grid grid-rows-7 space-y-7">
-        <motion.div {...parentVariant} animate="animate" className="grid gap-3 row-span-2">
+        <motion.div {...parentVariant} animate="animate" className="grid gap-3">
           <div className="rounded-xl bg-white border py-4 space-y-5">
             <p className="font-bold px-5">Blood Pressure</p>
             <div className="h-[15rem]">
