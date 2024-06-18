@@ -18,6 +18,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { queryClient } from "@/lib/providers";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { bookAppointment } from "@/lib/services/appointment.service";
+import { getDoctors } from "@/lib/services/user.service";
 
 type Inputs = {
   appointmentDate: string;
@@ -30,6 +31,8 @@ function toISOString(date: string, time: string) {
   const parsedDate = parse(dateTimeString, "yyyy-MM-dd'T'HH:mm:ss", new Date());
   return format(parsedDate, "yyyy-MM-dd'T'HH:mm:ss.SSSX");
 }
+
+let searchTime = 0;
 
 const AppointmentModal = () => {
   const { hideModal } = useModal();
@@ -68,6 +71,16 @@ const AppointmentModal = () => {
   }, [department]);
 
   const updateDepartment = (value: Department) => setDepartment(value);
+
+  useEffect(() => {
+    setTimeout(() => {
+      searchTime += 1;
+      if (searchTime === 1) {
+        refetch();
+      }
+      searchTime = 0;
+    }, 1000);
+  }, [search]);
 
   const submit: SubmitHandler<Inputs> = (data) => {
     if (!data.appointmentDate || !data.endTime || !data.startTime) {
