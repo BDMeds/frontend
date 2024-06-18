@@ -1,8 +1,10 @@
+import Loader from "@/components/Common/Loaders";
 import Modal from "@/components/Common/Modal";
 import { useModal } from "@/lib/providers/modal-provider";
 import { getSingleAppointment } from "@/lib/services/appointment.service";
 import { EventType } from "@/lib/store/event.store";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { FC } from "react";
 
 type Props = {
@@ -21,7 +23,13 @@ const AppointmentInfoModal: FC<Props> = ({ event }) => {
     <Modal
       onClose={hideModal}
       className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[25rem] max-h-[25rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
-    ></Modal>
+    >
+      {appointmentLoading && (
+        <div className="grid place-content-center w-full h-full">
+          <Loader />
+        </div>
+      )}
+    </Modal>
   );
 };
 
