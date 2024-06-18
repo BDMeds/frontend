@@ -1,8 +1,8 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi } from "../config/axios-instance";
 import { ApiResponse, AppointmentDocument, BookAppointment } from "../types";
-
 import { toastSuccess } from "../utils/toast";
+
 export const getAppointments = async () => {
   try {
     const { data } = await authApi.get<ApiResponse<AppointmentDocument[]>>("/appointment/user");
@@ -18,16 +18,6 @@ export const bookAppointment = async ({ payload, doctorId }: { payload: BookAppo
     const { data } = await authApi.post<ApiResponse>(`/appointment/${doctorId}/book`, payload);
     toastSuccess("Appointment booked.");
     return data;
-  } catch (err) {
-    handleAxiosErrorWithToast(err);
-  }
-};
-
-export const getAppointmentsPatient = async (patientId: string) => {
-  try {
-    const { data } = await authApi.get<ApiResponse<AppointmentDocument[]>>(`/appointment/patient/${patientId}`);
-    // toastSuccess("Appointment booked.");
-    return data.data;
   } catch (err) {
     handleAxiosErrorWithToast(err);
   }

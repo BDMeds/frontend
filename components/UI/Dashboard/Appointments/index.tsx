@@ -8,7 +8,7 @@ import AppointmentModal from "./modal";
 import { GoPlus } from "react-icons/go";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
-import { getAppointmentsPatient } from "@/lib/services/appointment.service";
+import { getAppointments } from "@/lib/services/appointment.service";
 import { useEffect } from "react";
 
 const BigCalendar = dynamic(() => import("./calender"), {
@@ -32,7 +32,7 @@ const Appointment = () => {
 
   const { data: appointments, isPending: loading } = useQuery({
     queryKey: ["appointments"],
-    queryFn: () => getAppointmentsPatient(`${session?.user._id}`),
+    queryFn: getAppointments,
     enabled: Boolean(session?.user),
   });
 
