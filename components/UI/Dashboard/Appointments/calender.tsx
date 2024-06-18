@@ -39,7 +39,7 @@ const BigCalendar = () => {
 
   const { user } = useUserInfo();
 
-  const { data: appointments } = useQuery({
+  const { data: appointments, refetch } = useQuery({
     queryKey: ["getAppoinments"],
     queryFn: getAppointments,
   });
@@ -61,7 +61,9 @@ const BigCalendar = () => {
   };
 
   const handleSelectEvent = (event: EventType) => {
-    showModal(<AppointmentInfoModal event={event} />);
+    showModal(
+      <AppointmentInfoModal event={event} refetchAppointments={refetch} />
+    );
   };
 
   return (

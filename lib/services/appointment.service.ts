@@ -45,3 +45,15 @@ export const getSingleAppointment = (appointmentId: string) => async () => {
     handleAxiosErrorWithToast(error);
   }
 };
+
+export const cancelAppointment = async (appointmentId: string) => {
+  try {
+    const { data } = await authApi.put(`/appointment/${appointmentId}/cancel`);
+
+    toastSuccess("Appointment cancelled successfully");
+
+    return data;
+  } catch (error) {
+    handleAxiosErrorWithToast(error);
+  }
+};

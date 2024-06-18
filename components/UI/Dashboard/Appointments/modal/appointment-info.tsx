@@ -4,9 +4,12 @@ import Loader from "@/components/Common/Loaders";
 import Modal from "@/components/Common/Modal";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import { useModal } from "@/lib/providers/modal-provider";
-import { getSingleAppointment } from "@/lib/services/appointment.service";
+import {
+  cancelAppointment,
+  getSingleAppointment,
+} from "@/lib/services/appointment.service";
 import { EventType } from "@/lib/store/event.store";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { add, format, isAfter, isBefore } from "date-fns";
 import Image from "next/image";
 import { FC, useCallback, useMemo } from "react";
@@ -14,14 +17,23 @@ import { GiFemale, GiMale } from "react-icons/gi";
 
 type Props = {
   event: EventType;
+  refetchAppointments(): void;
 };
 
-const AppointmentInfoModal: FC<Props> = ({ event }) => {
+const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   const { hideModal } = useModal();
 
   const { data: appointment, isLoading: appointmentLoading } = useQuery({
     queryKey: ["getAppointment", event.id],
     queryFn: getSingleAppointment(event.id),
+  });
+
+  const { mutate: cancel, isPending: cancelPending } = useMutation({
+    mutationFn: cancelAppointment,
+    onSuccess() {
+      hideModal();
+      refetchAppointments();
+    },
   });
 
   const { user } = useUserInfo();
@@ -42,15 +54,17 @@ const AppointmentInfoModal: FC<Props> = ({ event }) => {
       case true:
         return (
           <div className="flex items-center justify-end">
-            <Select
-              label=""
-              options={[
-                { value: "successful", label: "Successful" },
-                { value: "failed", label: "Failed" },
-              ]}
-              dropUp={true}
-              onValueChange={() => {}}
-            />
+            {appointment?.status === "pending" && (
+              <Select
+                label=""
+                options={[
+                  { value: "successful", label: "Successful" },
+                  { value: "failed", label: "Failed" },
+                ]}
+                dropUp={true}
+                onValueChange={() => {}}
+              />
+            )}
             {user?.role === "doctor" ? (
               <Button
                 className="ml-auto"
@@ -66,7 +80,12 @@ const AppointmentInfoModal: FC<Props> = ({ event }) => {
       case false:
         return (
           <div className="flex items-center justify-between">
-            <Button variant="outline" text="Cancel Appointment" />
+            <Button
+              variant="outline"
+              text="Cancel Appointment"
+              onClick={() => cancel(appointment?._id!)}
+              loading={cancelPending}
+            />
             <Button variant="filled" text="Reschedule Appointment" />
           </div>
         );
