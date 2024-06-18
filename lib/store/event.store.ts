@@ -1,3 +1,4 @@
+import dummyEvents from "@/components/UI/Dashboard/Appointments/events";
 import { create } from "zustand";
 
 export type EventType = {
@@ -16,10 +17,34 @@ type EventStore = {
 };
 
 const useEventsStore = create<EventStore>((set) => ({
-  events: [],
+  events: dummyEvents,
   addToEvents: (event) =>
     set((state) => ({ ...state, events: [...state.events, event] })),
   setEvents: (event) => set((state) => ({ ...state, event })),
+}));
+
+type Appointment = {
+  appointmentDate: string;
+  startTime: string;
+  endTime: string;
+  mode: "online" | "physical";
+} & {};
+
+type AppointmentStore = {
+  appointment: Appointment;
+
+  update: (data: Appointment) => void;
+};
+
+export const useAppointment = create<AppointmentStore>((set) => ({
+  appointment: {
+    appointmentDate: "",
+    startTime: "",
+    endTime: "",
+    mode: "online",
+  },
+
+  update: (appointment) => set({ appointment }),
 }));
 
 export default useEventsStore;
