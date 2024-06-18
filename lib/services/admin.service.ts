@@ -8,6 +8,6 @@ export const getKyc = async (status: KycStatus) => {
     const { data } = await authApi.get<ApiResponse<KycGet[]>>(`/doctor/kyc?status=${status}`);
     return data.data;
   } catch (err) {
-    handleAxiosErrorWithToast(err);
+    // handleAxiosErrorWithToast(err);
   }
 };

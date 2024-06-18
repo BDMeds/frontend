@@ -43,7 +43,7 @@ export const getDoctors = async ({
     const { data } = await authApi.get<ApiResponse<IDoctor[]>>(`/doctor?search=${search}&department=${department}`);
     return data.data;
   } catch (err) {
-    handleAxiosErrorWithToast(err);
+    // handleAxiosErrorWithToast(err);
   }
 };
 

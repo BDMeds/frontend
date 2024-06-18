@@ -1,8 +1,4 @@
-import {
-  AppointmentModeEnum,
-  AppointmentStatusEnum,
-  DepartmentsEnum,
-} from "../enums";
+import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
 import { DiagnosisDocument } from "./reports";
 
 export type KycID =
@@ -197,8 +193,8 @@ export type KycGet = {
 };
 
 export type BookAppointment = {
-  appointmentDate: string;
-  startTime: string;
-  endTime: string;
+  appointmentDate: string | Date;
+  startTime: string | Date;
+  endTime: string | Date;
   mode: string;
 };
