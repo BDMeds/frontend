@@ -60,57 +60,67 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   }, [appointment, user]);
 
   const Footer = useCallback(() => {
-    const isPast = isBefore(new Date(), appointment?.startTime!);
-    switch (isPast) {
-      case true:
-        return (
-          <div className="flex items-center justify-end">
-            {((user?.role === "patient" &&
-              appointment?.patientStatus === "pending") ||
-              (user?.role === "doctor" &&
-                appointment?.doctorStatus === "pending")) && (
-              <Select
-                label=""
-                options={[
-                  { value: "successful", label: "Successful" },
-                  { value: "failed", label: "Failed" },
-                ]}
-                dropUp={true}
-                onValueChange={(status: "successful" | "failed") => {
-                  updateStatus({ appointmentId: appointment?._id!, status });
-                }}
-                loading={updateStatusPending}
-              />
-            )}
-            {user?.role === "doctor" ? (
-              <Button
-                className="ml-auto"
-                text="Submit Report"
-                variant="filled"
-                onClick={() => {
-                  router.push(
-                    `/appointments/${appointment!._id}/report/submit`
-                  );
-                }}
-              />
-            ) : (
-              <Button className="ml-auto" text="View Report" variant="filled" />
-            )}
-          </div>
-        );
+    if (user && appointment) {
+      const isPast = isBefore(
+        appointment?.startTime!,
+        new Date().toISOString()
+      );
+      switch (isPast) {
+        case true:
+          return (
+            <div className="flex items-center justify-end">
+              {((user?.role === "patient" &&
+                appointment?.patientStatus === "pending") ||
+                (user?.role === "doctor" &&
+                  appointment?.doctorStatus === "pending")) && (
+                <Select
+                  label=""
+                  options={[
+                    { value: "successful", label: "Successful" },
+                    { value: "failed", label: "Failed" },
+                  ]}
+                  dropUp={true}
+                  onValueChange={(status: "successful" | "failed") => {
+                    updateStatus({ appointmentId: appointment?._id!, status });
+                  }}
+                  loading={updateStatusPending}
+                />
+              )}
+              {user?.role === "doctor" ? (
+                <Button
+                  className="ml-auto"
+                  text="Submit Report"
+                  variant="filled"
+                  onClick={() => {
+                    router.push(
+                      `/appointments/${appointment!._id}/report/submit`
+                    );
+                    hideModal();
+                  }}
+                />
+              ) : (
+                <Button
+                  className="ml-auto"
+                  text="View Report"
+                  variant="filled"
+                />
+              )}
+            </div>
+          );
 
-      case false:
-        return (
-          <div className="flex items-center justify-between">
-            <Button
-              variant="outline"
-              text="Cancel Appointment"
-              onClick={() => cancel(appointment?._id!)}
-              loading={cancelPending}
-            />
-            {/* <Button variant="filled" text="Reschedule Appointment" /> */}
-          </div>
-        );
+        case false:
+          return (
+            <div className="flex items-center justify-between">
+              <Button
+                variant="outline"
+                text="Cancel Appointment"
+                onClick={() => cancel(appointment?._id!)}
+                loading={cancelPending}
+              />
+              {/* <Button variant="filled" text="Reschedule Appointment" /> */}
+            </div>
+          );
+      }
     }
   }, [user, appointment]);
 

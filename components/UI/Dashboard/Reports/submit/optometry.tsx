@@ -32,7 +32,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
   } = useForm<Inputs>();
   const { id: appointmentId } = useParams<{ id: string }>();
 
-  const { mutateAsync: submitReport } = useMutation({
+  const { mutateAsync: submitReport, isPending } = useMutation({
     mutationFn: submitOptometryReport,
     onSuccess: () => {
       refetchReport();
@@ -162,6 +162,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
         text="Submit Report"
         variant="filled"
         className="ml-auto"
+        loading={isPending}
       />
     </form>
   );

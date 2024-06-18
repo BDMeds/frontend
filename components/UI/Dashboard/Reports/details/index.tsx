@@ -35,27 +35,26 @@ const ReportsDetails = () => {
         <HeartModel />
       </div>
 
-        <motion.div {...parentVariant} animate="animate" className="grid gap-3">
-          <div className="rounded-xl bg-white border py-4 space-y-5">
-            <p className="font-bold px-5">Blood Pressure</p>
-            <div className="h-[15rem]">
-              <BloodPressureBarChart />
-            </div>
+      <motion.div {...parentVariant} animate="animate" className="grid gap-3">
+        <div className="rounded-xl bg-white border py-4 space-y-5">
+          <p className="font-bold px-5">Blood Pressure</p>
+          <div className="h-[15rem]">
+            <BloodPressureBarChart />
           </div>
-          <div className="rounded-xl bg-white border py-4 space-y-5">
-            <p className="font-bold px-5">Heart Rate</p>
-            <div className="h-[15rem]">
-              <HeartRateLineChart />
-            </div>
+        </div>
+        <div className="rounded-xl bg-white border py-4 space-y-5">
+          <p className="font-bold px-5">Heart Rate</p>
+          <div className="h-[15rem]">
+            <HeartRateLineChart />
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        {/* <motion.div {...parentVariant} animate="animate" className="grid grid-cols-2 gap-5 row-span-5">
+      {/* <motion.div {...parentVariant} animate="animate" className="grid grid-cols-2 gap-5 row-span-5">
           {Array.from({ length: 2 }).map((_, id) => (
             <div className="rounded-xl bg-white border min-h-[18rem]" key={id}></div>
           ))}
         </motion.div> */}
-      </div>
     </div>
   );
 };

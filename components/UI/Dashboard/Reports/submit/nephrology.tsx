@@ -36,7 +36,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
   const { id: appointmentId } = useParams<{ id: string }>();
   const [dialysisFrequency, setDialysisFrequency] = useState<Frequency>();
 
-  const { mutateAsync: submitReport } = useMutation({
+  const { mutateAsync: submitReport, isPending } = useMutation({
     mutationFn: submitNephrologyReport,
     onSuccess: () => {
       refetchReport();
@@ -205,6 +205,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
         text="Submit Report"
         variant="filled"
         className="ml-auto"
+        loading={isPending}
       />
     </form>
   );
