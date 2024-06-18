@@ -87,6 +87,7 @@ export type IDoctor = {
   user: IUser;
   address?: Address;
   socials?: Socials;
+  department: Department;
 } & IDef;
 
 export type Socials = {

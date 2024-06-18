@@ -92,7 +92,7 @@ export type TeethMetrics = {
   consultation?: Consultation<TeethMetrics>;
 };
 
-type SkinMetrics = {
+export type SkinMetrics = {
   _id?: string;
   patient: string;
   skinHealthStatus?: string; // Descriptive

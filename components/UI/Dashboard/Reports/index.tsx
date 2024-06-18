@@ -8,6 +8,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { fadeToTopVariant, opacityVariant } from "@/lib/utils/variants";
 import CardiologyReport from "./departments/cardiology";
 import { CgChevronLeft } from "react-icons/cg";
+import DermatologyReport from "./departments/dermatology";
+import HepatologyReport from "./departments/hepatology";
+import DentistryReport from "./departments/dentistry";
+import NephrologyReport from "./departments/nephrology";
+import NeurologyReport from "./departments/neurology";
+import OptometryReport from "./departments/optometry";
+import OrthopedicReport from "./departments/orthopedics";
 
 const Reports = () => {
   const [department, setDepartment] = useState<Department | undefined>();
@@ -17,19 +24,19 @@ const Reports = () => {
       case "Cardiology (Heart)":
         return <CardiologyReport />;
       case "Dentistry (Teeth and Oral Health)":
-        return <CardiologyReport />;
+        return <DentistryReport />;
       case "Dermatology (Skin)":
-        return <CardiologyReport />;
+        return <DermatologyReport />;
       case "Hepatology (Liver)":
-        return <CardiologyReport />;
+        return <HepatologyReport />;
       case "Nephrology (Kidneys)":
-        return <CardiologyReport />;
+        return <NephrologyReport />;
       case "Neurology (Nervous System)":
-        return <CardiologyReport />;
+        return <NeurologyReport />;
       case "Optometry (Eye and Vision Care)":
-        return <CardiologyReport />;
+        return <OptometryReport />;
       case "Orthopedics (Musculoskeletal System)":
-        return <CardiologyReport />;
+        return <OrthopedicReport />;
       default:
         return null;
     }
@@ -50,7 +57,9 @@ const Reports = () => {
                 className="bg-white border duration-300 hover:shadow-xl hover:border-transparent rounded-lg p-3 cursor-pointer"
               >
                 <div className="space-y-5">
-                  <div className="size-12 text-primary bg-primary/10 rounded-xl grid place-content-center">{icon}</div>
+                  <div className="size-12 text-primary bg-primary/10 rounded-xl grid place-content-center">
+                    {icon}
+                  </div>
                   <p className="font-semibold">{dept}</p>
                 </div>
               </motion.div>

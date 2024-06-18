@@ -1,5 +1,6 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi } from "../config/axios-instance";
+import { DepartmentsEnum } from "../enums";
 import { ApiResponse } from "../types";
 import { DiagnosisDocument } from "../types/reports";
 import { toastSuccess } from "../utils/toast";
@@ -181,3 +182,17 @@ export const submitOrthopedicReport = async ({
     handleAxiosErrorWithToast(error);
   }
 };
+
+export const getReports =
+  <T = DiagnosisDocument>(department: DepartmentsEnum) =>
+  async () => {
+    try {
+      const { data } = await authApi.get<ApiResponse<DiagnosisDocument[]>>(
+        `/consultation/report/user/${department}`
+      );
+
+      return data.data;
+    } catch (error) {
+      handleAxiosErrorWithToast(error);
+    }
+  };
