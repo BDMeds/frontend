@@ -3,7 +3,7 @@ import Modal from "@/components/Common/Modal";
 import { useModal } from "@/lib/providers/modal-provider";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { format, parse } from "date-fns";
+import { formatISO, parseISO } from "date-fns";
 import { useAppointment } from "@/lib/store/event.store";
 import { toastError } from "@/lib/utils/toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -26,10 +26,8 @@ type Inputs = {
   endTime: string;
 };
 
-function toISOString(date: string, time: string) {
-  const dateTimeString = `${date}T${time}:00`;
-  const parsedDate = parse(dateTimeString, "yyyy-MM-dd'T'HH:mm:ss", new Date());
-  return format(parsedDate, "yyyy-MM-dd'T'HH:mm:ss.SSSX");
+function combineDateAndTime(dateString: string, timeString: string) {
+  return new Date(`${dateString}T${timeString}:00`);
 }
 
 let searchTime = 0;
@@ -88,14 +86,19 @@ const AppointmentModal = () => {
       return;
     }
 
-    const appointmentDate = new Date(data.appointmentDate).toISOString();
-    const startTime = toISOString(data.appointmentDate, data.startTime);
-    const endTime = toISOString(data.appointmentDate, data.endTime);
+    const appointmentDate = data.appointmentDate;
+    const startTime = data.startTime;
+    const endTime = data.endTime;
+
+    const startDateTime = combineDateAndTime(appointmentDate, startTime);
+    const endDateTime = combineDateAndTime(appointmentDate, endTime);
+
+    const appointmentDateISO = formatISO(parseISO(appointmentDate));
 
     updateAppointment({
-      appointmentDate,
-      startTime,
-      endTime,
+      appointmentDate: appointmentDateISO,
+      startTime: startDateTime.toISOString(),
+      endTime: endDateTime.toISOString(),
       mode,
     });
     setInfoComplete(true);

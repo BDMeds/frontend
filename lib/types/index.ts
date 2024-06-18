@@ -193,8 +193,8 @@ export type KycGet = {
 };
 
 export type BookAppointment = {
-  appointmentDate: string;
-  startTime: string;
-  endTime: string;
+  appointmentDate: string | Date;
+  startTime: string | Date;
+  endTime: string | Date;
   mode: string;
 };

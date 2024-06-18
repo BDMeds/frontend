@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { CameraControls, OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { Mesh } from "three";
 
@@ -25,7 +25,7 @@ function MeshComponent() {
 const HeartModel = () => {
   return (
     <div className="flex justify-center items-center h-screen">
-      <Canvas className="h-2xl w-2xl">
+      <Canvas className="h-2xl w-2xl" camera={{ position: [0, 0, 5], fov: 35 }}>
         <OrbitControls enablePan={false} />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />

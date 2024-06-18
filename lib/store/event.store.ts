@@ -23,9 +23,9 @@ const useEventsStore = create<EventStore>((set) => ({
 }));
 
 type Appointment = {
-  appointmentDate: string;
-  startTime: string;
-  endTime: string;
+  appointmentDate: string | Date;
+  startTime: string | Date;
+  endTime: string | Date;
   mode: "online" | "physical";
 } & {};
 
