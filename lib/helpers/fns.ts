@@ -47,7 +47,7 @@ export const mapAppointmentsToEvents = (
 ): EventType[] => {
   return appointments.map((appointment) => {
     let partnerName: string;
-    if (user.role === "patient") {
+    if (user?.role === "patient") {
       partnerName = `Dr. ${appointment.doctor.user.firstName}`;
     } else {
       partnerName = appointment.patient.user.firstName;
@@ -57,8 +57,8 @@ export const mapAppointmentsToEvents = (
       id: appointment._id,
       title: `Session with ${partnerName}`,
       allDay: false,
-      start: appointment.startTime,
-      end: appointment.endTime,
+      start: new Date(appointment.startTime),
+      end: new Date(appointment.endTime),
     };
   });
 };

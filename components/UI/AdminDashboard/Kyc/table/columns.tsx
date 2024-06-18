@@ -21,13 +21,13 @@ const columns: ColumnDef<KycGet>[] = [
       return (
         <div className="flex items-center gap-2">
           <div className="size-10 rounded-full border relative overflow-hidden">
-            <Image
+            {/* <Image
               src={`${doctor.user.profilePicture}`}
               alt="profile-pic"
               width={100}
               height={100}
               className="w-full h-full absolute top-0 left-0"
-            />
+            /> */}
           </div>
         </div>
       );

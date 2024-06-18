@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, ChangePassword, Department, IDoctor, IUser } from "../types";
+import { ApiResponse, BookAppointment, ChangePassword, Department, IDoctor, IUser } from "../types";
 
 export const uploadProfilePicture = async (picture: string) => {
   try {

@@ -17,10 +17,10 @@ type EventStore = {
 };
 
 const useEventsStore = create<EventStore>((set) => ({
-  events: dummyEvents,
+  events: [],
   addToEvents: (event) =>
     set((state) => ({ ...state, events: [...state.events, event] })),
-  setEvents: (event) => set((state) => ({ ...state, event })),
+  setEvents: (events) => set((state) => ({ ...state, events })),
 }));
 
 type Appointment = {

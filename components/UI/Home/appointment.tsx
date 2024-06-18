@@ -16,7 +16,7 @@ const Appointment = () => {
       </svg>
 
       {/*  */}
-      <div className="min-h-[30rem] bg-primary relative text-white grid place-content-center">
+      <div className="lg:min-h-[30rem] min-h-[35rem] bg-primary relative text-white grid place-content-center">
         <div className="container space-y-6">
           <div className="space-y-4 text-center">
             <h3 className="font-extrabold text-5xl">Book an Appointment</h3>

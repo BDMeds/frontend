@@ -18,6 +18,7 @@ import { getAppointments } from "@/lib/services/appointment.service";
 import { AppointmentDocument, IUser } from "@/lib/types";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import { mapAppointmentsToEvents } from "@/lib/helpers/fns";
+import AppointmentInfoModal from "./modal/appointment-info";
 
 const locales = {
   "en-US": enUS,
@@ -44,8 +45,10 @@ const BigCalendar = () => {
   });
 
   useEffect(() => {
-    const events = mapAppointmentsToEvents(appointments || [], user!);
-    setEvents(events);
+    if (appointments?.length! > 0) {
+      const events = mapAppointmentsToEvents(appointments || [], user!);
+      setEvents(events);
+    }
   }, [appointments]);
 
   const handleSelect = ({ start, end }: { start: any; end: any }) => {
@@ -55,6 +58,10 @@ const BigCalendar = () => {
       ).toLocaleString()}`
     );
     showModal(<AppointmentModal />);
+  };
+
+  const handleSelectEvent = (event: EventType) => {
+    showModal(<AppointmentInfoModal event={event} />);
   };
 
   return (
@@ -67,7 +74,7 @@ const BigCalendar = () => {
         defaultView="month"
         events={events}
         style={{ height: "100vh" }}
-        // onSelectEvent={(event) => alert(event.title)}
+        onSelectEvent={handleSelectEvent}
         onSelectSlot={handleSelect}
       />
     </div>
