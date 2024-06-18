@@ -13,6 +13,7 @@ import { EventType } from "@/lib/store/event.store";
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { add, format, isAfter, isBefore } from "date-fns";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FC, useCallback, useMemo } from "react";
 import { GiFemale, GiMale } from "react-icons/gi";
 
@@ -23,6 +24,7 @@ type Props = {
 
 const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   const { hideModal } = useModal();
+  const router = useRouter();
 
   const { data: appointment, isLoading: appointmentLoading } = useQuery({
     queryKey: ["getAppointment", event.id],
@@ -85,6 +87,11 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                 className="ml-auto"
                 text="Submit Report"
                 variant="filled"
+                onClick={() => {
+                  router.push(
+                    `/appointments/${appointment!._id}/report/submit`
+                  );
+                }}
               />
             ) : (
               <Button className="ml-auto" text="View Report" variant="filled" />
