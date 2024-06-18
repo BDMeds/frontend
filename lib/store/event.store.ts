@@ -2,7 +2,7 @@ import dummyEvents from "@/components/UI/Dashboard/Appointments/events";
 import { create } from "zustand";
 
 export type EventType = {
-  id: number;
+  id: string;
   title: string;
   description?: string;
   allDay?: boolean;
@@ -17,9 +17,10 @@ type EventStore = {
 };
 
 const useEventsStore = create<EventStore>((set) => ({
-  events: dummyEvents,
-  addToEvents: (event) => set((state) => ({ ...state, events: [...state.events, event] })),
-  setEvents: (event) => set((state) => ({ ...state, event })),
+  events: [],
+  addToEvents: (event) =>
+    set((state) => ({ ...state, events: [...state.events, event] })),
+  setEvents: (events) => set((state) => ({ ...state, events })),
 }));
 
 type Appointment = {

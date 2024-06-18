@@ -12,7 +12,13 @@ import getDay from "date-fns/getDay";
 import enUS from "date-fns/locale/en-US";
 import { useModal } from "@/lib/providers/modal-provider";
 import AppointmentModal from "./modal";
-import useEventsStore from "@/lib/store/event.store";
+import useEventsStore, { EventType } from "@/lib/store/event.store";
+import { useQuery } from "@tanstack/react-query";
+import { getAppointments } from "@/lib/services/appointment.service";
+import { AppointmentDocument, IUser } from "@/lib/types";
+import useUserInfo from "@/lib/hooks/useUserInfo";
+import { mapAppointmentsToEvents } from "@/lib/helpers/fns";
+import AppointmentInfoModal from "./modal/appointment-info";
 
 const locales = {
   "en-US": enUS,
@@ -31,13 +37,31 @@ const BigCalendar = () => {
 
   const { events, setEvents } = useEventsStore();
 
-  // useEffect(() => {
-  //   setEvents(dummyEvents);
-  // }, [dummyEvents]);
+  const { user } = useUserInfo();
+
+  const { data: appointments } = useQuery({
+    queryKey: ["getAppoinments"],
+    queryFn: getAppointments,
+  });
+
+  useEffect(() => {
+    if (appointments?.length! > 0) {
+      const events = mapAppointmentsToEvents(appointments || [], user!);
+      setEvents(events);
+    }
+  }, [appointments]);
 
   const handleSelect = ({ start, end }: { start: any; end: any }) => {
-    toastSuccess(`Event from ${new Date(start).toLocaleString()} to ${new Date(end).toLocaleString()}`);
+    toastSuccess(
+      `Event from ${new Date(start).toLocaleString()} to ${new Date(
+        end
+      ).toLocaleString()}`
+    );
     showModal(<AppointmentModal />);
+  };
+
+  const handleSelectEvent = (event: EventType) => {
+    showModal(<AppointmentInfoModal event={event} />);
   };
 
   return (
@@ -50,7 +74,7 @@ const BigCalendar = () => {
         defaultView="month"
         events={events}
         style={{ height: "100vh" }}
-        // onSelectEvent={(event) => alert(event.title)}
+        onSelectEvent={handleSelectEvent}
         onSelectSlot={handleSelect}
       />
     </div>
