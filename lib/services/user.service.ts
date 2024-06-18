@@ -1,7 +1,7 @@
 import { handleAxiosErrorWithToast } from "../config/axios-error";
 import { authApi } from "../config/axios-instance";
 import { toastSuccess } from "../utils/toast";
-import { ApiResponse, ChangePassword, IDoctor, IUser } from "../types";
+import { ApiResponse, ChangePassword, Department, IDoctor, IUser } from "../types";
 
 export const uploadProfilePicture = async (picture: string) => {
   try {
@@ -29,6 +29,21 @@ export const getDoctor = async () => {
     return data.data;
   } catch (err) {
     // handleAxiosErrorWithToast(err);
+  }
+};
+
+export const getDoctors = async ({
+  department = "Cardiology (Heart)",
+  search = "",
+}: {
+  search?: string;
+  department: Department;
+}) => {
+  try {
+    const { data } = await authApi.get<ApiResponse<IDoctor[]>>(`/doctor?search=${search}&department=${department}`);
+    return data.data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
   }
 };
 
