@@ -3,7 +3,7 @@ import {
   AppointmentStatusEnum,
   DepartmentsEnum,
 } from "../enums";
-import { DiagnosisDocument } from "./reports";
+import { DiagnosisDocument, DiagnosisRef } from "./reports";
 
 export type KycID =
   | "National Identification Card"
@@ -179,10 +179,10 @@ export type AppointmentDocument = Appointment & {
   updatedAt: Date;
 };
 
-export type Consultation = {
+export type Consultation<T = DiagnosisDocument> = {
   appointment: AppointmentDocument;
-  diagnosis: DiagnosisDocument;
-  diagnosisRef: string; /// come back to this
+  diagnosis: T;
+  diagnosisRef: DiagnosisRef;
   consultationNote?: string;
 };
 
