@@ -10,6 +10,8 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import { getAppointments } from "@/lib/services/appointment.service";
 import { useEffect } from "react";
+import useEventsStore from "@/lib/store/event.store";
+import { mapAppointmentsToEvents } from "@/lib/helpers/fns";
 
 const BigCalendar = dynamic(() => import("./calender"), {
   ssr: false,
@@ -36,11 +38,14 @@ const Appointment = () => {
     enabled: Boolean(session?.user),
   });
 
+  const { setEvents } = useEventsStore();
+
   useEffect(() => {
-    if (appointments && !loading) {
-      console.log({ appointments });
+    if (appointments?.length! > 0) {
+      const events = mapAppointmentsToEvents(appointments || [], session?.user!);
+      setEvents(events);
     }
-  }, [appointments, loading]);
+  }, [appointments]);
 
   return (
     <div className="space-y-4">
