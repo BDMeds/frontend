@@ -61,7 +61,7 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
         ...data,
         gender: gender.toLowerCase(),
         speciality: specialization,
-        yearsOfExperience: Number(data.yearsOfExperience),
+        yearsOfExperience: data.yearsOfExperience.toString(),
       },
       type: "doctor",
     });
