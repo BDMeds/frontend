@@ -1,28 +1,48 @@
-import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import React, { FC } from "react";
+import {
+  PieChart,
+  Pie,
+  Tooltip,
+  Legend,
+  Cell,
+  ResponsiveContainer,
+} from "recharts";
 
-const data = [
-  { name: "Day 1", systolic: 120, diastolic: 80 },
-  { name: "Day 2", systolic: 125, diastolic: 82 },
-  { name: "Day 3", systolic: 118, diastolic: 79 },
-  { name: "Day 4", systolic: 122, diastolic: 81 },
-  { name: "Day 5", systolic: 121, diastolic: 80 },
-];
+type Props = {
+  systolicLevel: number;
+  diastolicLevel: number;
+};
 
-const BloodPressureBarChart = () => {
+const COLORS = ["#c39bff", "#5001c8"];
+
+const BloodPressurePieChart: FC<Props> = ({
+  systolicLevel,
+  diastolicLevel,
+}) => {
+  const data = [
+    { name: "Systolic Level", value: systolicLevel },
+    { name: "Diastolic Level", value: diastolicLevel },
+  ];
   return (
     <ResponsiveContainer>
-      <BarChart width={600} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" fontSize={12} />
-        <YAxis fontSize={12} />
+      <PieChart width={230} height={230}>
+        <Pie
+          data={data}
+          cx={100}
+          cy={70}
+          outerRadius={40}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
         <Tooltip />
-        <Legend />
-        <Bar dataKey="systolic" fill="#8884d8" />
-        <Bar dataKey="diastolic" fill="#82ca9d" />
-      </BarChart>
+        <Legend iconSize={2} fontSize={7} />
+      </PieChart>
     </ResponsiveContainer>
   );
 };
 
-export default BloodPressureBarChart;
+export default BloodPressurePieChart;

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Liver
+* source:	https://sketchfab.com/3d-models/liver-d0bce1a8e16a4b69b5b235e4248b2d19
+* author:	Errin Roy (https://sketchfab.com/errinroy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Liver" (https://sketchfab.com/3d-models/liver-d0bce1a8e16a4b69b5b235e4248b2d19) by Errin Roy (https://sketchfab.com/errinroy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

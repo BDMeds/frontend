@@ -1,0 +1,11 @@
+Model Information:
+* title:	Brain
+* source:	https://sketchfab.com/3d-models/brain-5333c4e69a2346a9be6e48f706c7b952
+* author:	GSCreations (https://sketchfab.com/gscreations2508)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Brain" (https://sketchfab.com/3d-models/brain-5333c4e69a2346a9be6e48f706c7b952) by GSCreations (https://sketchfab.com/gscreations2508) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
