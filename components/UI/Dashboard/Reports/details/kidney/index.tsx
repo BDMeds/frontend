@@ -52,7 +52,7 @@ const KidneyReportDetail: FC<Props> = ({ report }) => {
             </span>
             Creatinine
           </p>
-          <h1 className="text-[1.8rem] font-bold">30mg/dL</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.creatinine}mg/dL</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -62,7 +62,7 @@ const KidneyReportDetail: FC<Props> = ({ report }) => {
             </span>
             Blood Urea Nitrogen
           </p>
-          <h1 className="text-[1.8rem] font-bold">30mg/dL</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.BUN}mg/dL</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -72,7 +72,9 @@ const KidneyReportDetail: FC<Props> = ({ report }) => {
             </span>
             Urine Protein
           </p>
-          <h1 className="text-[1.8rem] font-bold">50mg/dL</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.urineProtein}mg/dL
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -82,7 +84,9 @@ const KidneyReportDetail: FC<Props> = ({ report }) => {
             </span>
             Dialysis
           </p>
-          <h1 className="text-[1.8rem] font-bold">3hrs - Daily</h1>
+          <h1 className="text-[1.8rem] font-bold capitalize">
+            {report?.dialysisHours}hrs - {report?.dialysisFrequency}
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -92,13 +96,7 @@ const KidneyReportDetail: FC<Props> = ({ report }) => {
             </span>
             Health Status
           </p>
-          <p className="text-[.8rem]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-            earum inventore nemo et architecto, doloremque quis rerum, itaque,
-            quas obcaecati error modi eveniet tempore recusandae aut quaerat
-            accusantium. Laborum, numquam similique eos minima soluta quas nisi
-            cupiditate nobis unde odit.
-          </p>
+          <p className="text-[.8rem]">{report?.kidneyHealthStatus}</p>
         </div>
       </motion.div>
     </div>

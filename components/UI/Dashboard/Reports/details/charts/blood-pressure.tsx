@@ -16,8 +16,8 @@ type Props = {
 const COLORS = ["#c39bff", "#5001c8"];
 
 const BloodPressurePieChart: FC<Props> = ({
-  systolicLevel,
-  diastolicLevel,
+  systolicLevel = 0,
+  diastolicLevel = 0,
 }) => {
   const data = [
     { name: "Systolic Level", value: systolicLevel },

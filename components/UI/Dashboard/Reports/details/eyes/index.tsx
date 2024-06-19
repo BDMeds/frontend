@@ -51,7 +51,9 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
             </span>
             Ocular Pressue
           </p>
-          <h1 className="text-[1.8rem] font-bold">30mmHg</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.ocularPressure}mmHg
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -61,7 +63,9 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
             </span>
             Contact Lens Base Curve
           </p>
-          <h1 className="text-[1.8rem] font-bold">30mm</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.contactLensBaseCurve}mm
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -71,7 +75,9 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
             </span>
             Contact Lens Diameter
           </p>
-          <h1 className="text-[1.8rem] font-bold">50mm</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.contactLensDiameter}mm
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -81,13 +87,7 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
             </span>
             Vision Test Result
           </p>
-          <p className="text-[.8rem]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-            earum inventore nemo et architecto, doloremque quis rerum, itaque,
-            quas obcaecati error modi eveniet tempore recusandae aut quaerat
-            accusantium. Laborum, numquam similique eos minima soluta quas nisi
-            cupiditate nobis unde odit.
-          </p>
+          <p className="text-[.8rem]">{report?.visionTestResult}</p>
         </div>
       </motion.div>
     </div>

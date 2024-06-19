@@ -52,7 +52,7 @@ const LiverReportDetail: FC<Props> = ({ report }) => {
             </span>
             ALT Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">30U/L</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.altLevel}U/L</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -62,7 +62,7 @@ const LiverReportDetail: FC<Props> = ({ report }) => {
             </span>
             AST Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">30U/L</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.astLevel}U/L</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -72,7 +72,7 @@ const LiverReportDetail: FC<Props> = ({ report }) => {
             </span>
             Bilirubin
           </p>
-          <h1 className="text-[1.8rem] font-bold">50mg/dL</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.bilirubin}mg/dL</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -82,7 +82,7 @@ const LiverReportDetail: FC<Props> = ({ report }) => {
             </span>
             Fibriosis Score
           </p>
-          <h1 className="text-[1.8rem] font-bold">30</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.fibrosisScore}</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -92,13 +92,7 @@ const LiverReportDetail: FC<Props> = ({ report }) => {
             </span>
             Health Status
           </p>
-          <p className="text-[.8rem]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-            earum inventore nemo et architecto, doloremque quis rerum, itaque,
-            quas obcaecati error modi eveniet tempore recusandae aut quaerat
-            accusantium. Laborum, numquam similique eos minima soluta quas nisi
-            cupiditate nobis unde odit.
-          </p>
+          <p className="text-[.8rem]">{report?.liverHealthStatus}</p>
         </div>
       </motion.div>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, useMemo } from "react";
 import {
   PieChart,
   Pie,
@@ -8,15 +8,24 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { name: "LDL", value: 100 },
-  { name: "HDL", value: 60 },
-  { name: "Triglycerides", value: 150 },
-];
-
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
-const CholesterolPieChart = () => {
+type Props = {
+  LDL: number;
+  HDL: number;
+  Total: number;
+};
+
+const CholesterolPieChart: FC<Props> = ({ LDL = 0, HDL = 0, Total = 0 }) => {
+  const data = useMemo(
+    () => [
+      { name: "LDL", value: LDL },
+      { name: "HDL", value: HDL },
+      { name: "Triglycerides", value: Total },
+    ],
+    [LDL, HDL, Total]
+  );
+
   return (
     <ResponsiveContainer>
       <PieChart width={230} height={230}>

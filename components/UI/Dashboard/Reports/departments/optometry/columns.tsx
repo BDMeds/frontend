@@ -1,5 +1,6 @@
 import Button from "@/components/Common/Button";
 import { defaultImageUrl } from "@/lib/data/dashboard";
+import { DepartmentsEnum } from "@/lib/enums";
 import { HeartMetrics } from "@/lib/types/reports";
 import { faker } from "@faker-js/faker";
 import { ColumnDef } from "@tanstack/react-table";
@@ -55,7 +56,9 @@ const columns: ColumnDef<HeartMetrics>[] = [
     header: () => "Action",
     cell: ({ row }) => {
       return (
-        <Link href={`/reports/${row.original._id}`}>
+        <Link
+          href={`/reports/${row.original._id}?department=${DepartmentsEnum.OPTOMETRY}`}
+        >
           <Button text="View Report" size="extra-small" />
         </Link>
       );

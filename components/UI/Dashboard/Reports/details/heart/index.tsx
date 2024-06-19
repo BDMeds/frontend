@@ -52,7 +52,7 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
             </span>
             Heart Rate
           </p>
-          <h1 className="text-[1.8rem] font-bold">320 bpm</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.heartRate} bpm</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -62,7 +62,9 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
             </span>
             Oxygen Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">50%</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.bloodOxygenLevel}%
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -72,7 +74,9 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
             </span>
             Cardiac Output
           </p>
-          <h1 className="text-[1.8rem] font-bold">50 L/min</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.cardiacOutput} L/min
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -82,20 +86,29 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
             </span>
             Glucose Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">50 mg/dL</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.bloodGlucoseLevel} mg/dL
+          </h1>
         </div>
 
         <div className="rounded-xl bg-white border py-4 space-y-3">
           <p className="font-bold px-5">Cholestrol Level (mg/dL)</p>
           <div className="">
-            <CholesterolPieChart />
+            <CholesterolPieChart
+              LDL={report?.cholesterolLDL!}
+              HDL={report?.cholesterolHDL!}
+              Total={report?.cholesterolTotal!}
+            />
           </div>
         </div>
 
         <div className="rounded-xl bg-white border py-4 space-y-3">
           <p className="font-bold px-5">Blood Pressure (mmHg)</p>
           <div className="">
-            <BloodPressurePieChart systolicLevel={20} diastolicLevel={30} />
+            <BloodPressurePieChart
+              systolicLevel={report?.bloodPressureSystolic!}
+              diastolicLevel={report?.bloodPressureDiastolic!}
+            />
           </div>
         </div>
       </motion.div>

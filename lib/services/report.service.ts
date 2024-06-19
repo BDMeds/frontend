@@ -187,8 +187,21 @@ export const getReports =
   <T = DiagnosisDocument>(department: DepartmentsEnum) =>
   async () => {
     try {
-      const { data } = await authApi.get<ApiResponse<DiagnosisDocument[]>>(
+      const { data } = await authApi.get<ApiResponse<T[]>>(
         `/consultation/report/user/${department}`
+      );
+
+      return data.data;
+    } catch (error) {
+      handleAxiosErrorWithToast(error);
+    }
+  };
+
+export const getReport =
+  (reportId: string, department: DepartmentsEnum) => async () => {
+    try {
+      const { data } = await authApi.get<ApiResponse<DiagnosisDocument>>(
+        `/consultation/report/${department}/${reportId}`
       );
 
       return data.data;

@@ -2,17 +2,17 @@ import Loader from "@/components/Common/Loaders";
 import { parentVariant } from "@/lib/utils/variants";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { HeartMetrics, SkinMetrics } from "@/lib/types/reports";
+import { BrainMetrics, EyesMetrics } from "@/lib/types/reports";
 import { FC } from "react";
 import { TbHeartRateMonitor } from "react-icons/tb";
 import { RiHeartAddLine, RiHeartLine, RiHeartPulseLine } from "react-icons/ri";
-import { IoBodyOutline } from "react-icons/io5";
+import { FaEye } from "react-icons/fa";
 
 type Props = {
-  report?: SkinMetrics;
+  report?: BrainMetrics;
 };
 
-const SkinModel = dynamic(() => import("@/components/Common/3D/skin"), {
+const BrainModel = dynamic(() => import("@/components/Common/3D/brain"), {
   ssr: false,
   loading: () => (
     <div className="grid place-content-center min-h-[10rem] text-center">
@@ -21,13 +21,13 @@ const SkinModel = dynamic(() => import("@/components/Common/3D/skin"), {
           <Loader />
         </div>
 
-        <p className="text-sm">Skin loading...</p>
+        <p className="text-sm">Brain loading...</p>
       </div>
     </div>
   ),
 });
 
-const SkinReportDetails: FC<Props> = ({ report }) => {
+const BrainReportDetail: FC<Props> = ({ report }) => {
   return (
     <div className="grid md:grid-cols-2 gap-7 pb-8">
       <div className="border rounded-xl bg-white relative self-start">
@@ -36,7 +36,7 @@ const SkinReportDetails: FC<Props> = ({ report }) => {
           <p className="text-4xl font-bold">Overall State of Health</p>
         </div>
 
-        <SkinModel />
+        <BrainModel />
       </div>
 
       <motion.div
@@ -47,31 +47,24 @@ const SkinReportDetails: FC<Props> = ({ report }) => {
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
-              <IoBodyOutline />
+              <FaEye />
             </span>
-            Lesion Count
+            EEG Result
           </p>
-          <h1 className="text-[1.8rem] font-bold">{report?.lesionCount}30</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.eegResults}Hz</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
-              <IoBodyOutline />
+              <FaEye />
             </span>
-            Lesion Size
+            Cognitive Function Test Score
           </p>
-          <h1 className="text-[1.8rem] font-bold">{report?.lesionSize}mm</h1>
-        </div>
-
-        <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
-          <p className="font-bold">
-            <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
-              <RiHeartLine />
-            </span>
-            Biopsy Result
-          </p>
-          <p className="text-[.8rem]">{report?.biopsyResults}</p>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.cognitiveFunctionTestScore?.lower}/
+            {report?.cognitiveFunctionTestScore?.upper}
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -81,11 +74,11 @@ const SkinReportDetails: FC<Props> = ({ report }) => {
             </span>
             Health Status
           </p>
-          <p className="text-[.8rem]">{report?.skinHealthStatus}</p>
+          <p className="text-[.8rem]">{report?.brainHealthStatus}</p>
         </div>
       </motion.div>
     </div>
   );
 };
 
-export default SkinReportDetails;
+export default BrainReportDetail;

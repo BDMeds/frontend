@@ -51,7 +51,7 @@ const BoneReportDetail: FC<Props> = ({ report }) => {
             </span>
             Range Of Motion
           </p>
-          <h1 className="text-[1.8rem] font-bold">360°</h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.rangeOfMotion}°</h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
@@ -61,7 +61,9 @@ const BoneReportDetail: FC<Props> = ({ report }) => {
             </span>
             Total Fractures
           </p>
-          <h1 className="text-[1.8rem] font-bold">0</h1>
+          <h1 className="text-[1.8rem] font-bold">
+            {report?.totalFractures || 0}
+          </h1>
         </div>
 
         <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start col-span-2">
@@ -71,13 +73,7 @@ const BoneReportDetail: FC<Props> = ({ report }) => {
             </span>
             Health Status
           </p>
-          <p className="text-[.8rem]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-            earum inventore nemo et architecto, doloremque quis rerum, itaque,
-            quas obcaecati error modi eveniet tempore recusandae aut quaerat
-            accusantium. Laborum, numquam similique eos minima soluta quas nisi
-            cupiditate nobis unde odit.
-          </p>
+          <p className="text-[.8rem]">{report?.boneHealthStatus}</p>
         </div>
       </motion.div>
     </div>
