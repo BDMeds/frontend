@@ -55,7 +55,11 @@ const SubmitReport = () => {
         <Button
           text="View Report"
           variant="filled"
-          onClick={() => push(`/reports/${report!._id}`)}
+          onClick={() =>
+            push(
+              `/reports/${report!._id}?department=${appointment?.department}`
+            )
+          }
         />
       </div>
     );

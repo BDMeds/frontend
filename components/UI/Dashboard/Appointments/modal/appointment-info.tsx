@@ -9,6 +9,7 @@ import {
   getSingleAppointment,
   updateAppointmentStatus,
 } from "@/lib/services/appointment.service";
+import { getAppointmentReport } from "@/lib/services/report.service";
 import { EventType } from "@/lib/store/event.store";
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { add, format, isAfter, isBefore } from "date-fns";
@@ -29,6 +30,10 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   const { data: appointment, isLoading: appointmentLoading } = useQuery({
     queryKey: ["getAppointment", event.id],
     queryFn: getSingleAppointment(event.id),
+  });
+  const { data: report, isLoading: reportLoading } = useQuery({
+    queryKey: ["getAppointmentReport", event.id],
+    queryFn: getAppointmentReport(event.id),
   });
 
   const { mutate: cancel, isPending: cancelPending } = useMutation({
@@ -99,11 +104,20 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                   }}
                 />
               ) : (
-                <Button
-                  className="ml-auto"
-                  text="View Report"
-                  variant="filled"
-                />
+                report && (
+                  <Button
+                    className="ml-auto"
+                    text="View Report"
+                    variant="filled"
+                    onClick={() =>
+                      router.push(
+                        `/reports/${report!._id}?department=${
+                          appointment?.department
+                        }`
+                      )
+                    }
+                  />
+                )
               )}
             </div>
           );
@@ -122,14 +136,14 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
           );
       }
     }
-  }, [user, appointment]);
+  }, [user, appointment, report]);
 
   return (
     <Modal
       onClose={hideModal}
       className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
-      {appointmentLoading ? (
+      {appointmentLoading || reportLoading ? (
         <div className="grid place-content-center w-full h-full">
           <Loader />
         </div>
