@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 type GlobalStoreState = {
+  isDarkMode: boolean;
   sidebarOpen: boolean;
 };
 
@@ -8,6 +9,8 @@ type GlobalStoreActions = {
   toggleSidebar: () => void;
   closeSidebar: () => void;
   openSidebar: () => void;
+
+  updateDarkMode: (state: boolean) => void;
 };
 
 type GlobalStore = GlobalStoreState & GlobalStoreActions;
@@ -23,6 +26,8 @@ type OnboardStoreActions = {
 type OnboardStore = OnboardStoreState & OnboardStoreActions;
 
 export const useGlobalStore = create<GlobalStore>((set) => ({
+  isDarkMode: false,
+
   sidebarOpen: true,
 
   toggleSidebar: () => set((state) => ({ ...state, sidebarOpen: !state.sidebarOpen })),
@@ -30,6 +35,8 @@ export const useGlobalStore = create<GlobalStore>((set) => ({
   closeSidebar: () => set((state) => ({ ...state, sidebarOpen: false })),
 
   openSidebar: () => set((state) => ({ ...state, sidebarOpen: true })),
+
+  updateDarkMode: (newState) => set((state) => ({ ...state, isDarkMode: newState })),
 }));
 
 export const useOnboardStore = create<OnboardStore>((set) => ({

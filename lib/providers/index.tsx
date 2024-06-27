@@ -1,17 +1,40 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster as SonnerToaster } from "sonner";
 import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
-import Cursor from "@/components/Common/Cursor";
+import { useGlobalStore } from "../store/global.store";
 
 export const queryClient = new QueryClient();
 
 const Providers = ({ children }: { children: ReactNode }) => {
+  const { updateDarkMode } = useGlobalStore();
+
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    updateDarkMode(darkModeMediaQuery.matches);
+
+    const darkModeListener = (event: MediaQueryListEvent) => {
+      // if (event.matches) {
+      //   document.body.classList.add("dark");
+      // } else {
+      //   document.body.classList.remove("dark");
+      // }
+
+      updateDarkMode(event.matches);
+    };
+
+    darkModeMediaQuery.addEventListener("change", darkModeListener);
+
+    return () => {
+      darkModeMediaQuery.removeEventListener("change", darkModeListener);
+    };
+  }, []);
+
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>

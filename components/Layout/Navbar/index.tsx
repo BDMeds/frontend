@@ -95,7 +95,7 @@ const Navbar = () => {
           <div>
             {session ? (
               <div className="flex items-center gap-2">
-                <div className="relative size-10 rounded-full overflow-hidden ring ring-transparent duration-300 hover:ring-white/50">
+                <div className="relative size-10 rounded-full overflow-hidden ring duration-300 ring-white/50">
                   <Link href={"/dashboard"}>
                     {user && (
                       <Image
