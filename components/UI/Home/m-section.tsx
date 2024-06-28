@@ -1,6 +1,6 @@
 "use client";
 
-import Capsule from "@/public/models/capsule/Capsule";
+import Capsule from "@/components/Common/3D/capsule";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
@@ -10,7 +10,7 @@ const FModel = () => {
       <div className="border-4 border-red-500"></div>
       <div className="border-4">
         <Canvas>
-          <OrbitControls enablePan={false} enableDamping={false} enableZoom={false} enableRotate={false} />
+          <OrbitControls enablePan={false} enableDamping={false} enableZoom={false} />
           <Capsule />
         </Canvas>
       </div>
