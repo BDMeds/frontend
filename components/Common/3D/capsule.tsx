@@ -15,9 +15,9 @@ const Capsule = (props: JSX.IntrinsicElements["group"]) => {
 
   const { x, y, z, scale, rotationX, rotationY, rotationZ, rotationSpeed } = useControls({
     x: 0,
-    y: -1.11,
+    y: -0.51,
     z: 0,
-    scale: 0.02,
+    scale: 0.06,
     rotationX: -0.12,
     rotationY: 0,
     rotationZ: -0.32,
@@ -54,9 +54,11 @@ const Capsule = (props: JSX.IntrinsicElements["group"]) => {
         scale={0.01}
       />
 
-      <Text fontSize={1.5} position={[0, 0, -1]} color="#5E2BFF" fontWeight={800} anchorX="center" anchorY="middle">
-        All-In-One
-      </Text>
+      {/* <group>
+        <Text fontSize={0.8} position={[0, 0, -1]} color="#5E2BFF" fontWeight={800} anchorX="center" anchorY="middle">
+          One Stop Med Platform
+        </Text>
+      </group> */}
 
       <group rotation={[rotationX, rotationY, rotationZ]} position={[x, y, z]} ref={ref} scale={scale}>
         <mesh {...capsuleNodes.Cube} position={[0, 35.053, 0]} scale={0.3}>

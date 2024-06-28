@@ -26,7 +26,7 @@ type OnboardStoreActions = {
 type OnboardStore = OnboardStoreState & OnboardStoreActions;
 
 export const useGlobalStore = create<GlobalStore>((set) => ({
-  isDarkMode: false,
+  isDarkMode: true,
 
   sidebarOpen: true,
 

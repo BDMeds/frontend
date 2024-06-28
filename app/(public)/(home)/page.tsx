@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 const FModel = dynamic(() => import("@/components/UI/Home/m-section"), {
   ssr: false,
   loading: () => (
-    <div className="text-center">
+    <div className="text-center h-screen">
       <p>Model loading...</p>
     </div>
   ),

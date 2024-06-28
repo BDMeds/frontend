@@ -1,7 +1,7 @@
 "use client";
 
 import { services } from "@/lib/data/home";
-import { fadeToTopVariant, parentVariantSlow } from "@/lib/utils/variants";
+import { fadeToTopVariant } from "@/lib/utils/variants";
 import { motion } from "framer-motion";
 
 const WhyUs = () => {
@@ -30,9 +30,9 @@ const WhyUs = () => {
               variants={fadeToTopVariant}
               initial="initial"
               animate="animate"
-              className="px-5 py-7 space-y-4 bg-white shadow-lg shadow-gray-100 rounded-xl duration-300 hover:shadow-2xl"
+              className="px-5 py-7 space-y-4 bg-white dark:bg-white/10 shadow-lg shadow-gray-100 dark:shadow-none rounded-xl duration-300 hover:shadow-2xl"
             >
-              <div className="size-12 border rounded-full bg-primary text-white grid place-content-center">{icon}</div>
+              <div className="size-12 border dark:border-none rounded-full bg-primary text-white grid place-content-center">{icon}</div>
 
               <p className={`font-extrabold text-2xl`}>{title}</p>
 

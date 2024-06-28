@@ -2,23 +2,20 @@
 
 import { navLinks } from "@/lib/data/navbar";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { GiMedicines } from "react-icons/gi";
 import NavChild from "./nav-child";
-import { signOut, useSession } from "next-auth/react";
-import Button from "@/components/Common/Button";
+import { useSession } from "next-auth/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import gsap from "gsap";
 import { LuX } from "react-icons/lu";
-import { FaFileImage } from "react-icons/fa";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import Image from "next/image";
+import { useGlobalStore } from "@/lib/store/global.store";
+import { CgMoon, CgSun } from "react-icons/cg";
 
 const Navbar = () => {
   const ref = useRef<HTMLElement>(null);
-  const [passed, setPassed] = useState(false);
-  const pathname = usePathname();
 
   const asideRef = useRef<HTMLElement>(null);
 
@@ -26,33 +23,7 @@ const Navbar = () => {
 
   const { user } = useUserInfo();
 
-  useEffect(() => {
-    let prev = window.scrollY;
-    if (prev > 80) {
-      setPassed(true);
-    } else setPassed(false);
-
-    const handleScroll = () => {
-      let current = window.scrollY;
-      if (current > 200) {
-        setPassed(true);
-      } else setPassed(false);
-
-      if (!ref.current) return;
-
-      if (current > prev) {
-        ref.current.style.opacity = "0%";
-      } else {
-        ref.current.style.opacity = "100%";
-      }
-
-      prev = current;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { isDarkMode, updateDarkMode } = useGlobalStore();
 
   const openMenu = () => {
     gsap.context(() => {
@@ -79,7 +50,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 bg-white`}
+            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 bg-white dark:bg-white/10`}
           >
             {navLinks.map((link, id) => (
               <NavChild {...link} key={id} />
@@ -106,9 +77,29 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center gap-4">
-                <Link href="/account/login">Login</Link>
-                <Link href="/account/register">Register</Link>
-                <RxHamburgerMenu className="cursor-pointer text-white md:hidden" size={26} onClick={openMenu} />
+                <Link className="sm:block hidden" href="/account/login">
+                  Login
+                </Link>
+                <Link className="sm:block hidden" href="/account/register">
+                  Register
+                </Link>
+                <Link className="sm:hidden" href="/account/login">
+                  Account
+                </Link>
+                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center">
+                  {isDarkMode ? (
+                    <CgSun
+                      className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
+                      onClick={() => updateDarkMode(false)}
+                    />
+                  ) : (
+                    <CgMoon
+                      className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
+                      onClick={() => updateDarkMode(true)}
+                    />
+                  )}
+                </div>
+                <RxHamburgerMenu className="cursor-pointer dark:text-white md:hidden" size={26} onClick={openMenu} />
               </div>
             )}
           </div>

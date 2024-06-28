@@ -13,14 +13,11 @@ import Lenis from "lenis";
 export const queryClient = new QueryClient();
 
 const Providers = ({ children }: { children: ReactNode }) => {
-  const { updateDarkMode } = useGlobalStore();
+  const { isDarkMode } = useGlobalStore();
 
   useEffect(() => {
+    // SMOOTH SCROLL
     const lenis = new Lenis();
-
-    // lenis.on("scroll", (e) => {
-    //   console.log(e);
-    // });
 
     function raf(time: number) {
       lenis.raf(time);
@@ -31,10 +28,9 @@ const Providers = ({ children }: { children: ReactNode }) => {
 
     // DARK MODE
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    updateDarkMode(darkModeMediaQuery.matches);
+    // updateDarkMode(darkModeMediaQuery.matches);
 
     const darkModeListener = (event: MediaQueryListEvent) => {
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       // if (
       //   localStorage.theme === "dark" ||
       //   (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
@@ -43,25 +39,29 @@ const Providers = ({ children }: { children: ReactNode }) => {
       // } else {
       //   document.documentElement.classList.remove("dark");
       // }
-
       // // Whenever the user explicitly chooses light mode
       // localStorage.theme = "light";
-
       // // Whenever the user explicitly chooses dark mode
       // localStorage.theme = "dark";
-
       // // Whenever the user explicitly chooses to respect the OS preference
       // localStorage.removeItem("theme");
-
-      updateDarkMode(event.matches);
+      // updateDarkMode(event.matches);
     };
 
-    darkModeMediaQuery.addEventListener("change", darkModeListener);
+    // darkModeMediaQuery.addEventListener("change", darkModeListener);
 
-    return () => {
-      darkModeMediaQuery.removeEventListener("change", darkModeListener);
-    };
+    // return () => {
+    //   darkModeMediaQuery.removeEventListener("change", darkModeListener);
+    // };
   }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   return (
     <SessionProvider>
