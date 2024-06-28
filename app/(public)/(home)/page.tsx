@@ -19,10 +19,11 @@ const FModel = dynamic(() => import("@/components/UI/Home/m-section"), {
 const Home = () => {
   return (
     <>
-      <Hero />
+      <FModel />
+      {/* <Hero /> */}
 
       <main className="space-y-32">
-        <FModel />
+        {/* <FModel /> */}
         <FServices />
         <WhyUs />
         <Departments />

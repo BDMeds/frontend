@@ -68,11 +68,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full duration-300 z-[500]" ref={ref}>
-        <div
-          className={`container flex items-center justify-between py-5 duration-300 ${
-            pathname === "/" && !passed ? "text-white" : ""
-          }`}
-        >
+        <div className={`container flex items-center justify-between py-5 duration-300`}>
           <div>
             <Link href={"/"} className="text-2xl font-bold">
               <div className="flex items-center gap-2">
@@ -83,9 +79,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 ${
-              pathname === "/" && !passed ? "text-white bg-transparent " : "bg-white "
-            }`}
+            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 bg-white`}
           >
             {navLinks.map((link, id) => (
               <NavChild {...link} key={id} />

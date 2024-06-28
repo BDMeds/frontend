@@ -6,18 +6,19 @@ import { Canvas } from "@react-three/fiber";
 
 const FModel = () => {
   return (
-    <div>
+    <div className="space-y-10">
       {/* className="min-h-screen md:mt-4 mt-10 flex flex-col-reverse md:grid grid-cols-2 gap-8 container" */}
       <div className="min-h-screen">
         <Canvas style={{ backgroundColor: "transparent", width: "100%", height: "100vh" }}>
-          <directionalLight intensity={0.7} rotation={[-0.616, 0.76, 0.799]} scale={0.01} />
+          <directionalLight intensity={2} position={[0, 2, 3]} />
+          <Environment preset="city" />
 
-          <OrbitControls enablePan={false} enableDamping={false} enableZoom={false} enableRotate={false} />
+          <OrbitControls enablePan={false} enableDamping={false} enableZoom={false}/>
           <Capsule />
         </Canvas>
       </div>
       <div className="flex items-center">
-        <p className="lg:text-8xl md:text-7xl text-4xl font-extrabold text-center">
+        <p className="lg:text-8xl md:text-7xl text-4xl font-extrabold text-center md:px-6">
           Find The Best <span className="text-primary">Medical Service</span> you won&apos;t find anywhere else
           <span className="text-primary">.</span>
         </p>

@@ -20,7 +20,7 @@ const FServices = () => {
 };
 
 const Sec1 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -8]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   return (
@@ -43,9 +43,12 @@ const Sec1 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => 
 };
 
 const Sec2 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
-  const value = useTransform(scrollYProgress, [0, 1], [-10, 0]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [8, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
-  return <motion.div className="h-screen sticky top-0 border rounded-md bg-blue-500"></motion.div>;
+  return (
+    <motion.div style={{ rotate, scale }} className="h-screen sticky top-0 border rounded-md bg-blue-500"></motion.div>
+  );
 };
 
 export default FServices;

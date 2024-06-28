@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${dmSans.className} dark:bg-black dark:text-gray-100`}>
         <Providers>{children}</Providers>
       </body>

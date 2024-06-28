@@ -2,15 +2,12 @@
 
 import * as THREE from "three";
 import React, { useRef } from "react";
-import { useGLTF, OrthographicCamera, useTexture, Text, MeshTransmissionMaterial } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
+import { useGLTF, OrthographicCamera, Text, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { useControls } from "leva";
-import { TextureLoader } from "three";
 
 const Capsule = (props: JSX.IntrinsicElements["group"]) => {
-  const { nodes, scene } = useGLTF("models/capsule/capsule.gltf");
+  const { nodes: capsuleNodes } = useGLTF("models/capsule/capsule.glb");
 
   const { viewport } = useThree();
 
@@ -20,11 +17,7 @@ const Capsule = (props: JSX.IntrinsicElements["group"]) => {
     x: 0,
     y: -1.11,
     z: 0,
-    scale: {
-      step: 0.25,
-      value: 1,
-      min: 1,
-    },
+    scale: 0.02,
     rotationX: -0.12,
     rotationY: 0,
     rotationZ: -0.32,
@@ -61,14 +54,15 @@ const Capsule = (props: JSX.IntrinsicElements["group"]) => {
         scale={0.01}
       />
 
-      {/* 
       <Text fontSize={1.5} position={[0, 0, -1]} color="#5E2BFF" fontWeight={800} anchorX="center" anchorY="middle">
         All-In-One
-      </Text> */}
+      </Text>
 
       <group rotation={[rotationX, rotationY, rotationZ]} position={[x, y, z]} ref={ref} scale={scale}>
-        {/* <primitive object={scene} /> */}
-        <mesh {...nodes.Capsule}>
+        <mesh {...capsuleNodes.Cube} position={[0, 35.053, 0]} scale={0.3}>
+          <MeshTransmissionMaterial {...materialProps} />
+        </mesh>
+        <mesh {...capsuleNodes.Cube_2} rotation={[0, 0, Math.PI]} position={[0, -14.99, 0]} scale={0.3}>
           <MeshTransmissionMaterial {...materialProps} />
         </mesh>
       </group>
