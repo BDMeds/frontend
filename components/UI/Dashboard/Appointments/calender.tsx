@@ -15,7 +15,6 @@ import AppointmentModal from "./modal";
 import useEventsStore, { EventType, useAppointment } from "@/lib/store/event.store";
 import { useQuery } from "@tanstack/react-query";
 import { getAppointments } from "@/lib/services/appointment.service";
-import { AppointmentDocument, IUser } from "@/lib/types";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import { mapAppointmentsToEvents } from "@/lib/helpers/fns";
 import AppointmentInfoModal from "./modal/appointment-info";
