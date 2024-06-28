@@ -8,6 +8,7 @@ import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
 import { useGlobalStore } from "../store/global.store";
+import Lenis from "lenis";
 
 export const queryClient = new QueryClient();
 
@@ -15,6 +16,20 @@ const Providers = ({ children }: { children: ReactNode }) => {
   const { updateDarkMode } = useGlobalStore();
 
   useEffect(() => {
+    const lenis = new Lenis();
+
+    // lenis.on("scroll", (e) => {
+    //   console.log(e);
+    // });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // DARK MODE
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     updateDarkMode(darkModeMediaQuery.matches);
 

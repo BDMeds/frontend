@@ -19,6 +19,7 @@ import { queryClient } from "@/lib/providers";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { bookAppointment } from "@/lib/services/appointment.service";
 import { getDoctors } from "@/lib/services/user.service";
+import * as dateFns from "date-fns";
 
 type Inputs = {
   appointmentDate: string;
@@ -38,13 +39,17 @@ const AppointmentModal = () => {
   const [infoComplete, setInfoComplete] = useState(false);
   const [mode, setMode] = useState<"online" | "physical">("online");
 
+  const { update: updateAppointment, appointment } = useAppointment();
+
   const {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<Inputs>();
-
-  const { update: updateAppointment, appointment } = useAppointment();
+  } = useForm<Inputs>({
+    defaultValues: {
+      appointmentDate: `${dateFns.format(appointment.appointmentDate, "yyyy-MM-dd")}`,
+    },
+  });
 
   // specialization
   const [department, setDepartment] = useState<Department>("Cardiology (Heart)");

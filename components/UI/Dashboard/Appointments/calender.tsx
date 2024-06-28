@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import dummyEvents from "./events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { toastSuccess } from "@/lib/utils/toast";
+import { toastError, toastSuccess } from "@/lib/utils/toast";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
@@ -12,7 +12,7 @@ import getDay from "date-fns/getDay";
 import enUS from "date-fns/locale/en-US";
 import { useModal } from "@/lib/providers/modal-provider";
 import AppointmentModal from "./modal";
-import useEventsStore, { EventType } from "@/lib/store/event.store";
+import useEventsStore, { EventType, useAppointment } from "@/lib/store/event.store";
 import { useQuery } from "@tanstack/react-query";
 import { getAppointments } from "@/lib/services/appointment.service";
 import { AppointmentDocument, IUser } from "@/lib/types";
@@ -37,6 +37,8 @@ const BigCalendar = () => {
 
   const { events, setEvents } = useEventsStore();
 
+  const { update: updateAppointment } = useAppointment();
+
   const { user } = useUserInfo();
 
   const { data: appointments, refetch } = useQuery({
@@ -52,18 +54,26 @@ const BigCalendar = () => {
   }, [appointments]);
 
   const handleSelect = ({ start, end }: { start: any; end: any }) => {
-    toastSuccess(
-      `Event from ${new Date(start).toLocaleString()} to ${new Date(
-        end
-      ).toLocaleString()}`
-    );
+    // check if date selected is in the past
+    const [now, startTime] = [new Date().getTime(), new Date(end).getTime()];
+
+    const validTime = startTime > now;
+    if (!validTime) {
+      toastError("Invalid time/date range selected", { id: "invalid-time-range" });
+      return;
+    }
+
+    updateAppointment({
+      appointmentDate: new Date(start),
+      startTime: start,
+      endTime: end,
+      mode: "online",
+    });
     showModal(<AppointmentModal />);
   };
 
   const handleSelectEvent = (event: EventType) => {
-    showModal(
-      <AppointmentInfoModal event={event} refetchAppointments={refetch} />
-    );
+    showModal(<AppointmentInfoModal event={event} refetchAppointments={refetch} />);
   };
 
   return (

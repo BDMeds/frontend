@@ -1,4 +1,3 @@
-import dummyEvents from "@/components/UI/Dashboard/Appointments/events";
 import { create } from "zustand";
 
 export type EventType = {
@@ -14,13 +13,17 @@ type EventStore = {
   events: EventType[];
   addToEvents: (event: EventType) => void;
   setEvents: (events: EventType[]) => void;
+
+  updateData: <K extends keyof EventType>(key: K, value: EventType[K]) => void;
 };
 
 const useEventsStore = create<EventStore>((set) => ({
   events: [],
-  addToEvents: (event) =>
-    set((state) => ({ ...state, events: [...state.events, event] })),
+
+  addToEvents: (event) => set((state) => ({ ...state, events: [...state.events, event] })),
   setEvents: (events) => set((state) => ({ ...state, events })),
+
+  updateData: (key, value) => set((state) => ({ ...state, [key]: value })),
 }));
 
 type Appointment = {
