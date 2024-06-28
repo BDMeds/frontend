@@ -131,7 +131,7 @@ const AppointmentModal = () => {
     <Modal
       onClose={hideModal}
       isAutomatic={false}
-      className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
+      className="bg-white dark:bg-white/10 shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
       <>
         <div className="flex items-center justify-between">
@@ -185,7 +185,7 @@ const AppointmentModal = () => {
                         key={id}
                         onClick={() => setMode(m as "physical" | "online")}
                         className={`p-2 text-center capitalize rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                          m === mode ? "bg-primary text-white" : "bg-white border border-gray-200"
+                          m === mode ? "bg-primary text-white" : "bg-white dark:bg-white/10 border border-gray-200"
                         }`}
                       >
                         <p>{m}</p>

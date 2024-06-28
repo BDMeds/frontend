@@ -10,13 +10,13 @@ const AdminDashboard = () => {
       <AdminCards />
 
       <div className="grid md:grid-cols-3 gap-4">
-        <div className="bg-white md:col-span-2 p-4 border rounded-xl self-start h-[30rem] space-y-5">
+        <div className="bg-white dark:bg-white/10 md:col-span-2 p-4 border rounded-xl self-start h-[30rem] space-y-5">
           <p className="font-bold text-xl">Users</p>
 
           <UsersBarChart />
         </div>
 
-        <div className="bg-white border grid place-content-center rounded-xl p-5 self-start min-h-[30rem]">
+        <div className="bg-white dark:bg-white/10 border grid place-content-center rounded-xl p-5 self-start min-h-[30rem]">
           <div className="-mt-10">
             <UsersPieChart />
           </div>

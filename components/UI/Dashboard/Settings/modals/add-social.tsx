@@ -23,7 +23,7 @@ const AddSocialModal = () => {
     });
 
   return (
-    <Modal onClose={hideModal} className="p-5 bg-white space-y-5 shadow-xl rounded-xl">
+    <Modal onClose={hideModal} className="p-5 bg-white dark:bg-white/10 space-y-5 shadow-xl rounded-xl">
       <p className="font-bold text-xl">Socials</p>
 
       <form onSubmit={handleSubmit(submit)}>
@@ -32,7 +32,7 @@ const AddSocialModal = () => {
             <label htmlFor="facebook">Facebook</label>
             <input
               type="text"
-              className="w-full bg-transparent p-2 border rounded-lg bg-white"
+              className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10"
               placeholder="https://www.facebook.com/..."
               {...register("facebook", { required: true })}
             />
@@ -42,7 +42,7 @@ const AddSocialModal = () => {
             <input
               type="text"
               {...register("linkedin", { required: true })}
-              className="w-full bg-transparent p-2 border rounded-lg bg-white"
+              className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10"
               placeholder="linkedin.com/in/..."
             />
           </div>
@@ -51,7 +51,7 @@ const AddSocialModal = () => {
             <input
               type="text"
               {...register("whatsapp", { required: true })}
-              className="w-full bg-transparent p-2 border rounded-lg bg-white"
+              className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10"
               placeholder="+234..., or +1... etc"
             />
           </div>
@@ -60,7 +60,7 @@ const AddSocialModal = () => {
             <input
               type="text"
               {...register("twitter", { required: true })}
-              className="w-full bg-transparent p-2 border rounded-lg bg-white"
+              className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10"
               placeholder="https://x.com/..."
             />
           </div>

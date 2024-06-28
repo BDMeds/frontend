@@ -23,7 +23,7 @@ const ForgotPasswordModal = () => {
 
   return (
     <main className="min-h-screen w-full grid place-content-center">
-      <div className="sm:min-w-[30rem] w-full relative bg-white border rounded-xl p-8 mx-auto">
+      <div className="sm:min-w-[30rem] w-full relative bg-white dark:bg-white/10 border rounded-xl p-8 mx-auto">
         {loading && <Loader />}
 
         <form onSubmit={handleSubmit(submit)} noValidate>

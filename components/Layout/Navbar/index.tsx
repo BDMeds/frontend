@@ -50,7 +50,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 bg-white dark:bg-white/10`}
+            className={`md:flex items-center hidden gap-6 border border-white/40 duration-300 rounded-full backdrop-blur-lg shadow px-8 bg-white dark:bg-white/10 dark:bg-white dark:bg-white/10/10`}
           >
             {navLinks.map((link, id) => (
               <NavChild {...link} key={id} />
@@ -107,7 +107,7 @@ const Navbar = () => {
       </nav>
 
       <aside
-        className={`dark:bg-secondary-base/90 bg-white/80 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
+        className={`dark:bg-secondary-base/90 bg-white dark:bg-white/10/80 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
         ref={asideRef}
       >
         <div className="w-full h-full relative flex items-center">

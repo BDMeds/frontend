@@ -44,7 +44,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">
       <div className="grid grid-cols-2 items-center gap-8 container">
-        <div className="min-h-[40rem] rounded-xl overflow-hidden relative">
+        <div className="min-h-[40rem] rounded-xl dark:rounded-t-xl dark:rounded-b-none overflow-hidden relative">
           <Image
             src={"/images/account/patient.jpg"}
             alt="patient"
@@ -53,7 +53,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
             className="w-full h-full object-cover absolute top-0 left-0"
           />
 
-          <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black/40 p-5">
+          <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black/80 dark:from-black to-black/10 p-5">
             <div className="cursor-pointer flex items-center gap-2 text-white" onClick={() => updateTag(null)}>
               <FaChevronLeft />
               <p>Back</p>
@@ -78,7 +78,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     <label htmlFor="firstName">First Name</label>
                     <input
                       type="text"
-                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
                       placeholder="Jon"
                       {...register("firstName", { required: true })}
                     />
@@ -88,7 +88,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     <input
                       type="text"
                       {...register("lastName", { required: true })}
-                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
                       placeholder="Simon"
                     />
                   </div>
@@ -97,7 +97,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     <input
                       type="email"
                       {...register("email", { required: true })}
-                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
                       placeholder="jonsimon@domain.com"
                     />
                   </div>
@@ -106,7 +106,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     <input
                       type="text"
                       {...register("phoneNumber", { required: true })}
-                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
                       placeholder="+234..."
                     />
                   </div>
@@ -118,7 +118,9 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                           key={id}
                           onClick={() => setGender(gen.name)}
                           className={`p-2 rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                            gen.name === gender ? "bg-primary text-white" : "bg-white border border-gray-200"
+                            gen.name === gender
+                              ? "bg-primary text-white"
+                              : "bg-white dark:bg-white/10 dark:placeholder:text-gray-600 border border-gray-200 dark:border-white/10"
                           }`}
                         >
                           {gen.icon}
@@ -132,7 +134,7 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
                     <input
                       type="password"
                       {...register("password", { required: true })}
-                      className="w-full bg-transparent p-2 border rounded-lg bg-white"
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
                       placeholder="***************"
                     />
                   </div>

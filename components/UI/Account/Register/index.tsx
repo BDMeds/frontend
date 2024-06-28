@@ -39,8 +39,8 @@ const Register = () => {
                 {choices.map(({ icon, name, tag }, id) => (
                   <div
                     key={id}
-                    className={`border flex items-center gap-2 rounded-xl border-gray-500/20 px-5 py-4 cursor-pointer duration-200 hover:bg-gray-100 hover:shadow-2xl ${
-                      tag === mainTag ? "bg-primary text-white" : "bg-white"
+                    className={`border flex items-center gap-2 rounded-xl border-gray-500/20 dark:border-white/10 px-5 py-4 cursor-pointer duration-200 hover:bg-gray-100 hover:shadow-2xl ${
+                      tag === mainTag ? "bg-primary text-white" : "bg-white dark:bg-white/10"
                     }`}
                     onClick={() => setTag(tag)}
                   >

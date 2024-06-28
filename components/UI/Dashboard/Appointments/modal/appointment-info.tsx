@@ -4,11 +4,7 @@ import Loader from "@/components/Common/Loaders";
 import Modal from "@/components/Common/Modal";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import { useModal } from "@/lib/providers/modal-provider";
-import {
-  cancelAppointment,
-  getSingleAppointment,
-  updateAppointmentStatus,
-} from "@/lib/services/appointment.service";
+import { cancelAppointment, getSingleAppointment, updateAppointmentStatus } from "@/lib/services/appointment.service";
 import { getAppointmentReport } from "@/lib/services/report.service";
 import { EventType } from "@/lib/store/event.store";
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
@@ -66,18 +62,13 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
 
   const Footer = useCallback(() => {
     if (user && appointment) {
-      const isPast = isBefore(
-        appointment?.startTime!,
-        new Date().toISOString()
-      );
+      const isPast = isBefore(appointment?.startTime!, new Date().toISOString());
       switch (isPast) {
         case true:
           return (
             <div className="flex items-center justify-end">
-              {((user?.role === "patient" &&
-                appointment?.patientStatus === "pending") ||
-                (user?.role === "doctor" &&
-                  appointment?.doctorStatus === "pending")) && (
+              {((user?.role === "patient" && appointment?.patientStatus === "pending") ||
+                (user?.role === "doctor" && appointment?.doctorStatus === "pending")) && (
                 <Select
                   label=""
                   options={[
@@ -97,9 +88,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                   text="Submit Report"
                   variant="filled"
                   onClick={() => {
-                    router.push(
-                      `/appointments/${appointment!._id}/report/submit`
-                    );
+                    router.push(`/appointments/${appointment!._id}/report/submit`);
                     hideModal();
                   }}
                 />
@@ -109,13 +98,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                     className="ml-auto"
                     text="View Report"
                     variant="filled"
-                    onClick={() =>
-                      router.push(
-                        `/reports/${report!._id}?department=${
-                          appointment?.department
-                        }`
-                      )
-                    }
+                    onClick={() => router.push(`/reports/${report!._id}?department=${appointment?.department}`)}
                   />
                 )
               )}
@@ -141,7 +124,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   return (
     <Modal
       onClose={hideModal}
-      className="bg-white shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
+      className="bg-white dark:bg-white/10 shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
       {appointmentLoading || reportLoading ? (
         <div className="grid place-content-center w-full h-full">
@@ -161,11 +144,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
             <h1 className="mt-2 text-xl font-bold">
               {partner?.firstName} {partner?.lastName}
               <span className="inline-block align-middle ml-2">
-                {partner?.gender === "male" ? (
-                  <GiMale color="royalblue" />
-                ) : (
-                  <GiFemale color="pink" />
-                )}
+                {partner?.gender === "male" ? <GiMale color="royalblue" /> : <GiFemale color="pink" />}
               </span>
             </h1>
 
@@ -173,9 +152,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
               {appointment?.department} - {appointment?.mode}
             </p>
 
-            <p className="mt-2 capitalize font-bold">
-              {appointment?.status?.toLowerCase()}
-            </p>
+            <p className="mt-2 capitalize font-bold">{appointment?.status?.toLowerCase()}</p>
           </header>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 space-x-2">
@@ -195,10 +172,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                 type="text"
                 disabled={true}
                 className="w-full border rounded-xl p-2"
-                value={`${format(appointment?.startTime!, "h:mm a")} - ${format(
-                  appointment?.endTime!,
-                  "h:mm a"
-                )}`}
+                value={`${format(appointment?.startTime!, "h:mm a")} - ${format(appointment?.endTime!, "h:mm a")}`}
               />
             </div>
           </div>

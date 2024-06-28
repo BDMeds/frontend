@@ -56,7 +56,10 @@ const Departments = () => {
             ref={scrollableRef}
           >
             {departments.map(({ image, name }, id) => (
-              <div key={id} className="bg-white dark:bg-white/10 shadow-lg rounded-xl text-center p-10 space-y-2">
+              <div
+                key={id}
+                className="bg-white dark:bg-white/10 dark:bg-white dark:bg-white/10/10 shadow-lg rounded-xl text-center p-10 space-y-2"
+              >
                 <div className="grid place-content-center">
                   <Image src={`/images/departments/${image}`} alt="department" width={100} height={100} />
                 </div>

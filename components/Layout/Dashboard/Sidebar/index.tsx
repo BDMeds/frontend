@@ -37,7 +37,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`fixed top-0 z-[100] min-h-screen overflow-x-hidden duration-300 w-0 dark:bg-[#131921] bg-white overflow-y-auto show-scroll flex flex-col gap-10 justify-between ${
+      className={`fixed top-0 z-[100] min-h-screen overflow-x-hidden duration-300 w-0 dark:bg-[#131921] bg-white dark:bg-white/10 overflow-y-auto show-scroll flex flex-col gap-10 justify-between ${
         sidebarOpen ? "xl:w-[280px] md:w-[260px]" : "w-[60px]"
       }`}
     >

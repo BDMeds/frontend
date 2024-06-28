@@ -49,7 +49,7 @@ const AdminCards = () => {
 
 const Card: FC<Card> = ({ title, value, icon }) => {
   return (
-    <div className="bg-white p-4 rounded-md shadow-md flex items-center justify-between">
+    <div className="bg-white dark:bg-white/10 p-4 rounded-md shadow-md flex items-center justify-between">
       <div>
         <p className="text-sm text-gray-500">{title}</p>
         <p className="text-lg font-bold">{value}</p>

@@ -1,9 +1,5 @@
 import Button from "@/components/Common/Button";
-import {
-  submitCardiologyReprot,
-  submitDentistryReport,
-  submitHepatologyReport,
-} from "@/lib/services/report.service";
+import { submitCardiologyReprot, submitDentistryReport, submitHepatologyReport } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React, { FC } from "react";
@@ -58,7 +54,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -72,7 +68,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -86,7 +82,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -106,7 +102,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive liver health status"
               {...register("liverHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.liverHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -121,7 +117,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter ALT Level"
               defaultValue={0}
               {...register("altLevel", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.altLevel ? "border-red-500/50" : ""
               }`}
             />
@@ -136,7 +132,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter AST Level"
               defaultValue={0}
               {...register("astLevel", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.astLevel ? "border-red-500/50" : ""
               }`}
             />
@@ -150,7 +146,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Bilirubin"
               {...register("bilirubin", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.bilirubin ? "border-red-500/50" : ""
               }`}
             />
@@ -164,7 +160,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Fibrosis Score"
               {...register("fibrosisScore", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.fibrosisScore ? "border-red-500/50" : ""
               }`}
             />
@@ -172,13 +168,7 @@ const Hepatology: FC<Props> = ({ refetchReport }) => {
         </div>
       </section>
 
-      <Button
-        type="submit"
-        text="Submit Report"
-        variant="filled"
-        className="ml-auto"
-        loading={isPending}
-      />
+      <Button type="submit" text="Submit Report" variant="filled" className="ml-auto" loading={isPending} />
     </form>
   );
 };

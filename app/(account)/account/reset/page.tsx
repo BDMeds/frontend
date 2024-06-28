@@ -39,7 +39,7 @@ const Page = () => {
 
   return (
     <div className="container min-h-screen flex items-center sm:justify-center md:py-20 py-14">
-      <div className="max-w-[40rem] sm:min-w-[30rem] bg-white min-w-full border relative p-5 rounded">
+      <div className="max-w-[40rem] sm:min-w-[30rem] bg-white dark:bg-white/10 min-w-full border relative p-5 rounded">
         {loading && (
           <div className="absolute top-0 left-0 w-full h-full grid place-content-center backdrop-blur-sm">
             <Loader />

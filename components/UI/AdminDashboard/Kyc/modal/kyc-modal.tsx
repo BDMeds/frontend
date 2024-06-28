@@ -30,7 +30,7 @@ const KycModal: FC<Props> = (data) => {
   return (
     <Modal
       onClose={hideModal}
-      className="bg-white shadow-xl rounded-xl lg:min-w-[40rem] min-h-[20rem] max-h-[40rem] overflow-y-auto p-4"
+      className="bg-white dark:bg-white/10 shadow-xl rounded-xl lg:min-w-[40rem] min-h-[20rem] max-h-[40rem] overflow-y-auto p-4"
     >
       <div className="grid place-content-center md:grid-cols-2 divide-x">
         <div className="space-y-4 p-4">

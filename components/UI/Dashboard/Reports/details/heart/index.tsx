@@ -31,7 +31,7 @@ const HeartModel = dynamic(() => import("@/components/Common/3D/heart"), {
 const HeartReportDetails: FC<Props> = ({ report }) => {
   return (
     <div className="grid md:grid-cols-2 gap-7 pb-8">
-      <div className="border rounded-xl bg-white relative self-start">
+      <div className="border rounded-xl bg-white dark:bg-white/10 relative self-start">
         <div className="absolute top-2 p-5 left-0 space-y-1">
           <p>Evaluation:</p>
           <p className="text-4xl font-bold">Overall State of Health</p>
@@ -40,12 +40,8 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
         <HeartModel />
       </div>
 
-      <motion.div
-        {...parentVariant}
-        animate="animate"
-        className="grid gap-3 grid-cols-2 self-start"
-      >
-        <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
+      <motion.div {...parentVariant} animate="animate" className="grid gap-3 grid-cols-2 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <TbHeartRateMonitor />
@@ -55,43 +51,37 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
           <h1 className="text-[1.8rem] font-bold">{report?.heartRate} bpm</h1>
         </div>
 
-        <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <RiHeartAddLine />
             </span>
             Oxygen Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">
-            {report?.bloodOxygenLevel}%
-          </h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.bloodOxygenLevel}%</h1>
         </div>
 
-        <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <RiHeartPulseLine />
             </span>
             Cardiac Output
           </p>
-          <h1 className="text-[1.8rem] font-bold">
-            {report?.cardiacOutput} L/min
-          </h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.cardiacOutput} L/min</h1>
         </div>
 
-        <div className="rounded-md bg-white border py-4 space-y-4 px-5 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <RiHeartPulseLine />
             </span>
             Glucose Level
           </p>
-          <h1 className="text-[1.8rem] font-bold">
-            {report?.bloodGlucoseLevel} mg/dL
-          </h1>
+          <h1 className="text-[1.8rem] font-bold">{report?.bloodGlucoseLevel} mg/dL</h1>
         </div>
 
-        <div className="rounded-xl bg-white border py-4 space-y-3">
+        <div className="rounded-xl bg-white dark:bg-white/10 border py-4 space-y-3">
           <p className="font-bold px-5">Cholestrol Level (mg/dL)</p>
           <div className="">
             <CholesterolPieChart
@@ -102,7 +92,7 @@ const HeartReportDetails: FC<Props> = ({ report }) => {
           </div>
         </div>
 
-        <div className="rounded-xl bg-white border py-4 space-y-3">
+        <div className="rounded-xl bg-white dark:bg-white/10 border py-4 space-y-3">
           <p className="font-bold px-5">Blood Pressure (mmHg)</p>
           <div className="">
             <BloodPressurePieChart

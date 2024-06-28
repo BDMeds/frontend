@@ -26,7 +26,7 @@ const PasswordChange = () => {
           </label>
           <input
             type="password"
-            className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+            className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
             placeholder="*******"
             {...register("oldPassword", { required: true })}
           />
@@ -37,7 +37,7 @@ const PasswordChange = () => {
           </label>
           <input
             type="password"
-            className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+            className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
             placeholder="*******"
             {...register("newPassword", { required: true })}
           />

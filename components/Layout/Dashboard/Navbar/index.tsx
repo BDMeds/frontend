@@ -14,7 +14,7 @@ const DNavbar = () => {
   const { doctor, loading } = useDoctorInfo();
 
   return (
-    <nav className="bg-white w-full p-[0.5rem] border-b flex z-[1000] items-center justify-between sticky top-0 left-0">
+    <nav className="bg-white dark:bg-white/10 w-full p-[0.5rem] border-b flex z-[1000] items-center justify-between sticky top-0 left-0">
       <div className="flex items-center gap-2">
         <div className="size-8 grid place-content-center cursor-pointer duration-200 hover:bg-primary hover:text-white rounded-full border">
           <RxHamburgerMenu onClick={toggleSidebar} />

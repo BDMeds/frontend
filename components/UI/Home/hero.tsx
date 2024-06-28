@@ -43,7 +43,7 @@ const Hero = () => {
                     <Button
                       text="Get Started"
                       icon={<LuChevronRight />}
-                      className="text-white border-white hover:bg-white hover:text-primary"
+                      className="text-white border-white hover:bg-white dark:bg-white/10 hover:text-primary"
                     />
                   </Link>
                 </div>

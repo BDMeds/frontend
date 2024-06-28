@@ -36,7 +36,7 @@ const UserEditModal = () => {
   }, [loading]);
 
   return (
-    <Modal onClose={hideModal} className="bg-white shadow-lg rounded-lg">
+    <Modal onClose={hideModal} className="bg-white dark:bg-white/10 shadow-lg rounded-lg">
       <div className="p-4 space-y-5">
         <p className="text-xl font-semibold">Edit User</p>
         <form onSubmit={handleSubmit(submit)}>
@@ -46,7 +46,7 @@ const UserEditModal = () => {
                 <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="Jon"
                   {...register("user.firstName", { required: true })}
                 />
@@ -56,7 +56,7 @@ const UserEditModal = () => {
                 <input
                   type="text"
                   {...register("user.lastName", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="Simon"
                 />
               </div>
@@ -65,7 +65,7 @@ const UserEditModal = () => {
                 <input
                   type="email"
                   {...register("user.email", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="jonsimon@domain.com"
                   disabled
                 />
@@ -75,7 +75,7 @@ const UserEditModal = () => {
                 <input
                   type="text"
                   {...register("user.phoneNumber", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="+234..."
                 />
               </div>
@@ -85,7 +85,7 @@ const UserEditModal = () => {
                 <input
                   type="text"
                   {...register("user.gender", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg capitalize bg-white disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border rounded-lg capitalize bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   disabled
                 />
               </div>

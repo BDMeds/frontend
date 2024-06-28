@@ -49,7 +49,7 @@ const Settings = () => {
 
   return (
     <div className="sm:flex grid lg:gap-7 gap-5">
-      <div className="bg-white border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sm:sticky top-16">
+      <div className="bg-white dark:bg-white/10 border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sm:sticky top-16">
         {loading ? (
           <div className="divide-y">
             {Array.from({ length: 4 }).map((_, id) => (
@@ -75,7 +75,7 @@ const Settings = () => {
         )}
       </div>
 
-      <div className="flex-grow bg-white border rounded-lg overflow-hidden self-start">
+      <div className="flex-grow bg-white dark:bg-white/10 border rounded-lg overflow-hidden self-start">
         <AnimatePresence mode="wait" initial={false}>
           {renderSettings()}
         </AnimatePresence>

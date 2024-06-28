@@ -1,9 +1,6 @@
 import Button from "@/components/Common/Button";
 import Select from "@/components/Common/Inputs/select";
-import {
-  submitCardiologyReprot,
-  submitNephrologyReport,
-} from "@/lib/services/report.service";
+import { submitCardiologyReprot, submitNephrologyReport } from "@/lib/services/report.service";
 import { Frequency } from "@/lib/types/reports";
 import { toastError } from "@/lib/utils/toast";
 import { useMutation } from "@tanstack/react-query";
@@ -68,7 +65,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -82,7 +79,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -96,7 +93,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -116,7 +113,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive kidney health status"
               {...register("kidneyHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.kidneyHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -130,7 +127,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter creatnine level"
               {...register("creatnine", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.creatnine ? "border-red-500/50" : ""
               }`}
             />
@@ -144,7 +141,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter BUN"
               {...register("BUN", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.BUN ? "border-red-500/50" : ""
               }`}
             />
@@ -158,7 +155,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Urine Protein"
               {...register("urineProtein", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.urineProtein ? "border-red-500/50" : ""
               }`}
             />
@@ -176,7 +173,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
                 max: 100,
                 min: 0,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.dialysisHours ? "border-red-500/50" : ""
               }`}
             />
@@ -200,13 +197,7 @@ const Nephrology: FC<Props> = ({ refetchReport }) => {
         </div>
       </section>
 
-      <Button
-        type="submit"
-        text="Submit Report"
-        variant="filled"
-        className="ml-auto"
-        loading={isPending}
-      />
+      <Button type="submit" text="Submit Report" variant="filled" className="ml-auto" loading={isPending} />
     </form>
   );
 };

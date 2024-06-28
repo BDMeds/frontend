@@ -58,7 +58,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -72,7 +72,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -86,7 +86,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -106,7 +106,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive vision test result"
               {...register("visionTestResult", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.visionTestResult ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -121,7 +121,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter Ocular Pressure"
               defaultValue={0}
               {...register("ocularPressure", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.ocularPressure ? "border-red-500/50" : ""
               }`}
             />
@@ -135,7 +135,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Contact Lens Base Curve"
               {...register("contactLensBaseCurve", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.contactLensBaseCurve ? "border-red-500/50" : ""
               }`}
             />
@@ -149,7 +149,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Contact Lens Diameter"
               {...register("contactLensDiameter", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.contactLensDiameter ? "border-red-500/50" : ""
               }`}
             />
@@ -157,13 +157,7 @@ const Optometry: FC<Props> = ({ refetchReport }) => {
         </div>
       </section>
 
-      <Button
-        type="submit"
-        text="Submit Report"
-        variant="filled"
-        className="ml-auto"
-        loading={isPending}
-      />
+      <Button type="submit" text="Submit Report" variant="filled" className="ml-auto" loading={isPending} />
     </form>
   );
 };

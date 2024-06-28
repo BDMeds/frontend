@@ -1,12 +1,9 @@
 "use client";
 
 import Button from "@/components/Common/Button";
-import { dataMutate } from "@/lib/services/dummy";
 import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { ILoginData } from "@/lib/types";
-import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,21 +17,9 @@ const Login = () => {
     formState: { errors },
   } = useForm<ILoginData>();
 
-  const router = useRouter();
-
   const [loading, setLoading] = useState(false);
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: dataMutate,
-    onSuccess: () => (toastSuccess("login successful"), router.replace("/dashboard")),
-  });
-
   const submit: SubmitHandler<ILoginData> = async (data) => {
-    // if (data.emailOrPhone.includes("@")) {
-    //   mutate({ email: data.emailOrPhone, password: data.password });
-    // }
-
-    // mutate({ phone: data.emailOrPhone, password: data.password });
     try {
       setLoading(true);
       const res = await signIn("credentials", { email: data.emailOrPhone, password: data.password, redirect: false });
@@ -61,7 +46,7 @@ const Login = () => {
           </Link>
         </div>
 
-        <div className="space-y-6 p-5 min-w-96 max-w-xl bg-white rounded-xl border mx-auto">
+        <div className="space-y-6 p-5 min-w-96 max-w-xl bg-white dark:bg-white/10 rounded-xl border dark:border-white/10 mx-auto">
           <div className="flex items-center gap-2 text-3xl">
             {/* <GiMedicines /> */}
             <span className="font-bold">Login</span>
@@ -74,7 +59,7 @@ const Login = () => {
                 <input
                   type="text"
                   {...register("emailOrPhone", { required: true })}
-                  className={`w-full bg-transparent p-2 border rounded-lg bg-white ${
+                  className={`w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 ${
                     errors.emailOrPhone ? "border-red-500/50" : ""
                   }`}
                   placeholder="Phone or email"
@@ -86,7 +71,7 @@ const Login = () => {
                 <input
                   type="password"
                   {...register("password", { required: true })}
-                  className={`w-full bg-transparent p-2 border rounded-lg bg-white ${
+                  className={`w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 ${
                     errors.password ? "border-red-500/50" : ""
                   }`}
                   placeholder="***************"

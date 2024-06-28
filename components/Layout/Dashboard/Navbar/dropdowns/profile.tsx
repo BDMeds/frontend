@@ -40,7 +40,7 @@ const ProfileDrop = () => {
           <motion.div
             {...fadeToBottomVariant}
             ref={ref}
-            className="absolute top-12 right-0 min-w-60 bg-white shadow-2xl rounded-md pt-5 overflow-hidden space-y-4"
+            className="absolute top-12 right-0 min-w-60 bg-white dark:bg-white/10 shadow-2xl rounded-md pt-5 overflow-hidden space-y-4"
           >
             <div className="grid place-content-center text-center space-y-2">
               <div className="size-20 rounded-full overflow-hidden mx-auto relative animate-skeleton">

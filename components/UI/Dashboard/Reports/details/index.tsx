@@ -31,11 +31,7 @@ const ReportsDetails = () => {
 
   const department = searchParams.get("department");
 
-  const isValid = useMemo(
-    () =>
-      Object.values(DepartmentsEnum).includes(department as DepartmentsEnum),
-    [department]
-  );
+  const isValid = useMemo(() => Object.values(DepartmentsEnum).includes(department as DepartmentsEnum), [department]);
 
   const { data: report, isLoading: reportLoading } = useQuery({
     queryKey: ["getSingleReport", reportId],
@@ -83,7 +79,7 @@ const ReportsDetails = () => {
     }
     return (
       <>
-        <div className="rounded-md bg-white border p-2 space-y-4 px-3 mb-4">
+        <div className="rounded-md bg-white dark:bg-white/10 border p-2 space-y-4 px-3 mb-4">
           <b>Consultation Note: </b>
           {report?.consultation?.consultationNote}
         </div>

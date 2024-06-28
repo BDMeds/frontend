@@ -26,7 +26,7 @@ const Sec1 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => 
   return (
     <motion.div
       style={{ rotate, scale }}
-      className="h-screen sticky text-center top-0 rounded-xl bg-white dark:bg-white/10 grid place-content-center"
+      className="h-screen sticky text-center top-0 rounded-xl bg-white dark:bg-white/10 dark:bg-white dark:bg-white/10/10 grid place-content-center"
     >
       <p className="p-20">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure perspiciatis dicta, delectus veniam ea autem

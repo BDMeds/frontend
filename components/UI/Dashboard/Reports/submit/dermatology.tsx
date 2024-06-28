@@ -1,8 +1,5 @@
 import Button from "@/components/Common/Button";
-import {
-  submitCardiologyReprot,
-  submitDermatologyReport,
-} from "@/lib/services/report.service";
+import { submitCardiologyReprot, submitDermatologyReport } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React, { FC } from "react";
@@ -56,7 +53,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -70,7 +67,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -84,7 +81,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -104,7 +101,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive teeth health status"
               {...register("skinHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.skinHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -117,7 +114,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive procedures description"
               {...register("biopsyResults")}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.biopsyResults ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -132,7 +129,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter Lesion Count"
               defaultValue={0}
               {...register("lesionCount", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.lesionCount ? "border-red-500/50" : ""
               }`}
             />
@@ -147,7 +144,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter Lesion Size"
               defaultValue={0}
               {...register("lesionSize", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.lesionSize ? "border-red-500/50" : ""
               }`}
             />
@@ -155,13 +152,7 @@ const Dermatology: FC<Props> = ({ refetchReport }) => {
         </div>
       </section>
 
-      <Button
-        type="submit"
-        text="Submit Report"
-        variant="filled"
-        className="ml-auto"
-        loading={isPending}
-      />
+      <Button type="submit" text="Submit Report" variant="filled" className="ml-auto" loading={isPending} />
     </form>
   );
 };

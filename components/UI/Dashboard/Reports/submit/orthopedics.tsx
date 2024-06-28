@@ -57,7 +57,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -71,7 +71,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -85,7 +85,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -105,7 +105,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive bone health status"
               {...register("boneHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.boneHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -124,7 +124,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
                 min: 0,
                 max: 360,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.rangeOfMotion ? "border-red-500/50" : ""
               }`}
             />
@@ -139,7 +139,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter Total Fractures"
               defaultValue={0}
               {...register("totalFractures", { required: false })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white ${
+              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.totalFractures ? "border-red-500/50" : ""
               }`}
             />
@@ -147,13 +147,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
         </div>
       </section>
 
-      <Button
-        type="submit"
-        text="Submit Report"
-        variant="filled"
-        className="ml-auto"
-        loading={isPending}
-      />
+      <Button type="submit" text="Submit Report" variant="filled" className="ml-auto" loading={isPending} />
     </form>
   );
 };

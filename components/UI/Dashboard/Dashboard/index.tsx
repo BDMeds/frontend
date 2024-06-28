@@ -17,18 +17,18 @@ const Dashboard = () => {
       </div>
 
       <div className="grid-cols-3 grid gap-5">
-        <div className="col-span-2 border space-y-4 rounded-lg bg-white px-4 py-6">
+        <div className="col-span-2 border space-y-4 rounded-lg bg-white dark:bg-white/10 px-4 py-6">
           <p className="text-lg font-semibold text-gray-600 px-4">Consultations</p>
           <BarChart />
         </div>
-        <div className="border min-h-[20rem] rounded-lg bg-white">
+        <div className="border min-h-[20rem] rounded-lg bg-white dark:bg-white/10">
           <Appointments />
         </div>
       </div>
 
       {/* <div className="grid-cols-3 grid gap-5">
         {Array.from({ length: 3 }).map((_, id) => (
-          <div className="border min-h-[20rem] rounded-lg bg-white" key={id}></div>
+          <div className="border min-h-[20rem] rounded-lg bg-white dark:bg-white/10" key={id}></div>
         ))}
       </div> */}
     </div>

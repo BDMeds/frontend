@@ -34,7 +34,7 @@ const Appointment = () => {
                 <input
                   type="text"
                   placeholder="First Name"
-                  className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
                 />
               </div>
               <div className="space-y-1">
@@ -44,7 +44,7 @@ const Appointment = () => {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
                 />
               </div>
             </div>
@@ -56,7 +56,7 @@ const Appointment = () => {
               <input
                 type="text"
                 placeholder="e.g Eye test, Dental checkup, etc."
-                className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
               />
             </div>
 
@@ -68,7 +68,7 @@ const Appointment = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
                 />
               </div>
               <div className="space-y-1">
@@ -78,7 +78,7 @@ const Appointment = () => {
                 <input
                   type="tel"
                   placeholder="Phone Number"
-                  className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
                 />
               </div>
             </div>
@@ -88,7 +88,10 @@ const Appointment = () => {
                 <label htmlFor="preferredDate" className="font-bold">
                   Preferred Date
                 </label>
-                <input type="date" className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full" />
+                <input
+                  type="date"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                />
               </div>
               <div className="space-y-1">
                 <label htmlFor="preferredTime" className="font-bold">
@@ -97,7 +100,7 @@ const Appointment = () => {
                 <input
                   type="tel"
                   placeholder="10 AM, 2 PM, etc."
-                  className="p-4 bg-white bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
+                  className="p-4 bg-white dark:bg-white/10 bg-opacity-20 placeholder:text-white/80 rounded-lg w-full"
                 />
               </div>
             </div>
@@ -105,7 +108,7 @@ const Appointment = () => {
             <Button
               text="Submit"
               icon={<CgChevronRight />}
-              className="border-none ring-[2px] ring-white hover:bg-white hover:text-primary text-white"
+              className="border-none ring-[2px] ring-white hover:bg-white dark:bg-white/10 hover:text-primary text-white"
               fullWidth
             />
           </form>

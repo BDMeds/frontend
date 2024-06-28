@@ -11,7 +11,7 @@ const DeleteProfilePictureModal = () => {
   const { mutate, isPending: loading } = useMutation({ mutationFn: deleteProfilePicture });
 
   return (
-    <Modal onClose={hideModal} className="bg-white rounded-lg shadow-lg space-y-4 max-w-sm p-4">
+    <Modal onClose={hideModal} className="bg-white dark:bg-white/10 rounded-lg shadow-lg space-y-4 max-w-sm p-4">
       <p className="font-bold text-lg">Profile Picture Removal</p>
 
       <p className="text-gray-500">
