@@ -46,7 +46,7 @@ const Sidebar = () => {
       ) : (
         <>
           <div>
-            <div className={`pl-6 border-b ${sidebarOpen ? "py-3" : "py-4"}`}>
+            <div className={`pl-6 border-b dark:border-white/10 ${sidebarOpen ? "py-3" : "py-4"}`}>
               <Link href={"/dashboard"} className="text-xl font-bold">
                 <div className="flex items-center gap-2">
                   <GiMedicines className="text-primary" />
@@ -68,7 +68,7 @@ const Sidebar = () => {
                           className={`flex items-center rounded-full transition-colors duration-300 gap-4 m-over ${
                             pathname.startsWith(link.path)
                               ? "bg-primary text-white"
-                              : "dark:text-white hover:bg-zinc-300 hover:text-black "
+                              : "dark:text-white dark:hover:bg-white/10 hover:bg-zinc-300 hover:text-black "
                           } ${sidebarOpen ? "px-5 py-2" : "grid place-content-center size-8"}`}
                         >
                           <span>{pathname.startsWith(link.path) ? link.iconFilled : link.iconOutlined}</span>

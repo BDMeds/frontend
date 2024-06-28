@@ -16,7 +16,7 @@ const PasswordChange = () => {
   const submit: SubmitHandler<ChangePassword> = async (data) => mutate(data);
 
   return (
-    <div className="border rounded-xl p-4 space-y-4">
+    <div className="border dark:border-white/10 rounded-xl p-4 space-y-4">
       <p className="font-semibold">Change password</p>
 
       <form onSubmit={handleSubmit(submit)} className="space-y-4">
@@ -26,7 +26,7 @@ const PasswordChange = () => {
           </label>
           <input
             type="password"
-            className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+            className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
             placeholder="*******"
             {...register("oldPassword", { required: true })}
           />
@@ -37,7 +37,7 @@ const PasswordChange = () => {
           </label>
           <input
             type="password"
-            className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+            className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
             placeholder="*******"
             {...register("newPassword", { required: true })}
           />

@@ -12,7 +12,7 @@ const NotificationDrop = () => {
       <div
         ref={ref}
         onClick={toggleDropdown}
-        className="size-8 rounded-full border grid place-content-center hover:bg-primary hover:text-white duration-300 cursor-pointer"
+        className="size-8 rounded-full border dark:border-white/10 grid place-content-center hover:bg-primary hover:text-white duration-300 cursor-pointer"
       >
         <IoIosNotificationsOutline />
       </div>
@@ -22,7 +22,7 @@ const NotificationDrop = () => {
           <motion.div
             {...fadeToBottomVariant}
             ref={ref}
-            className="absolute top-12 right-0 min-w-52 text-center text-sm text-gray-500 bg-white dark:bg-white/10 shadow-2xl rounded-md p-3 space-y-5"
+            className="absolute top-12 right-0 min-w-52 text-center text-sm text-gray-500 bg-white dark:bg-[#282828] shadow-2xl rounded-md p-3 space-y-5"
           >
             <div className="grid place-content-center">
               <Image src="/svgs/empty.svg" width={100} height={100} alt="notifications" />

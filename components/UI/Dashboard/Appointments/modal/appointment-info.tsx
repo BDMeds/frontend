@@ -124,7 +124,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   return (
     <Modal
       onClose={hideModal}
-      className="bg-white dark:bg-white/10 shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
+      className="bg-white dark:bg-[#282828] shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[28rem] max-h-[28rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
       {appointmentLoading || reportLoading ? (
         <div className="grid place-content-center w-full h-full">
@@ -161,7 +161,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
               <input
                 type="text"
                 disabled={true}
-                className="w-full border rounded-xl p-2"
+                className="w-full border dark:border-white/10 rounded-xl p-2"
                 value={format(appointment?.appointmentDate!, "dd MMMM, yyyy")}
               />
             </div>
@@ -171,7 +171,7 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
               <input
                 type="text"
                 disabled={true}
-                className="w-full border rounded-xl p-2"
+                className="w-full border dark:border-white/10 rounded-xl p-2"
                 value={`${format(appointment?.startTime!, "h:mm a")} - ${format(appointment?.endTime!, "h:mm a")}`}
               />
             </div>

@@ -3,7 +3,7 @@
 import Capsule from "@/components/Common/3D/capsule";
 import Button from "@/components/Common/Button";
 import { montserrat } from "@/lib/utils/fonts";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";

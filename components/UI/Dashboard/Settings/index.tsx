@@ -11,6 +11,7 @@ import Payments from "./content/payments";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import Reviews from "./content/reviews";
 import Kyc from "./content/kyc";
+import { useGlobalStore } from "@/lib/store/global.store";
 
 const Settings = () => {
   const searchParams = useSearchParams();
@@ -18,6 +19,8 @@ const Settings = () => {
   const [tab, setTab] = useState<Tab>("general");
 
   const { user, loading } = useUserInfo();
+
+  const { isDarkMode } = useGlobalStore();
 
   useEffect(() => {
     if (!searchParams.get("tab")) {
@@ -49,11 +52,11 @@ const Settings = () => {
 
   return (
     <div className="sm:flex grid lg:gap-7 gap-5">
-      <div className="bg-white dark:bg-white/10 border rounded-lg divide-y lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sm:sticky top-16">
+      <div className="bg-white dark:bg-white/10 border dark:border-white/10 rounded-lg divide-y dark:divide-white/10 lg:min-w-[20rem] min-w-[13rem] overflow-hidden self-start sm:sticky top-16">
         {loading ? (
-          <div className="divide-y">
+          <div className="divide-y dark:divide-white/10">
             {Array.from({ length: 4 }).map((_, id) => (
-              <div key={id} className="p-4 animate-skeleton"></div>
+              <div key={id} className={`p-4 ${!isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"}`}></div>
             ))}
           </div>
         ) : (
@@ -63,7 +66,7 @@ const Settings = () => {
                 <div
                   key={id}
                   className={`p-3 flex items-center gap-3 duration-300 cursor-pointer ${
-                    tab === sTab ? "bg-primary text-white" : "hover:bg-gray-200"
+                    tab === sTab ? "bg-primary text-white" : "hover:bg-gray-200 dark:hover:bg-[#3b3b3b]"
                   }`}
                   onClick={() => setTab(sTab)}
                 >
@@ -75,7 +78,7 @@ const Settings = () => {
         )}
       </div>
 
-      <div className="flex-grow bg-white dark:bg-white/10 border rounded-lg overflow-hidden self-start">
+      <div className="flex-grow bg-white dark:bg-white/10 border dark:border-white/10 rounded-lg overflow-hidden self-start">
         <AnimatePresence mode="wait" initial={false}>
           {renderSettings()}
         </AnimatePresence>

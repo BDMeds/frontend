@@ -131,7 +131,7 @@ const AppointmentModal = () => {
     <Modal
       onClose={hideModal}
       isAutomatic={false}
-      className="bg-white dark:bg-white/10 shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
+      className="bg-white dark:bg-[#282828] shadow-2xl p-4 rounded-xl xl:min-w-[40rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] space-y-4 relative"
     >
       <>
         <div className="flex items-center justify-between">
@@ -157,7 +157,7 @@ const AppointmentModal = () => {
                   <input
                     type="date"
                     {...register("appointmentDate", { required: true })}
-                    className="w-full border rounded-xl p-2"
+                    className="w-full border dark:border-white/10 rounded-xl p-2 dark:bg-[#282828]"
                   />
                 </div>
                 <div className="space-y-1">
@@ -165,7 +165,7 @@ const AppointmentModal = () => {
                   <input
                     type="time"
                     {...register("startTime", { required: true })}
-                    className="w-full border rounded-xl p-2"
+                    className="w-full border dark:border-white/10 rounded-xl p-2 dark:bg-[#282828]"
                   />
                 </div>
                 <div className="space-y-1">
@@ -173,7 +173,7 @@ const AppointmentModal = () => {
                   <input
                     type="time"
                     {...register("endTime", { required: true })}
-                    className="w-full border rounded-xl p-2"
+                    className="w-full border dark:border-white/10 rounded-xl p-2 dark:bg-[#282828]"
                   />
                 </div>
 
@@ -185,7 +185,9 @@ const AppointmentModal = () => {
                         key={id}
                         onClick={() => setMode(m as "physical" | "online")}
                         className={`p-2 text-center capitalize rounded-lg flex items-center gap-2 duration-300 cursor-pointer ${
-                          m === mode ? "bg-primary text-white" : "bg-white dark:bg-white/10 border border-gray-200"
+                          m === mode
+                            ? "bg-primary text-white"
+                            : "bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10"
                         }`}
                       >
                         <p>{m}</p>
@@ -204,7 +206,7 @@ const AppointmentModal = () => {
                   <p className="font-semibold">Search</p>
                   <input
                     type="text"
-                    className="w-full border-b p-2"
+                    className="w-full border-b dark:border-white/10 dark:bg-transparent rounded p-2"
                     placeholder="search by name"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -242,7 +244,7 @@ const AppointmentModal = () => {
 
                     {doctors && doctors.length > 0 ? (
                       <div className="space-y-4">
-                        <div className="divide-y">
+                        <div className="divide-y dark:divide-white/10">
                           {doctors.map((doc, id) => (
                             <div key={id} className="py-1 flex items-center justify-between">
                               <div className="flex items-center gap-2">

@@ -12,12 +12,16 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import PasswordChange from "./password";
+import { useGlobalStore } from "@/lib/store/global.store";
 
 const SettingsDoctor = () => {
   const { doctor, loading: doctorLoading } = useDoctorInfo();
+
   const { showModal } = useModal();
 
   const { handleSubmit, register, reset } = useForm<IDoctor>();
+
+  const { isDarkMode } = useGlobalStore();
 
   useEffect(() => {
     reset(doctor);
@@ -28,7 +32,7 @@ const SettingsDoctor = () => {
   const submitInfo: SubmitHandler<IDoctor> = (data) => {
     const {
       speciality,
-      user: { gender, email },
+      user: { gender, email }, // leave this line.
       availableDays,
       kycDetails,
       kycVerified,
@@ -44,12 +48,12 @@ const SettingsDoctor = () => {
 
   return (
     <motion.div {...opacityVariant} className="grid lg:grid-cols-2 gap-5">
-      <div className="border rounded-xl p-4 space-y-4">
+      <div className="border dark:border-white/10 rounded-xl p-4 space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex gap-4 items-center">
             <div
-              className={`size-16 border ${
-                doctorLoading ? "animate-skeleton" : ""
+              className={`size-16 border dark:border-white/10 ${
+                doctorLoading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
               } backdrop-blur-xl relative overflow-hidden rounded-full`}
             >
               {doctor && (
@@ -90,7 +94,7 @@ const SettingsDoctor = () => {
                 <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="Jon"
                   {...register("user.firstName", { required: true })}
                 />
@@ -100,7 +104,7 @@ const SettingsDoctor = () => {
                 <input
                   type="text"
                   {...register("user.lastName", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="Simon"
                 />
               </div>
@@ -109,7 +113,7 @@ const SettingsDoctor = () => {
                 <input
                   type="email"
                   {...register("user.email", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="jonsimon@domain.com"
                   disabled
                 />
@@ -119,7 +123,7 @@ const SettingsDoctor = () => {
                 <input
                   type="text"
                   {...register("user.phoneNumber", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="+234..."
                 />
               </div>
@@ -128,7 +132,7 @@ const SettingsDoctor = () => {
                 <input
                   type="text"
                   {...register("speciality", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   disabled
                 />
               </div>
@@ -137,7 +141,7 @@ const SettingsDoctor = () => {
                 <input
                   type="text"
                   {...register("yearsOfExperience", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   placeholder="e.g 5"
                 />
               </div>
@@ -147,7 +151,7 @@ const SettingsDoctor = () => {
                 <input
                   type="text"
                   {...register("user.gender", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg capitalize bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg capitalize bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   disabled
                 />
               </div>
@@ -156,7 +160,7 @@ const SettingsDoctor = () => {
 
                 <textarea
                   {...register("bio", { required: true })}
-                  className="w-full bg-transparent p-2 border rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
+                  className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:select-none"
                   rows={6}
                 />
               </div>

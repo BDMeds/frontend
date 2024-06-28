@@ -85,7 +85,7 @@ export default function TableComponent<TData, TValue>({ data, columns, loading }
                   variants={parentVariant}
                   initial="initial"
                   animate="animate"
-                  className="divide-y divide-primary/10"
+                  className="divide-y dark:divide-white/10 divide-primary/10"
                 >
                   {table.getRowModel().rows.map((row) => {
                     return (

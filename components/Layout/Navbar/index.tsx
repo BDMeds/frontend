@@ -60,6 +60,19 @@ const Navbar = () => {
           <div>
             {session ? (
               <div className="flex items-center gap-2">
+                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center">
+                  {isDarkMode ? (
+                    <CgSun
+                      className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
+                      onClick={() => updateDarkMode(false)}
+                    />
+                  ) : (
+                    <CgMoon
+                      className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
+                      onClick={() => updateDarkMode(true)}
+                    />
+                  )}
+                </div>
                 <div className="relative size-10 rounded-full overflow-hidden ring duration-300 ring-white/50">
                   <Link href={"/dashboard"}>
                     {user && (

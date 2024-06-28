@@ -9,7 +9,7 @@ const Reviews = () => {
     <motion.div {...opacityVariant} className="p-5 space-y-5">
       <p className="text-xl">Reviews</p>
 
-      <div className="divide-y">
+      <div className="divide-y dark:divide-white/10">
         {Array.from({ length: 5 }).map((_, id) => (
           <div className="flex items-center justify-between py-2" key={id}>
             <div className="flex gap-2 items-center">

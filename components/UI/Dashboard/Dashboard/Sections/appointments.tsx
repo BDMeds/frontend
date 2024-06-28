@@ -6,7 +6,7 @@ import { IoRemoveOutline } from "react-icons/io5";
 const Appointments = () => {
   return (
     <div className="w-full h-full">
-      <div className="flex items-center justify-between p-4 border-b">
+      <div className="flex items-center justify-between p-4 border-b dark:border-white/10">
         <div className="flex items-center gap-2">
           <CiCalendar className="text-primary" />
           <p className="text-sm">Pending Appointments</p>

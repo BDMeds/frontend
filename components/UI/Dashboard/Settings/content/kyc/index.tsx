@@ -13,6 +13,7 @@ import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { getBase64 } from "@/lib/helpers/fns";
 import { queryClient } from "@/lib/providers";
 import { FiX } from "react-icons/fi";
+import { useGlobalStore } from "@/lib/store/global.store";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -33,6 +34,8 @@ const Kyc = () => {
 
   const idDocRef = useRef<HTMLInputElement>(null);
   const certRef = useRef<HTMLInputElement>(null);
+
+  const { isDarkMode } = useGlobalStore();
 
   const pickIdDoc = () => {
     if (!idDocRef.current) return;
@@ -100,7 +103,12 @@ const Kyc = () => {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             {Array.from({ length }).map((_, id) => (
-              <div key={id} className="h-[4rem] rounded-lg border animate-skeleton"></div>
+              <div
+                key={id}
+                className={`h-[4rem] rounded-lg border dark:border-white/10 ${
+                  !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+                }`}
+              ></div>
             ))}
           </div>
         </div>
@@ -120,7 +128,7 @@ const Kyc = () => {
                   <div className="space-y-1">
                     <p className="font-semibold">ID Document</p>
                     <div
-                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
+                      className="flex py-2 px-4 border dark:border-white/10 rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
                       onClick={pickIdDoc}
                     >
                       <span>{!idDocFile ? "Select Document" : idDocFile.name}</span>
@@ -131,7 +139,7 @@ const Kyc = () => {
                   <div className="space-y-1">
                     <label className="font-semibold">Professional Certificate</label>
                     <div
-                      className="flex py-2 px-4 border rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
+                      className="flex py-2 px-4 border dark:border-white/10 rounded-lg items-center cursor-pointer text-gray-400 gap-2 justify-between duration-300 hover:bg-gray-100"
                       onClick={pickCert}
                     >
                       <span>{!idProCert ? "Upload Certificate" : idProCert.name}</span>

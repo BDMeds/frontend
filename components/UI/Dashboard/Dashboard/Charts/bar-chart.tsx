@@ -1,4 +1,5 @@
 "use client";
+import { useGlobalStore } from "@/lib/store/global.store";
 import { useMemo } from "react";
 import { Bar, ResponsiveContainer } from "recharts";
 import { BarChart as BarGraph, XAxis, YAxis } from "recharts";
@@ -52,17 +53,19 @@ export default function BarChart({}: Props) {
     []
   );
 
+  const { isDarkMode } = useGlobalStore();
+
   return (
     <ResponsiveContainer width={"100%"} height={400}>
       <BarGraph data={data}>
-        <XAxis dataKey={"month"} tickLine={false} axisLine={false} stroke={false ? "#fff" : "#000"} fontSize={12} />
-        <YAxis
+        <XAxis
+          dataKey={"month"}
           tickLine={false}
           axisLine={false}
-          stroke={false ? "#fff" : "#000"}
+          stroke={isDarkMode ? "#fff" : "#000"}
           fontSize={12}
-          // tickFormatter={(value: number) => `₦${abbreviateBigNumbers(value)}`}
         />
+        <YAxis tickLine={false} axisLine={false} stroke={isDarkMode ? "#fff" : "#000"} fontSize={12} />
         <Bar dataKey={"total"} radius={[4, 4, 0, 0]} fill="#5e2bff" />
       </BarGraph>
     </ResponsiveContainer>

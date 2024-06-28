@@ -1,10 +1,14 @@
+"use client";
+import { useGlobalStore } from "@/lib/store/global.store";
 import { GiMedicines } from "react-icons/gi";
 
 const SidebarSkeleton = () => {
+  const { isDarkMode } = useGlobalStore();
+
   return (
     <>
       <div>
-        <div className="pl-6 py-4 border-b">
+        <div className="pl-6 py-4 border-b dark:border-white/10">
           <div className="flex items-center gap-2">
             <GiMedicines className="text-primary" />
             <span className="font-bold">BDMeds</span>
@@ -15,7 +19,9 @@ const SidebarSkeleton = () => {
           {Array.from({ length: 5 }).map((_, id) => (
             <div key={id} className="space-y-1">
               <ul className="space-y-2">
-                <li className="p-4 w-full animate-skeleton rounded-lg"></li>
+                <li
+                  className={`p-4 w-full ${!isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"} rounded-lg`}
+                ></li>
               </ul>
             </div>
           ))}
@@ -26,7 +32,9 @@ const SidebarSkeleton = () => {
         {Array.from({ length: 2 }).map((_, id) => (
           <div key={id} className="space-y-1">
             <ul className="space-y-2">
-              <li className="p-4 w-full animate-skeleton rounded-lg"></li>
+              <li
+                className={`p-4 w-full ${!isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"} rounded-lg`}
+              ></li>
             </ul>
           </div>
         ))}

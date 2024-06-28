@@ -68,7 +68,7 @@ export const OptionComp: FC<OptionProps> = ({ options, updateData, dropUp }) => 
       key={crypto.randomUUID()}
       className={`absolute ${
         dropUp ? "bottom-[100%]" : "top-[100%]"
-      } border dark:border-white/20 border-black/10  z-[400] divide-white/20 dark:text-zinc-400 dark:bg-secondary-900 bg-white dark:bg-[#1a1a1a] shadow-2xl left-0 w-full min-w-fit rounded divide-y max-h-[15rem] overflow-y-auto show-scroll`}
+      } border dark:border-white/20 border-black/10  z-[400] divide-white/20 dark:text-zinc-400 dark:bg-secondary-900 bg-white dark:bg-[#1a1a1a] shadow-2xl left-0 w-full min-w-fit rounded divide-y dark:divide-white/10 max-h-[15rem] overflow-y-auto show-scroll`}
     >
       <>
         {stateOptions.map((opt, id) => (

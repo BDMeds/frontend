@@ -16,19 +16,27 @@ import { defaultImageUrl } from "@/lib/data/dashboard";
 import DeleteProfilePictureModal from "../../../../modals/delete-profile-picture-modal";
 import { FaRegEdit } from "react-icons/fa";
 import UserEditModal from "../../../../modals/user-edit-modal";
+import { useGlobalStore } from "@/lib/store/global.store";
 
 const PatientGeneral = () => {
   const { showModal } = useModal();
 
   const { user, loading } = useUserInfo();
+
   const { mutate, isPending: verifyLoading } = useMutation({ mutationFn: requestVerification });
 
+  const { isDarkMode } = useGlobalStore();
+
   return (
-    <motion.div {...opacityVariant} className="divide-y">
+    <motion.div {...opacityVariant} className="divide-y dark:divide-white/10">
       <div className="flex px-6 pt-10 pb-4 items-center justify-between">
         {loading ? (
           <>
-            <div className="size-24 rounded-full border-2 border-white relative overflow-hidden animate-skeleton"></div>
+            <div
+              className={`size-24 rounded-full border-2 dark:border-white/10 border-white relative overflow-hidden ${
+                !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+              }`}
+            ></div>
           </>
         ) : (
           <>
@@ -54,7 +62,7 @@ const PatientGeneral = () => {
               />
 
               <div
-                className="flex items-center gap-2 rounded-xl border px-3 py-2 cursor-pointer duration-300 hover:bg-gray-200"
+                className="flex items-center gap-2 rounded-xl border dark:border-white/10 px-3 py-2 cursor-pointer duration-300 hover:bg-gray-200 dark:hover:bg-[#3d3d3d]"
                 onClick={() => showModal(<ProfileImageModal />)}
               >
                 <HiOutlineUpload />
@@ -68,7 +76,7 @@ const PatientGeneral = () => {
       <div className="py-3 px-5 flex items-center justify-between">
         <div className="">
           <p className="font-bold text-lg">Name</p>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             {user?.firstName} {user?.lastName}
           </p>
         </div>
@@ -77,7 +85,7 @@ const PatientGeneral = () => {
       <div className="py-3 px-5 flex items-center justify-between">
         <div className="">
           <p className="font-bold text-lg">Contacts</p>
-          <div className="text-gray-500">
+          <div className="text-gray-500 dark:text-gray-400">
             <p className="">Phone: {user?.phoneNumber}</p>
             <p className="">
               Email: {user?.email} {!user?.emailVerified && "(not verified)"}
@@ -100,7 +108,7 @@ const PatientGeneral = () => {
       <div className="py-3 px-5 flex items-center justify-between">
         <div className="">
           <p className="font-bold text-lg">Language</p>
-          <p className="text-gray-500">English</p>
+          <p className="text-gray-500 dark:text-gray-400">English</p>
         </div>
       </div>
 

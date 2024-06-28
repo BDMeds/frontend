@@ -11,6 +11,7 @@ import { defaultImageUrl } from "@/lib/data/dashboard";
 import Button from "@/components/Common/Button";
 import { useModal } from "@/lib/providers/modal-provider";
 import ProfileImageModal from "../../../../modals/profile-image-modal";
+import { useGlobalStore } from "@/lib/store/global.store";
 
 type Tab = "info" | "reviews" | "settings";
 
@@ -24,7 +25,10 @@ const DoctorGeneral = () => {
   const { doctor, loading } = useDoctorInfo();
 
   const [curTab, setCurTab] = useState<Tab>("info");
+
   const { showModal } = useModal();
+
+  const { isDarkMode } = useGlobalStore();
 
   const renderContent = () => {
     switch (curTab) {
@@ -46,7 +50,7 @@ const DoctorGeneral = () => {
         <div className="-mt-10 flex gap-4 items-center">
           <div
             className={`size-28 border ${
-              loading ? "animate-skeleton" : ""
+              loading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
             } backdrop-blur-xl relative overflow-hidden rounded-full ml-5`}
           >
             {doctor?.user && (
@@ -73,7 +77,7 @@ const DoctorGeneral = () => {
                     <p className="font-bold">
                       {doctor.user.firstName} {doctor.user.lastName}
                     </p>
-                    <p className="capitalize text-gray-500">{doctor.speciality}</p>
+                    <p className="capitalize text-gray-500 dark:text-gray-300">{doctor.speciality}</p>
                   </>
                 )}
               </>
@@ -93,15 +97,15 @@ const DoctorGeneral = () => {
 
       {doctor && (
         <div className="p-5 space-y-5">
-          <p className="text-gray-500 text-sm line-clamp-3">{doctor.bio ?? "No bio"}</p>
+          <p className="text-gray-500 dark:text-gray-200 text-sm line-clamp-3">{doctor.bio ?? "No bio"}</p>
 
-          <div className={`grid grid-cols-3 divide-x`}>
+          <div className={`grid grid-cols-3 divide-x divide-white/10 rounded-md overflow-hidden`}>
             {tabs.map((tab, id) => (
               <div
                 key={id}
                 onClick={() => setCurTab(tab.tab)}
                 className={` py-2 cursor-pointer text-center duration-300 ${
-                  tab.tab === curTab ? "bg-primary text-white" : "bg-gray-100"
+                  tab.tab === curTab ? "bg-primary text-white" : "bg-gray-100 dark:bg-[#3b3b3b]"
                 }`}
               >
                 {tab.name}

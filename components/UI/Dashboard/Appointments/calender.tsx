@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import dummyEvents from "./events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { toastError, toastSuccess } from "@/lib/utils/toast";
+import { toastError } from "@/lib/utils/toast";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
@@ -19,9 +18,7 @@ import useUserInfo from "@/lib/hooks/useUserInfo";
 import { mapAppointmentsToEvents } from "@/lib/helpers/fns";
 import AppointmentInfoModal from "./modal/appointment-info";
 
-const locales = {
-  "en-US": enUS,
-};
+const locales = { "en-US": enUS };
 
 const localizer = dateFnsLocalizer({
   format,
@@ -41,7 +38,7 @@ const BigCalendar = () => {
   const { user } = useUserInfo();
 
   const { data: appointments, refetch } = useQuery({
-    queryKey: ["getAppoinments"],
+    queryKey: ["getAppointments"],
     queryFn: getAppointments,
   });
 
