@@ -54,7 +54,7 @@ const Reports = () => {
                 key={id}
                 variants={fadeToTopVariant}
                 onClick={() => setDepartment(dept)}
-                className="bg-white dark:bg-white/10 border duration-300 hover:shadow-xl hover:border-transparent rounded-lg p-3 cursor-pointer"
+                className="bg-white dark:bg-white/10 border dark:border-white/10 duration-300 hover:shadow-xl hover:border-transparent rounded-lg p-3 cursor-pointer"
               >
                 <div className="space-y-5">
                   <div className="size-12 text-primary bg-primary/10 rounded-xl grid place-content-center">{icon}</div>

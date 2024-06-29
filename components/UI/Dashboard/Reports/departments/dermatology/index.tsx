@@ -14,7 +14,11 @@ const DermatologyReport = () => {
   });
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="p-10 grid place-content-center">
+        <Loader />
+      </div>
+    );
   }
 
   return (

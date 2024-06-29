@@ -9,8 +9,11 @@ import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
 import { useGlobalStore } from "../store/global.store";
 import Lenis from "lenis";
+import { Leva } from "leva";
 
 export const queryClient = new QueryClient();
+
+const isProduction = process.env.NODE_ENV === "production";
 
 const Providers = ({ children }: { children: ReactNode }) => {
   const { isDarkMode } = useGlobalStore();
@@ -77,6 +80,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
           }}
         />
         <AuthProvider>
+          <Leva hidden={isProduction} />
           <ModalProvider>{children}</ModalProvider>
         </AuthProvider>
         <ReactQueryDevtools />

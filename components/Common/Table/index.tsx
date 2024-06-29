@@ -46,7 +46,7 @@ export default function TableComponent<TData, TValue>({ data, columns, loading }
   return (
     <div className="w-full pb-2 overflow-x-auto show_scroll">
       <table className="w-full">
-        <thead className={`w-full bg-white dark:bg-white/10 border rounded-xl flex font-light`}>
+        <thead className={`w-full bg-white dark:bg-white/10 border dark:border-white/10 rounded-xl flex font-light`}>
           {table.getHeaderGroups()?.map((headerGroup) => (
             <tr className="flex w-full " key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
