@@ -10,7 +10,6 @@ const DoctorProfileModal = ({
   department,
   isAvailable,
   availableDays,
-  kycVerified,
   qualifications,
   speciality,
   createdAt,
@@ -59,18 +58,24 @@ const DoctorProfileModal = ({
           </div>
         </div>
 
-        <div className="space-y-1">
-          <p className="font-bold">Bio</p>
-          <p className={`text-sm inline ${!showFullBio && bio.length > 240 ? "line-clamp-3" : ""}`}>{bio}</p>
-          {!showFullBio && bio.length > 240 && (
-            <span
-              className="text-primary text-sm cursor-pointer underline select-none"
-              onClick={() => setShowFullBio(true)}
-            >
-              See more
-            </span>
-          )}
-        </div>
+        {bio && (
+          <div className="space-y-1">
+            <p className="font-bold">Bio</p>
+            <>
+              <p className={`text-sm dark:text-gray-400 ${!showFullBio && bio.length > 240 ? "line-clamp-3" : ""}`}>
+                {bio}
+              </p>
+              {!showFullBio && bio.length > 240 && (
+                <span
+                  className="text-primary text-sm cursor-pointer underline select-none"
+                  onClick={() => setShowFullBio(true)}
+                >
+                  See more
+                </span>
+              )}
+            </>
+          </div>
+        )}
       </div>
 
       <div className="space-y-4"></div>
