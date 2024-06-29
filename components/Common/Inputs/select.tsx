@@ -14,9 +14,19 @@ type Props = {
   onValueChange: (value: any) => void;
   data?: Option | null;
   dropUp?: boolean;
+  sClass?: string;
 };
 
-const Select: FC<Props> = ({ options, label, placeholder, onValueChange, loading = false, data = null, dropUp }) => {
+const Select: FC<Props> = ({
+  options,
+  label,
+  placeholder,
+  onValueChange,
+  loading = false,
+  data = null,
+  dropUp,
+  sClass = "",
+}) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleDrop = () => setIsOpened((prev) => !prev);
@@ -35,7 +45,7 @@ const Select: FC<Props> = ({ options, label, placeholder, onValueChange, loading
       <div
         className={`bg-white dark:bg-white/10 duration-200 hover:bg-gray-100 dark:hover:bg-transparent w-full p-2 border dark:border-white/10 rounded-lg select-none flex items-center justify-between ${
           loading ? "cursor-not-allowed" : "cursor-pointer"
-        }`}
+        } ${sClass}`}
         onClick={loading ? () => {} : toggleDrop}
       >
         {!pickedData ? (

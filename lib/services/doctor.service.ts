@@ -12,6 +12,15 @@ export const getSpecializations = async () => {
   }
 };
 
+export const getDoctors = async ({ search = "", department = "" }: { search?: string; department?: string }) => {
+  try {
+    const { data } = await publicApi.get<ApiResponse<IDoctor[]>>(`/doctor/?search=${search}&department=${department}`);
+    return data.data;
+  } catch (err) {
+    // handleAxiosErrorWithToast(err);
+  }
+};
+
 export const addDoctorSocials = async (socials: Socials) => {
   try {
     const { data } = await authApi.put<ApiResponse>("/doctor/", { socials });

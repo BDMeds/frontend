@@ -114,9 +114,9 @@ export default function TableComponent<TData, TValue>({ data, columns, loading }
               ) : (
                 <div className={"text-center py-10 flex items-center justify-center"}>
                   <div className={"space-y-4 text-gray-500"}>
-                    <div className={"grid place-content-center"}>
+                    {/* <div className={"grid place-content-center"}>
                       <FcEmptyBattery size={50} />
-                    </div>
+                    </div> */}
                     <p className="text-gray-500">No data.</p>
                   </div>
                 </div>

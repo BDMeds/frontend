@@ -1,7 +1,7 @@
-import Construction from "@/components/Common/Pages/construction";
+import DoctorsPage from "@/components/UI/Dashboard/Doctors";
 
 const Page = () => {
-  return <Construction />;
+  return <DoctorsPage />;
 };
 
 export default Page;
