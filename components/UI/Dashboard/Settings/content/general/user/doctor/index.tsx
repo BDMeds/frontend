@@ -11,7 +11,7 @@ import { defaultImageUrl } from "@/lib/data/dashboard";
 import Button from "@/components/Common/Button";
 import { useModal } from "@/lib/providers/modal-provider";
 import ProfileImageModal from "../../../../modals/profile-image-modal";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 
 type Tab = "info" | "reviews" | "settings";
 
@@ -28,7 +28,7 @@ const DoctorGeneral = () => {
 
   const { showModal } = useModal();
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   const renderContent = () => {
     switch (curTab) {

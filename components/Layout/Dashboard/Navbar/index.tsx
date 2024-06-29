@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useGlobalStore, useTheme } from "@/lib/store/global.store";
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import NotificationDrop from "./dropdowns/notification";
@@ -9,7 +9,8 @@ import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 import { CgMoon, CgSun } from "react-icons/cg";
 
 const DNavbar = () => {
-  const { toggleSidebar, updateDarkMode, isDarkMode } = useGlobalStore();
+  const { toggleSidebar } = useGlobalStore();
+  const { updateDarkMode, isDark: isDarkMode } = useTheme();
 
   const router = useRouter();
 

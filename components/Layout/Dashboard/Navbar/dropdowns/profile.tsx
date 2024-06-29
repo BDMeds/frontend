@@ -1,6 +1,6 @@
 import useDropDown from "@/lib/hooks/useDropDown";
 import useUserInfo from "@/lib/hooks/useUserInfo";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 import { fadeToBottomVariant } from "@/lib/utils/variants";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
@@ -15,7 +15,7 @@ const ProfileDrop = () => {
 
   const { user, loading } = useUserInfo();
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   return (
     <div className="relative">

@@ -1,7 +1,7 @@
 "use client";
 
 import TableComponent from "@/components/Common/Table";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import columns from "./Table/columns";
 import { useQuery } from "@tanstack/react-query";
 import { getDoctors } from "@/lib/services/doctor.service";
@@ -14,10 +14,18 @@ const DoctorsPage = () => {
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState<Department>(departments[0].dept);
 
-  const { isPending: loading, data: doctors } = useQuery({
+  const {
+    isPending: loading,
+    data: doctors,
+    refetch,
+  } = useQuery({
     queryFn: () => getDoctors({ search, department }),
     queryKey: ["doctors"],
   });
+
+  useEffect(() => {
+    refetch();
+  }, [department]);
 
   return (
     <div className="space-y-3">
@@ -33,7 +41,7 @@ const DoctorsPage = () => {
           />
         </div>
 
-        <div className="space-y-1">
+        <div className="w-[300px]">
           <Select
             data={
               departments.find((dep) => dep.dept === department) ? { value: department, label: department } : undefined
@@ -47,7 +55,6 @@ const DoctorsPage = () => {
               })) ?? []
             }
             placeholder="Select department"
-            sClass="w-[300px]"
           />
         </div>
       </div>

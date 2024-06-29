@@ -13,7 +13,7 @@ import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { getBase64 } from "@/lib/helpers/fns";
 import { queryClient } from "@/lib/providers";
 import { FiX } from "react-icons/fi";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 
 const Kyc = () => {
   const { doctor, loading } = useDoctorInfo();
@@ -35,7 +35,7 @@ const Kyc = () => {
   const idDocRef = useRef<HTMLInputElement>(null);
   const certRef = useRef<HTMLInputElement>(null);
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   const pickIdDoc = () => {
     if (!idDocRef.current) return;

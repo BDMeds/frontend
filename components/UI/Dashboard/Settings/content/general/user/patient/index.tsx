@@ -16,7 +16,7 @@ import { defaultImageUrl } from "@/lib/data/dashboard";
 import DeleteProfilePictureModal from "../../../../modals/delete-profile-picture-modal";
 import { FaRegEdit } from "react-icons/fa";
 import UserEditModal from "../../../../modals/user-edit-modal";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 
 const PatientGeneral = () => {
   const { showModal } = useModal();
@@ -25,7 +25,7 @@ const PatientGeneral = () => {
 
   const { mutate, isPending: verifyLoading } = useMutation({ mutationFn: requestVerification });
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   return (
     <motion.div {...opacityVariant} className="divide-y dark:divide-white/10">

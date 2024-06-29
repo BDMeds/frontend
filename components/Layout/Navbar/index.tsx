@@ -11,7 +11,7 @@ import gsap from "gsap";
 import { LuX } from "react-icons/lu";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import Image from "next/image";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 import { CgMoon, CgSun } from "react-icons/cg";
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const { user } = useUserInfo();
 
-  const { isDarkMode, updateDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode, updateDarkMode } = useTheme();
 
   const openMenu = () => {
     gsap.context(() => {

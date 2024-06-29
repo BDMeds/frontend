@@ -7,7 +7,7 @@ import { Toaster as SonnerToaster } from "sonner";
 import AuthProvider from "./auth-provider";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "./modal-provider";
-import { useGlobalStore } from "../store/global.store";
+import { useTheme } from "../store/global.store";
 import Lenis from "lenis";
 import { Leva } from "leva";
 
@@ -16,7 +16,7 @@ export const queryClient = new QueryClient();
 const isProduction = process.env.NODE_ENV === "production";
 
 const Providers = ({ children }: { children: ReactNode }) => {
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   useEffect(() => {
     // SMOOTH SCROLL

@@ -1,9 +1,9 @@
 "use client";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 import { GiMedicines } from "react-icons/gi";
 
 const SidebarSkeleton = () => {
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   return (
     <>

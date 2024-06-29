@@ -11,7 +11,7 @@ import Payments from "./content/payments";
 import useUserInfo from "@/lib/hooks/useUserInfo";
 import Reviews from "./content/reviews";
 import Kyc from "./content/kyc";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 
 const Settings = () => {
   const searchParams = useSearchParams();
@@ -20,7 +20,7 @@ const Settings = () => {
 
   const { user, loading } = useUserInfo();
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   useEffect(() => {
     if (!searchParams.get("tab")) {

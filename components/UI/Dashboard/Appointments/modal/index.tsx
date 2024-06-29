@@ -47,7 +47,9 @@ const AppointmentModal = () => {
     formState: { isValid },
   } = useForm<Inputs>({
     defaultValues: {
-      appointmentDate: `${dateFns.format(appointment.appointmentDate, "yyyy-MM-dd")}`,
+      appointmentDate: `${
+        appointment.appointmentDate ? dateFns.format(appointment.appointmentDate, "yyyy-MM-dd") : ""
+      }`,
     },
   });
 

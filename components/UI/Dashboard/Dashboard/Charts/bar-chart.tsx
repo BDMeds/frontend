@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 import { useMemo } from "react";
 import { Bar, ResponsiveContainer } from "recharts";
 import { BarChart as BarGraph, XAxis, YAxis } from "recharts";
@@ -53,7 +53,7 @@ export default function BarChart({}: Props) {
     []
   );
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   return (
     <ResponsiveContainer width={"100%"} height={400}>

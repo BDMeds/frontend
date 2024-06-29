@@ -12,7 +12,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import PasswordChange from "./password";
-import { useGlobalStore } from "@/lib/store/global.store";
+import { useTheme } from "@/lib/store/global.store";
 
 const SettingsDoctor = () => {
   const { doctor, loading: doctorLoading } = useDoctorInfo();
@@ -21,7 +21,7 @@ const SettingsDoctor = () => {
 
   const { handleSubmit, register, reset } = useForm<IDoctor>();
 
-  const { isDarkMode } = useGlobalStore();
+  const { isDark: isDarkMode } = useTheme();
 
   useEffect(() => {
     reset(doctor);
