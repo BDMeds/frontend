@@ -11,11 +11,11 @@ const Home = () => {
     <>
       <main className="space-y-32">
         <ModelSection />
-        <FServices />
         <WhyUs />
         <Departments />
         <Appointment />
         <Partners />
+        <FServices />
         <Faq />
       </main>
     </>

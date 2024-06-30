@@ -6,7 +6,7 @@ const CapsuleModel = () => {
   return (
     <Canvas className="bg-transparent" style={{ height: "100vh" }}>
       <directionalLight intensity={2} position={[0, 2, 3]} />
-      {/* <Environment preset="city" /> */}
+      <Environment preset="city" />
 
       <OrbitControls enablePan={false} enableDamping={false} enableZoom={false} enableRotate={false} />
       <Capsule />
