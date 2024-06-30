@@ -59,7 +59,7 @@ const Navbar = () => {
 
           <div>
             {session ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center">
                   {isDarkMode ? (
                     <CgSun
@@ -75,7 +75,7 @@ const Navbar = () => {
                 </div>
                 <div>
                   <Link href={"/dashboard"}>
-                    <div className="relative size-10 rounded-full overflow-hidden ring duration-300 cursor-pointer ring-white/50">
+                    <div className="relative size-8 rounded-full overflow-hidden ring duration-300 cursor-pointer dark:ring-white/50 ring-black/10">
                       {user && (
                         <Image
                           src={`${user.profilePicture}`}

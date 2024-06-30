@@ -1,14 +1,21 @@
 "use client";
 
-import Capsule from "@/components/Common/3D/capsule";
 import Button from "@/components/Common/Button";
+import Loader from "@/components/Common/Loaders";
 import { montserrat } from "@/lib/utils/fonts";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";
 
-const FModel = () => {
+const CapsuleModel = dynamic(() => import("./capsule-model"), {
+  loading: () => (
+    <div className="w-full h-full grid place-content-center">
+      <Loader />
+    </div>
+  ),
+});
+
+const ModelSection = () => {
   return (
     <div className="sm:min-h-screen md:mt-4 mt-10 grid md:grid-cols-2 gap-8 md:gap-0 container">
       <div className="flex items-center h-screen sm:h-auto">
@@ -26,17 +33,9 @@ const FModel = () => {
         </div>
       </div>
 
-      <div className="hidden sm:block">
-        <Canvas className="bg-transparent" style={{ height: "100vh" }}>
-          <directionalLight intensity={2} position={[0, 2, 3]} />
-          {/* <Environment preset="city" /> */}
-
-          <OrbitControls enablePan={false} enableDamping={false} enableZoom={false} enableRotate={false} />
-          <Capsule />
-        </Canvas>
-      </div>
+      <div className="hidden sm:block">{process.env.NODE_ENV === "production" && <CapsuleModel />}</div>
     </div>
   );
 };
 
-export default FModel;
+export default ModelSection;

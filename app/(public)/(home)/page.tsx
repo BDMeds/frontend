@@ -2,19 +2,15 @@ import Appointment from "@/components/UI/Home/appointment";
 import Departments from "@/components/UI/Home/departments";
 import FServices from "@/components/UI/Home/f-services";
 import Faq from "@/components/UI/Home/faq";
-import FModel from "@/components/UI/Home/m-section";
+import ModelSection from "@/components/UI/Home/hero-section";
 import Partners from "@/components/UI/Home/partners";
 import WhyUs from "@/components/UI/Home/why-us";
-import dynamic from "next/dynamic";
 
 const Home = () => {
   return (
     <>
-      <FModel />
-      {/* <Hero /> */}
-
       <main className="space-y-32">
-        {/* <FModel /> */}
+        <ModelSection />
         <FServices />
         <WhyUs />
         <Departments />

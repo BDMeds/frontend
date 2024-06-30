@@ -26,9 +26,9 @@ const Faq = () => {
 
       <div className="space-y-4">
         {faqs.map(({ question, answer }, id) => (
-          <div key={id} className="border rounded-xl overflow-hidden">
+          <div key={id} className="border dark:border-white/10 rounded-xl overflow-hidden">
             <div
-              className={`flex items-center justify-between hover:bg-gray-200 dark:hover:bg-white dark:bg-white/10/10 p-5 select-none cursor-pointer duration-300 ${
+              className={`flex items-center justify-between hover:bg-gray-200 dark:hover:bg-white/10 dark:bg-white/10/10 p-5 select-none cursor-pointer duration-300 ${
                 selectedFaq === id ? "" : ""
               }`}
               onClick={() => chooseFaq(id)}

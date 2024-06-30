@@ -21,7 +21,7 @@ const ViewButton = (row: Row<IDoctor>) => {
 
 const columns: ColumnDef<IDoctor>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "user",
     header: "Info",
     cell: ({ row }) => {
       const {
