@@ -73,17 +73,19 @@ const Navbar = () => {
                     />
                   )}
                 </div>
-                <div className="relative size-10 rounded-full overflow-hidden ring duration-300 ring-white/50">
+                <div>
                   <Link href={"/dashboard"}>
-                    {user && (
-                      <Image
-                        src={`${user.profilePicture}`}
-                        width={100}
-                        height={100}
-                        alt="profile"
-                        className="w-full h-full object-cover absolute top-0 left-0"
-                      />
-                    )}
+                    <div className="relative size-10 rounded-full overflow-hidden ring duration-300 cursor-pointer ring-white/50">
+                      {user && (
+                        <Image
+                          src={`${user.profilePicture}`}
+                          width={100}
+                          height={100}
+                          alt="profile"
+                          className="w-full h-full object-cover absolute top-0 left-0"
+                        />
+                      )}
+                    </div>
                   </Link>
                 </div>
                 <RxHamburgerMenu className="cursor-pointer text-white md:hidden" size={26} onClick={openMenu} />

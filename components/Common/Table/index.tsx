@@ -8,25 +8,27 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImSad } from "react-icons/im";
 import { motion } from "framer-motion";
 import { opacityVariant, parentVariant } from "@/lib/utils/variants";
 import Loader from "../Loaders";
 import { CgArrowLeft, CgArrowRight } from "react-icons/cg";
-import { FcEmptyBattery } from "react-icons/fc";
 
 interface TableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   loading?: boolean;
+  filterInput?: string;
 }
 
-export default function TableComponent<TData, TValue>({ data, columns, loading }: TableProps<TData, TValue>) {
+export default function TableComponent<TData, TValue>({
+  data,
+  columns,
+  loading,
+  filterInput = "",
+}: TableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
-  const [filter, setFilter] = useState("");
-
-  const filterFunc = (value: string) => setFilter(value);
 
   const table = useReactTable({
     data,
@@ -42,6 +44,10 @@ export default function TableComponent<TData, TValue>({ data, columns, loading }
     debugTable: true,
     enableGlobalFilter: true,
   });
+
+  useEffect(() => {
+    table.setGlobalFilter(filterInput || undefined);
+  }, [filterInput, table.setGlobalFilter]);
 
   return (
     <div className="w-full pb-2 overflow-x-auto show_scroll">

@@ -38,6 +38,8 @@ const DoctorsPage = () => {
             type="text"
             className="border rounded-lg w-[300px] p-2 dark:bg-[#282828] dark:border-white/10"
             placeholder="Start typing..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
@@ -59,7 +61,7 @@ const DoctorsPage = () => {
         </div>
       </div>
 
-      <TableComponent columns={columns} data={doctors || []} loading={loading} />
+      <TableComponent columns={columns} data={doctors || []} loading={loading} filterInput={search} />
     </div>
   );
 };
