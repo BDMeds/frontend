@@ -122,7 +122,7 @@ const Navbar = () => {
       </nav>
 
       <aside
-        className={`dark:bg-secondary-base/90 bg-white dark:bg-white/10/80 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
+        className={`dark:bg-secondary-base/90 bg-white dark:bg-[#282828]/90 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
         ref={asideRef}
       >
         <div className="w-full h-full relative flex items-center">
@@ -135,7 +135,7 @@ const Navbar = () => {
                   <li key={id} className="w-full overflow-y-hidden">
                     <div className="w-full nav_link_child translate-y-full duration-300 group">
                       <Link href={link.path} onClick={closeMenu}>
-                        <div className="text-4xl text-gray-800 py-5 w-full font-bold hover:text-primary dark:hover:text-primary-base hover:text-secondary-500 duration-300 flex items-center justify-center md:justify-start gap-6">
+                        <div className="text-4xl text-gray-800 dark:text-gray-200 py-5 w-full font-bold hover:text-primary dark:hover:text-primary duration-300 flex items-center justify-center md:justify-start gap-6">
                           {link.label}
                         </div>
                       </Link>
