@@ -34,7 +34,7 @@ const Sec1 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => 
       className="sm:h-screen h-[50vh] sticky text-center border dark:border-none sm:top-0 top-10 rounded-xl bg-white dark:bg-white/10 dark:bg-white dark:bg-white/10/10 grid place-content-center"
     >
       <div className="space-y-5">
-        <div className="mx-auto md:size-28 size-24 rounded-full border relative overflow-hidden grid place-content-center">
+        <div className="mx-auto md:size-28 size-24 rounded-full border dark:border-white/10 relative overflow-hidden grid place-content-center">
           <Image
             src={"/images/doctors/doc4.jpg"}
             alt="doc"
@@ -84,9 +84,9 @@ const Sec2 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => 
       className="sm:h-screen h-[50vh] sticky sm:top-0 top-10 rounded-xl bg-slate-900 grid place-content-center text-center"
     >
       <div className="space-y-5">
-        <div className="mx-auto md:size-28 size-24 rounded-full border relative overflow-hidden grid place-content-center">
+        <div className="mx-auto md:size-28 size-24 rounded-full border dark:border-white/10 relative overflow-hidden grid place-content-center">
           <Image
-            src={"/images/doctors/doc4.jpg"}
+            src={"/images/doctors/doc5.jpg"}
             alt="doc"
             width={300}
             height={300}
@@ -108,7 +108,7 @@ const Sec2 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => 
 
           <div className="flex items-center gap-4 justify-end">
             <div className="border-y sm:w-[100px] w-[50px]"></div>
-            <p>Dr. Justin Timerlake</p>
+            <p>Beyonce</p>
           </div>
 
           <FaQuoteRight
