@@ -31,7 +31,7 @@ export const addDoctorSocials = async (socials: Socials) => {
   }
 };
 
-export const updateData = async (newData: Partial<IDoctor>) => {
+export const updateDoctor = async (newData: Partial<IDoctor>) => {
   try {
     const { data } = await authApi.put<ApiResponse>("/doctor/", newData);
     toastSuccess("Info updated successfully");

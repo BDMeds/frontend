@@ -3,7 +3,7 @@ import ProfileImageModal from "@/components/UI/Dashboard/Settings/modals/profile
 import { useDoctorInfo } from "@/lib/hooks/useUserInfo";
 import { queryClient } from "@/lib/providers";
 import { useModal } from "@/lib/providers/modal-provider";
-import { updateData } from "@/lib/services/doctor.service";
+import { updateDoctor } from "@/lib/services/doctor.service";
 import { IDoctor } from "@/lib/types";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useMutation } from "@tanstack/react-query";
@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import PasswordChange from "./password";
 import { useTheme } from "@/lib/store/global.store";
+import AvailableStatus from "./available-status";
 
 const SettingsDoctor = () => {
   const { doctor, loading: doctorLoading } = useDoctorInfo();
@@ -27,7 +28,7 @@ const SettingsDoctor = () => {
     reset(doctor);
   }, []);
 
-  const { mutate, isPending: loading } = useMutation({ mutationFn: updateData });
+  const { mutate, isPending: loading } = useMutation({ mutationFn: updateDoctor });
 
   const submitInfo: SubmitHandler<IDoctor> = (data) => {
     const {
@@ -47,7 +48,7 @@ const SettingsDoctor = () => {
   };
 
   return (
-    <motion.div {...opacityVariant} className="grid lg:grid-cols-2 gap-5">
+    <motion.div {...opacityVariant} className="grid gap-5">
       <div className="border dark:border-white/10 rounded-xl p-4 space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex gap-4 items-center">
@@ -169,6 +170,11 @@ const SettingsDoctor = () => {
           </div>
         </form>
       </div>
+
+      <div>
+        <AvailableStatus doctor={doctor} />
+      </div>
+
       <div className="self-start grid gap-5">
         <PasswordChange />
       </div>
