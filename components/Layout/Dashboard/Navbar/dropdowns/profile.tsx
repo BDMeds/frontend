@@ -21,7 +21,7 @@ const ProfileDrop = () => {
     <div className="relative">
       <div
         className={`size-8 rounded-full dark:border-white/10 border grid place-content-center ring-[2px] hover:ring-primary ring-transparent duration-300 cursor-pointer relative overflow-hidden ${
-          loading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+          !user ? (loading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark") : ""
         }`}
         ref={ref}
         onClick={toggleDropdown}

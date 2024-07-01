@@ -177,7 +177,7 @@ const SettingsDoctor = () => {
       </div>
 
       <div className="self-start grid md:grid-cols-2 gap-5">
-        <AvailableDays />
+        <AvailableDays doctor={doctor} />
         <PasswordChange />
       </div>
     </motion.div>

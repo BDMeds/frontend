@@ -50,7 +50,7 @@ const DoctorGeneral = () => {
         <div className="-mt-10 flex gap-4 items-center">
           <div
             className={`size-28 border ${
-              loading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+              !doctor ? (loading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark") : ""
             } backdrop-blur-xl relative overflow-hidden rounded-full ml-5`}
           >
             {doctor?.user && (
