@@ -19,6 +19,10 @@ export const navLinks: NavLink[] = [
     path: "/about",
   },
   {
+    label: "Shop",
+    path: "/shop",
+  },
+  {
     label: "Services",
     path: "/services",
     children: [
@@ -35,6 +39,21 @@ export const navLinks: NavLink[] = [
         path: "/lab-tests",
       },
     ],
+  },
+  {
+    label: "Contact",
+    path: "/contact",
+  },
+];
+
+export const shopNavLink: NavLink[] = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Cart",
+    path: "/",
   },
   {
     label: "Contact",

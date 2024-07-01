@@ -4,6 +4,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { LuChevronDown } from "react-icons/lu";
 import { motion } from "framer-motion";
 import { fadeToBottomVariant } from "@/lib/utils/variants";
+import { usePathname } from "next/navigation";
 
 type Props = NavLink;
 
@@ -34,10 +35,12 @@ const NavChild: FC<Props> = (link) => {
     };
   }, []);
 
+  const pathname = usePathname();
+
   return (
     <div className="relative flex items-center gap-1 cursor-pointer group" ref={ref}>
       <Link href={link.path}>
-        <div className="py-3">{link.label}</div>
+        <div className={`py-3 ${link.path === pathname ? "text-primary" : ""}`}>{link.label}</div>
       </Link>
       {link.children && <LuChevronDown className="group-hover:rotate-180 duration-300" />}
 
