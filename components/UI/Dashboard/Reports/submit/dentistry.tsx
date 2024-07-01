@@ -54,7 +54,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -68,7 +68,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -82,7 +82,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -102,7 +102,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive teeth health status"
               {...register("dentalHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.dentalHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -115,7 +115,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive procedures description"
               {...register("recentProcedures")}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.recentProcedures ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -130,7 +130,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter Cavities Count"
               defaultValue={0}
               {...register("cavitiesCount", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.cavitiesCount ? "border-red-500/50" : ""
               }`}
             />
@@ -144,7 +144,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Gum Recession"
               {...register("gumRecession", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.gumRecession ? "border-red-500/50" : ""
               }`}
             />
@@ -158,7 +158,7 @@ const Dentistry: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Plaque Index"
               {...register("plaqueIndex", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.plaqueIndex ? "border-red-500/50" : ""
               }`}
             />

@@ -1,4 +1,5 @@
 import Button from "@/components/Common/Button";
+import { queryClient } from "@/lib/providers";
 import { submitCardiologyReprot } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
@@ -37,6 +38,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
   const { mutateAsync: submitReport, isPending } = useMutation({
     mutationFn: submitCardiologyReprot,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["appointments"] });
       refetchReport();
     },
   });
@@ -60,7 +62,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -74,7 +76,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -88,7 +90,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -108,7 +110,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive heart health status"
               {...register("heartHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.heartHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -122,7 +124,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter HeartRate"
               {...register("heartRate", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.heartRate ? "border-red-500/50" : ""
               }`}
             />
@@ -136,7 +138,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Blood Pressure Systolic"
               {...register("bloodPressureSystolic", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.bloodPressureSystolic ? "border-red-500/50" : ""
               }`}
             />
@@ -150,7 +152,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Blood Pressure Diastolic"
               {...register("bloodPressureDiastolic", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.bloodPressureDiastolic ? "border-red-500/50" : ""
               }`}
             />
@@ -168,7 +170,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
                 max: 100,
                 min: 0,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.bloodOxygenLevel ? "border-red-500/50" : ""
               }`}
             />
@@ -182,7 +184,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Cholestrol Total"
               {...register("cholestrolTotal", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.cholestrolTotal ? "border-red-500/50" : ""
               }`}
             />
@@ -196,7 +198,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Cholestrol LDL"
               {...register("cholestrolLDL", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.cholestrolLDL ? "border-red-500/50" : ""
               }`}
             />
@@ -210,7 +212,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Cholestrol HDL"
               {...register("cholestrolHDL", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.cholestrolHDL ? "border-red-500/50" : ""
               }`}
             />
@@ -228,7 +230,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
                 max: 100,
                 min: 0,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.ejectionFraction ? "border-red-500/50" : ""
               }`}
             />
@@ -242,7 +244,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Cardiac Output"
               {...register("cardiacOutput", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.cardiacOutput ? "border-red-500/50" : ""
               }`}
             />
@@ -256,7 +258,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               type="number"
               placeholder="Enter Blood Glucose Level"
               {...register("bloodGlucoseLevel", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.bloodGlucoseLevel ? "border-red-500/50" : ""
               }`}
             />

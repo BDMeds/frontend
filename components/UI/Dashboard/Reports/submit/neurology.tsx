@@ -67,7 +67,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Enter Consultation Note"
               {...register("consultationNote", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.consultationNote ? "border-red-500/50" : ""
               }`}
             />
@@ -81,7 +81,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="symptoms"
               {...register("symptoms", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.symptoms ? "border-red-500/50" : ""
               }`}
             />
@@ -95,7 +95,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               type="text"
               placeholder="Treatment Plan"
               {...register("treatmentPlan", {})}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.treatmentPlan ? "border-red-500/50" : ""
               }`}
             />
@@ -115,7 +115,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
             <textarea
               placeholder="Enter descriptive brain health status"
               {...register("brainHealthStatus", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.brainHealthStatus ? "border-red-500/50" : ""
               } h-[125px] resize-none`}
             />
@@ -130,7 +130,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               placeholder="Enter EEG Results"
               defaultValue={0}
               {...register("eegResults", { required: true })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.eegResults ? "border-red-500/50" : ""
               }`}
             />
@@ -147,7 +147,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               {...register("lowerCognitiveFunctionTestScore", {
                 required: true,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.lowerCognitiveFunctionTestScore ? "border-red-500/50" : ""
               }`}
             />
@@ -164,7 +164,7 @@ const Neurology: FC<Props> = ({ refetchReport }) => {
               {...register("upperCognitiveFunctionTestScore", {
                 required: true,
               })}
-              className={`w-full bg-transparent p-2 border text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
+              className={`w-full bg-transparent p-2 border dark:border-white/10 text-[.9rem] rounded-lg bg-white dark:bg-white/10 ${
                 errors.upperCognitiveFunctionTestScore ? "border-red-500/50" : ""
               }`}
             />
