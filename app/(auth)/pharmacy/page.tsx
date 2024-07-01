@@ -13,7 +13,7 @@ const Page = () => {
 
         <div className="grid place-content-center">
           <div>
-            <Link href="/pharmacy" target="_blank">
+            <Link href="/shop" target="_blank">
               <Button text="Go to pharmacy" variant="filled" icon={<CiPill />} />
             </Link>
           </div>
