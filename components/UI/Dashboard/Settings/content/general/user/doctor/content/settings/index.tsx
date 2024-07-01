@@ -14,6 +14,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import PasswordChange from "./password";
 import { useTheme } from "@/lib/store/global.store";
 import AvailableStatus from "./available-status";
+import AvailableDays from "./available-days";
 
 const SettingsDoctor = () => {
   const { doctor, loading: doctorLoading } = useDoctorInfo();
@@ -175,7 +176,8 @@ const SettingsDoctor = () => {
         <AvailableStatus doctor={doctor} />
       </div>
 
-      <div className="self-start grid gap-5">
+      <div className="self-start grid md:grid-cols-2 gap-5">
+        <AvailableDays />
         <PasswordChange />
       </div>
     </motion.div>

@@ -17,7 +17,7 @@ const AvailableStatus = ({ doctor }: { doctor?: IDoctor }) => {
     );
 
   return (
-    <div className="border dark:border-white/10 rounded-xl p-4 space-y-4 flex items-center justify-between">
+    <div className="border dark:border-white/10 rounded-xl p-4 flex items-center justify-between">
       <p>Available Status</p>
 
       {doctor && <Switch checked={doctor.isAvailable} onClick={update} loading={updating} />}

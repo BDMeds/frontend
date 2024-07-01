@@ -64,7 +64,7 @@ const DoctorGeneral = () => {
             )}
           </div>
 
-          <div className="mt-7">
+          <div className="mt-8">
             {loading ? (
               <>
                 <TextSkeleton size="medium" width="30" />
@@ -73,12 +73,17 @@ const DoctorGeneral = () => {
             ) : (
               <>
                 {doctor && doctor.user && (
-                  <>
+                  <div className="space-y-1">
                     <p className="font-bold">
                       {doctor.user.firstName} {doctor.user.lastName}
                     </p>
-                    <p className="capitalize text-gray-500 dark:text-gray-300">{doctor.speciality}</p>
-                  </>
+                    <div className="leading-3">
+                      <p className="capitalize text-gray-500 dark:text-gray-300">{doctor.speciality}</p>
+                      <p className={`text-xs ${doctor.isAvailable ? "text-green-500" : "text-red-500"}`}>
+                        {doctor.isAvailable ? "Available" : "Not available"}
+                      </p>
+                    </div>
+                  </div>
                 )}
               </>
             )}
