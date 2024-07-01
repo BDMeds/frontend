@@ -55,7 +55,7 @@ const SettingsDoctor = () => {
           <div className="flex gap-4 items-center">
             <div
               className={`size-16 border dark:border-white/10 ${
-                doctorLoading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+                !doctor ? (doctorLoading && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark") : ""
               } backdrop-blur-xl relative overflow-hidden rounded-full`}
             >
               {doctor && (

@@ -55,14 +55,6 @@ const AvailableDays: FC<Props> = ({ doctor }) => {
   };
 
   const submit = () => {
-    console.log(
-      days.map(({ day, endTime, startTime }) => ({
-        day,
-        endTime,
-        startTime,
-      }))
-    );
-
     mutate(
       {
         availableDays: days.map(({ day, endTime, startTime }) => ({
@@ -114,7 +106,7 @@ const Day = ({
     }
 
     if (range.startTime && range.endTime) updateData({ day, ...range });
-  }, [range]);
+  }, [range, day, updateData]);
 
   return (
     <div className="space-y-1">
