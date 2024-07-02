@@ -39,8 +39,8 @@ const ShopNavbar = () => {
   };
   return (
     <>
-      <nav className="sticky top-0 left-0 w-full duration-300 z-[500]" ref={ref}>
-        <div className={`flex items-center justify-between p-5 duration-300`}>
+      <nav className="sticky top-0 left-0 w-full duration-300 z-[500] bg-[#f8f8f8] dark:bg-transparent" ref={ref}>
+        <div className={`flex items-center justify-between px-5 py-3 duration-300`}>
           <div className="flex items-center justify-end gap-5">
             <div>
               <Link href={"/shop"} className="text-2xl font-bold">
