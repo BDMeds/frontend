@@ -1,10 +1,14 @@
 import Shop from "@/components/UI/Shop";
+import Hero from "@/components/UI/Shop/hero";
 
 const Page = () => {
   return (
-    <main>
-      <Shop />
-    </main>
+    <>
+      <Hero />
+      <main>
+        <Shop />
+      </main>
+    </>
   );
 };
 

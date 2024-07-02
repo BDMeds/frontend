@@ -16,7 +16,7 @@ const MedicineCategories: React.FC = () => {
   };
 
   return (
-    <div className="px-5">
+    <div className="px-5 bg-[#f8f8f8]">
       <div className="relative flex items-center w-full overflow-hidden px-5">
         <button className="absolute -left-2 p-2 rounded-md z-10" onClick={() => scroll("left")}>
           {"<"}
