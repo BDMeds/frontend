@@ -39,11 +39,11 @@ const ShopNavbar = () => {
   };
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full duration-300 z-[500]" ref={ref}>
-        <div className={`container flex items-center justify-between py-5 duration-300`}>
+      <nav className="sticky top-0 left-0 w-full duration-300 z-[500]" ref={ref}>
+        <div className={`flex items-center justify-between p-5 duration-300`}>
           <div className="flex items-center justify-end gap-5">
             <div>
-              <Link href={"/"} className="text-2xl font-bold">
+              <Link href={"/shop"} className="text-2xl font-bold">
                 <div className="flex items-center gap-2">
                   <FaCartPlus />
                   <span>

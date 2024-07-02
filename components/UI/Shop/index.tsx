@@ -1,7 +1,13 @@
 "use client";
 
+import MedicineCategories from "./categories-slide";
+
 const Shop = () => {
-  return <div></div>;
+  return (
+    <div>
+      <MedicineCategories />
+    </div>
+  );
 };
 
 export default Shop;
