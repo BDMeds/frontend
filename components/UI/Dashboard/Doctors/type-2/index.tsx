@@ -2,7 +2,7 @@
 
 import TableComponent from "@/components/Common/Table";
 import React, { useEffect, useState } from "react";
-import columns from "./Table/columns";
+import columns from "../Table/columns";
 import { useQuery } from "@tanstack/react-query";
 import { getDoctors } from "@/lib/services/doctor.service";
 import { departments } from "@/lib/data/dashboard";
@@ -10,7 +10,7 @@ import { Department } from "@/lib/types";
 import { FiFilter } from "react-icons/fi";
 import Select from "@/components/Common/Inputs/select";
 
-const DoctorsPage = () => {
+const Type2DoctorsPage = () => {
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState<Department>(departments[0].dept);
 
@@ -66,4 +66,4 @@ const DoctorsPage = () => {
   );
 };
 
-export default DoctorsPage;
+export default Type2DoctorsPage;

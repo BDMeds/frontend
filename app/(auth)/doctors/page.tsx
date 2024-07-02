@@ -1,7 +1,7 @@
-import DoctorsPage from "@/components/UI/Dashboard/Doctors";
+import Type1DoctorsPage from "@/components/UI/Dashboard/Doctors/type-1";
 
 const Page = () => {
-  return <DoctorsPage />;
+  return <Type1DoctorsPage />;
 };
 
 export default Page;

@@ -1,19 +1,11 @@
 "use client";
 
 import { medicineCategories } from "@/lib/data/shop";
+import useSlider from "@/lib/hooks/useSlider2";
 import React, { useRef } from "react";
 
 const MedicineCategories: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: direction === "left" ? -200 : 200,
-        behavior: "smooth",
-      });
-    }
-  };
+  const { containerRef, scroll } = useSlider();
 
   return (
     <div className="px-5 bg-[#f8f8f8]">
