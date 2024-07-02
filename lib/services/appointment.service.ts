@@ -5,9 +5,7 @@ import { toastSuccess } from "../utils/toast";
 
 export const getAppointments = async () => {
   try {
-    const { data } = await authApi.get<ApiResponse<AppointmentDocument[]>>(
-      "/appointment/user"
-    );
+    const { data } = await authApi.get<ApiResponse<AppointmentDocument[]>>("/appointment/user");
 
     return data.data;
   } catch (error) {
@@ -15,18 +13,19 @@ export const getAppointments = async () => {
   }
 };
 
-export const bookAppointment = async ({
-  payload,
-  doctorId,
-}: {
-  payload: BookAppointment;
-  doctorId: string;
-}) => {
+export const getPendingAppointments = async () => {
   try {
-    const { data } = await authApi.post<ApiResponse>(
-      `/appointment/${doctorId}/book`,
-      payload
-    );
+    const { data } = await authApi.get<AppointmentDocument[]>("/appointment/user/pending");
+
+    return data;
+  } catch (error) {
+    // handleAxiosErrorWithToast(error)
+  }
+};
+
+export const bookAppointment = async ({ payload, doctorId }: { payload: BookAppointment; doctorId: string }) => {
+  try {
+    const { data } = await authApi.post<ApiResponse>(`/appointment/${doctorId}/book`, payload);
     toastSuccess("Appointment booked.");
     return data;
   } catch (err) {
@@ -36,9 +35,7 @@ export const bookAppointment = async ({
 
 export const getSingleAppointment = (appointmentId: string) => async () => {
   try {
-    const { data } = await authApi.get<ApiResponse<AppointmentDocument>>(
-      `/appointment/${appointmentId}`
-    );
+    const { data } = await authApi.get<ApiResponse<AppointmentDocument>>(`/appointment/${appointmentId}`);
 
     return data.data;
   } catch (error) {
