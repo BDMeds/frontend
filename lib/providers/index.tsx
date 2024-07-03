@@ -14,6 +14,20 @@ export const queryClient = new QueryClient();
 
 const isProduction = process.env.NODE_ENV === "production";
 
+const toastOptions = {
+  backgroundColor: "#fff",
+  color: "black",
+  fontSize: "14px",
+  borderColor: "#686868",
+};
+
+const toastOptionsDark = {
+  backgroundColor: "#282828",
+  color: "white",
+  fontSize: "14px",
+  borderColor: "#686868",
+};
+
 const Providers = ({ children }: { children: ReactNode }) => {
   const { isDark: isDarkMode } = useTheme();
 
@@ -30,12 +44,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
       <QueryClientProvider client={queryClient}>
         <SonnerToaster
           toastOptions={{
-            style: {
-              backgroundColor: "#fff",
-              color: "black",
-              fontSize: "14px",
-              borderColor: "#686868",
-            },
+            style: !isDarkMode ? toastOptions : toastOptionsDark,
           }}
         />
         <AuthProvider>

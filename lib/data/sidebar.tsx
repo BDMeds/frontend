@@ -128,8 +128,8 @@ export const adminLinks: SidebarLink[] = [
       {
         iconOutlined: <IoCartOutline />,
         iconFilled: <IoCart />,
-        text: "Store",
-        path: "/s/store",
+        text: "Pharmacy",
+        path: "/s/pharmacy",
       },
       {
         iconOutlined: <MdOutlineReport />,

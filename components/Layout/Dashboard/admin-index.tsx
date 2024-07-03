@@ -33,7 +33,7 @@ const AdminDashboardWrapper = ({ children }: Props) => {
         <Sidebar />
         <div className={`duration-300 flex-grow relative ${sidebarOpen ? "xl:ml-[280px] md:ml-[260px]" : "ml-[60px]"}`}>
           <DNavbar />
-          <div className="mt-[2.5rem] px-5">{children}</div>
+          <div className="mt-5 px-5">{children}</div>
         </div>
       </div>
     </main>

@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="grid md:grid-cols-2 gap-10 container items-center">
         <div className="space-y-4">
           <h1
-            className={`font-extrabold text-5xl ${montserrat.className} dark:bg-clip-text dark:text-transparent text-black bg-gradient-to-t dark:from-gray-100 dark:to-gray-800`}
+            className={`font-extrabold text-5xl ${montserrat.className} dark:bg-clip-text dark:text-transparent text-black bg-gradient-to-t dark:to-gray-100 dark:from-black`}
           >
             BDShop
           </h1>

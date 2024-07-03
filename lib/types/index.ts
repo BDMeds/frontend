@@ -201,3 +201,17 @@ export type BookAppointment = {
   endTime: string | Date;
   mode: string;
 };
+
+// ADMIN
+export type Visibility = "published" | "scheduled" | "hidden";
+
+export type Medicine = {
+  name: string;
+  description: string;
+  price: number;
+  stock: string;
+  image: string;
+  visibility: Visibility;
+};
+
+export type CreateMedicine = {};

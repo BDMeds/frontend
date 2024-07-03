@@ -15,12 +15,12 @@ export const navLinks: NavLink[] = [
     path: "/",
   },
   {
-    label: "About",
-    path: "/about",
-  },
-  {
     label: "Shop",
     path: "/shop",
+  },
+  {
+    label: "About",
+    path: "/about",
   },
   {
     label: "Services",
