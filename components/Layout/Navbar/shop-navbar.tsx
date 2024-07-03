@@ -12,8 +12,7 @@ import useUserInfo from "@/lib/hooks/useUserInfo";
 import Image from "next/image";
 import { useTheme } from "@/lib/store/global.store";
 import { CgMoon, CgSun, CgUser } from "react-icons/cg";
-import { FaCartPlus } from "react-icons/fa6";
-import { FaOpencart } from "react-icons/fa6";
+import { FaCartPlus, FaOpencart } from "react-icons/fa6";
 
 const ShopNavbar = () => {
   const ref = useRef<HTMLElement>(null);
@@ -39,8 +38,8 @@ const ShopNavbar = () => {
   };
   return (
     <>
-      <nav className="sticky top-0 left-0 w-full duration-300 z-[500] bg-[#f8f8f8] dark:bg-transparent" ref={ref}>
-        <div className={`flex items-center justify-between px-5 py-3 duration-300`}>
+      <nav className="sticky top-0 left-0 w-full duration-300 z-[500] bg-[#f8f8f8] dark:bg-black" ref={ref}>
+        <div className={`flex items-center justify-between px-5 py-2 duration-300`}>
           <div className="flex items-center justify-end gap-5">
             <div>
               <Link href={"/shop"} className="text-2xl font-bold">
