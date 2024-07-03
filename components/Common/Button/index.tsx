@@ -30,6 +30,7 @@ const Button: FC<Props> = (props) => {
     iconPosition = "right",
     rounded = "lg",
     fullWidth = false,
+    role,
     ...rest
   } = props;
   let mainClass = `rounded-${rounded} font-semibold duration-300 ${
@@ -81,6 +82,7 @@ const Button: FC<Props> = (props) => {
       onClick={onClick}
       className={`${classNames([mainClass, extraClass])} `}
       disabled={disabled || loading}
+      role={role}
       {...rest}
     >
       {iconPosition === "left" && (
