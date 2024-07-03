@@ -13,6 +13,7 @@ import Image from "next/image";
 import { useTheme } from "@/lib/store/global.store";
 import { CgMoon, CgSun, CgUser } from "react-icons/cg";
 import { FaCartPlus, FaOpencart } from "react-icons/fa6";
+import useCart from "@/lib/store/cart.store";
 
 const ShopNavbar = () => {
   const ref = useRef<HTMLElement>(null);
@@ -24,6 +25,8 @@ const ShopNavbar = () => {
   const { user } = useUserInfo();
 
   const { isDark: isDarkMode, updateDarkMode } = useTheme();
+
+  const { count } = useCart();
 
   const openMenu = () => {
     gsap.context(() => {
@@ -75,6 +78,15 @@ const ShopNavbar = () => {
                     />
                   )}
                 </div>
+
+                <div className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative">
+                  <FaOpencart />
+
+                  <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">
+                    <p>{count}</p>
+                  </div>
+                </div>
+
                 <div>
                   <Link href={"/dashboard"}>
                     <div className="relative size-8 rounded-full overflow-hidden ring duration-300 cursor-pointer dark:ring-white/50 ring-black/10">
@@ -112,7 +124,7 @@ const ShopNavbar = () => {
                   <FaOpencart />
 
                   <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">
-                    <p>0</p>
+                    <p>{count}</p>
                   </div>
                 </div>
 

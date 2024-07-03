@@ -206,6 +206,7 @@ export type BookAppointment = {
 export type Visibility = "published" | "scheduled" | "hidden";
 
 export type Medicine = {
+  id: string;
   name: string;
   description: string;
   price: number;
