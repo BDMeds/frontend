@@ -29,7 +29,7 @@ const ShopNavbar = () => {
 
   const { push } = useRouter();
 
-  const { count } = useCart();
+  const { items } = useCart();
 
   const openMenu = () => {
     gsap.context(() => {
@@ -89,7 +89,7 @@ const ShopNavbar = () => {
                   <FaOpencart />
 
                   <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">
-                    <p>{count}</p>
+                    <p>{items.length}</p>
                   </div>
                 </div>
 
@@ -133,7 +133,7 @@ const ShopNavbar = () => {
                   <FaOpencart />
 
                   <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">
-                    <p>{count}</p>
+                    <p>{items.length}</p>
                   </div>
                 </div>
 

@@ -32,7 +32,7 @@ const AddMedicine = () => {
 
     const image = (await getBase64(file)) as string;
 
-    const payload = { ...data, image };
+    const payload = { ...data, image, price: data.amount };
     mutate(payload, { onSuccess: () => (reset(), resetFile()) });
   };
   return (
@@ -116,7 +116,13 @@ const AddMedicine = () => {
                   Set Image <span className="text-primary">*</span>
                 </p>
 
-                <input type="file" className="hidden" accept="image/png,image/jpg" ref={ref} onChange={onFileChange} />
+                <input
+                  type="file"
+                  className="hidden"
+                  accept="image/png,image/jpg,image/jpeg"
+                  ref={ref}
+                  onChange={onFileChange}
+                />
 
                 <div
                   className={`min-h-[15rem] rounded-xl select-none ${
