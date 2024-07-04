@@ -215,4 +215,10 @@ export type Medicine = {
   visibility: Visibility;
 };
 
-export type CreateMedicine = {};
+export type CreateMedicine = {
+  name: string;
+  description: string;
+  amount: number;
+  stock: number;
+  image: string;
+};

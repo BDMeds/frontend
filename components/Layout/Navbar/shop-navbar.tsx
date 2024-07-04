@@ -14,6 +14,7 @@ import { useTheme } from "@/lib/store/global.store";
 import { CgMoon, CgSun, CgUser } from "react-icons/cg";
 import { FaCartPlus, FaOpencart } from "react-icons/fa6";
 import useCart from "@/lib/store/cart.store";
+import { useRouter } from "next/navigation";
 
 const ShopNavbar = () => {
   const ref = useRef<HTMLElement>(null);
@@ -25,6 +26,8 @@ const ShopNavbar = () => {
   const { user } = useUserInfo();
 
   const { isDark: isDarkMode, updateDarkMode } = useTheme();
+
+  const { push } = useRouter();
 
   const { count } = useCart();
 
@@ -79,7 +82,10 @@ const ShopNavbar = () => {
                   )}
                 </div>
 
-                <div className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative">
+                <div
+                  className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative"
+                  onClick={() => push("/cart")}
+                >
                   <FaOpencart />
 
                   <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">
@@ -120,7 +126,10 @@ const ShopNavbar = () => {
                   )}
                 </div>
 
-                <div className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative">
+                <div
+                  className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative"
+                  onClick={() => push("/cart")}
+                >
                   <FaOpencart />
 
                   <div className="size-5 rounded-full bg-primary text-white absolute -top-2 -right-2 shadow grid place-content-center font-semibold text-sm">

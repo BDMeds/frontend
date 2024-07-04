@@ -5,6 +5,10 @@ const useFilePicker = () => {
   const [file, setFile] = useState<File | null>(null);
   const [blob, setBlob] = useState("");
 
+  const reset = () => {
+    setFile(null), setBlob("");
+  };
+
   const ref = useRef<HTMLInputElement>(null);
 
   const pickFile = () => {
@@ -25,8 +29,8 @@ const useFilePicker = () => {
     }
 
     // if file size is greater than 500kb return
-    if (file.size > (1024 * 1024) / 2) {
-      toastError("File size too large", { id: "file-size" });
+    if (file.size > 1024 * 1024) {
+      toastError("File size too large, Max: 1MB", { id: "file-size" });
       return;
     }
 
@@ -46,7 +50,7 @@ const useFilePicker = () => {
     setFile(file);
   };
 
-  return { file, blob, pickFile, onFileChange, ref };
+  return { file, blob, pickFile, onFileChange, ref, reset };
 };
 
 export default useFilePicker;
