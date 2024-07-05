@@ -6,7 +6,7 @@ import { useModal } from "@/lib/providers/modal-provider";
 import { checkout } from "@/lib/services/medicine.service";
 import useCart from "@/lib/store/cart.store";
 import { toastError } from "@/lib/utils/toast";
-import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoBagCheckOutline } from "react-icons/io5";
@@ -23,11 +23,13 @@ const CheckoutModal = () => {
 
   const { register, handleSubmit } = useForm<Inputs>();
 
-  const { items } = useCart();
+  const { items, resetCart } = useCart();
 
   const [loading, setLoading] = useState(false);
 
   const { user, loading: userLoading } = useUserInfo();
+
+  const router = useRouter();
 
   const submit: SubmitHandler<Inputs> = async (address) => {
     const payload = {
@@ -45,6 +47,7 @@ const CheckoutModal = () => {
         throw new Error("An error occurred, please try again later.");
       }
 
+      resetCart();
       window.location.href = checkoutUrl;
     } catch {
       setLoading(false);
@@ -101,7 +104,12 @@ const CheckoutModal = () => {
               <div className="w-full h-full flex items-center justify-center">
                 <div className="space-y-4 text-center">
                   <p className="text-lg">Sign In</p>
-                  <Button text="Sign In" variant="filled" className="mx-auto" />
+                  <Button
+                    text="Sign In"
+                    variant="filled"
+                    className="mx-auto"
+                    onClick={() => router.push("/account/login?fromCart=true")}
+                  />
                 </div>
               </div>
             )}

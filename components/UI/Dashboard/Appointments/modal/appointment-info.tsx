@@ -23,11 +23,11 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
   const { hideModal } = useModal();
   const router = useRouter();
 
-  const { data: appointment, isLoading: appointmentLoading } = useQuery({
+  const { data: appointment, isPending: appointmentLoading } = useQuery({
     queryKey: ["getAppointment", event.id],
     queryFn: getSingleAppointment(event.id),
   });
-  const { data: report, isLoading: reportLoading } = useQuery({
+  const { data: report, isPending: reportLoading } = useQuery({
     queryKey: ["getAppointmentReport", event.id],
     queryFn: getAppointmentReport(event.id),
   });
@@ -98,7 +98,9 @@ const AppointmentInfoModal: FC<Props> = ({ event, refetchAppointments }) => {
                     className="ml-auto"
                     text="View Report"
                     variant="filled"
-                    onClick={() => router.push(`/reports/${report!._id}?department=${appointment?.department}`)}
+                    onClick={() => (
+                      router.push(`/reports/${report!._id}?department=${appointment?.department}`), hideModal()
+                    )}
                   />
                 )
               )}

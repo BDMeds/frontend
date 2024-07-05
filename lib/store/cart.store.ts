@@ -10,15 +10,13 @@ type Item = {
 
 type CartStoreProps = {
   items: Item[];
-  count: number;
 };
 
 type CartStoreActions = {
   addItem: (item: Item) => void;
   removeItem: (itemId: string) => void;
 
-  changeCount: (type: "i" | "d") => void;
-  resetCount: () => void;
+  resetCart: () => void;
 };
 
 type CartStore = CartStoreProps & CartStoreActions;
@@ -27,7 +25,6 @@ const useCart = create<CartStore>()(
   persist(
     (set) => ({
       items: [],
-      count: 0,
 
       addItem: (item) =>
         set((state) => {
@@ -44,14 +41,10 @@ const useCart = create<CartStore>()(
 
       removeItem: (id) => set((state) => ({ ...state, items: state.items.filter((item) => item.item._id !== id) })),
 
-      changeCount: (type) => {
-        if (type === "d") {
-          set((state) => ({ ...state, count: state.count > 0 ? state.count - 1 : state.count }));
-        } else {
-          set((state) => ({ ...state, count: state.count + 1 }));
-        }
-      },
-      resetCount: () => set((state) => ({ ...state, count: 0 })),
+      resetCart: () =>
+        set({
+          items: [],
+        }),
     }),
     { name: "cart-items" }
   )

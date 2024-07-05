@@ -5,7 +5,7 @@ import { toastError, toastSuccess } from "@/lib/utils/toast";
 import { ILoginData } from "@/lib/types";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { GiMedicines } from "react-icons/gi";
@@ -19,13 +19,20 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const fromCart = useSearchParams().get("fromCart");
+
   const submit: SubmitHandler<ILoginData> = async (data) => {
     try {
       setLoading(true);
       const res = await signIn("credentials", { email: data.emailOrPhone, password: data.password, redirect: false });
       if (res?.ok) {
         toastSuccess("Login successful.");
-        window.location.href = "/dashboard";
+
+        if (!fromCart) {
+          window.location.href = "/dashboard";
+        } else {
+          window.location.href = "/cart";
+        }
       } else {
         toastError("Login failed.");
       }

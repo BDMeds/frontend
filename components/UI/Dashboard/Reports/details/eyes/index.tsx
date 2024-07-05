@@ -30,7 +30,7 @@ const EyesModel = dynamic(() => import("@/components/Common/3D/eye"), {
 const EyeReportDetail: FC<Props> = ({ report }) => {
   return (
     <div className="grid md:grid-cols-2 gap-7 pb-8">
-      <div className="border rounded-xl bg-white dark:bg-white/10 relative self-start">
+      <div className="border dark:border-white/10 rounded-xl bg-white dark:bg-white/10 relative self-start">
         <div className="absolute top-2 p-5 left-0 space-y-1">
           <p>Evaluation:</p>
           <p className="text-4xl font-bold">Overall State of Health</p>
@@ -40,7 +40,7 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
       </div>
 
       <motion.div {...parentVariant} animate="animate" className="grid gap-3 grid-cols-2 self-start">
-        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <FaEye />
@@ -50,7 +50,7 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
           <h1 className="text-[1.8rem] font-bold">{report?.ocularPressure}mmHg</h1>
         </div>
 
-        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start">
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 py-4 space-y-4 px-5 self-start">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <FaEye />
@@ -60,7 +60,7 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
           <h1 className="text-[1.8rem] font-bold">{report?.contactLensBaseCurve}mm</h1>
         </div>
 
-        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start col-span-2">
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 py-4 space-y-4 px-5 self-start col-span-2">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <FaEye />
@@ -70,7 +70,7 @@ const EyeReportDetail: FC<Props> = ({ report }) => {
           <h1 className="text-[1.8rem] font-bold">{report?.contactLensDiameter}mm</h1>
         </div>
 
-        <div className="rounded-md bg-white dark:bg-white/10 border py-4 space-y-4 px-5 self-start col-span-2">
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 py-4 space-y-4 px-5 self-start col-span-2">
           <p className="font-bold">
             <span className="inline-flex align-middle size-10 text-primary bg-primary/10 rounded-xl items-center justify-center mr-3">
               <RiHeartLine />

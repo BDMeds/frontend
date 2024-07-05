@@ -1,17 +1,9 @@
 "use client";
 
-import { parentVariant } from "@/lib/utils/variants";
-import { motion } from "framer-motion";
-import { DumChart2, DummyChart1 } from "./charts";
 import Loader from "@/components/Common/Loaders";
-import dynamic from "next/dynamic";
-import BloodPressureBarChart from "./charts/blood-pressure";
-import HeartRateLineChart from "./charts/heart-rate-line";
-import CholesterolPieChart from "./charts/cholesterol-level";
-import { ResponsiveContainer } from "recharts";
 import HeartReportDetails from "./heart";
 import TeethReportDetails from "./teeth";
-import { FC, useMemo } from "react";
+import { useMemo } from "react";
 import { DepartmentsEnum } from "@/lib/enums";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +14,9 @@ import KidneyReportDetail from "./kidney";
 import BrainReportDetail from "./brain";
 import EyeReportDetail from "./eyes";
 import BoneReportDetail from "./skeleton";
-import Image from "next/image";
+import Button from "@/components/Common/Button";
+import { useModal } from "@/lib/providers/modal-provider";
+import PrescriptionModal from "./_modal/prescription-modal";
 
 const ReportsDetails = () => {
   const { push } = useRouter();
@@ -38,13 +32,19 @@ const ReportsDetails = () => {
     queryFn: getReport(reportId!, department as DepartmentsEnum),
   });
 
+  const { showModal } = useModal();
+
   if (!isValid) {
     push("/not-found");
     return null;
   }
 
   if (reportLoading) {
-    return <Loader />;
+    return (
+      <div className="w-full h-full grid place-content-center">
+        <Loader />
+      </div>
+    );
   }
 
   if (!reportLoading && report) {
@@ -77,11 +77,22 @@ const ReportsDetails = () => {
       default:
         component = <></>;
     }
+
     return (
       <>
-        <div className="rounded-md bg-white dark:bg-white/10 border p-2 space-y-4 px-3 mb-4">
-          <b>Consultation Note: </b>
-          {report?.consultation?.consultationNote}
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 p-2 space-y-4 px-3 mb-4 flex items-center justify-between">
+          <p>
+            <b>Consultation Note: </b>
+            {report?.consultation?.consultationNote}
+          </p>
+
+          <Button
+            text="View Prescriptions"
+            variant="filled"
+            size="extra-small"
+            onClick={() => showModal(<PrescriptionModal />)}
+            rounded="full"
+          />
         </div>
 
         {component}
