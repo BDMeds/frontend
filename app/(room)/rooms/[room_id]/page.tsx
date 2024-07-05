@@ -6,7 +6,7 @@ const VideoPage = ({ params: { room_id } }: { params: { room_id: string } }) => 
   return (
     <div>
       <h1>Video Chat</h1>
-      <VideoChat room={room} />
+      <VideoChat roomId={room} />
     </div>
   );
 };

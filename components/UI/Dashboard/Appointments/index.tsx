@@ -43,7 +43,10 @@ const Appointment = () => {
   useEffect(() => {
     if (appointments?.length! > 0) {
       const events = mapAppointmentsToEvents(appointments || [], session?.user!);
-      setEvents(events);
+
+      const filteredEvents = events.filter((e) => e.end.getTime() > new Date().getTime());
+
+      setEvents(filteredEvents);
     }
   }, [appointments]);
 

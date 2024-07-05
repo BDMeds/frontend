@@ -38,6 +38,8 @@ const CheckoutModal = () => {
       address,
     };
 
+    console.log({ payload });
+
     setLoading(true);
     try {
       const checkoutUrl = await checkout(payload);
