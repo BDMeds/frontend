@@ -80,7 +80,7 @@ const ReportsDetails = () => {
 
     return (
       <>
-        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 p-2 space-y-4 px-3 mb-4 flex items-center justify-between">
+        <div className="rounded-md bg-white dark:bg-white/10 border dark:border-white/10 p-2 px-3 mb-4 flex items-center justify-between">
           <p>
             <b>Consultation Note: </b>
             {report?.consultation?.consultationNote}
