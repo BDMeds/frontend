@@ -1,69 +1,151 @@
+// import {
+//   CallingState,
+//   StreamCall,
+//   StreamVideo,
+//   StreamVideoClient,
+//   useCall,
+//   useCallStateHooks,
+//   User,
+// } from "@stream-io/video-react-sdk";
+// import '@stream-io/video-react-sdk/dist/css/styles.css';
+// import { ParticipantView, StreamVideoParticipant } from '@stream-io/video-react-sdk';
+
+// const apiKey = "mmhfdzb5evj2";
+// const token =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiWW9kYSIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvWW9kYSIsImlhdCI6MTcyMDIxMTc0OSwiZXhwIjoxNzIwODE2NTU0fQ.cAN9ZqVZsiqaWOzhbw51L7IpVDQcgYsA7558QLvQMJA";
+// const userId = "Yoda";
+// const callId = "BmTrTzWBjDnR";
+
+// // set up the user object
+// const user: User = {
+//   id: userId,
+//   name: "Oliver",
+//   // image: 'https://getstream.io/random_svg/?id=oliver&name=Oliver',
+// };
+
+// const client = new StreamVideoClient({ apiKey, user, token });
+// const call = client.call("default", callId);
+// call.join({ create: true });
+
+// export default function App() {
+//   return (
+//     <StreamVideo client={client}>
+//       <StreamCall call={call}>
+//         <MyUILayout />
+//       </StreamCall>
+//     </StreamVideo>
+//   );
+// }
+
+// export const MyParticipantList = (props: { participants: StreamVideoParticipant[] }) => {
+//   const { participants } = props;
+//   return (
+//     <div style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}>
+//       {participants.map((participant) => (
+//         <ParticipantView participant={participant} key={participant.sessionId} />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export const MyFloatingLocalParticipant = (props: { participant?: StreamVideoParticipant }) => {
+//   const { participant } = props;
+//   return (
+//     <div
+//       style={{
+//         position: 'absolute',
+//         top: '15px',
+//         left: '15px',
+//         width: '240px',
+//         height: '135px',
+//         boxShadow: 'rgba(0, 0, 0, 0.1) 0px 0px 10px 3px',
+//         borderRadius: '12px',
+//       }}
+//     >
+//       <ParticipantView participant={participant} />
+//     </div>
+//   );
+// };
+
+// export const MyUILayout = () => {
+//   const {
+//     useCallCallingState,
+//     useLocalParticipant,
+//     useRemoteParticipants,
+//     // ... other hooks
+//   } = useCallStateHooks();
+
+//   const callingState = useCallCallingState();
+//   const localParticipant = useLocalParticipant();
+//   const remoteParticipants = useRemoteParticipants();
+
+//   if (callingState !== CallingState.JOINED) {
+//     return <div>Loading...</div>;
+//   }
+
+//   return (
+//     <StreamTheme>
+//       <MyParticipantList participants={remoteParticipants} />
+//       <MyFloatingLocalParticipant participant={localParticipant} />
+//     </StreamTheme>
+//   );
+// };
+
 "use client";
-import React from "react";
-import { useStreamVideoClient } from "@stream-io/video-react-sdk";
-import { useRouter } from "next/navigation";
-import { useGetCallById } from "@/lib/hooks/useGetCallById";
-import useUserInfo from "@/lib/hooks/useUserInfo";
-import Button from "@/components/Common/Button";
-import { toastSuccess } from "@/lib/utils/toast";
 
-const Table = ({ title, description }: { title: string; description: string }) => (
-  <div className="flex flex-col items-start gap-2 xl:flex-row">
-    <h1 className="text-base font-medium text-sky-1 lg:text-xl xl:min-w-32">{title}</h1>
-    <h1 className="truncate text-sm font-bold max-sm:max-w-[320px] lg:text-xl">{description}</h1>
-  </div>
-);
+import {
+  CallControls,
+  CallingState,
+  SpeakerLayout,
+  StreamCall,
+  StreamTheme,
+  StreamVideo,
+  StreamVideoClient,
+  useCallStateHooks,
+  User,
+} from "@stream-io/video-react-sdk";
 
-const PersonalRoom = () => {
-  const { user } = useUserInfo();
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+// import "./style.css";
 
-  const meetingId = user?._id;
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}`;
+const apiKey = "mmhfdzb5evj2";
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiWW9kYSIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvWW9kYSIsImlhdCI6MTcyMDIxMTc0OSwiZXhwIjoxNzIwODE2NTU0fQ.cAN9ZqVZsiqaWOzhbw51L7IpVDQcgYsA7558QLvQMJA";
+const userId = "Yoda";
+const callId = "BmTrTzWBjDnR";
 
-  const { call } = useGetCallById(meetingId!);
-  const client = useStreamVideoClient();
-  const router = useRouter();
+const user: User = {
+  id: userId,
+  name: "Oliver",
+  image: "https://getstream.io/random_svg/?id=oliver&name=Oliver",
+};
 
-  const startRoom = async () => {
-    if (!client || !user) return;
+const client = new StreamVideoClient({ apiKey, user, token });
+const call = client.call("default", callId);
+call.join({ create: true });
 
-    if (!call) {
-      const newCall = client.call("default", meetingId!);
+const MyUILayout = () => {
+  const { useCallCallingState } = useCallStateHooks();
+  const callingState = useCallCallingState();
 
-      await newCall.getOrCreate({
-        data: {
-          starts_at: new Date().toISOString(),
-        },
-      });
-    }
-
-    router.push(`/meeting/${meetingId}?personal=true`);
-  };
+  if (callingState !== CallingState.JOINED) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <section className="flex size-full flex-col gap-10 text-white">
-      <h1 className="text-3xl font-bold">Personal Room</h1>
-
-      <div className="flex w-full flex-col gap-8 xl:max-w-[900px]">
-        <Table title="Topic" description={`${user?.firstName}'s Meeting Room`} />
-        <Table title="Meeting ID" description={meetingId!} />
-        <Table title="Invite" description={meetingLink} />
-      </div>
-
-      <div className="flex gap-5">
-        <Button text="Start Meeting" className="bg-blue-1" onClick={startRoom} variant="filled" />
-        <Button
-          text="Copy Invitation"
-          className="bg-dark-3"
-          variant="filled"
-          onClick={async () => {
-            await navigator.clipboard.writeText(meetingLink);
-            toastSuccess("Meeting Link Copied");
-          }}
-        />
-      </div>
-    </section>
+    <StreamTheme>
+      <SpeakerLayout participantsBarPosition="bottom" />
+      <CallControls />
+    </StreamTheme>
   );
 };
 
-export default PersonalRoom;
+export default function Page() {
+  return (
+    <StreamVideo client={client}>
+      <StreamCall call={call}>
+        <MyUILayout />
+      </StreamCall>
+    </StreamVideo>
+  );
+}
