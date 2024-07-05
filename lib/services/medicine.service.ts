@@ -53,12 +53,13 @@ export const updateMedicine = async (id: string, payload: Partial<CreateMedicine
 
 export const checkout = async (payload: {
   orderNotes: string;
-  cart: { medicine: string; qty: number }[];
+  cart: { medicine: string; qty: string }[];
   address: any;
 }) => {
   try {
-    const { data } = await authApi.post<ApiResponse>("/order/checkout", payload);
+    const { data } = await authApi.post<string>("/order/checkout", payload);
     toastSuccess("Order placed.");
+
     return data;
   } catch (err) {
     handleAxiosErrorWithToast(err);

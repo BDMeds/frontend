@@ -3,7 +3,9 @@ import Modal from "@/components/Common/Modal";
 import { useModal } from "@/lib/providers/modal-provider";
 import { checkout } from "@/lib/services/medicine.service";
 import useCart from "@/lib/store/cart.store";
+import { toastError } from "@/lib/utils/toast";
 import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoBagCheckOutline } from "react-icons/io5";
 
@@ -21,16 +23,44 @@ const CheckoutModal = () => {
 
   const { items } = useCart();
 
-  const { mutate, isPending: loading } = useMutation({ mutationFn: checkout, mutationKey: ["order-checkout"] });
+  // const {
+  //   mutate,
+  //   isPending: loading,
+  //   data: checkoutUrl,
+  // } = useMutation({ mutationFn: checkout, mutationKey: ["order-checkout"] });
 
-  const submit: SubmitHandler<Inputs> = (address) => {
+  const [loading, setLoading] = useState(false);
+
+  const submit: SubmitHandler<Inputs> = async (address) => {
     const payload = {
       orderNotes: "",
-      cart: items.map(({ item, qty }) => ({ medicine: item._id, qty })),
+      cart: items.map(({ item, qty }) => ({ medicine: item._id, qty: `${qty}` })),
       address,
     };
 
-    mutate(payload);
+    setLoading(true);
+    try {
+      const checkoutUrl = await checkout(payload);
+
+      if (!checkoutUrl) {
+        toastError("An error occurred, please try again later.");
+        throw new Error("An error occurred, please try again later.");
+      }
+
+      window.location.href = checkoutUrl;
+    } catch {
+      setLoading(false);
+    } finally {
+      setLoading(false);
+      hideModal();
+    }
+
+    // mutate(payload, {
+    //   onSuccess: () => {
+    //     console.log({ checkoutUrl });
+    //     hideModal();
+    //   },
+    // });
   };
 
   return (
