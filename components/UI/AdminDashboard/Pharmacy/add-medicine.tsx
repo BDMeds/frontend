@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useMutation } from "@tanstack/react-query";
 import { addMedicine } from "@/lib/services/medicine.service";
 import { getBase64 } from "@/lib/helpers/fns";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 
 const visibilities: Visibility[] = ["published", "scheduled", "hidden"];
 

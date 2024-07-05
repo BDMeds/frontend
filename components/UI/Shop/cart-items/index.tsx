@@ -15,6 +15,7 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { useModal } from "@/lib/providers/modal-provider";
 import CheckoutModal from "./checkout-modal";
 import ProductModal from "../products/modal/product-modal";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 
 const Cart = () => {
   const { items } = useCart();
@@ -85,8 +86,11 @@ const Item = ({ id, qty }: { id: string; qty: number }) => {
 
   const { showModal } = useModal();
 
-  // const increment = () => setQuantity((prev) => (prev < stock ? prev + 1 : prev));
-  // const decrement = () => setQuantity((prev) => (prev > 0 ? prev - 1 : prev));
+  useEffect(() => {
+    if (!loading && !data) {
+      removeItem(id);
+    }
+  }, [loading, data]);
 
   return (
     <div className="p-3 flex justify-between">

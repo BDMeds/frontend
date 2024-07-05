@@ -1,5 +1,7 @@
 import Button from "@/components/Common/Button";
+import Loader from "@/components/Common/Loaders";
 import Modal from "@/components/Common/Modal";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 import { useModal } from "@/lib/providers/modal-provider";
 import { checkout } from "@/lib/services/medicine.service";
 import useCart from "@/lib/store/cart.store";
@@ -23,13 +25,9 @@ const CheckoutModal = () => {
 
   const { items } = useCart();
 
-  // const {
-  //   mutate,
-  //   isPending: loading,
-  //   data: checkoutUrl,
-  // } = useMutation({ mutationFn: checkout, mutationKey: ["order-checkout"] });
-
   const [loading, setLoading] = useState(false);
+
+  const { user, loading: userLoading } = useUserInfo();
 
   const submit: SubmitHandler<Inputs> = async (address) => {
     const payload = {
@@ -37,8 +35,6 @@ const CheckoutModal = () => {
       cart: items.map(({ item, qty }) => ({ medicine: item._id, qty: `${qty}` })),
       address,
     };
-
-    console.log({ payload });
 
     setLoading(true);
     try {
@@ -56,48 +52,62 @@ const CheckoutModal = () => {
       setLoading(false);
       hideModal();
     }
-
-    // mutate(payload, {
-    //   onSuccess: () => {
-    //     console.log({ checkoutUrl });
-    //     hideModal();
-    //   },
-    // });
   };
 
   return (
     <Modal onClose={hideModal} className="bg-white shadow-2xl dark:bg-dark max-w-[30rem] rounded-xl p-4 space-y-4">
-      <p className="font-bold text-lg">Fill in Address</p>
+      <>
+        {userLoading ? (
+          <div className="w-full h-full grid place-content-center">
+            <Loader />
+          </div>
+        ) : (
+          <>
+            {user ? (
+              <>
+                <p className="font-bold text-lg">Fill in Address</p>
 
-      <form onSubmit={handleSubmit(submit)} className="space-y-3">
-        <div className="space-y-1">
-          <input
-            type="text"
-            className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
-            placeholder="State"
-            {...register("state", { required: true })}
-          />
-          <input
-            type="text"
-            className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
-            placeholder="City"
-            {...register("city", { required: true })}
-          />
-          <input
-            type="text"
-            className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
-            placeholder="Country"
-            {...register("country", { required: true })}
-          />
-          <input
-            type="text"
-            className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
-            placeholder="Street Address"
-            {...register("streetAddress", { required: true })}
-          />
-        </div>
-        <Button text="Checkout" variant="filled" icon={<IoBagCheckOutline />} fullWidth loading={loading} />
-      </form>
+                <form onSubmit={handleSubmit(submit)} className="space-y-3">
+                  <div className="space-y-1">
+                    <input
+                      type="text"
+                      className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
+                      placeholder="State"
+                      {...register("state", { required: true })}
+                    />
+                    <input
+                      type="text"
+                      className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
+                      placeholder="City"
+                      {...register("city", { required: true })}
+                    />
+                    <input
+                      type="text"
+                      className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
+                      placeholder="Country"
+                      {...register("country", { required: true })}
+                    />
+                    <input
+                      type="text"
+                      className="dark:bg-[#313131] bg-transparent w-full border dark:border-dark rounded-lg p-2"
+                      placeholder="Street Address"
+                      {...register("streetAddress", { required: true })}
+                    />
+                  </div>
+                  <Button text="Checkout" variant="filled" icon={<IoBagCheckOutline />} fullWidth loading={loading} />
+                </form>
+              </>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="space-y-4 text-center">
+                  <p className="text-lg">Sign In</p>
+                  <Button text="Sign In" variant="filled" className="mx-auto" />
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </>
     </Modal>
   );
 };
