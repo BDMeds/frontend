@@ -1,17 +1,17 @@
-import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
+import useUserInfo from "./useUserInfo";
 
 export const useGetCalls = () => {
   const [calls, setCalls] = useState<Call[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const client = useStreamVideoClient();
-  const { user } = useUser();
+  const { user } = useUserInfo();
 
   useEffect(() => {
     const loadCalls = async () => {
-      if (!client || !user?.id) return;
+      if (!client || !user?._id) return;
 
       setIsLoading(true);
 
@@ -20,7 +20,7 @@ export const useGetCalls = () => {
           sort: [{ field: "starts_at", direction: -1 }],
           filter_conditions: {
             starts_at: { $exists: true },
-            $or: [{ created_by_user_id: user?.id }, { members: { $in: [user?.id] } }],
+            $or: [{ created_by_user_id: user?._id }, { members: { $in: [user?._id] } }],
           },
         });
 
@@ -33,7 +33,7 @@ export const useGetCalls = () => {
     };
 
     loadCalls();
-  }, [client, user?.id]);
+  }, [client, user?._id]);
 
   const now = new Date();
 

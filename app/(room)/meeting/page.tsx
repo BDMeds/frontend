@@ -25,6 +25,8 @@ const PersonalRoom = () => {
   const router = useRouter();
 
   const startRoom = async () => {
+    console.log({ client, user });
+
     if (!client || !user) return;
 
     if (!call) {
@@ -51,10 +53,11 @@ const PersonalRoom = () => {
       </div>
 
       <div className="flex gap-5">
-        <Button text="Start Meeting" className="bg-blue-1" onClick={startRoom}></Button>
+        <Button text="Start Meeting" className="bg-blue-1" onClick={startRoom} variant="filled" />
         <Button
           text="Copy Invitation"
           className="bg-dark-3"
+          variant="filled"
           onClick={async () => {
             await navigator.clipboard.writeText(meetingLink);
             toastSuccess("Meeting Link Copied");
