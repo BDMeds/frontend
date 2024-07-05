@@ -36,7 +36,7 @@ const Type2DoctorsPage = () => {
           </p>
           <input
             type="text"
-            className="border rounded-lg w-[300px] p-2 dark:bg-[#282828] dark:border-white/10"
+            className="border rounded-lg w-[300px] p-2 dark:bg-dark dark:border-white/10"
             placeholder="Start typing..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}

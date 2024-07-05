@@ -26,7 +26,7 @@ const DoctorProfileModal = ({
   return (
     <Modal
       onClose={hideModal}
-      className="bg-white dark:bg-[#282828] space-y-6 shadow-2xl rounded-xl min-w-[30rem] max-w-[35rem] p-4 max-h-[45rem] overflow-y-auto"
+      className="bg-white dark:bg-dark space-y-6 shadow-2xl rounded-xl min-w-[30rem] max-w-[35rem] p-4 max-h-[45rem] overflow-y-auto"
     >
       <div className="space-y-4">
         <div className="flex items-center justify-between">

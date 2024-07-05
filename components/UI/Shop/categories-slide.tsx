@@ -15,10 +15,7 @@ const MedicineCategories: React.FC = () => {
         </button>
         <div className="flex overflow-x-auto hide-scroll text-sm scroll-smooth w-full" ref={containerRef}>
           {medicineCategories.map((category, index) => (
-            <div
-              className="flex-shrink-0 p-2 m-2 bg-gray-100 dark:bg-[#282828] rounded-md whitespace-nowrap"
-              key={index}
-            >
+            <div className="flex-shrink-0 p-2 m-2 bg-gray-100 dark:bg-dark rounded-md whitespace-nowrap" key={index}>
               {category}
             </div>
           ))}

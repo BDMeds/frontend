@@ -39,16 +39,16 @@ const ProductModal = (medicine: Medicine) => {
   return (
     <Modal
       onClose={hideModal}
-      className="shadow-2xl bg-white dark:bg-[#282828] p-4 rounded-xl xl:min-w-[45rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] max-w-[50rem] space-y-4"
+      className="shadow-2xl bg-white dark:bg-dark p-4 rounded-xl xl:min-w-[45rem] min-h-[30rem] max-h-[40rem] overflow-y-auto lg:min-w-[30rem] max-w-[50rem] space-y-4"
     >
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <div className="space-y-3">
-          <div className="min-h-[14rem] relative overflow-hidden">
+          <div className="md:min-h-[14rem] min-h-[18rem] relative overflow-hidden">
             <Image
               src={image}
               alt={name}
-              width={500}
-              height={500}
+              width={600}
+              height={600}
               className="object-cover absolute top-0 left-0 w-full h-full"
             />
           </div>

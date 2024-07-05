@@ -68,7 +68,7 @@ const ShopNavbar = () => {
           <div>
             {session ? (
               <div className="flex items-center gap-3">
-                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center">
+                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center m-over">
                   {isDarkMode ? (
                     <CgSun
                       className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
@@ -83,7 +83,7 @@ const ShopNavbar = () => {
                 </div>
 
                 <div
-                  className="size-8 rounded-full cursor-pointer border border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative"
+                  className="size-8 rounded-full cursor-pointer border m-over border-gray-500/40 dark:text-white text-black duration-300 hover:text-primary grid place-content-center relative"
                   onClick={() => push("/cart")}
                 >
                   <FaOpencart />
@@ -112,7 +112,7 @@ const ShopNavbar = () => {
               </div>
             ) : (
               <div className="flex items-center gap-3">
-                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center">
+                <div className="size-8 border border-gray-500/40 rounded-full grid place-content-center m-over">
                   {isDarkMode ? (
                     <CgSun
                       className="cursor-pointer dark:text-white text-black duration-300 hover:text-primary"
@@ -151,7 +151,7 @@ const ShopNavbar = () => {
       </nav>
 
       <aside
-        className={`dark:bg-secondary-base/90 bg-white dark:bg-[#282828]/90 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
+        className={`dark:bg-secondary-base/90 bg-white dark:bg-dark/90 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
         ref={asideRef}
       >
         <div className="w-full h-full relative flex items-center">

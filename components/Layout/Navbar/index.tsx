@@ -122,7 +122,7 @@ const Navbar = () => {
       </nav>
 
       <aside
-        className={`dark:bg-secondary-base/90 bg-white dark:bg-[#282828]/90 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
+        className={`dark:bg-secondary-base/90 bg-white dark:bg-dark/90 backdrop-blur-lg fixed top-0 left-0 w-full z-[1000] overflow-x-hidden overflow-y-auto h-0`}
         ref={asideRef}
       >
         <div className="w-full h-full relative flex items-center">

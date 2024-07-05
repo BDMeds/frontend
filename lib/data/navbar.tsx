@@ -53,7 +53,7 @@ export const shopNavLink: NavLink[] = [
   },
   {
     label: "Cart",
-    path: "/",
+    path: "/cart",
   },
   {
     label: "Contact",

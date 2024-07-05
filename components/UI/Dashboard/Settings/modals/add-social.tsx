@@ -23,7 +23,7 @@ const AddSocialModal = () => {
     });
 
   return (
-    <Modal onClose={hideModal} className="p-5 bg-white dark:bg-[#282828] space-y-5 shadow-xl rounded-xl">
+    <Modal onClose={hideModal} className="p-5 bg-white dark:bg-dark space-y-5 shadow-xl rounded-xl">
       <p className="font-bold text-xl">Socials</p>
 
       <form onSubmit={handleSubmit(submit)}>

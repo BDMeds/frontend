@@ -8,7 +8,7 @@ const MedicinesDisplay = () => {
   const { data: medicines, isPending: loading } = useQuery({ queryFn: getMedicines, queryKey: ["medicines"] });
 
   return (
-    <div className="container grid grid-cols-5 gap-4">
+    <div className="container grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
       {loading ? (
         <>
           {Array.from({ length: 8 }).map((_, id) => (

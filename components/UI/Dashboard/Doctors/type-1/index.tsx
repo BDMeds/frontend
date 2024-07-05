@@ -47,7 +47,7 @@ const Type1DoctorsPage = () => {
 
   return (
     <div className="grid grid-cols-9 gap-4 -mt-6">
-      <div className="space-y-5 col-span-6 flex-grow bg-white dark:bg-[#282828] rounded-md border dark:border-white/10 p-4">
+      <div className="space-y-5 col-span-6 flex-grow bg-white dark:bg-dark rounded-md border dark:border-white/10 p-4">
         <div className="flex items-center justify-between">
           <div>
             <p className={`font-semibold text-2xl ${montserrat.className}`}>Welcome {user?.firstName}!</p>
@@ -66,7 +66,7 @@ const Type1DoctorsPage = () => {
           {allDepartments.map((deps, index) => (
             <div
               className={`flex-shrink-0 border dark:border-white/10 duration-300 select-none cursor-pointer min-h-24 px-5 grid place-content-center rounded-md whitespace-nowrap ${
-                deps.name === depName ? "bg-primary/10 border-transparent" : "bg-white dark:bg-[#282828]"
+                deps.name === depName ? "bg-primary/10 border-transparent" : "bg-white dark:bg-dark"
               } `}
               onClick={() => setDepName(deps.name)}
               key={index}
@@ -91,7 +91,7 @@ const Type1DoctorsPage = () => {
               <div
                 className={`duration-300 cursor-pointer ${
                   id === docId ? "border-primary" : "dark:border-white/10 hover:border-primary"
-                } min-h-[14rem] border rounded-md bg-white dark:bg-[#282828] p-1`}
+                } min-h-[14rem] border rounded-md bg-white dark:bg-dark p-1`}
                 key={id}
                 onClick={() => setDocId(id)}
               >
@@ -130,7 +130,7 @@ const RightSection = ({ docId }: { docId?: number }) => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-[#282828] rounded-xl border dark:border-white/10 px-4 pt-4 pb-7 space-y-8">
+      <div className="bg-white dark:bg-dark rounded-xl border dark:border-white/10 px-4 pt-4 pb-7 space-y-8">
         <p className="font-bold">Upcoming Appointments</p>
 
         {appointmentsLoading ? (
@@ -163,7 +163,7 @@ const RightSection = ({ docId }: { docId?: number }) => {
                             style={{ width: `${20 + id * 25}%`, marginTop: `${id * -10}px` }}
                             className={`mx-auto p-4 ${
                               id === appointments.length - 1 ? "shadow-2xl" : ""
-                            }  rounded-xl h-full border flex flex-col justify-between dark:bg-[#282828] dark:border-white/10 bg-white`}
+                            }  rounded-xl h-full border flex flex-col justify-between dark:bg-dark dark:border-white/10 bg-white`}
                           >
                             {id === appointments.length - 1 && (
                               <>
@@ -218,7 +218,7 @@ const RightSection = ({ docId }: { docId?: number }) => {
         )}
       </div>
 
-      <div className="bg-white dark:bg-[#282828] rounded-xl border dark:border-white/10 p-4 space-y-8">
+      <div className="bg-white dark:bg-dark rounded-xl border dark:border-white/10 p-4 space-y-8">
         <AnimatePresence mode="wait" initial={false}>
           {docId === undefined ? (
             <motion.div {...opacityVariant} className="w-full h-full grid place-content-center min-h-[10rem]">

@@ -22,7 +22,7 @@ const NotificationDrop = () => {
           <motion.div
             {...fadeToBottomVariant}
             ref={ref}
-            className="absolute top-12 right-0 min-w-52 text-center text-sm text-gray-500 bg-white dark:bg-[#282828] shadow-2xl rounded-md p-3 space-y-5"
+            className="absolute top-12 right-0 min-w-52 text-center text-sm text-gray-500 bg-white dark:bg-dark shadow-2xl rounded-md p-3 space-y-5"
           >
             <div className="grid place-content-center">
               <Image src="/svgs/empty.svg" width={100} height={100} alt="notifications" />

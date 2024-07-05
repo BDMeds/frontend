@@ -5,7 +5,7 @@ import { CgSearch } from "react-icons/cg";
 
 const Hero = () => {
   return (
-    <header className="h-[35rem] flex items-center">
+    <header className="md:h-[35rem] min-h-screen flex items-center">
       <div className="grid md:grid-cols-2 gap-10 container items-center">
         <div className="space-y-4">
           <h1
@@ -14,10 +14,10 @@ const Hero = () => {
             BDShop
           </h1>
           <p>
-            The internet&apos;s source for visuals. <br /> Powered by creators everywhere.
+            Your Trusted Partner in Health & Wellness <br /> Quality Medicines Delivered to Your Doorstep.
           </p>
 
-          <div className="flex items-center gap-3 border bg-gray-100 dark:bg-[#282828] px-3 dark:border-white/10 rounded-md">
+          <div className="flex items-center gap-3 border bg-gray-100 dark:bg-dark px-3 dark:border-white/10 rounded-md">
             <CgSearch />
             <input type="text" className="bg-transparent py-3 flex-grow" placeholder="Search medicines..." />
           </div>

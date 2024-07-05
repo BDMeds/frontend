@@ -69,7 +69,7 @@ const ProfileImageModal = () => {
     });
 
   return (
-    <Modal onClose={hideModal} className="p-20 bg-white dark:bg-[#282828] rounded-xl shadow-2xl space-y-4">
+    <Modal onClose={hideModal} className="p-20 bg-white dark:bg-dark rounded-xl shadow-2xl space-y-4">
       <div className="grid place-content-center text-center space-y-1">
         <div className={`size-28 rounded-full relative overflow-hidden border grid place-content-center mx-auto`}>
           <AnimatePresence mode="wait">

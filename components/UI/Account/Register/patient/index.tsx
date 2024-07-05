@@ -43,8 +43,8 @@ const PatientRegister: FC<Props> = ({ updateTag }) => {
 
   return (
     <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">
-      <div className="grid grid-cols-2 items-center gap-8 container">
-        <div className="min-h-[40rem] rounded-xl dark:rounded-t-xl dark:rounded-b-none overflow-hidden relative">
+      <div className="grid md:grid-cols-2 items-center gap-8 container">
+        <div className="md:min-h-[40rem] min-h-[20rem] rounded-xl dark:rounded-t-xl dark:rounded-b-none overflow-hidden relative">
           <Image
             src={"/images/account/patient.jpg"}
             alt="patient"

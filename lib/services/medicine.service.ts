@@ -30,3 +30,37 @@ export const addMedicine = async (payload: CreateMedicine) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const deleteMedicine = async () => {
+  try {
+    const { data } = await authApi.delete<ApiResponse>("/medicine");
+    toastSuccess("Medicine deleted.");
+    return data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
+
+export const updateMedicine = async (id: string, payload: Partial<CreateMedicine>) => {
+  try {
+    const { data } = await authApi.put<ApiResponse>(`/medicine/${id}`, payload);
+    toastSuccess("Medicine updated.");
+    return data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};
+
+export const checkout = async (payload: {
+  orderNotes: string;
+  cart: { medicine: string; qty: number }[];
+  address: any;
+}) => {
+  try {
+    const { data } = await authApi.post<ApiResponse>("/order/checkout", payload);
+    toastSuccess("Order placed.");
+    return data;
+  } catch (err) {
+    handleAxiosErrorWithToast(err);
+  }
+};

@@ -35,6 +35,7 @@ const AddMedicine = () => {
     const payload = { ...data, image, price: data.amount };
     mutate(payload, { onSuccess: () => (reset(), resetFile()) });
   };
+
   return (
     <div className="space-y-4">
       <h1 className="font-semibold text-xl">Add Medicine</h1>
@@ -55,7 +56,7 @@ const AddMedicine = () => {
                 </p>
                 <input
                   type="text"
-                  className="dark:bg-[#282828] bg-gray-100 w-full p-2 rounded-lg"
+                  className="dark:bg-dark bg-gray-100 w-full p-2 rounded-lg"
                   placeholder="Name"
                   {...register("name", { required: true })}
                 />
@@ -67,7 +68,7 @@ const AddMedicine = () => {
                 </p>
                 <textarea
                   rows={8}
-                  className="dark:bg-[#282828] bg-gray-100 resize-none w-full p-2 rounded-lg"
+                  className="dark:bg-dark bg-gray-100 resize-none w-full p-2 rounded-lg"
                   placeholder="Descriptions"
                   {...register("description", { required: true })}
                 />
@@ -84,7 +85,7 @@ const AddMedicine = () => {
                   </p>
                   <input
                     type="text"
-                    className="dark:bg-[#282828] bg-gray-100 w-full p-2 rounded-lg"
+                    className="dark:bg-dark bg-gray-100 w-full p-2 rounded-lg"
                     placeholder="Stock e.g 50"
                     {...register("stock", { required: true })}
                   />
@@ -95,7 +96,7 @@ const AddMedicine = () => {
                   </p>
                   <input
                     type="text"
-                    className="dark:bg-[#282828] bg-gray-100 w-full p-2 rounded-lg"
+                    className="dark:bg-dark bg-gray-100 w-full p-2 rounded-lg"
                     placeholder="Price in Naira, e.g 1500.00"
                     {...register("amount", {
                       required: true,

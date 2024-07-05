@@ -210,7 +210,7 @@ export type Medicine = {
   name: string;
   description: string;
   price: number;
-  stock: string;
+  stock: number;
   image: string;
   visibility: Visibility;
 };
