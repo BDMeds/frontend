@@ -1,10 +1,8 @@
-"use server";
-
 import { StreamClient } from "@stream-io/node-sdk";
 import { getSession } from "next-auth/react";
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-const apiSecret = process.env.STREAM_SECRET_KEY;
+const apiSecret = process.env.NEXT_PUBLIC_STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
   const session = await getSession();
@@ -23,6 +21,8 @@ export const tokenProvider = async () => {
   const issued = Math.floor(new Date().getTime() / 1000);
 
   const token = client.createToken(session.user._id, exp, issued);
+
+  console.log({ token });
 
   return token;
 };

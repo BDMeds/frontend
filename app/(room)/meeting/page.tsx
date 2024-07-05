@@ -25,8 +25,6 @@ const PersonalRoom = () => {
   const router = useRouter();
 
   const startRoom = async () => {
-    console.log({ client, user });
-
     if (!client || !user) return;
 
     if (!call) {

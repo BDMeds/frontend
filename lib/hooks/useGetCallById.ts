@@ -8,11 +8,7 @@ export const useGetCallById = (id: string | string[]) => {
   const client = useStreamVideoClient();
 
   useEffect(() => {
-    console.log({ client });
-
     if (!client) return;
-
-    console.log({ client });
 
     const loadCall = async () => {
       const { calls } = await client.queryCalls({

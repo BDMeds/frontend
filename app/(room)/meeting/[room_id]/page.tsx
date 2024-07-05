@@ -16,6 +16,8 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
 
   if (!loading || isCallLoading) return <Loader />;
 
+  console.log({ isSetupComplete, call });
+
   return (
     <main className="h-screen w-full">
       <StreamCall call={call}>
