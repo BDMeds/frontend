@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { useModal } from "@/lib/providers/modal-provider";
 import CheckoutModal from "./checkout-modal";
+import ProductModal from "../products/modal/product-modal";
 
 const Cart = () => {
   const { items } = useCart();
@@ -82,6 +83,8 @@ const Item = ({ id, qty }: { id: string; qty: number }) => {
 
   const { removeItem } = useCart();
 
+  const { showModal } = useModal();
+
   // const increment = () => setQuantity((prev) => (prev < stock ? prev + 1 : prev));
   // const decrement = () => setQuantity((prev) => (prev > 0 ? prev - 1 : prev));
 
@@ -95,7 +98,10 @@ const Item = ({ id, qty }: { id: string; qty: number }) => {
             <>
               <div className="flex gap-3">
                 <div className="space-y-1">
-                  <div className="size-20 relative overflow-hidden border dark:border-white/10 rounded-lg">
+                  <div
+                    className="size-20 relative overflow-hidden border dark:border-white/10 rounded-lg cursor-pointer"
+                    onClick={() => showModal(<ProductModal {...data} />)}
+                  >
                     <Image
                       src={data.image}
                       alt={"image"}

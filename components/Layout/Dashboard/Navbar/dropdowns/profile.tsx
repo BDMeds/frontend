@@ -3,7 +3,7 @@ import useUserInfo from "@/lib/hooks/useUserInfo";
 import { useTheme } from "@/lib/store/global.store";
 import { fadeToBottomVariant } from "@/lib/utils/variants";
 import { AnimatePresence, motion } from "framer-motion";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CgHome, CgProfile } from "react-icons/cg";
@@ -47,7 +47,7 @@ const ProfileDrop = () => {
             <div className="grid place-content-center text-center space-y-2">
               <div
                 className={`size-20 rounded-full overflow-hidden mx-auto relative ${
-                  !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
+                  !user && !isDarkMode ? "animate-skeleton" : "animate-skeleton-dark"
                 }`}
               >
                 {user && (

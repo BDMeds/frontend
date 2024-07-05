@@ -1,14 +1,11 @@
 import { useModal } from "@/lib/providers/modal-provider";
 import Image from "next/image";
 import ProductModal from "./modal/product-modal";
-import useCart from "@/lib/store/cart.store";
 import { Medicine } from "@/lib/types";
 import { formatNaira } from "@/lib/helpers/numbers";
 
 const Product = (data: Medicine) => {
   const { showModal } = useModal();
-
-  const { changeCount } = useCart();
 
   return (
     <div
