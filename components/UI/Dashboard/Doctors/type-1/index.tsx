@@ -2,7 +2,7 @@
 
 import Button from "@/components/Common/Button";
 import Loader from "@/components/Common/Loaders";
-import { departments } from "@/lib/data/dashboard";
+import { defaultImageUrl, departments } from "@/lib/data/dashboard";
 import { departments as depWithImage } from "@/lib/data/home";
 import useSlider from "@/lib/hooks/useSlider2";
 import useUserInfo from "@/lib/hooks/useUserInfo";
@@ -286,7 +286,7 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
   );
 };
 
-const DocInfo = ({ doc }: { doc: IDoctor }) => {
+const DocInfo = ({ doc }: { doc?: IDoctor }) => {
   const tabs = ["about"];
 
   const [curTab, setTab] = useState("about");
@@ -298,7 +298,7 @@ const DocInfo = ({ doc }: { doc: IDoctor }) => {
         <div className="flex gap-4">
           <div className="relative border dark:border-white/10 bg-gray-200 dark:bg-[#303030] overflow-hidden rounded-md flex items-end justify-center">
             <Image
-              src={doc?.user?.profilePicture}
+              src={doc?.user?.profilePicture || defaultImageUrl}
               alt="doc"
               width={100}
               height={100}
@@ -369,7 +369,7 @@ const DocInfo = ({ doc }: { doc: IDoctor }) => {
         </div>
 
         <div className="space-y-2">
-          <p className="opacity-80">{doc.bio}</p>
+          <p className="opacity-80">{doc?.bio}</p>
 
           <Button
             variant="filled"
