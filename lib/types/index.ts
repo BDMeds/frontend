@@ -1,4 +1,8 @@
-import { AppointmentModeEnum, AppointmentStatusEnum, DepartmentsEnum } from "../enums";
+import {
+  AppointmentModeEnum,
+  AppointmentStatusEnum,
+  DepartmentsEnum,
+} from "../enums";
 import { DiagnosisDocument, DiagnosisRef } from "./reports";
 
 export type KycID =
@@ -39,6 +43,7 @@ export type IDoctorRegister = {
   speciality: string;
   gender: string;
   yearsOfExperience: string;
+  chargePerSession: number;
 };
 
 export type ILoginData = {

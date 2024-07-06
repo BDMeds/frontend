@@ -68,7 +68,10 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
   };
 
   return (
-    <motion.div {...opacityVariant} className="min-h-screen w-full flex items-center">
+    <motion.div
+      {...opacityVariant}
+      className="min-h-screen w-full flex items-center"
+    >
       <div className="grid md:grid-cols-2 items-center gap-8 container">
         <div className="md:min-h-[40rem] min-h-[20rem] rounded-xl dark:rounded-t-xl dark:rounded-b-none overflow-hidden relative">
           <Image
@@ -80,7 +83,10 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
           />
 
           <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black/80 dark:from-black to-black/10 p-5">
-            <div className="cursor-pointer flex items-center gap-2 text-white" onClick={() => updateTag(null)}>
+            <div
+              className="cursor-pointer flex items-center gap-2 text-white"
+              onClick={() => updateTag(null)}
+            >
               <FaChevronLeft />
               <p>Back</p>
             </div>
@@ -91,9 +97,12 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
           <div className="max-w-md">
             <h2 className="text-3xl font-bold">Create a Doc Account</h2>
             <p className="text-gray-500">
-              By clicking <span className="font-semibold">continue</span>, you agree to our{" "}
-              <span className="text-primary border-b dark:border-white/10">Terms</span> and{" "}
-              <span className="text-primary">Conditions</span>
+              By clicking <span className="font-semibold">continue</span>, you
+              agree to our{" "}
+              <span className="text-primary border-b dark:border-white/10">
+                Terms
+              </span>{" "}
+              and <span className="text-primary">Conditions</span>
             </p>
           </div>
 
@@ -141,7 +150,12 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     <Select
                       label="Specialization"
                       onValueChange={updateSpecialization}
-                      options={specializations?.map((name) => ({ value: name, label: name })) ?? []}
+                      options={
+                        specializations?.map((name) => ({
+                          value: name,
+                          label: name,
+                        })) ?? []
+                      }
                       placeholder="Select specialization"
                       loading={specializationLoading}
                     />
@@ -181,6 +195,19 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                       ))}
                     </div>
                   </div>
+
+                  <div className="space-y-1 col-span-2">
+                    <label htmlFor="chargePerSession">
+                      Charge Per Session {"(NGN)"}
+                    </label>
+                    <input
+                      type="number"
+                      {...register("chargePerSession", { required: true })}
+                      className="w-full bg-transparent p-2 border dark:border-white/10 rounded-lg bg-white dark:bg-white/10 dark:placeholder:text-gray-600"
+                      placeholder="3500"
+                    />
+                  </div>
+
                   <div className="space-y-1 col-span-2">
                     <label htmlFor="password">Password</label>
                     <input
@@ -191,7 +218,13 @@ const DoctorRegister: FC<Props> = ({ updateTag }) => {
                     />
                   </div>
                 </div>
-                <Button variant="filled" fullWidth text="Continue" disabled={loading} loading={loading} />
+                <Button
+                  variant="filled"
+                  fullWidth
+                  text="Continue"
+                  disabled={loading}
+                  loading={loading}
+                />
               </div>
             </form>
           </div>
