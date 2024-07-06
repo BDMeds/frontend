@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { PUBLIC_API_URL } from "@/lib/constants/env";
 
 const VideoChat = ({ roomId }: { roomId: string }) => {
@@ -26,30 +26,45 @@ const VideoChat = ({ roomId }: { roomId: string }) => {
       const peerConnection = createPeerConnection(userId);
       setPeers((prevPeers) => ({ ...prevPeers, [userId]: peerConnection }));
       if (stream) {
-        stream.getTracks().forEach((track) => peerConnection.addTrack(track, stream));
+        stream
+          .getTracks()
+          .forEach((track) => peerConnection.addTrack(track, stream));
       }
     });
 
-    initSocket.on("offer", async (userId: string, offer: RTCSessionDescriptionInit) => {
-      console.log(`Received offer from ${userId}`);
-      const peerConnection = createPeerConnection(userId);
-      await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-      const answer = await peerConnection.createAnswer();
-      await peerConnection.setLocalDescription(answer);
-      initSocket.emit("answer", userId, answer);
-    });
+    initSocket.on(
+      "offer",
+      async (userId: string, offer: RTCSessionDescriptionInit) => {
+        console.log(`Received offer from ${userId}`);
+        const peerConnection = createPeerConnection(userId);
+        await peerConnection.setRemoteDescription(
+          new RTCSessionDescription(offer)
+        );
+        const answer = await peerConnection.createAnswer();
+        await peerConnection.setLocalDescription(answer);
+        initSocket.emit("answer", userId, answer);
+      }
+    );
 
-    initSocket.on("answer", async (userId: string, answer: RTCSessionDescriptionInit) => {
-      console.log(`Received answer from ${userId}`);
-      const peerConnection = peers[userId];
-      await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-    });
+    initSocket.on(
+      "answer",
+      async (userId: string, answer: RTCSessionDescriptionInit) => {
+        console.log(`Received answer from ${userId}`);
+        const peerConnection = peers[userId];
+        await peerConnection.setRemoteDescription(
+          new RTCSessionDescription(answer)
+        );
+      }
+    );
 
-    initSocket.on("candidate", async (userId: string, candidate: RTCIceCandidateInit) => {
-      console.log(`Received candidate from ${userId}`);
-      const peerConnection = peers[userId];
-      await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-    });
+    initSocket.on(
+      "candidate",
+      async (userId: string, candidate: RTCIceCandidateInit) => {
+        console.log(`Received candidate from ${userId}`);
+        const peerConnection = peers[userId];
+        await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+      }
+    );
 
     initSocket.on("user-disconnected", (userId: string) => {
       console.log(`User disconnected: ${userId}`);
@@ -70,7 +85,10 @@ const VideoChat = ({ roomId }: { roomId: string }) => {
 
   useEffect(() => {
     const initStream = async () => {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
       setStream(mediaStream);
       if (localVideoRef.current) {
         localVideoRef.current.srcObject = mediaStream;
@@ -91,7 +109,9 @@ const VideoChat = ({ roomId }: { roomId: string }) => {
     };
 
     peerConnection.ontrack = (event) => {
-      const remoteVideoElement = document.getElementById(`video-${userId}`) as HTMLVideoElement;
+      const remoteVideoElement = document.getElementById(
+        `video-${userId}`
+      ) as HTMLVideoElement;
       if (remoteVideoElement) {
         remoteVideoElement.srcObject = event.streams[0];
       }
@@ -105,7 +125,12 @@ const VideoChat = ({ roomId }: { roomId: string }) => {
       <video ref={localVideoRef} autoPlay playsInline muted></video>
       <div id="remote-videos">
         {Object.keys(peers).map((userId) => (
-          <video id={`video-${userId}`} key={userId} autoPlay playsInline></video>
+          <video
+            id={`video-${userId}`}
+            key={userId}
+            autoPlay
+            playsInline
+          ></video>
         ))}
       </div>
     </div>

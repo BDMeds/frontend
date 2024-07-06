@@ -20,7 +20,7 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import { bookAppointment } from "@/lib/services/appointment.service";
 import { getDoctors } from "@/lib/services/user.service";
 import * as dateFns from "date-fns";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type Inputs = {
   appointmentDate: string;
@@ -129,6 +129,7 @@ const AppointmentModal = () => {
             predicate: (query) => query.queryKey.includes("appointments"),
           }),
           hideModal(),
+          console.log(data?.data),
           data?.data && (window.location.href = data?.data as string)
         ),
       }
