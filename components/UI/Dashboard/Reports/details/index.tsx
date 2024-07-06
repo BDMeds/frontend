@@ -27,7 +27,7 @@ const ReportsDetails = () => {
 
   const isValid = useMemo(() => Object.values(DepartmentsEnum).includes(department as DepartmentsEnum), [department]);
 
-  const { data: report, isLoading: reportLoading } = useQuery({
+  const { data: report, isPending: reportLoading } = useQuery({
     queryKey: ["getSingleReport", reportId],
     queryFn: getReport(reportId!, department as DepartmentsEnum),
   });

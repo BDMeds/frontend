@@ -23,18 +23,19 @@ const SubmitReport = () => {
   const { id: appointmentId } = useParams<{ id: string }>();
   const { push } = useRouter();
 
-  const { data: appointment, isLoading: appointmentsLoading } = useQuery({
+  const { data: appointment, isPending: appointmentsLoading } = useQuery({
     queryKey: ["getAppointment"],
     queryFn: getSingleAppointment(appointmentId),
   });
 
   const {
     data: report,
-    isLoading: reportsLoading,
+    isPending: reportsLoading,
     refetch: refetchReport,
   } = useQuery({
     queryKey: ["getAppointmentReport"],
     queryFn: getAppointmentReport(appointmentId),
+    refetchOnWindowFocus: false,
   });
 
   if (reportsLoading || appointmentsLoading) {
@@ -55,11 +56,7 @@ const SubmitReport = () => {
         <Button
           text="View Report"
           variant="filled"
-          onClick={() =>
-            push(
-              `/reports/${report!._id}?department=${appointment?.department}`
-            )
-          }
+          onClick={() => push(`/reports/${report!._id}?department=${appointment?.department}`)}
         />
       </div>
     );

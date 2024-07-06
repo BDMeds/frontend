@@ -8,12 +8,12 @@ import { getReports } from "@/lib/services/report.service";
 import Loader from "@/components/Common/Loaders";
 
 const HepatologyReport = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["getReports", DepartmentsEnum.HEPATOLOGY],
     queryFn: getReports<LiverMetrics>(DepartmentsEnum.HEPATOLOGY),
   });
 
-  if (isLoading) {
+  if (isPending) {
     return (
       <div className="p-10 grid place-content-center">
         <Loader />

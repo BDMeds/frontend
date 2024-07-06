@@ -1,4 +1,5 @@
 import Button from "@/components/Common/Button";
+import useMedPick from "@/lib/hooks/useMedPicker";
 import { queryClient } from "@/lib/providers";
 import { submitCardiologyReprot } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
@@ -35,6 +36,8 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
   } = useForm<Inputs>();
   const { id: appointmentId } = useParams<{ id: string }>();
 
+  const { medicines, prescriptionNote, renderUI } = useMedPick();
+
   const { mutateAsync: submitReport, isPending } = useMutation({
     mutationFn: submitCardiologyReprot,
     onSuccess: () => {
@@ -51,7 +54,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="pb-6">
       <section>
         <h1 className="font-bold">General Report</h1>
-        <hr className="border-y-[1.2px]" />
+        <hr className="border-y-[1.2px] dark:border-white/10" />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 mt-3">
           <div className="space-y-1 mb-3">
@@ -100,7 +103,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
 
       <section className="mt-6">
         <h1 className="font-bold">Organ Report</h1>
-        <hr className="border-y-[1.2px]" />
+        <hr className="border-y-[1.2px] dark:border-white/10" />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 mt-3 gap-x-3">
           <div className="space-y-1 mb-3 col-span-2 lg:col-span-3">
@@ -263,6 +266,8 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
               }`}
             />
           </div>
+
+          <div>{renderUI()}</div>
         </div>
       </section>
 

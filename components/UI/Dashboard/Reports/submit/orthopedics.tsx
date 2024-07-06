@@ -17,6 +17,10 @@ type Inputs = {
   boneHealthStatus: string;
   rangeOfMotion: number;
   totalFractures: number;
+  prescription: {
+    prescriptionNote: string;
+    medicines: string[];
+  };
 };
 
 type Props = {
@@ -46,7 +50,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="pb-6">
       <section>
         <h1 className="font-bold">General Report</h1>
-        <hr className="border-y-[1.2px]" />
+        <hr className="border-y-[1.2px] dark:border-white/10" />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 mt-3">
           <div className="space-y-1 mb-3">
@@ -95,7 +99,7 @@ const Orthopedic: FC<Props> = ({ refetchReport }) => {
 
       <section className="mt-6">
         <h1 className="font-bold">Organ Report</h1>
-        <hr className="border-y-[1.2px]" />
+        <hr className="border-y-[1.2px] dark:border-white/10" />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 mt-3 gap-x-3">
           <div className="space-y-1 mb-3 col-span-2 lg:col-span-3">
