@@ -52,7 +52,7 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
     await submitReport({
       report: input,
       appointmentId,
-      prescription: { prescriptionNote, medicines: selectedMeds.map((med) => med._id) },
+      prescription: { prescriptionNote: prescriptionNote ?? "", medicines: selectedMeds.map((med) => med._id) },
     });
   };
 
