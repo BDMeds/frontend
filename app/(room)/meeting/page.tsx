@@ -91,61 +91,61 @@
 //   );
 // };
 
-"use client";
+// "use client";
 
-import {
-  CallControls,
-  CallingState,
-  SpeakerLayout,
-  StreamCall,
-  StreamTheme,
-  StreamVideo,
-  StreamVideoClient,
-  useCallStateHooks,
-  User,
-} from "@stream-io/video-react-sdk";
+// import {
+//   CallControls,
+//   CallingState,
+//   SpeakerLayout,
+//   StreamCall,
+//   StreamTheme,
+//   StreamVideo,
+//   StreamVideoClient,
+//   useCallStateHooks,
+//   User,
+// } from "@stream-io/video-react-sdk";
 
-import "@stream-io/video-react-sdk/dist/css/styles.css";
-// import "./style.css";
+// import "@stream-io/video-react-sdk/dist/css/styles.css";
+// // import "./style.css";
 
-const apiKey = "mmhfdzb5evj2";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiWW9kYSIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvWW9kYSIsImlhdCI6MTcyMDIxMTc0OSwiZXhwIjoxNzIwODE2NTU0fQ.cAN9ZqVZsiqaWOzhbw51L7IpVDQcgYsA7558QLvQMJA";
-const userId = "Yoda";
-const callId = "BmTrTzWBjDnR";
+// const apiKey = "mmhfdzb5evj2";
+// const token =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiWW9kYSIsImlzcyI6Imh0dHBzOi8vcHJvbnRvLmdldHN0cmVhbS5pbyIsInN1YiI6InVzZXIvWW9kYSIsImlhdCI6MTcyMDIxMTc0OSwiZXhwIjoxNzIwODE2NTU0fQ.cAN9ZqVZsiqaWOzhbw51L7IpVDQcgYsA7558QLvQMJA";
+// const userId = "Yoda";
+// const callId = "BmTrTzWBjDnR";
 
-const user: User = {
-  id: userId,
-  name: "Oliver",
-  image: "https://getstream.io/random_svg/?id=oliver&name=Oliver",
-};
+// const user: User = {
+//   id: userId,
+//   name: "Oliver",
+//   image: "https://getstream.io/random_svg/?id=oliver&name=Oliver",
+// };
 
-const client = new StreamVideoClient({ apiKey, user, token });
-const call = client.call("default", callId);
-call.join({ create: true });
+// const client = new StreamVideoClient({ apiKey, user, token });
+// const call = client.call("default", callId);
+// call.join({ create: true });
 
-const MyUILayout = () => {
-  const { useCallCallingState } = useCallStateHooks();
-  const callingState = useCallCallingState();
+// const MyUILayout = () => {
+//   const { useCallCallingState } = useCallStateHooks();
+//   const callingState = useCallCallingState();
 
-  if (callingState !== CallingState.JOINED) {
-    return <div>Loading...</div>;
-  }
+//   if (callingState !== CallingState.JOINED) {
+//     return <div>Loading...</div>;
+//   }
 
-  return (
-    <StreamTheme>
-      <SpeakerLayout participantsBarPosition="bottom" />
-      <CallControls />
-    </StreamTheme>
-  );
-};
+//   return (
+//     <StreamTheme>
+//       <SpeakerLayout participantsBarPosition="bottom" />
+//       <CallControls />
+//     </StreamTheme>
+//   );
+// };
 
-export default function Page() {
-  return (
-    <StreamVideo client={client}>
-      <StreamCall call={call}>
-        <MyUILayout />
-      </StreamCall>
-    </StreamVideo>
-  );
-}
+// export default function Page() {
+//   return (
+//     <StreamVideo client={client}>
+//       <StreamCall call={call}>
+//         <MyUILayout />
+//       </StreamCall>
+//     </StreamVideo>
+//   );
+// }
