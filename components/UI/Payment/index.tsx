@@ -18,10 +18,6 @@ const Payment = ({ trxref }: { trxref: string | null }) => {
     enabled: Boolean(trxref),
   });
 
-  useEffect(() => {
-    console.log({ data });
-  }, [loading]);
-
   if (!trxref) {
     toastError("Invalid transaction reference.");
     router.replace("/");
