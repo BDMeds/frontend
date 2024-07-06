@@ -1,6 +1,6 @@
 import Button from "@/components/Common/Button";
 import {
-  submitCardiologyReprot,
+  submitCardiologyReport,
   submitDentistryReport,
   submitHepatologyReport,
   submitOrthopedicReport,

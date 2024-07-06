@@ -49,6 +49,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "shelleefisher.com",
       },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+      },
     ],
   },
 };

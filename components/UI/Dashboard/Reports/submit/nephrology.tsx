@@ -1,6 +1,6 @@
 import Button from "@/components/Common/Button";
 import Select from "@/components/Common/Inputs/select";
-import { submitCardiologyReprot, submitNephrologyReport } from "@/lib/services/report.service";
+import { submitCardiologyReport, submitNephrologyReport } from "@/lib/services/report.service";
 import { Frequency } from "@/lib/types/reports";
 import { toastError } from "@/lib/utils/toast";
 import { useMutation } from "@tanstack/react-query";

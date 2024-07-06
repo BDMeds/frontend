@@ -15,18 +15,19 @@ export const getAppointmentReport = (appointmentId: string) => async () => {
   } catch (error) {}
 };
 
-export const submitCardiologyReprot = async ({
+export const submitCardiologyReport = async ({
   report,
   appointmentId,
 }: {
   report: any;
   appointmentId: string;
+  prescription: {
+    prescriptionNote: string;
+    medicines: string[];
+  };
 }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/cardiology`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/cardiology`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -36,18 +37,9 @@ export const submitCardiologyReprot = async ({
   }
 };
 
-export const submitDentistryReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitDentistryReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/dentistry`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/dentistry`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -57,18 +49,9 @@ export const submitDentistryReport = async ({
   }
 };
 
-export const submitDermatologyReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitDermatologyReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/dermatology`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/dermatology`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -78,18 +61,9 @@ export const submitDermatologyReport = async ({
   }
 };
 
-export const submitHepatologyReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitHepatologyReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/hepatology`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/hepatology`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -99,18 +73,9 @@ export const submitHepatologyReport = async ({
   }
 };
 
-export const submitNephrologyReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitNephrologyReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/nephrology`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/nephrology`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -120,18 +85,9 @@ export const submitNephrologyReport = async ({
   }
 };
 
-export const submitNeurologyReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitNeurologyReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/neurology`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/neurology`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -141,18 +97,9 @@ export const submitNeurologyReport = async ({
   }
 };
 
-export const submitOptometryReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitOptometryReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/optometry`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/optometry`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -162,18 +109,9 @@ export const submitOptometryReport = async ({
   }
 };
 
-export const submitOrthopedicReport = async ({
-  report,
-  appointmentId,
-}: {
-  report: any;
-  appointmentId: string;
-}) => {
+export const submitOrthopedicReport = async ({ report, appointmentId }: { report: any; appointmentId: string }) => {
   try {
-    const { data } = await authApi.post(
-      `/consultation/report/${appointmentId}/orthopedic`,
-      report
-    );
+    const { data } = await authApi.post(`/consultation/report/${appointmentId}/orthopedic`, report);
 
     toastSuccess("Report Submitted Successfully");
 
@@ -187,9 +125,7 @@ export const getReports =
   <T = DiagnosisDocument>(department: DepartmentsEnum) =>
   async () => {
     try {
-      const { data } = await authApi.get<ApiResponse<T[]>>(
-        `/consultation/report/user/${department}`
-      );
+      const { data } = await authApi.get<ApiResponse<T[]>>(`/consultation/report/user/${department}`);
 
       return data.data;
     } catch (error) {
@@ -197,15 +133,14 @@ export const getReports =
     }
   };
 
-export const getReport =
-  (reportId: string, department: DepartmentsEnum) => async () => {
-    try {
-      const { data } = await authApi.get<ApiResponse<DiagnosisDocument>>(
-        `/consultation/report/${department}/${reportId}`
-      );
+export const getReport = (reportId: string, department: DepartmentsEnum) => async () => {
+  try {
+    const { data } = await authApi.get<ApiResponse<DiagnosisDocument>>(
+      `/consultation/report/${department}/${reportId}`
+    );
 
-      return data.data;
-    } catch (error) {
-      handleAxiosErrorWithToast(error);
-    }
-  };
+    return data.data;
+  } catch (error) {
+    handleAxiosErrorWithToast(error);
+  }
+};

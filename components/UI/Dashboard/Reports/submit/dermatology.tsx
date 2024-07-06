@@ -1,5 +1,5 @@
 import Button from "@/components/Common/Button";
-import { submitCardiologyReprot, submitDermatologyReport } from "@/lib/services/report.service";
+import { submitCardiologyReport, submitDermatologyReport } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React, { FC } from "react";

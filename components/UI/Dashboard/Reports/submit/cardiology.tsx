@@ -1,7 +1,7 @@
 import Button from "@/components/Common/Button";
-import useMedPick from "@/lib/hooks/useMedPicker";
+import useMedPick, { useSelectedMedicines } from "@/lib/hooks/useMedPicker";
 import { queryClient } from "@/lib/providers";
-import { submitCardiologyReprot } from "@/lib/services/report.service";
+import { submitCardiologyReport } from "@/lib/services/report.service";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React, { FC } from "react";
@@ -36,10 +36,12 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
   } = useForm<Inputs>();
   const { id: appointmentId } = useParams<{ id: string }>();
 
-  const { medicines, prescriptionNote, renderUI } = useMedPick();
+  const { prescriptionNote, renderUI } = useMedPick();
+
+  const { medicines: selectedMeds } = useSelectedMedicines();
 
   const { mutateAsync: submitReport, isPending } = useMutation({
-    mutationFn: submitCardiologyReprot,
+    mutationFn: submitCardiologyReport,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["appointments"] });
       refetchReport();
@@ -47,7 +49,11 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
   });
 
   const onSubmit = async (input: Inputs) => {
-    await submitReport({ report: input, appointmentId });
+    await submitReport({
+      report: input,
+      appointmentId,
+      prescription: { prescriptionNote, medicines: selectedMeds.map((med) => med._id) },
+    });
   };
 
   return (
@@ -267,7 +273,17 @@ const Cardiology: FC<Props> = ({ refetchReport }) => {
             />
           </div>
 
-          <div>{renderUI()}</div>
+          <div className="space-y-1">
+            {renderUI()}
+            <div className="space-y-1 divide-y dark:divide-white/10">
+              {selectedMeds.map((p, id) => (
+                <div key={id} className="flex items-center gap-1">
+                  <p>{id + 1}.</p>
+                  <p className="py-1 text-sm opacity-80">{p.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
