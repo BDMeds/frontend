@@ -22,3 +22,12 @@ export const updatePatient = async (payload: Partial<IPatient>) => {
     handleAxiosErrorWithToast(err);
   }
 };
+
+export const verifyPayment = async (ref: string) => {
+  try {
+    const { data } = await authApi.get<ApiResponse<{ status: "successful" | "pending" | "failed" }>>(
+      `/payment/confirm/${ref}`
+    );
+    return data.data;
+  } catch (err) {}
+};

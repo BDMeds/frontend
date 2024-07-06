@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { format, formatDistanceToNow } from "date-fns";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CgCalendar, CgStopwatch } from "react-icons/cg";
 import { FaWalking } from "react-icons/fa";

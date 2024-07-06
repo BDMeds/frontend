@@ -16,8 +16,8 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="grid-cols-3 grid gap-5">
-        <div className="col-span-2 border dark:border-white/10 space-y-4 rounded-lg bg-white dark:bg-white/10 px-4 py-6">
+      <div className="md:grid-cols-3 grid gap-5">
+        <div className="md:col-span-2 border dark:border-white/10 space-y-4 rounded-lg bg-white dark:bg-white/10 px-4 py-6">
           <p className="text-lg font-semibold text-gray-600 dark:text-gray-200 px-4">Consultations</p>
           <BarChart />
         </div>
