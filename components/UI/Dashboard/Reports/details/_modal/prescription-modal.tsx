@@ -93,18 +93,8 @@ const PrescriptionModal = () => {
                 <div className="grid grid-cols-2 divide-x dark:divide-white/10">
                   <div className="pr-4">
                     <p className="font-medium whitespace-pre-line">
-                      {`This is a prescription for the following medicines. Please take as prescribed by your doctor. and ensure to keep away from children. 
-
-1. Do not take more than the prescribed dose.
-2. Do not take with alcohol.
-3. Do not take with other drugs.
-4. Do not take with food.
-5. Do not take with water.
-6. Do not take with juice.
-7. Do not take with milk.
-8. Do not take with tea.
-
-This is a prescription for the following medicines. Please take as prescribed by your doctor.`}
+                      {`This is a prescription for the following medicines
+And make sure to keep away from children and store in a cool dry place.`}
                     </p>
                   </div>
                   <div className="pl-4">
