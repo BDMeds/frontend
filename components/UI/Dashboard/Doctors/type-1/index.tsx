@@ -29,9 +29,7 @@ const Type1DoctorsPage = () => {
   const [allDepartments, setDepartments] = useState(depWithImage);
 
   const [search, setSearch] = useState("");
-  const [department, setDepartment] = useState<Department>(
-    depWithImage[0].fullDepartment
-  );
+  const [department, setDepartment] = useState<Department>(depWithImage[0].fullDepartment);
 
   const { containerRef, scroll } = useSlider();
 
@@ -56,9 +54,7 @@ const Type1DoctorsPage = () => {
       <div className="space-y-5 col-span-6 flex-grow bg-white dark:bg-dark rounded-md border dark:border-white/10 p-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className={`font-semibold text-2xl ${montserrat.className}`}>
-              Welcome {user?.firstName}!
-            </p>
+            <p className={`font-semibold text-2xl ${montserrat.className}`}>Welcome {user?.firstName}!</p>
             <p className="text-gray-600 dark:text-gray-200">
               In this section, you can find doctors under any category.
             </p>
@@ -70,16 +66,11 @@ const Type1DoctorsPage = () => {
           </p>
         </div>
 
-        <div
-          className="flex w-full gap-6 flex-wrap text-center"
-          ref={containerRef}
-        >
+        <div className="flex w-full gap-6 flex-wrap text-center" ref={containerRef}>
           {allDepartments.map((deps, index) => (
             <div
               className={`flex-shrink-0 border dark:border-white/10 duration-300 select-none cursor-pointer min-h-24 px-5 grid place-content-center rounded-md whitespace-nowrap ${
-                deps.name === depName
-                  ? "bg-primary/10 border-transparent"
-                  : "bg-white dark:bg-dark"
+                deps.name === depName ? "bg-primary/10 border-transparent" : "bg-white dark:bg-dark"
               } `}
               onClick={() => {
                 setDepName(deps.name);
@@ -89,12 +80,7 @@ const Type1DoctorsPage = () => {
             >
               <div className="space-y-1">
                 <div className="grid place-content-center">
-                  <Image
-                    src={`/images/departments/${deps.image}`}
-                    alt={deps.name}
-                    width={60}
-                    height={60}
-                  />
+                  <Image src={`/images/departments/${deps.image}`} alt={deps.name} width={60} height={60} />
                 </div>
                 <p>{deps.name}</p>
               </div>
@@ -116,16 +102,17 @@ const Type1DoctorsPage = () => {
                   String(doctor._id) === String(doc?._id)
                     ? "border-primary"
                     : "dark:border-white/10 hover:border-primary"
-                } min-h-[14rem] border rounded-md bg-white dark:bg-dark p-1`}
+                } min-h-[18rem] border rounded-md bg-white dark:bg-dark p-1`}
                 key={doctor._id}
                 onClick={() => setDoc(doctor)}
               >
-                <div className="h-[60%] bg-gray-300 dark:bg-[#353535] flex items-end justify-center rounded-md">
+                <div className="h-[60%] bg-gray-300 dark:bg-[#353535] flex items-end justify-center rounded-md overflow-hidden relative">
                   <Image
                     src={doctor.user.profilePicture}
                     alt="doc"
-                    width={100}
-                    height={100}
+                    width={400}
+                    height={400}
+                    className="absolute top-0 left-0 w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="h-[40%] px-2 flex items-center justify-between">
@@ -137,9 +124,7 @@ const Type1DoctorsPage = () => {
                       <p className="text-sm">{doctor.department}</p>
                     </div>
 
-                    <p className="font-bold text-primary">
-                      NGN{doctor.chargePerSession}/session
-                    </p>
+                    <p className="font-bold text-primary">NGN{doctor.chargePerSession}/session</p>
                   </div>
                   <IoHeartOutline className="cursor-pointer" />
                 </div>
@@ -175,9 +160,7 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
               <div className="min-h-[10rem] relative pb-1 space-y-5">
                 <div>
                   {appointments
-                    .sort((a, b) =>
-                      a.appointmentDate > b.appointmentDate ? 1 : -1
-                    )
+                    .sort((a, b) => (a.appointmentDate > b.appointmentDate ? 1 : -1))
                     .map(
                       (
                         {
@@ -214,14 +197,12 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
                                         alt="profile"
                                         width={100}
                                         height={100}
-                                        className="object-cover absolute top-0 left-0"
+                                        className="object-cover absolute top-0 left-0 w-full h-full object-top"
                                       />
                                     </div>
                                     <div>
                                       <p className="font-bold text-lg">{`${firstName} ${lastName}`}</p>
-                                      <p className="capitalize dark:text-white/50">
-                                        {speciality}
-                                      </p>
+                                      <p className="capitalize dark:text-white/50">{speciality}</p>
                                     </div>
                                   </div>
                                 </div>
@@ -238,8 +219,7 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
                                   <div className="flex items-center flex-shrink-0 gap-2 text-xs">
                                     <CgStopwatch className="text-primary" />
                                     <p>
-                                      {format(startTime, "p")} -{" "}
-                                      {format(endTime, "p")}
+                                      {format(startTime, "p")} - {format(endTime, "p")}
                                     </p>
                                   </div>
                                 </div>
@@ -267,13 +247,8 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
       <div className="bg-white dark:bg-dark rounded-xl border dark:border-white/10 p-4 space-y-8">
         <AnimatePresence mode="wait" initial={false}>
           {doc === undefined ? (
-            <motion.div
-              {...opacityVariant}
-              className="w-full h-full grid place-content-center min-h-[10rem]"
-            >
-              <p className="opacity-80 text-sm px-4">
-                Select doctor to display info
-              </p>
+            <motion.div {...opacityVariant} className="w-full h-full grid place-content-center min-h-[10rem]">
+              <p className="opacity-80 text-sm px-4">Select doctor to display info</p>
             </motion.div>
           ) : (
             <motion.div {...opacityVariant} className="space-y-4">
@@ -310,14 +285,10 @@ const DocInfo = ({ doc }: { doc?: IDoctor }) => {
               <p className="font-bold text-lg">
                 Dr. {doc?.user?.firstName} {doc?.user?.lastName}
               </p>
-              <p className="capitalize dark:text-white/50 text-sm">
-                {doc?.department}
-              </p>
+              <p className="capitalize dark:text-white/50 text-sm">{doc?.department}</p>
             </div>
 
-            <p className="font-bold text-lg text-primary">
-              ${doc?.chargePerSession}/hr
-            </p>
+            <p className="font-bold text-lg text-primary">${doc?.chargePerSession}/hr</p>
           </div>
         </div>
         <IoHeartOutline className="cursor-pointer" />
@@ -335,9 +306,7 @@ const DocInfo = ({ doc }: { doc?: IDoctor }) => {
         <div className="text-center p-4">
           <div className="flex items-center justify-center gap-1">
             <TbUsersGroup className="text-green-400" />
-            <span className="font-bold">
-              {Math.round(Math.random() * 1000)}
-            </span>
+            <span className="font-bold">{Math.round(Math.random() * 1000)}</span>
           </div>
 
           <p className="text-sm opacity-50">Total Patients</p>
@@ -358,9 +327,7 @@ const DocInfo = ({ doc }: { doc?: IDoctor }) => {
             <div
               key={id}
               className={`capitalize border-b-4 py-4 ${
-                curTab === tab
-                  ? "border-primary"
-                  : "dark:border-white/10 border-black/10"
+                curTab === tab ? "border-primary" : "dark:border-white/10 border-black/10"
               }`}
             >
               {tab}
@@ -371,12 +338,7 @@ const DocInfo = ({ doc }: { doc?: IDoctor }) => {
         <div className="space-y-2">
           <p className="opacity-80">{doc?.bio}</p>
 
-          <Button
-            variant="filled"
-            text="Book Appointment"
-            fullWidth
-            onClick={() => router.push("/appointments")}
-          />
+          <Button variant="filled" text="Book Appointment" fullWidth onClick={() => router.push("/appointments")} />
         </div>
       </div>
     </div>
