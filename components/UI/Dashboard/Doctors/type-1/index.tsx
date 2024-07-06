@@ -12,7 +12,7 @@ import { Department, IDoctor } from "@/lib/types";
 import { montserrat } from "@/lib/utils/fonts";
 import { opacityVariant } from "@/lib/utils/variants";
 import { useQuery } from "@tanstack/react-query";
-import { format, formatDistanceToNow } from "date-fns";
+import { format, formatDistanceToNow, isBefore } from "date-fns";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -174,58 +174,62 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
                         },
                         id
                       ) => (
-                        <div
-                          key={id}
-                          className={`w-full h-full absolute top-0 left-0 flex items-center justify-center`}
-                        >
-                          <div
-                            style={{
-                              width: `${20 + id * 25}%`,
-                              marginTop: `${id * -10}px`,
-                            }}
-                            className={`mx-auto p-4 ${
-                              id === appointments.length - 1 ? "shadow-2xl" : ""
-                            }  rounded-xl h-full border flex flex-col justify-between dark:bg-dark dark:border-white/10 bg-white`}
-                          >
-                            {id === appointments.length - 1 && (
-                              <>
-                                <div className="flex items-center justify-between gap-4">
-                                  <div className="flex gap-4">
-                                    <div className="relative size-14 border dark:border-white/10 overflow-hidden rounded-md">
-                                      <Image
-                                        src={profilePicture}
-                                        alt="profile"
-                                        width={100}
-                                        height={100}
-                                        className="object-cover absolute top-0 left-0 w-full h-full object-top"
-                                      />
+                        <div key={id}>
+                          {isBefore(new Date(appointmentDate), new Date()) && (
+                            <div
+                              key={id}
+                              className={`w-full h-full absolute top-0 left-0 flex items-center justify-center`}
+                            >
+                              <div
+                                style={{
+                                  width: `${20 + id * 25}%`,
+                                  marginTop: `${id * -10}px`,
+                                }}
+                                className={`mx-auto p-4 ${
+                                  id === appointments.length - 1 ? "shadow-2xl" : ""
+                                }  rounded-xl h-full border flex flex-col justify-between dark:bg-dark dark:border-white/10 bg-white`}
+                              >
+                                {id === appointments.length - 1 && (
+                                  <>
+                                    <div className="flex items-center justify-between gap-4">
+                                      <div className="flex gap-4">
+                                        <div className="relative size-14 border dark:border-white/10 overflow-hidden rounded-md">
+                                          <Image
+                                            src={profilePicture}
+                                            alt="profile"
+                                            width={100}
+                                            height={100}
+                                            className="object-cover absolute top-0 left-0 w-full h-full object-top"
+                                          />
+                                        </div>
+                                        <div>
+                                          <p className="font-bold text-lg">{`${firstName} ${lastName}`}</p>
+                                          <p className="capitalize dark:text-white/50">{speciality}</p>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <p className="font-bold text-lg">{`${firstName} ${lastName}`}</p>
-                                      <p className="capitalize dark:text-white/50">{speciality}</p>
-                                    </div>
-                                  </div>
-                                </div>
 
-                                <div className="bg-primary/20 flex items-center justify-between p-2 rounded-lg">
-                                  <div className="flex items-center gap-2 text-xs">
-                                    <CgCalendar className="text-primary" />
-                                    <p>
-                                      {formatDistanceToNow(appointmentDate, {
-                                        addSuffix: true,
-                                      })}
-                                    </p>
-                                  </div>
-                                  <div className="flex items-center flex-shrink-0 gap-2 text-xs">
-                                    <CgStopwatch className="text-primary" />
-                                    <p>
-                                      {format(startTime, "p")} - {format(endTime, "p")}
-                                    </p>
-                                  </div>
-                                </div>
-                              </>
-                            )}
-                          </div>
+                                    <div className="bg-primary/20 flex items-center justify-between p-2 rounded-lg">
+                                      <div className="flex items-center gap-2 text-xs">
+                                        <CgCalendar className="text-primary" />
+                                        <p>
+                                          {formatDistanceToNow(appointmentDate, {
+                                            addSuffix: true,
+                                          })}
+                                        </p>
+                                      </div>
+                                      <div className="flex items-center flex-shrink-0 gap-2 text-xs">
+                                        <CgStopwatch className="text-primary" />
+                                        <p>
+                                          {format(startTime, "p")} - {format(endTime, "p")}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )
                     )}
