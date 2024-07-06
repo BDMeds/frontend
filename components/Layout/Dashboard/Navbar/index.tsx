@@ -46,7 +46,7 @@ const DNavbar = () => {
             />
           )}
         </div>
-        {doctor && !doctor.kycDetails && (
+        {doctor && !doctor.kycVerified && (
           <button
             className="text-red-500 text-xs rounded-full p-2 bg-red-200/20 cursor-pointer hover:bg-red-200/50 duration-300"
             onClick={() => router.push("/settings?tab=kyc-verification")}
