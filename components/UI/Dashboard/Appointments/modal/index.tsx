@@ -20,6 +20,7 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import { bookAppointment } from "@/lib/services/appointment.service";
 import { getDoctors } from "@/lib/services/user.service";
 import * as dateFns from "date-fns";
+import { useRouter } from "next/router";
 
 type Inputs = {
   appointmentDate: string;
@@ -35,6 +36,7 @@ let searchTime = 0;
 
 const AppointmentModal = () => {
   const { hideModal } = useModal();
+  const router = useRouter();
 
   const [infoComplete, setInfoComplete] = useState(false);
   const [mode, setMode] = useState<"online" | "physical">("online");
@@ -48,13 +50,16 @@ const AppointmentModal = () => {
   } = useForm<Inputs>({
     defaultValues: {
       appointmentDate: `${
-        appointment.appointmentDate ? dateFns.format(appointment.appointmentDate, "yyyy-MM-dd") : ""
+        appointment.appointmentDate
+          ? dateFns.format(appointment.appointmentDate, "yyyy-MM-dd")
+          : ""
       }`,
     },
   });
 
   // specialization
-  const [department, setDepartment] = useState<Department>("Cardiology (Heart)");
+  const [department, setDepartment] =
+    useState<Department>("Cardiology (Heart)");
 
   const [search, setSearch] = useState("");
 
@@ -119,11 +124,12 @@ const AppointmentModal = () => {
     mutate(
       { payload: appointment, doctorId },
       {
-        onSuccess: () => (
+        onSuccess: (data) => (
           queryClient.invalidateQueries({
             predicate: (query) => query.queryKey.includes("appointments"),
           }),
-          hideModal()
+          hideModal(),
+          data?.data && (window.location.href = data?.data as string)
         ),
       }
     );
@@ -137,11 +143,16 @@ const AppointmentModal = () => {
     >
       <>
         <div className="flex items-center justify-between">
-          <p className="font-bold">{infoComplete ? "Select Doctor" : "New Appointment"}</p>
+          <p className="font-bold">
+            {infoComplete ? "Select Doctor" : "New Appointment"}
+          </p>
 
           <div className="flex items-center gap-2">
             {infoComplete && (
-              <button className="text-primary" onClick={() => setInfoComplete(false)}>
+              <button
+                className="text-primary"
+                onClick={() => setInfoComplete(false)}
+              >
                 Back
               </button>
             )}
@@ -153,7 +164,11 @@ const AppointmentModal = () => {
         <AnimatePresence mode="wait" initial={false}>
           {!infoComplete ? (
             <>
-              <motion.form {...opacityVariant} onSubmit={handleSubmit(submit)} className="grid gap-4">
+              <motion.form
+                {...opacityVariant}
+                onSubmit={handleSubmit(submit)}
+                className="grid gap-4"
+              >
                 <div className="space-y-1">
                   <label>Appointment Date</label>
                   <input
@@ -242,13 +257,20 @@ const AppointmentModal = () => {
                   </div>
                 ) : (
                   <>
-                    {isFetching && <p className="absolute bottom-1 right-1 text-sm">fetching...</p>}
+                    {isFetching && (
+                      <p className="absolute bottom-1 right-1 text-sm">
+                        fetching...
+                      </p>
+                    )}
 
                     {doctors && doctors.length > 0 ? (
                       <div className="space-y-4">
                         <div className="divide-y dark:divide-white/10">
                           {doctors.map((doc, id) => (
-                            <div key={id} className="py-1 flex items-center justify-between">
+                            <div
+                              key={id}
+                              className="py-1 flex items-center justify-between"
+                            >
                               <div className="flex items-center gap-2">
                                 <div className="size-10 border rounded-full relative overflow-hidden">
                                   <Image
@@ -264,17 +286,22 @@ const AppointmentModal = () => {
                                     <p>
                                       {doc.user.firstName} {doc.user.lastName}
                                     </p>
-                                    {doc.kycDetails?.status === "successful" && (
+                                    {doc.kycDetails?.status ===
+                                      "successful" && (
                                       <RiVerifiedBadgeFill className="text-[#1c96e8]" />
                                     )}
                                   </div>
-                                  <p className="truncate text-gray-500 max-w-[8rem]">{doc.bio}</p>
+                                  <p className="truncate text-gray-500 max-w-[8rem]">
+                                    {doc.bio}
+                                  </p>
                                 </div>
                               </div>
 
                               <Button
                                 size="extra-small"
-                                text={`${doc._id === doctorId ? "Selected" : "Select"} `}
+                                text={`${
+                                  doc._id === doctorId ? "Selected" : "Select"
+                                } `}
                                 onClick={() => setDoctorId(doc._id)}
                               />
                             </div>
