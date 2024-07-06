@@ -3,6 +3,7 @@ import { MdCalendarMonth } from "react-icons/md";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { LiaHandsHelpingSolid } from "react-icons/lia";
 import { CiVideoOn } from "react-icons/ci";
+import { DepartmentsEnum } from "../enums";
 
 type Service = {
   icon: JSX.Element;
@@ -13,6 +14,7 @@ type Service = {
 type Department = {
   name: string;
   image: string;
+  fullDepartment: DepartmentsEnum;
 };
 
 type Faq = {
@@ -23,7 +25,8 @@ type Faq = {
 export const services: Service[] = [
   {
     title: "Diagnostic testing",
-    description: "Blood tests, imaging studies, and other tests to diagnose health condition",
+    description:
+      "Blood tests, imaging studies, and other tests to diagnose health condition",
     icon: <MdCalendarMonth size={30} />,
   },
   {
@@ -40,7 +43,8 @@ export const services: Service[] = [
   },
   {
     title: "Preventive care",
-    description: "Annual checkups, immunizations, and health screenings care preventive",
+    description:
+      "Annual checkups, immunizations, and health screenings care preventive",
     icon: <LiaHandsHelpingSolid size={30} />,
   },
   {
@@ -55,26 +59,32 @@ export const departments: Department[] = [
   {
     name: "Cardiology",
     image: "cardiology.png",
+    fullDepartment: DepartmentsEnum.CARDIOLOGY,
   },
   {
     name: "Dentistry",
     image: "dentistry.png",
+    fullDepartment: DepartmentsEnum.DENTISTRY,
   },
   {
     name: "Neurology",
     image: "neurology.png",
+    fullDepartment: DepartmentsEnum.NEUROLOGY,
   },
   {
     name: "Orthopedic",
     image: "orthopedic.png",
+    fullDepartment: DepartmentsEnum.ORTHOPEDICS,
   },
   {
     name: "Optometrist",
     image: "optometrist.png",
+    fullDepartment: DepartmentsEnum.OPTOMETRY,
   },
   {
     name: "Psycho Therapist",
     image: "psychotherapist.png",
+    fullDepartment: DepartmentsEnum.PSYCHOTHERAPY,
   },
 ];
 

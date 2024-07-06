@@ -89,6 +89,7 @@ export type IDoctor = {
   address?: Address;
   socials?: Socials;
   department: Department;
+  chargePerSession: number;
 } & IDef;
 
 export type Socials = {
