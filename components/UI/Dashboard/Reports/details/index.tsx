@@ -17,11 +17,14 @@ import BoneReportDetail from "./skeleton";
 import Button from "@/components/Common/Button";
 import { useModal } from "@/lib/providers/modal-provider";
 import PrescriptionModal from "./_modal/prescription-modal";
+import useUserInfo from "@/lib/hooks/useUserInfo";
 
 const ReportsDetails = () => {
   const { push } = useRouter();
   const { id: reportId } = useParams<{ id: string }>();
   const searchParams = useSearchParams();
+
+  const { user } = useUserInfo();
 
   const department = searchParams.get("department");
 
@@ -86,13 +89,15 @@ const ReportsDetails = () => {
             {report?.consultation?.consultationNote}
           </p>
 
-          <Button
-            text="View Prescriptions"
-            variant="filled"
-            size="extra-small"
-            onClick={() => showModal(<PrescriptionModal />)}
-            rounded="full"
-          />
+          {user && user.role !== "doctor" && (
+            <Button
+              text="View Prescriptions"
+              variant="filled"
+              size="extra-small"
+              onClick={() => showModal(<PrescriptionModal />)}
+              rounded="full"
+            />
+          )}
         </div>
 
         {component}
