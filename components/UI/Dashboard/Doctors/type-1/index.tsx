@@ -175,7 +175,7 @@ const RightSection = ({ doc }: { doc?: IDoctor }) => {
                         id
                       ) => (
                         <div key={id}>
-                          {isBefore(new Date(appointmentDate), new Date()) && (
+                          {!isBefore(new Date(appointmentDate), new Date()) && (
                             <div
                               key={id}
                               className={`w-full h-full absolute top-0 left-0 flex items-center justify-center`}
